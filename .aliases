@@ -73,6 +73,8 @@ alias gitbox='~/src/gitbox/gitbox'
 
 alias tmux='TERM=screen-256color-bce tmux'
 
+alias gitbox='~/src/gitbox/gitbox'
+
 alias emacs='emacs -nw'
 
 alias menu='/home/shine/share/menu/menu.par puddinglane,pavilion,londondeli'
