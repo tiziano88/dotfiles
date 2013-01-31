@@ -1,0 +1,22 @@
+* Payments Service
+** DONE add alerts to payments server
+*** DONE setup pebl using adsense-qa user
+*** DONE Wait for CL approval
+*** DONE bring up jobs
+*** DONE submit borg CL
+*** DONE change gslb qa target
+*** DONE remove alerts from inventory service
+** DONE Split payments module in paymentsServiceModule and paymentsServerModule
+** DONE Add alloc and logsaver
+** DONE Add fenanny
+** DONE Add label ACLs
+** DONE bind PSP in
+** DONE borg update for prod
+* Alerts Service
+** DONE Add dismiss method to alerts client interface.
+** DONE Implement dismissing alerts.
+** DONE Add i18n
+** Add is on hold field
+** Add country code field
+* DONE remove user ids from exceptions
+* Metamon
