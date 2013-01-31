@@ -1,0 +1,20 @@
+[sync]
+tap-project=asfe_all
+tap-options=use-green
+sync-at=head
+[mail]
+tap-project=asfe_all
+tap-options=use-green
+fast-export=True
+[export]
+tap-project=asfe_all
+tap-options=use-green
+fast-export=True
+citc=True
+[submit]
+tap-project=asfe_all
+#tap-options=use-green
+submit-queue=True
+fast-export=True
+[diff]
+command = difftool

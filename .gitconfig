@@ -1,0 +1,40 @@
+[apply]
+	whitespace = fix
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "diff"]
+	old = red
+	new = green
+	whitespace = yellow
+[color "status"]
+	untracked = bold yellow
+	added = bold blue
+	changed = red
+[color "branch"]
+	current = green
+	remote = yellow
+[core]
+	whitespace = fix
+	excludesfile = /usr/local/google/home/tzn/.gitignore_global
+[diff]
+	tool = vimdiff
+[gui]
+	fontui = -family Ubuntu -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Ubuntu Mono\" -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "splice"]
+	cmd = "gvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+	trustExitCode = true
+[mergetool "vimdiffnice"]
+	cmd = vimdiff -c \"wincmd J\" -c \"0\" $MERGED $LOCAL $BASE $REMOTE
+[rerere]
+	enabled = 0
+[user]
+	email = tzn@google.com
+	name = Tiziano Santoro

@@ -1,0 +1,8 @@
+import /google/src/head/depot/google3/ads/adsense/tools/blazerc
+--host_jvm_args=-Xmx3072m
+#build --cpu=k8 -c opt --use_sponge=no --noobjfs --experimental_use_local_machine_with_forge
+#build --cpu=k8 -c opt --use_sponge=no --profile=blaze_profile.dat
+build --cpu=k8 -c opt --use_sponge=no
+query --keep_going
+test --test_output=errors --use_sponge=streamed
+startup --noremote_logging

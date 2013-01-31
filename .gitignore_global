@@ -1,0 +1,9 @@
+# git config --global core.excludesfile ~/.gitignore_global
+
+*.iml
+*.ipr
+*.iws
+magicjar
+magicjar.jar
+blaze_profile.dat
+cache_*
