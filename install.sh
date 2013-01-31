@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ln 
+ln -s -t ~ $PWD/.*
