@@ -1,0 +1,48 @@
+[general]
+pythonfile = ~/.offlineimap.py
+accounts = personal, corp
+ui = quiet
+
+[Account personal]
+localrepository = personal-local
+remoterepository = personal-remote
+status_backend = sqlite
+
+[Account corp]
+localrepository = corp-local
+remoterepository = corp-remote
+status_backend = sqlite
+
+[Repository personal-local]
+type = Maildir
+localfolders = ~/Maildir/personal
+
+[Repository personal-remote]
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = tiziano88
+remotepass = drzfozumcpzrtbri
+folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
+ssl = yes
+realdelete = no
+
+[Repository corp-local]
+type = Maildir
+localfolders = ~/Maildir/corp
+
+[Repository corp-remote]
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = tzn@google.com
+remotepass = hgnpfemujcfjoxgm
+folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
+ssl = yes
+realdelete = no
+
+[mbnames]
+enabled = yes
+filename = ~/Maildir/muttrc.mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"

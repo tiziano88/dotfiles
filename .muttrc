@@ -5,38 +5,45 @@ set smtp_url = "smtp://tzn@google.com@smtp.gmail.com:587/"
 set smtp_pass = "hgnpfemujcfjoxgm"
 set from = "tzn@google.com"
 set realname = "Tiziano Santoro"
-set signature = "~/.signature"
 
 # Change the following line to a different editor you prefer.
-set editor = "nano"
+set editor = "vim"
+
+source ~/Mail/muttrc.mailboxes
 
 # Basic config, you can leave this as is
-set hostname = "google.com"
-set folder = "imaps://imap.gmail.com/
-set imap_user = "`whoami`@google.com"
-set imap_pass = "hgnpfemujcfjoxgm"
-set postponed = "+[GMail]/Drafts"
 set copy = no
 set move = no
 #unset record
-set spoolfile = "+INBOX"
-set header_cache = /usr/local/google/home/$LOGNAME/Mail/mutt_header_cache
-set message_cachedir = /usr/local/google/home/$LOGNAME/Mail/mutt_message_cache
-unset imap_passive
-set imap_check_subscribed
-set mail_check=60
 
-set timeout = 300
-set imap_keepalive = 300
-set record = "+[GMail]/Sent Mail"
-set certificate_file=~/.mutt/certificates
+set folder = ~/Maildir
+set alias_file       = ~/.mutt/alias         # where to store aliases
+set header_cache     = ~/.mutt/cache/headers # where to store headers
+set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
+set certificate_file = ~/.mutt/certificates  # where to store certs
+set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
+set tmpdir           = ~/.mutt/temp          # where to keep temp files
+#set signature        = ~/.mutt/sig           # my signature file
+set signature = "~/.signature"
+
+set wait_key = no
+set mbox_type = Maildir
+set timeout = 3
+set mail_check = 0
+
+set spoolfile = +personal/INBOX
+
+mailboxes = +personal/INBOX \
+            +corp/INBOX
+
+set sendmail = "/usr/local/bin/msmtp -a personal"
+
 set include
 set sort = 'threads'
 set sort_aux = 'reverse-last-date-received'
 set auto_tag = yes
 set pager_index_lines = 20
 set index_format = "%?M?+& ?%2M %2e %Z %D %-30.30F (%4c) [%B] %3C %s"
-set editor = "vim"
 #set max_line_length = 120
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
