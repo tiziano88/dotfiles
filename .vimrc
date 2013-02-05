@@ -64,7 +64,7 @@ Bundle "sjl/splice.vim"
 Bundle "t9md/vim-quickhl"
 Bundle "tpope/vim-fugitive"
 Bundle "tsaleh/vim-matchit"
-Bundle "Twinside/vim-haskellConceal"
+"Bundle "Twinside/vim-haskellConceal"
 Bundle "vim-scripts/IndentConsistencyCop"
 
 let g:ctrlp_custom_ignore = {
@@ -264,7 +264,7 @@ let g:ctrlp_max_height = 100
     " 'open' on OSX will open the url in the default browser without issue
 
     "  Save the current file, run buildifier to fix formatting, and reload it
-    map <leader>f :w<CR>:!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %<CR>:edit<CR>
+    command! Buildify :w | execute "!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %" | edit
 
 "    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
 " }
