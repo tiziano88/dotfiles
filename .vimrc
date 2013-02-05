@@ -101,6 +101,9 @@ let g:ctrlp_max_height = 100
     imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
     smap  <tab>  <right><plug>(neocomplcache_snippets_jump)
 
+    " Disable Ex mode
+    nnoremap Q <nop>
+
     " Plugin key-mappings.
     " Ctrl-k expands snippet & moves to next position
     " <CR> chooses highlighted value
