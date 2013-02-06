@@ -9,7 +9,7 @@ set realname = "Tiziano Santoro"
 # Change the following line to a different editor you prefer.
 set editor = "vim"
 
-source ~/Mail/muttrc.mailboxes
+source ~/Maildir/muttrc.mailboxes
 
 # Basic config, you can leave this as is
 set copy = no

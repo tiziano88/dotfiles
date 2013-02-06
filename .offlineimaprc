@@ -1,5 +1,5 @@
 [general]
-pythonfile = ~/.offlineimap.py
+#pythonfile = ~/.offlineimap.py
 accounts = personal, corp
 ui = quiet
 
