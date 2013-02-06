@@ -32,10 +32,14 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git vi-mode)
 
+source_() {
+  [[ -f $1 ]] && source $1
+}
+
 source $ZSH/oh-my-zsh.sh
 
 # citc
-source /etc/bash_completion.d/g4d
+source_ /etc/bash_completion.d/g4d
 
 # Customize to your needs...
 # export PATH=/home/tzn/bin:/home/tzn/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -54,30 +58,19 @@ setopt NO_CDABLE_VARS
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
-
-if [ -f ~/.env ]; then
-    . ~/.env
-fi
+source_ ~/.aliases
+source_ ~/.env
 
 
 # blaze autocompletion
-if [ -e /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash ]; then
-  source /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash
-fi
+source_ /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash
 
 # Set git autocompletion and PS1 integration
-if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
-  . /usr/local/git/contrib/completion/git-completion.bash
-fi
-if [ -f /opt/local/etc/bash_completion ]; then
-  . /opt/local/etc/bash_completion
-fi
+source_ /usr/local/git/contrib/completion/git-completion.bash
+source_ /opt/local/etc/bash_completion
 
-. /home/build/google3/devtools/blaze/scripts/blaze-complete.bash
-. /home/build/google3/ads/branding/adplanner/git5/git5_completion.sh
+source_ /home/build/google3/devtools/blaze/scripts/blaze-complete.bash
+source_ /home/build/google3/ads/branding/adplanner/git5/git5_completion.sh
 
 set -o vi
 bindkey -v
