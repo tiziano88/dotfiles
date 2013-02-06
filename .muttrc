@@ -36,6 +36,12 @@ set spoolfile = +personal/INBOX
 mailboxes = +personal/INBOX \
             +corp/INBOX
 
+folder-hook +personal \
+  set from = "tiziano88@gmail.com"
+
+folder-hook +corp \
+  set from = "tzn@google.com"
+
 set sendmail = "/usr/local/bin/msmtp -a personal"
 
 set include
