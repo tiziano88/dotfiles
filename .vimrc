@@ -2,12 +2,19 @@ set nocompatible   " must be first line
 filetype plugin on
 syntax on
 let g:disable_google_optional_settings=1
-source /usr/share/vim/google/google.vim
-source /usr/share/vim/google/gtags.vim
+
+function! Source_(filename)
+  if filereadable(a:filename)
+    source a:filename
+  endif
+endfunction
+
+call Source_("/usr/share/vim/google/google.vim")
+call Source_("/usr/share/vim/google/gtags.vim")
 "source /usr/share/vim/google/runtime/gtimporter.vim
-source ~/gtimporter.vim
+call Source_("~/gtimporter.vim")
 "source /home/build/nonconf/google3/tools/tags/gtags.vim
-source /google/data/ro/projects/vigor/vigor.vim
+call Source_("/google/data/ro/projects/vigor/vigor.vim")
 
 
 set expandtab
