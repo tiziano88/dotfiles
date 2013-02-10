@@ -185,6 +185,8 @@ let g:ctrlp_max_height = 100
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 
+  autocmd FileType go set noexpandtab | set softtabstop=0 | set shiftwidth=4
+
 " org-mode {
   let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
   let g:org_todo_keyword_faces = [
@@ -411,8 +413,8 @@ else
   match OverLength /\%101v.\+/
 endif
 
-"set listchars=eol:¶,trail:·
-set listchars=trail:·,tab:»\ 
+"set listchars=eol:?,trail:?
+set listchars=trail:?,tab:?\ 
 set list
 
 set cursorline      " highlight current line
@@ -463,7 +465,7 @@ set expandtab
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 set formatoptions+=l
 "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-"set lcs=tab:¦?,trail:·,extends:>,precedes:<,nbsp:&
+"set lcs=tab:??,trail:?,extends:>,precedes:<,nbsp:&
 
 " Complete only the current buffer and includes
 set complete=.,i
