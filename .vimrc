@@ -44,7 +44,7 @@ Bundle "vundle"
 "Bundle "wincent/Command-T"
 Bundle "Lokaltog/vim-easymotion"
 Bundle "Lokaltog/vim-powerline"
-Bundle "Shougo/neocomplcache"
+"Bundle "Shougo/neocomplcache"
 Bundle "Townk/vim-autoclose"
 Bundle "a.vim"
 Bundle "altercation/vim-colors-solarized"
@@ -63,13 +63,13 @@ Bundle "sjl/gundo.vim"
 Bundle "sjl/splice.vim"
 Bundle "t9md/vim-quickhl"
 Bundle "tpope/vim-fugitive"
-Bundle "tsaleh/vim-matchit"
+"Bundle "tsaleh/vim-matchit"
 "Bundle "Twinside/vim-haskellConceal"
 Bundle "vim-scripts/IndentConsistencyCop"
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'file': '\.class$|\.exe$\|\.so$\|\.dll$',
   \ 'link': 'blaze-bin\|blaze-genfiles\|blaze-google3\|blaze-out\|blaze-testlogs\|READONLY$',
   \ }
 " match by filename rather than full path (<c-d> in the prompt)
@@ -98,8 +98,8 @@ let g:ctrlp_max_height = 100
     let g:neocomplcache_enable_auto_select = 0
 
     " SuperTab like snippets behavior.
-    imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-    smap  <tab>  <right><plug>(neocomplcache_snippets_jump)
+    "imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+    "smap  <tab>  <right><plug>(neocomplcache_snippets_jump)
 
     " Disable Ex mode
     nnoremap Q <nop>
@@ -107,16 +107,16 @@ let g:ctrlp_max_height = 100
     " Plugin key-mappings.
     " Ctrl-k expands snippet & moves to next position
     " <CR> chooses highlighted value
-    imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-    smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-    inoremap <expr><C-g>   neocomplcache#undo_completion()
-    inoremap <expr><C-l>   neocomplcache#complete_common_string()
-    inoremap <expr><CR>    neocomplcache#complete_common_string()
+    "imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+    "smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+    "inoremap <expr><C-g>   neocomplcache#undo_completion()
+    "inoremap <expr><C-l>   neocomplcache#complete_common_string()
+    "inoremap <expr><CR>    neocomplcache#complete_common_string()
 
     " <CR>: close popup
     " <s-CR>: close popup and save indent.
-    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-    inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    "inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+    "inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
     " <TAB>: completion.
     "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -150,10 +150,10 @@ let g:ctrlp_max_height = 100
     let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
     let g:neocomplcache_omni_patterns.java = '\%(\h\w*\|)\)\.'
 
-    if !exists('g:neocomplcache_omni_functions')
-      let g:neocomplcache_omni_functions = {}
-    endif
-    let g:neocomplcache_omni_functions.java  = 'eclim#java#complete#CodeComplete'
+    "if !exists('g:neocomplcache_omni_functions')
+    "  let g:neocomplcache_omni_functions = {}
+    "endif
+    "let g:neocomplcache_omni_functions.java  = 'eclim#java#complete#CodeComplete'
 
 "    if !exists('g:neocomplcache_vim_completefuncs')
 "      let g:neocomplcache_vim_completefuncs = {}
@@ -511,15 +511,12 @@ hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=da
 
 " automatically open and close the popup menu / preview window
 "  au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menu,longest,preview
 "
 
 set tags=./tags;/,tags,~/.vimtags,c:/cpp,~/.vim/tags/cpp
 noremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 inoremap <F12> <Esc> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 
-"        au CursorMovedI,InsertLeave * if pumvisible() == 0 | silent! pclose | endif
-set completeopt=menuone,menu,longest,preview
 
 " EasyTags
 let g:easytags_cmd = '/usr/local/bin/ctags'

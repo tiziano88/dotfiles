@@ -1,9 +1,6 @@
 # A basic .muttrc for use with Gmail
 
-# Change the following six lines to match your Gmail account details
-set smtp_url = "smtp://tzn@google.com@smtp.gmail.com:587/"
-set smtp_pass = "hgnpfemujcfjoxgm"
-set from = "tzn@google.com"
+#set from = "tzn@google.com"
 set realname = "Tiziano Santoro"
 
 # Change the following line to a different editor you prefer.
@@ -25,6 +22,8 @@ set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
 set tmpdir           = ~/.mutt/temp          # where to keep temp files
 #set signature        = ~/.mutt/sig           # my signature file
 set signature = "~/.signature"
+set record = "+.Sent"
+set postponed = "+.Drafts"
 
 set wait_key = no
 set mbox_type = Maildir
@@ -46,7 +45,7 @@ set sendmail = "/usr/local/bin/msmtp -a personal"
 
 set include
 set sort = 'threads'
-set sort_aux = 'reverse-last-date-received'
+set sort_aux = 'last-date-received'
 set auto_tag = yes
 set pager_index_lines = 20
 set index_format = "%?M?+& ?%2M %2e %Z %D %-30.30F (%4c) [%B] %3C %s"
@@ -77,8 +76,11 @@ macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 
-macro index q '<change-folder>?<toggle-mailboxes>'
-macro browser q '<exit><quit>'
+macro index c "<change-folder>?<toggle-mailboxes>"
+macro pager c "<change-folder>?<toggle-mailboxes>"
+
+#macro index q '<change-folder>?<toggle-mailboxes>'
+#macro browser q '<exit><quit>'
 
 # vim: filetype=muttrc
 
