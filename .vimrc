@@ -3,19 +3,15 @@ filetype plugin on
 syntax on
 let g:disable_google_optional_settings=1
 
-function! Source_(filename)
-  if filereadable(a:filename)
-    source a:filename
-  endif
-endfunction
-
-call Source_("/usr/share/vim/google/google.vim")
-call Source_("/usr/share/vim/google/gtags.vim")
-"source /usr/share/vim/google/runtime/gtimporter.vim
-call Source_("~/gtimporter.vim")
-"source /home/build/nonconf/google3/tools/tags/gtags.vim
-call Source_("/google/data/ro/projects/vigor/vigor.vim")
-
+try
+  source /usr/share/vim/google/google.vim
+  source /usr/share/vim/google/gtags.vim
+  "source /usr/share/vim/google/runtime/gtimporter.vim
+  source ~/gtimporter.vim
+  "source /home/build/nonconf/google3/tools/tags/gtags.vim
+  source /google/data/ro/projects/vigor/vigor.vim
+catch
+endtry
 
 set expandtab
 set textwidth=0
@@ -414,7 +410,7 @@ else
 endif
 
 "set listchars=eol:?,trail:?
-set listchars=trail:?,tab:?\ 
+set listchars=tab:»·,trail:·
 set list
 
 set cursorline      " highlight current line
