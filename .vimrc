@@ -2,12 +2,19 @@ set nocompatible   " must be first line
 filetype plugin on
 syntax on
 let g:disable_google_optional_settings=1
-source /usr/share/vim/google/google.vim
-source /usr/share/vim/google/gtags.vim
+
+function! Source_(filename)
+  if filereadable(a:filename)
+    source a:filename
+  endif
+endfunction
+
+call Source_("/usr/share/vim/google/google.vim")
+call Source_("/usr/share/vim/google/gtags.vim")
 "source /usr/share/vim/google/runtime/gtimporter.vim
-source ~/gtimporter.vim
+call Source_("~/gtimporter.vim")
 "source /home/build/nonconf/google3/tools/tags/gtags.vim
-source /google/data/ro/projects/vigor/vigor.vim
+call Source_("/google/data/ro/projects/vigor/vigor.vim")
 
 
 set expandtab
@@ -177,6 +184,8 @@ let g:ctrlp_max_height = 100
   let g:indent_guides_auto_colors = 0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
+
+  autocmd FileType go set noexpandtab | set softtabstop=0 | set shiftwidth=4
 
 " org-mode {
   let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
@@ -404,8 +413,8 @@ else
   match OverLength /\%101v.\+/
 endif
 
-"set listchars=eol:¶,trail:·
-set listchars=trail:·,tab:»\ 
+"set listchars=eol:?,trail:?
+set listchars=trail:?,tab:?\ 
 set list
 
 set cursorline      " highlight current line
@@ -456,7 +465,7 @@ set expandtab
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 set formatoptions+=l
 "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-"set lcs=tab:¦?,trail:·,extends:>,precedes:<,nbsp:&
+"set lcs=tab:??,trail:?,extends:>,precedes:<,nbsp:&
 
 " Complete only the current buffer and includes
 set complete=.,i
