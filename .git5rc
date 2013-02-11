@@ -17,4 +17,4 @@ tap-project=asfe_all
 submit-queue=True
 fast-export=True
 [diff]
-command = difftool
+#command = difftool
