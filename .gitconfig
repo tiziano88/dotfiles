@@ -18,7 +18,6 @@
 [core]
 	whitespace = fix
 	excludesfile = /usr/local/google/home/tzn/.gitignore_global
-	pager = less -F -X
 [diff]
 	tool = vimdiff
 [gui]
