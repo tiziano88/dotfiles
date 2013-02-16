@@ -410,7 +410,7 @@ else
 endif
 
 "set listchars=eol:?,trail:?
-set listchars=tab:»·,trail:·
+set listchars=tab:»\ ,trail:·
 set list
 
 set cursorline      " highlight current line
