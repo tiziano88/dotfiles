@@ -29,6 +29,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+alias less='/usr/share/vim/vim73/macros/less.sh'
+
 # some more ls aliases
 alias ll='ls -ahlF'
 alias la='ls -A'
