@@ -77,6 +77,7 @@ bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
+bindkey '^V' paste-from-clipboard
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 bindkey -M vicmd '^[h' run-help
