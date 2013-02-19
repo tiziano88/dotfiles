@@ -3,27 +3,6 @@ filetype plugin on
 syntax on
 let g:disable_google_optional_settings=1
 
-try
-  source /usr/share/vim/google/google.vim
-  source /usr/share/vim/google/gtags.vim
-  "source /usr/share/vim/google/runtime/gtimporter.vim
-  source ~/gtimporter.vim
-  "source /home/build/nonconf/google3/tools/tags/gtags.vim
-  source /google/data/ro/projects/vigor/vigor.vim
-catch
-endtry
-
-set expandtab
-set textwidth=0
-set history=1000
-set undofile
-set undolevels=1000
-set undoreload=10000
-
-set foldenable
-set foldmethod=syntax
-set foldlevel=9999
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -42,7 +21,7 @@ Bundle "vundle"
 "Bundle "hsitz/VimOrganizer"
 "Bundle "msanders/snipmate.vim"
 "Bundle "project.tar.gz"
-"Bundle "scrooloose/syntastic"
+Bundle "scrooloose/syntastic"
 "Bundle "vim-scripts/Mark--Karkat"
 "Bundle "wincent/Command-T"
 Bundle "Lokaltog/vim-easymotion"
@@ -62,6 +41,7 @@ Bundle "mbbill/VimExplorer"
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle "scrooloose/nerdcommenter"
 Bundle "scrooloose/nerdtree"
+Bundle "SirVer/ultisnips"
 Bundle "sjl/gundo.vim"
 Bundle "sjl/splice.vim"
 Bundle "t9md/vim-quickhl"
@@ -69,6 +49,18 @@ Bundle "tpope/vim-fugitive"
 "Bundle "tsaleh/vim-matchit"
 "Bundle "Twinside/vim-haskellConceal"
 Bundle "vim-scripts/IndentConsistencyCop"
+"Bundle "vim-scripts/taglist.vim"
+Bundle "majutsushi/tagbar"
+
+try
+  source /usr/share/vim/google/google.vim
+  source /usr/share/vim/google/gtags.vim
+  "source /usr/share/vim/google/runtime/gtimporter.vim
+  source ~/gtimporter.vim
+  "source /home/build/nonconf/google3/tools/tags/gtags.vim
+  source /google/data/ro/projects/vigor/vigor.vim
+catch
+endtry
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$',
@@ -99,35 +91,6 @@ let g:ctrlp_max_height = 100
 
     " AutoComplPop like behavior.
     let g:neocomplcache_enable_auto_select = 0
-
-    " SuperTab like snippets behavior.
-    "imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-    "smap  <tab>  <right><plug>(neocomplcache_snippets_jump)
-
-    " Disable Ex mode
-    nnoremap Q <nop>
-
-    " Plugin key-mappings.
-    " Ctrl-k expands snippet & moves to next position
-    " <CR> chooses highlighted value
-    "imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-    "smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-    "inoremap <expr><C-g>   neocomplcache#undo_completion()
-    "inoremap <expr><C-l>   neocomplcache#complete_common_string()
-    "inoremap <expr><CR>    neocomplcache#complete_common_string()
-
-    " <CR>: close popup
-    " <s-CR>: close popup and save indent.
-    "inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-    "inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-
-    " <TAB>: completion.
-    "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    "inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplcache#close_popup()
 
     " Define keyword.
     if !exists('g:neocomplcache_keyword_patterns')
@@ -168,7 +131,7 @@ let g:ctrlp_max_height = 100
         set conceallevel=2 concealcursor=i
     endif
 
-    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+    "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
     function! s:check_back_space()
       let col = col('.') - 1
       return !col || getline('.')[col - 1] =~ '\s'
@@ -190,15 +153,23 @@ let g:ctrlp_max_height = 100
         \  ['STARTED', 'cyan'],
         \  ['DONE', 'green']
         \]
-  "nmap <tab> 
-
 
   let g:org_todo_setup = 'TODO STARTED | DONE'
   hi! DONETODO guifg=green
   hi! NOTDONETODO guifg=red
 
 " Key (re)mappings {
+    " Consider Space
     let mapleader = ","
+
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y>  neocomplcache#close_popup()
+
+    " Disable Ex mode
+    nnoremap Q <nop>
+    nnoremap j gj
+    nnoremap k gk
 
     " Clipboard fixes
     vnoremap <leader>y "+y
@@ -235,11 +206,11 @@ let g:ctrlp_max_height = 100
 "    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
     " Stupid shift key fixes
-    "cmap W w
-    "cmap WQ wq
-    "cmap wQ wq
-    "cmap Q q
-    "cmap Tabe tabe
+    cmap W w
+    cmap WQ wq
+    cmap wQ wq
+    cmap Q q
+    cmap Tabe tabe
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
@@ -277,14 +248,10 @@ let g:ctrlp_max_height = 100
 "    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
 " }
 
-" auto reload vimrc
-" autocmd BufWritePost .vimrc source %
-
-Bundle "vim-scripts/taglist.vim"
+" taglist
 let Tlist_Display_Prototype = 1
-"  nnoremap <silent> <F8> :TlistToggle<CR>
 
-Bundle "majutsushi/tagbar"
+" Tagbar
 nmap <F8> :TagbarToggle<CR>
 
 "set omnifunc="<c-x><c-u>"
@@ -320,10 +287,7 @@ nmap ,n :NERDTreeFind<CR>
 nmap ,m :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks = 1
 
-"    source /usr/share/vim/google/google.vim
 
-set mouse=a     " automatically enable mouse usage
-"set autochdir     " always switch to the current file directory..
 " not every vim is compiled with this, use the following line instead
 "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 scriptencoding utf-8
@@ -354,6 +318,19 @@ set backupdir=~/.vim/backup// " but not when they clog .
 set directory=~/.vim/swap//  " Same for swap files
 set viewdir=~/.vim/views//  " same but for view files
 set undodir=~/.vim/undo//
+
+set expandtab
+set textwidth=0
+set history=1000
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+set mouse=a     " automatically enable mouse usage
+
+set foldenable
+set foldmethod=syntax
+set foldlevel=9999
 
 set viewoptions=cursor,folds
 au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
@@ -392,8 +369,6 @@ if &diff
   autocmd VimEnter * call DiffSetup()
 endif
 
-" Vim UI
-" colorscheme elflord
 set tabpagemax=15     " only show 15 tabs
 set showmode                    " display the current mode
 
@@ -506,22 +481,9 @@ hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
 hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-" some convenient mappings
-"  inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-"  inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-"  inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-"  inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-"  inoremap <expr> <C-d>     pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-"  inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-
-" automatically open and close the popup menu / preview window
-"  au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-"
-
 set tags=./tags;/,tags,~/.vimtags,c:/cpp,~/.vim/tags/cpp
 noremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 inoremap <F12> <Esc> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-
 
 " EasyTags
 let g:easytags_cmd = '/usr/local/bin/ctags'
@@ -538,12 +500,6 @@ au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
 
 " AutoClose
 let g:AutoClosePairs_del = "{}"
-
-" SnipMate
-" Setting the author var
-"let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
-" Shortcut for reloading snippets, useful when developing
-"nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
 
 " GUI Settings
 " GVIM- (here instead of .gvimrc)
@@ -686,7 +642,6 @@ endfunction
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC
-    " | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
 " Color test: Save this file, then enter ':so %'
