@@ -33,7 +33,7 @@ URxvt.allow_bold:           true
 !URxvt*boldFont: xft:Monospace:pixelsize=14
 
 ! Fix font space
-URxvt*letterSpace: 0
+URxvt*letterSpace: -1
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
@@ -63,6 +63,8 @@ URxvt.pointerBlank:         true
 *pointerColorForeground: #93a1a1
 
 *font: xft:Terminus:pixelsize=12
+!*font: xft:Source Code Pro for Powerline:pixelsize=10
+
 !*font: Ubuntu Mono-20
 
 !! black dark/light
