@@ -21,7 +21,7 @@ Bundle "vundle"
 "Bundle "hsitz/VimOrganizer"
 "Bundle "msanders/snipmate.vim"
 "Bundle "project.tar.gz"
-Bundle "scrooloose/syntastic"
+"Bundle "scrooloose/syntastic"
 "Bundle "vim-scripts/Mark--Karkat"
 "Bundle "wincent/Command-T"
 Bundle "Lokaltog/vim-easymotion"
@@ -51,6 +51,7 @@ Bundle "tpope/vim-fugitive"
 Bundle "vim-scripts/IndentConsistencyCop"
 "Bundle "vim-scripts/taglist.vim"
 Bundle "majutsushi/tagbar"
+"Bundle "Valloric/YouCompleteMe"
 
 try
   source /usr/share/vim/google/google.vim
