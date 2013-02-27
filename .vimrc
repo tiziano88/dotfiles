@@ -26,7 +26,7 @@ Bundle "vundle"
 "Bundle "wincent/Command-T"
 Bundle "Lokaltog/vim-easymotion"
 Bundle "Lokaltog/vim-powerline"
-"Bundle "Shougo/neocomplcache"
+Bundle "Shougo/neocomplcache"
 Bundle "Townk/vim-autoclose"
 Bundle "a.vim"
 Bundle "altercation/vim-colors-solarized"
@@ -131,6 +131,9 @@ let g:ctrlp_max_height = 100
     if has('conceal')
         set conceallevel=2 concealcursor=i
     endif
+
+    inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
     "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
     function! s:check_back_space()
@@ -319,6 +322,7 @@ set backupdir=~/.vim/backup// " but not when they clog .
 set directory=~/.vim/swap//  " Same for swap files
 set viewdir=~/.vim/views//  " same but for view files
 set undodir=~/.vim/undo//
+set autochdir
 
 set expandtab
 set textwidth=0
