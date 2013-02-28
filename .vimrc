@@ -51,6 +51,7 @@ Bundle "tpope/vim-fugitive"
 Bundle "vim-scripts/IndentConsistencyCop"
 "Bundle "vim-scripts/taglist.vim"
 Bundle "majutsushi/tagbar"
+Bundle "Yggdroot/indentLine"
 "Bundle "Valloric/YouCompleteMe"
 
 try
