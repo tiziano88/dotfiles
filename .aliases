@@ -40,7 +40,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 alias emacs="emacs -nw"
 
-alias menu='/home/shine/share/menu/menu.par puddinglane,pavilion'
+alias menu='/home/shine/share/menu/menu.par puddinglane,pavilion,londondeli'
 alias ack=ack-grep
 
 alias buildifier="/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix"
