@@ -53,6 +53,7 @@ Bundle "vim-scripts/IndentConsistencyCop"
 Bundle "majutsushi/tagbar"
 Bundle "Yggdroot/indentLine"
 "Bundle "Valloric/YouCompleteMe"
+Bundle "airblade/vim-gitgutter"
 
 try
   source /usr/share/vim/google/google.vim
