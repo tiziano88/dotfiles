@@ -53,6 +53,7 @@ Bundle "vim-scripts/IndentConsistencyCop"
 Bundle "majutsushi/tagbar"
 Bundle "Yggdroot/indentLine"
 "Bundle "Valloric/YouCompleteMe"
+Bundle "airblade/vim-gitgutter"
 
 try
   source /usr/share/vim/google/google.vim
@@ -133,7 +134,7 @@ let g:ctrlp_max_height = 100
         set conceallevel=2 concealcursor=i
     endif
 
-    inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+    inoremap <expr><CR> pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
     inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
     "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
