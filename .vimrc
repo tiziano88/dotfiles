@@ -151,6 +151,8 @@ let g:ctrlp_max_height = 100
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 
   autocmd FileType go set noexpandtab | set softtabstop=0 | set shiftwidth=4
+  autocmd FileType html set expandtab | set softtabstop=0 | set shiftwidth=2 | set tabstop=2
+  autocmd FileType xml set expandtab | set softtabstop=0 | set shiftwidth=2
 
 " org-mode {
   let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
@@ -338,6 +340,7 @@ set mouse=a     " automatically enable mouse usage
 set foldenable
 set foldmethod=syntax
 set foldlevel=9999
+set foldcolumn=4
 
 set viewoptions=cursor,folds
 au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
