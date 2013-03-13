@@ -54,6 +54,8 @@ Bundle "majutsushi/tagbar"
 Bundle "Yggdroot/indentLine"
 "Bundle "Valloric/YouCompleteMe"
 Bundle "airblade/vim-gitgutter"
+Bundle "mileszs/ack.vim"
+Bundle "tyok/nerdtree-ack"
 
 try
   source /usr/share/vim/google/google.vim
@@ -252,6 +254,7 @@ let g:ctrlp_max_height = 100
 
     "  Save the current file, run buildifier to fix formatting, and reload it
     command! Buildify :w | execute "!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %" | edit
+    command! Gofmt :w | execute "!go fmt %" | edit
 
 "    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
 " }
