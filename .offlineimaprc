@@ -1,5 +1,6 @@
 [general]
-#pythonfile = ~/.offlineimap.py
+# pip install keyring
+pythonfile = ~/.offlineimap.py
 accounts = personal, corp
 ui = quiet
 
@@ -21,7 +22,8 @@ localfolders = ~/Maildir/personal
 type = Gmail
 remotehost = imap.gmail.com
 remoteuser = tiziano88
-remotepass = drzfozumcpzrtbri
+remotepasseval = keyring.get_password("offlineimap", "tiziano88@gmail.com")
+cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
 ssl = yes
 realdelete = no
@@ -34,7 +36,8 @@ localfolders = ~/Maildir/corp
 type = Gmail
 remotehost = imap.gmail.com
 remoteuser = tzn@google.com
-remotepass = hgnpfemujcfjoxgm
+remotepasseval = keyring.get_password("offlineimap", "tzn@google.com")
+cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
 ssl = yes
 realdelete = no
