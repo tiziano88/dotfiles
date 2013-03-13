@@ -56,6 +56,8 @@ Bundle "Yggdroot/indentLine"
 Bundle "airblade/vim-gitgutter"
 Bundle "mileszs/ack.vim"
 Bundle "tyok/nerdtree-ack"
+Bundle "vim-scripts/YankRing.vim"
+Bundle "kien/rainbow_parentheses.vim"
 
 try
   source /usr/share/vim/google/google.vim
@@ -155,6 +157,11 @@ let g:ctrlp_max_height = 100
   autocmd FileType go set noexpandtab | set softtabstop=0 | set shiftwidth=4
   autocmd FileType html set expandtab | set softtabstop=0 | set shiftwidth=2 | set tabstop=2
   autocmd FileType xml set expandtab | set softtabstop=0 | set shiftwidth=2
+
+  autocmd VimEnter * RainbowParenthesesToggle
+  autocmd Syntax * RainbowParenthesesLoadRound
+  autocmd Syntax * RainbowParenthesesLoadSquare
+  autocmd Syntax * RainbowParenthesesLoadBraces
 
 " org-mode {
   let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
