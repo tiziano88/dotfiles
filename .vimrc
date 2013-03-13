@@ -289,11 +289,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:NERDTreeChDirMode=2
 let g:NERDTreeDirArrows=0
 let g:NERDTreeWinSize=60
+let g:NERDTreeCasadeOpenSingleChildDir=1
 " Locate current file in NERDTree
 nmap ,n :NERDTreeFind<CR>
 " Toggle NERDTree visibility
 nmap ,m :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks = 1
+
 
 
 " not every vim is compiled with this, use the following line instead
