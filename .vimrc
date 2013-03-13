@@ -36,7 +36,7 @@ Bundle "corntrace/bufexplorer"
 Bundle "csv.vim"
 Bundle "jceb/vim-orgmode"
 Bundle "kien/ctrlp.vim"
-Bundle "mbadran/headlights"
+"Bundle "mbadran/headlights"
 Bundle "mbbill/VimExplorer"
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle "scrooloose/nerdcommenter"
@@ -57,7 +57,7 @@ Bundle "airblade/vim-gitgutter"
 Bundle "mileszs/ack.vim"
 Bundle "tyok/nerdtree-ack"
 Bundle "vim-scripts/YankRing.vim"
-Bundle "kien/rainbow_parentheses.vim"
+"Bundle "kien/rainbow_parentheses.vim"
 
 try
   source /usr/share/vim/google/google.vim
@@ -65,7 +65,7 @@ try
   "source /usr/share/vim/google/runtime/gtimporter.vim
   source ~/gtimporter.vim
   "source /home/build/nonconf/google3/tools/tags/gtags.vim
-  source /google/data/ro/projects/vigor/vigor.vim
+"  source /google/data/ro/projects/vigor/vigor.vim
 catch
 endtry
 
@@ -158,10 +158,10 @@ let g:ctrlp_max_height = 100
   autocmd FileType html set expandtab | set softtabstop=0 | set shiftwidth=2 | set tabstop=2
   autocmd FileType xml set expandtab | set softtabstop=0 | set shiftwidth=2
 
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd Syntax * RainbowParenthesesLoadRound
-  autocmd Syntax * RainbowParenthesesLoadSquare
-  autocmd Syntax * RainbowParenthesesLoadBraces
+"  autocmd VimEnter * RainbowParenthesesToggle
+"  autocmd Syntax * RainbowParenthesesLoadRound
+"  autocmd Syntax * RainbowParenthesesLoadSquare
+"  autocmd Syntax * RainbowParenthesesLoadBraces
 
 " org-mode {
   let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
@@ -408,6 +408,7 @@ endif
 
 "set listchars=eol:?,trail:?
 set listchars=tab:»\ ,trail:·
+"set listchars=
 set list
 
 set cursorline      " highlight current line
