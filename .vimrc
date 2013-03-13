@@ -431,18 +431,22 @@ set backspace=indent,eol,start  " backspace for dummys
 set cino-=(0 "do not align to open parenthesis
 set linespace=0     " No extra spaces between rows
 set number        " Line numbers on
+set winminheight=0     " windows can be 0 line high
+
+"nnoremap / /\v
+"vnoremap / /\v
+set ignorecase      " case insensitive search
+set smartcase      " case sensitive when uc present
+set gdefault     " the /g flag on :s substitutions by default
 set showmatch                   " show matching brackets/parenthesis
 set incsearch      " find as you type search
 set hlsearch      " highlight search terms
-set winminheight=0     " windows can be 0 line high
-set ignorecase      " case insensitive search
-set smartcase      " case sensitive when uc present
+
 set wildmenu      " show list instead of just completing
 set wildmode=list:longest,full  " comand <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,] " backspace and cursor keys wrap to
 "set scrolljump=5     " lines to scroll when cursor leaves screen
 set scrolloff=5     " minimum lines to keep above and below cursor
-set gdefault     " the /g flag on :s substitutions by default
 
 " Formatting
 set wrap                      " wrap long lines
