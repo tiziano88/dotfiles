@@ -38,3 +38,5 @@
 [user]
 	email = tzn@google.com
 	name = Tiziano Santoro
+[push]
+	default = matching
