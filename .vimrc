@@ -158,7 +158,7 @@ let g:ctrlp_max_height = 100
   autocmd FileType html set expandtab | set softtabstop=0 | set shiftwidth=2 | set tabstop=2
   autocmd FileType xml set expandtab | set softtabstop=0 | set shiftwidth=2
 
-  autocmd VimEnter * RainbowParenthesesToggle
+"  autocmd VimEnter * RainbowParenthesesToggle
   autocmd Syntax * RainbowParenthesesLoadRound
   autocmd Syntax * RainbowParenthesesLoadSquare
   autocmd Syntax * RainbowParenthesesLoadBraces
