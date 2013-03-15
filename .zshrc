@@ -100,11 +100,13 @@ if [[ "$TERM" != "screen" ]]
 then
    # try to attach to existing session, or start a new one
    # tmux attach-session -t "$USER" || tmux -2 new-session -s "$USER"
-   session_id=`date +%Y%m%d%H%M%S`
+   # session_id=`date +%Y%m%d%H%M%S`
    #tmux_has_main || tmux_init_main
    #tmux -2 attach-session -t "main"
-   ( tmux new-session -d -s $session_id -t "$USER" && tmux attach-session -t $session_id && tmux kill-session -t $session_id ) || tmux -2 new-session -s "$USER"
+   # ( tmux new-session -d -s $session_id -t "$USER" && tmux attach-session -t $session_id && tmux kill-session -t $session_id ) || tmux -2 new-session -s "$USER"
 #   exit
+
+  mux default
 fi
 
 export COMPLETION_WAITING_DOTS="true"
