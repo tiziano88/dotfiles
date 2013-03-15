@@ -8,7 +8,7 @@ fname=${0#*/}
 
 for f in *
 do
-  if [[ $f == ".git" || $f == $fname ]]
+  if [[ $f == ".git" || $f == ".gitignore" || $f == $fname ]]
   then
     continue
   fi
