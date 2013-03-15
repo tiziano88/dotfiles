@@ -65,7 +65,8 @@ bind editor <space> noop
 bind index - collapse-thread
 bind index _ collapse-all
 
-bind index "^" imap-fetch-mail
+#bind index "^" imap-fetch-mail
+macro index ^ "<shell-escape>offlineimap&<enter>"
 
 color message white black
 color status white blue
