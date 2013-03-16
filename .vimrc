@@ -335,6 +335,8 @@ set backup       " backups are nice ...
 :call EnsureDir("~/.vim/views")
 :call EnsureDir("~/.vim/undo")
 set backupdir=~/.vim/backup// " but not when they clog .
+" For crontab -e editing
+set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim/swap//  " Same for swap files
 set viewdir=~/.vim/views//  " same but for view files
 set undodir=~/.vim/undo//
