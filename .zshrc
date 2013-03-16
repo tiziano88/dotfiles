@@ -96,7 +96,7 @@ function tmux_init_main() {
   tmux -2 new-session -d -s "main" -n "misc"
 }
 
-if [[ "$TERM" != "screen" ]]
+if [[ "$TERM" != "screen" ]] && [[ "$TMUX" == "" ]]
 then
    # try to attach to existing session, or start a new one
    # tmux attach-session -t "$USER" || tmux -2 new-session -s "$USER"
