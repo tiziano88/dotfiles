@@ -24,7 +24,7 @@ myKeys = \conf -> mkKeymap conf $
 
 main = xmonad =<< xmobar defaultConfig
   { terminal = "terminator"
-  , borderWidth = 2
+  , borderWidth = 5
   , modMask = mod4Mask
 --  , keys = myKeys
   , startupHook = setWMName "LG3D"
