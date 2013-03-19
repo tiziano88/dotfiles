@@ -5,6 +5,7 @@ import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig
+import qualified Data.Map as Map
 
 myWorkSpaces =
   [ "1:tmux"
@@ -19,8 +20,8 @@ myManageHook = composeAll
   ]
 
 --myKeys conf@(Xconfig {Xmonad.modMask = modm}) = M.fromList $
-myKeys = \conf -> mkKeymap conf $
-  [ ("M-S-l",    spawn $ "gnome_screensaver_command -l") ]
+myKeys conf = Map.fromList $
+  [ ((mod4Mask .|. shiftMask, xK_l), spawn $ "gnome_screensaver_command -l") ]
 
 main = xmonad =<< xmobar defaultConfig
   { terminal = "terminator"
@@ -29,7 +30,7 @@ main = xmonad =<< xmobar defaultConfig
 --  , keys = myKeys
   , startupHook = setWMName "LG3D"
   , logHook = takeTopFocus
---  , workspaces = myWorkSpaces
+  , workspaces = myWorkSpaces
   , manageHook = myManageHook <+> manageHook defaultConfig
   } --`additionalKeys`
 --  [ ((mod4Mask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
