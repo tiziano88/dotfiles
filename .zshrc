@@ -44,10 +44,11 @@ source_ /etc/bash_completion.d/g4d
 # Customize to your needs...
 # export PATH=/home/tzn/bin:/home/tzn/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-#zstyle ':completion:*' use-cache on
+zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 # take the first part of the path to be exact
 zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' hosts off
 setopt NO_CDABLE_VARS
 
 # check the window size after each command and, if necessary,
