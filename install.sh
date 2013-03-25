@@ -17,5 +17,5 @@ do
     rm ~/$f
   fi
   ln -s $PWD/$f ~/$f
-  chmod 600 ~/$f
+  #chmod 600 ~/$f
 done
