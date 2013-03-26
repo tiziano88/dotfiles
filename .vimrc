@@ -56,7 +56,7 @@ Bundle "Yggdroot/indentLine"
 Bundle "airblade/vim-gitgutter"
 Bundle "mileszs/ack.vim"
 Bundle "tyok/nerdtree-ack"
-Bundle "vim-scripts/YankRing.vim"
+"Bundle "vim-scripts/YankRing.vim"
 "Bundle "kien/rainbow_parentheses.vim"
 Bundle "vimoutliner/vimoutliner"
 
@@ -109,10 +109,11 @@ let g:ctrlp_max_height = 100
     " Enable omni completion.
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     " Enable heavy omni completion.
     if !exists('g:neocomplcache_omni_patterns')
@@ -129,10 +130,10 @@ let g:ctrlp_max_height = 100
     "endif
     "let g:neocomplcache_omni_functions.java  = 'eclim#java#complete#CodeComplete'
 
-"    if !exists('g:neocomplcache_vim_completefuncs')
-"      let g:neocomplcache_vim_completefuncs = {}
-"    endif
-"    let g:neocomplcache_vim_completefuncs.java  = 'eclim#java#complete#CodeComplete'
+    "if !exists('g:neocomplcache_vim_completefuncs')
+    "  let g:neocomplcache_vim_completefuncs = {}
+    "endif
+    "let g:neocomplcache_vim_completefuncs.java  = 'eclim#java#complete#CodeComplete'
 
     " For snippet_complete marker.
     if has('conceal')
@@ -636,6 +637,7 @@ set noesckeys    " disable keys sending escape sequences in insert mode (fixes d
 let g:EclimJavaImportPackageSeparationLevel = 1
 let g:EclimJavaCompleteCaseSensitive = 1
 let g:EclimBrowser='open'
+let g:EclimCompletionMethod='omnifunc'
 "noremap <C-]> :JavaSearch<CR>
 
 " Offer to reload the file if it changed.

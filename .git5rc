@@ -5,12 +5,14 @@ sync-at=head
 
 [mail]
 tap-project=asfe_all
-tap-options=use-green
+tap-options=use-green,detach,email
 fast-export=True
+citc=True
 
 [export]
 tap-project=asfe_all
-tap-options=use-green,detach
+#tap-options=use-green,detach
+tap-options=use-green,detach,email
 #submit-queue=True
 fast-export=True
 citc=True
