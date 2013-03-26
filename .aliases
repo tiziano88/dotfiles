@@ -49,3 +49,4 @@ alias lock="gnome-screensaver-command -l"
 alias org="vim ~/tzn.org"
 
 alias glaze=/google/src/head/depot/google3/third_party/go/bin/glaze
+alias live_borgdiff="live_borgdiff --diff_command='diff -u'"
