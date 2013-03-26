@@ -11,6 +11,12 @@ myWorkSpaces =
   [ "1:tmux"
   , "2:web"
   , "3:IDE"
+  , "4"
+  , "5"
+  , "6"
+  , "7"
+  , "8"
+  , "9"
   ]
 
 myManageHook = composeAll

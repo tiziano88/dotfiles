@@ -56,7 +56,7 @@ Bundle "Yggdroot/indentLine"
 Bundle "airblade/vim-gitgutter"
 Bundle "mileszs/ack.vim"
 Bundle "tyok/nerdtree-ack"
-Bundle "vim-scripts/YankRing.vim"
+"Bundle "vim-scripts/YankRing.vim"
 "Bundle "kien/rainbow_parentheses.vim"
 
 try
