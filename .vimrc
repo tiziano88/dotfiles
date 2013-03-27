@@ -24,48 +24,48 @@ Bundle "vundle"
 "Bundle "scrooloose/syntastic"
 "Bundle "vim-scripts/Mark--Karkat"
 "Bundle "wincent/Command-T"
-Bundle "Lokaltog/vim-easymotion"
-Bundle "Lokaltog/vim-powerline"
-Bundle "Shougo/neocomplcache"
-Bundle "Townk/vim-autoclose"
-Bundle "a.vim"
-Bundle "altercation/vim-colors-solarized"
-Bundle "chrisbra/NrrwRgn"
-Bundle "chrisbra/changesPlugin"
-Bundle "corntrace/bufexplorer"
-Bundle "csv.vim"
-Bundle "jceb/vim-orgmode"
-Bundle "kien/ctrlp.vim"
 "Bundle "mbadran/headlights"
-Bundle "mbbill/VimExplorer"
-Bundle "nathanaelkane/vim-indent-guides"
-Bundle "scrooloose/nerdcommenter"
-Bundle "scrooloose/nerdtree"
 "Bundle "SirVer/ultisnips"
-Bundle "sjl/gundo.vim"
-Bundle "sjl/splice.vim"
-Bundle "t9md/vim-quickhl"
-Bundle "tpope/vim-fugitive"
-"Bundle "tsaleh/vim-matchit"
 "Bundle "Twinside/vim-haskellConceal"
-Bundle "vim-scripts/IndentConsistencyCop"
-"Bundle "vim-scripts/taglist.vim"
-Bundle "majutsushi/tagbar"
-Bundle "Yggdroot/indentLine"
 "Bundle "Valloric/YouCompleteMe"
-Bundle "airblade/vim-gitgutter"
-Bundle "mileszs/ack.vim"
-Bundle "tyok/nerdtree-ack"
-"Bundle "vim-scripts/YankRing.vim"
 "Bundle "kien/rainbow_parentheses.vim"
-Bundle "vimoutliner/vimoutliner"
+"Bundle "tsaleh/vim-matchit"
+"Bundle "vim-scripts/YankRing.vim"
+"
+"Bundle "vim-scripts/taglist.vim"
+"Bundle "Lokaltog/vim-easymotion"
+"Bundle "Lokaltog/vim-powerline"
+Bundle "Shougo/neocomplcache"
+"Bundle "Townk/vim-autoclose"
+"Bundle "Yggdroot/indentLine"
+"Bundle "a.vim"
+"Bundle "airblade/vim-gitgutter"
+Bundle "altercation/vim-colors-solarized"
+"Bundle "chrisbra/NrrwRgn"
+"Bundle "chrisbra/changesPlugin"
+"Bundle "corntrace/bufexplorer"
+"Bundle "csv.vim"
+"Bundle "jceb/vim-orgmode"
+"Bundle "kien/ctrlp.vim"
+"Bundle "majutsushi/tagbar"
+"Bundle "mbbill/VimExplorer"
+"Bundle "mileszs/ack.vim"
+"Bundle "nathanaelkane/vim-indent-guides"
+"Bundle "scrooloose/nerdcommenter"
+"Bundle "scrooloose/nerdtree"
+"Bundle "sjl/gundo.vim"
+"Bundle "sjl/splice.vim"
+"Bundle "t9md/vim-quickhl"
+"Bundle "tpope/vim-fugitive"
+"Bundle "tyok/nerdtree-ack"
+"Bundle "vim-scripts/IndentConsistencyCop"
+"Bundle "vimoutliner/vimoutliner"
 
 try
   source /usr/share/vim/google/google.vim
-  source /usr/share/vim/google/gtags.vim
+"  source /usr/share/vim/google/gtags.vim
   "source /usr/share/vim/google/runtime/gtimporter.vim
-  source ~/gtimporter.vim
-  "source /home/build/nonconf/google3/tools/tags/gtags.vim
+  "source ~/gtimporter.vim
 "  source /google/data/ro/projects/vigor/vigor.vim
 catch
 endtry
@@ -95,7 +95,7 @@ let g:ctrlp_max_height = 100
     let g:neocomplcache_max_list = 15
     let g:neocomplcache_auto_completion_start_length = 3
     let g:neocomplcache_force_overwrite_completefunc = 1
-    let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
+    "let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
 
     " AutoComplPop like behavior.
     let g:neocomplcache_enable_auto_select = 0
@@ -294,9 +294,9 @@ au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
 
 
 " Open NERDTree if no files were specified
-autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd vimenter * if !argc() | NERDTree | endif
 " Close vim if the only window left is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Let Vim follow NERDTree root as current dir
 let g:NERDTreeChDirMode=2
 let g:NERDTreeDirArrows=0
@@ -308,6 +308,8 @@ nmap ,n :NERDTreeFind<CR>
 nmap ,m :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks = 1
 
+
+let g:netrw_liststyle=3
 
 
 " not every vim is compiled with this, use the following line instead
