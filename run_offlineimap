@@ -1,0 +1,2 @@
+#!/bin/sh
+exec nohup offlineimap >~/offlineimap.log 2>&1
