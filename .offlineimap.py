@@ -2,5 +2,6 @@
 
 import keyring
 import sys
+import os
 
-print('--')
+print(os.environ['HOME'])
