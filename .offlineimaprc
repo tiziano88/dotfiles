@@ -2,7 +2,7 @@
 # pip install keyring
 pythonfile = ~/.offlineimap.py
 accounts = personal, corp
-ui = quiet
+ui = TTYUI
 maxsyncaccounts = 2
 
 [Account personal]
