@@ -1,7 +1,11 @@
 #!/usr/bin/python
 
-import keyring
+#import keyring
 import sys
-import os
+import subprocess
 
-print(os.environ['HOME'])
+def get_user(account):
+  return subprocess.check_output(["echo $PWSAFEPASSWORD | pwsafe -E -q -u " + account + " | sed -n '/^[^ ]*$/p'"], shell=True).strip()
+
+def get_password(account):
+  return subprocess.check_output(["echo $PWSAFEPASSWORD | pwsafe -E -q -p " + account + " | sed -n '/^[^ ]*$/p'"], shell=True).strip()
