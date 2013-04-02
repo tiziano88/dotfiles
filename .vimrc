@@ -4,6 +4,7 @@ syntax on
 let g:disable_google_optional_settings=1
 
 set rtp+=~/.vim/bundle/vundle/
+set rtp+=/usr/local/go/misc/vim/
 call vundle#rc()
 
 if &term =~ '^screen'
@@ -16,50 +17,46 @@ endif
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Bundle "vundle"
 
-"Bundle "Rip-Rip/clang_complete"
-"Bundle "ervandew/supertab"
-"Bundle "hsitz/VimOrganizer"
-"Bundle "msanders/snipmate.vim"
-"Bundle "project.tar.gz"
-"Bundle "scrooloose/syntastic"
-"Bundle "vim-scripts/Mark--Karkat"
-"Bundle "wincent/Command-T"
-"Bundle "mbadran/headlights"
-"Bundle "SirVer/ultisnips"
-"Bundle "Twinside/vim-haskellConceal"
-"Bundle "Valloric/YouCompleteMe"
-"Bundle "kien/rainbow_parentheses.vim"
-"Bundle "tsaleh/vim-matchit"
-"Bundle "vim-scripts/YankRing.vim"
-"
-"Bundle "vim-scripts/taglist.vim"
 "Bundle "Lokaltog/vim-easymotion"
 "Bundle "Lokaltog/vim-powerline"
-Bundle "Shougo/neocomplcache"
+"Bundle "Rip-Rip/clang_complete"
+"Bundle "SirVer/ultisnips"
 "Bundle "Townk/vim-autoclose"
+"Bundle "Twinside/vim-haskellConceal"
+"Bundle "Valloric/YouCompleteMe"
 "Bundle "Yggdroot/indentLine"
 "Bundle "a.vim"
-"Bundle "airblade/vim-gitgutter"
-Bundle "altercation/vim-colors-solarized"
 "Bundle "chrisbra/NrrwRgn"
 "Bundle "chrisbra/changesPlugin"
 "Bundle "corntrace/bufexplorer"
 "Bundle "csv.vim"
+"Bundle "ervandew/supertab"
+"Bundle "hsitz/VimOrganizer"
 "Bundle "jceb/vim-orgmode"
-"Bundle "kien/ctrlp.vim"
-"Bundle "majutsushi/tagbar"
 "Bundle "mbbill/VimExplorer"
 "Bundle "mileszs/ack.vim"
+"Bundle "msanders/snipmate.vim"
 "Bundle "nathanaelkane/vim-indent-guides"
 "Bundle "scrooloose/nerdcommenter"
-"Bundle "scrooloose/nerdtree"
+Bundle "scrooloose/nerdtree"
+"Bundle "scrooloose/syntastic"
 "Bundle "sjl/gundo.vim"
 "Bundle "sjl/splice.vim"
 "Bundle "t9md/vim-quickhl"
-"Bundle "tpope/vim-fugitive"
+"Bundle "tsaleh/vim-matchit"
 "Bundle "tyok/nerdtree-ack"
 "Bundle "vim-scripts/IndentConsistencyCop"
+"Bundle "vim-scripts/Mark--Karkat"
+"Bundle "vim-scripts/YankRing.vim"
+"Bundle "vim-scripts/taglist.vim"
 "Bundle "vimoutliner/vimoutliner"
+"Bundle "wincent/Command-T"
+Bundle "Shougo/neocomplcache"
+Bundle "airblade/vim-gitgutter"
+Bundle "altercation/vim-colors-solarized"
+Bundle "kien/ctrlp.vim"
+Bundle "majutsushi/tagbar"
+Bundle "tpope/vim-fugitive"
 
 try
   source /usr/share/vim/google/google.vim
@@ -124,6 +121,9 @@ let g:ctrlp_max_height = 100
     let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
     let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
     let g:neocomplcache_omni_patterns.java = '\%(\h\w*\|)\)\.'
+    let g:neocomplcache_omni_patterns.go = '\%(\h\w*\|)\)\.'
+
+    inoremap <expr><C-j> neocomplcache#manual_omni_complete()
 
     "if !exists('g:neocomplcache_omni_functions')
     "  let g:neocomplcache_omni_functions = {}
@@ -303,14 +303,27 @@ let g:NERDTreeDirArrows=0
 let g:NERDTreeWinSize=60
 let g:NERDTreeCasadeOpenSingleChildDir=1
 " Locate current file in NERDTree
-nmap ,n :NERDTreeFind<CR>
+"nmap ,n :NERDTreeFind<CR>
 " Toggle NERDTree visibility
-nmap ,m :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks = 1
 
-
+nmap ,n :Sexplore!<CR>
+nmap ,m :Sexplore! .<CR>
+let g:netrw_altv=1
 let g:netrw_liststyle=3
+let g:netrw_preview=1
+let g:netrw_browse_split=4
+let g:netrw_winsize=30
+let g:netrw_special_syntax=1
 
+augroup netrw
+  autocmd!
+  autocmd filetype netrw call Netrw()
+augroup END
+function! Netrw()
+  nmap <buffer> o <CR>
+  nmap <buffer> u -
+endfunction
 
 " not every vim is compiled with this, use the following line instead
 "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
