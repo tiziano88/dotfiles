@@ -17,8 +17,8 @@ endif
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Bundle "vundle"
 
-"Bundle "Lokaltog/vim-easymotion"
-"Bundle "Lokaltog/vim-powerline"
+Bundle "Lokaltog/vim-easymotion"
+Bundle "Lokaltog/vim-powerline"
 "Bundle "Rip-Rip/clang_complete"
 "Bundle "SirVer/ultisnips"
 "Bundle "Townk/vim-autoclose"
@@ -51,6 +51,7 @@ Bundle "scrooloose/nerdtree"
 "Bundle "vim-scripts/taglist.vim"
 "Bundle "vimoutliner/vimoutliner"
 "Bundle "wincent/Command-T"
+"Bundle "myusuf3/numbers.vim"
 Bundle "Shougo/neocomplcache"
 Bundle "airblade/vim-gitgutter"
 Bundle "altercation/vim-colors-solarized"
@@ -199,37 +200,48 @@ let g:ctrlp_max_height = 100
     vnoremap <leader>P "+P
 
     " Arrow keys resize
-    map <Up> <C-w>-
-    map <Down> <C-w>+
-    map <Left> <C-w><
-    map <Right> <C-w>>
+    noremap <Up> <C-w>-
+    noremap <Down> <C-w>+
+    noremap <Left> <C-w><
+    noremap <Right> <C-w>>
 
     " folding
     nnoremap <Space> za
     vnoremap <Space> za
 
     " Clearing highlighted search
-    nmap <silent> <leader>/ :nohlsearch<CR>
+    nnoremap <silent> <leader>/ :nohlsearch<CR>
 
     "jj to normal mode
-    imap jj <Esc>
+    inoremap jj <Esc>
+
+    " Use relative numbers when out of insert mode
+    augroup Numbers
+      autocmd!
+      autocmd InsertEnter * :set number
+      autocmd InsertLeave * :set relativenumber
+      autocmd BufNewFile * :set number
+      autocmd BufReadPost * :set number
+    augroup END
+    " If Esc a second time, then use absolute numbers
+    nnoremap <Esc> <Esc>:set number<CR>
 
     " Easier moving in tabs and windows
-    map <C-J> <C-W>j
-    map <C-K> <C-W>k
-    map <C-L> <C-W>l
-    map <C-H> <C-W>h
-    map <C-K> <C-W>k
-    map <S-H> gT
-    map <S-L> gt
+    noremap <C-J> <C-W>j
+    noremap <C-K> <C-W>k
+    noremap <C-L> <C-W>l
+    noremap <C-H> <C-W>h
+    noremap <C-K> <C-W>k
+    noremap <S-H> gT
+    noremap <S-L> gt
 "    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
     " Stupid shift key fixes
-    cmap W w
-    cmap WQ wq
-    cmap wQ wq
-    cmap Q q
-    cmap Tabe tabe
+    cnoremap W w
+    cnoremap WQ wq
+    cnoremap wQ wq
+    cnoremap Q q
+    cnoremap Tabe tabe
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
@@ -243,7 +255,7 @@ let g:ctrlp_max_height = 100
     "cmap cwd lcd %:p:h
 
     " Force saving files that require root permission
-    cmap w!! %!sudo tee > /dev/null %
+    cnoremap w!! %!sudo tee > /dev/null %
 
     nnoremap <leader>i :call GtImporter() <CR>
     nnoremap <leader>s :call GtImporter_SortImports() <CR>
@@ -309,10 +321,10 @@ let NERDTreeShowBookmarks = 1
 
 nmap ,n :Sexplore!<CR>
 nmap ,m :Sexplore! .<CR>
-let g:netrw_altv=1
+"let g:netrw_altv=1
 let g:netrw_liststyle=3
-let g:netrw_preview=1
-let g:netrw_browse_split=4
+"let g:netrw_preview=1
+"let g:netrw_browse_split=4
 let g:netrw_winsize=30
 let g:netrw_special_syntax=1
 
