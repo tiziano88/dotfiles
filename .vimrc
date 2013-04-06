@@ -58,6 +58,7 @@ Bundle "altercation/vim-colors-solarized"
 Bundle "kien/ctrlp.vim"
 Bundle "majutsushi/tagbar"
 Bundle "tpope/vim-fugitive"
+Bundle "ShowMarks"
 
 try
   source /usr/share/vim/google/google.vim
@@ -225,6 +226,13 @@ let g:ctrlp_max_height = 100
     augroup END
     " If Esc a second time, then use absolute numbers
     nnoremap <Esc> <Esc>:set number<CR>
+
+
+    noremap [[ ?{<CR>w99[{
+    noremap ][ /}<CR>b99]}
+    noremap ]] j0[[%/{<CR>
+    noremap [] k$][%?}<CR>
+
 
     " Easier moving in tabs and windows
     noremap <C-J> <C-W>j
@@ -517,17 +525,23 @@ let g:NERDShutUp=1
 let b:match_ignorecase = 1
 
 " ShowMarks
-let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-" Don't leave on by default, use :ShowMarksOn to enable
-let g:showmarks_enable = 0
+"let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 " For marks a-z
-highlight ShowMarksHLl gui=bold guibg=LightBlue guifg=Blue
+highlight ShowMarksHLl ctermbg=black ctermfg=red
 " For marks A-Z
-highlight ShowMarksHLu gui=bold guibg=LightRed guifg=DarkRed
+highlight ShowMarksHLu ctermbg=black ctermfg=red
 " For all other marks
-highlight ShowMarksHLo gui=bold guibg=LightYellow guifg=DarkYellow
+highlight ShowMarksHLo ctermbg=black ctermfg=cyan
 " For multiple marks on the same line.
-highlight ShowMarksHLm gui=bold guibg=LightGreen guifg=DarkGreen
+highlight ShowMarksHLm ctermbg=black ctermfg=white
+
+augroup Marks
+  autocmd!
+  autocmd CursorHold * :ShowMarksOn
+  autocmd CursorHoldI * :ShowMarksOn
+  autocmd CursorMoved * :ShowMarksOn
+  autocmd CursorMovedI * :ShowMarksOn
+augroup END
 
 " Popup menu hightLight Group
 "highlight Pmenu  ctermbg=13  guibg=DarkBlue
@@ -579,7 +593,7 @@ endif
 
 set ssop-=options "do not store variables in session file
 
-set ssop+=resize,winpos "remember windows size and position
+set viminfo='1000,f1
 
 "    set diffopt+=iwhite "ignore whitespaces in vimdiff
 set diffopt+=vertical
