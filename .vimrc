@@ -49,15 +49,17 @@ Bundle "scrooloose/nerdtree"
 "Bundle "vim-scripts/Mark--Karkat"
 "Bundle "vim-scripts/YankRing.vim"
 "Bundle "vim-scripts/taglist.vim"
-"Bundle "vimoutliner/vimoutliner"
+Bundle "vimoutliner/vimoutliner"
 "Bundle "wincent/Command-T"
 "Bundle "myusuf3/numbers.vim"
+"Bundle "mhinz/vim-tmuxify"
 Bundle "Shougo/neocomplcache"
 Bundle "airblade/vim-gitgutter"
 Bundle "altercation/vim-colors-solarized"
 Bundle "kien/ctrlp.vim"
 Bundle "majutsushi/tagbar"
 Bundle "tpope/vim-fugitive"
+Bundle "kablamo/vim-git-log"
 Bundle "ShowMarks"
 
 try
@@ -233,6 +235,9 @@ let g:ctrlp_max_height = 100
     noremap ]] j0[[%/{<CR>
     noremap [] k$][%?}<CR>
 
+    " For vim-tmuxify
+    " vnoremap <CR> "my :TxSend(@m)<CR>
+
 
     " Easier moving in tabs and windows
     noremap <C-J> <C-W>j
@@ -292,7 +297,34 @@ let g:ctrlp_max_height = 100
 let Tlist_Display_Prototype = 1
 
 " Tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 "set omnifunc="<c-x><c-u>"
 let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
@@ -393,6 +425,8 @@ set foldmethod=syntax
 set foldlevel=9999
 set foldcolumn=4
 
+set updatetime=100
+
 set viewoptions=cursor,folds
 au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
 au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
@@ -432,6 +466,8 @@ endif
 
 set tabpagemax=15     " only show 15 tabs
 set showmode                    " display the current mode
+set splitright
+set splitbelow
 
 "set fdm=syntax
 "set fdc=5
@@ -539,8 +575,8 @@ augroup Marks
   autocmd!
   autocmd CursorHold * :ShowMarksOn
   autocmd CursorHoldI * :ShowMarksOn
-  autocmd CursorMoved * :ShowMarksOn
-  autocmd CursorMovedI * :ShowMarksOn
+  "autocmd CursorMoved * :ShowMarksOn
+  "autocmd CursorMovedI * :ShowMarksOn
 augroup END
 
 " Popup menu hightLight Group
