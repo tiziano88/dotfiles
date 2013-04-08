@@ -202,6 +202,9 @@ let g:ctrlp_max_height = 100
     vnoremap <leader>p "+p
     vnoremap <leader>P "+P
 
+    " Explorer
+    nnoremap <leader>e :Explore<CR>
+
     " Arrow keys resize
     noremap <Up> <C-w>-
     noremap <Down> <C-w>+
@@ -295,6 +298,9 @@ let g:ctrlp_max_height = 100
 
 " taglist
 let Tlist_Display_Prototype = 1
+
+" powerline
+let g:Powerline_symbols = 'fancy'
 
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
@@ -529,6 +535,7 @@ set scrolloff=5     " minimum lines to keep above and below cursor
 " Formatting
 set wrap                      " wrap long lines
 set linebreak     " wrap without breaking words
+set smartindent
 set autoindent                  " indent at the same level of the previous line
 set shiftwidth=2                " use indents of 4 spaces
 set tabstop=4      " an indentation every four columns
