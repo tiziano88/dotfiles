@@ -45,7 +45,7 @@ alias ack=ack-grep
 
 alias buildifier="/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix"
 alias fixdeps="/google/data/ro/projects/demolition/requireddeps.par --fix"
-alias lock="gnome-screensaver-command -l"
+#alias lock="gnome-screensaver-command -l"
 alias org="vim ~/tzn.org"
 
 alias glaze=/google/src/head/depot/google3/third_party/go/bin/glaze
