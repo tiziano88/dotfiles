@@ -17,8 +17,8 @@ endif
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Bundle "vundle"
 
-"Bundle "Lokaltog/vim-easymotion"
-"Bundle "Lokaltog/vim-powerline"
+Bundle "Lokaltog/vim-easymotion"
+Bundle "Lokaltog/vim-powerline"
 "Bundle "Rip-Rip/clang_complete"
 "Bundle "SirVer/ultisnips"
 "Bundle "Townk/vim-autoclose"
@@ -49,14 +49,18 @@ Bundle "scrooloose/nerdtree"
 "Bundle "vim-scripts/Mark--Karkat"
 "Bundle "vim-scripts/YankRing.vim"
 "Bundle "vim-scripts/taglist.vim"
-"Bundle "vimoutliner/vimoutliner"
+Bundle "vimoutliner/vimoutliner"
 "Bundle "wincent/Command-T"
+"Bundle "myusuf3/numbers.vim"
+"Bundle "mhinz/vim-tmuxify"
 Bundle "Shougo/neocomplcache"
 Bundle "airblade/vim-gitgutter"
 Bundle "altercation/vim-colors-solarized"
 Bundle "kien/ctrlp.vim"
 Bundle "majutsushi/tagbar"
 Bundle "tpope/vim-fugitive"
+Bundle "kablamo/vim-git-log"
+Bundle "ShowMarks"
 
 try
   source /usr/share/vim/google/google.vim
@@ -201,37 +205,58 @@ let g:ctrlp_max_height = 100
     vnoremap <leader>P "+P
 
     " Arrow keys resize
-    map <Up> <C-w>-
-    map <Down> <C-w>+
-    map <Left> <C-w><
-    map <Right> <C-w>>
+    noremap <Up> <C-w>-
+    noremap <Down> <C-w>+
+    noremap <Left> <C-w><
+    noremap <Right> <C-w>>
 
     " folding
     nnoremap <Space> za
     vnoremap <Space> za
 
     " Clearing highlighted search
-    nmap <silent> <leader>/ :nohlsearch<CR>
+    nnoremap <silent> <leader>/ :nohlsearch<CR>
 
     "jj to normal mode
-    imap jj <Esc>
+    inoremap jj <Esc>
+
+    " Use relative numbers when out of insert mode
+    augroup Numbers
+      autocmd!
+      autocmd InsertEnter * :set number
+      autocmd InsertLeave * :set relativenumber
+      autocmd BufNewFile * :set number
+      autocmd BufReadPost * :set number
+    augroup END
+    " If Esc a second time, then use absolute numbers
+    nnoremap <Esc> <Esc>:set number<CR>
+
+
+    noremap [[ ?{<CR>w99[{
+    noremap ][ /}<CR>b99]}
+    noremap ]] j0[[%/{<CR>
+    noremap [] k$][%?}<CR>
+
+    " For vim-tmuxify
+    " vnoremap <CR> "my :TxSend(@m)<CR>
+
 
     " Easier moving in tabs and windows
-    map <C-J> <C-W>j
-    map <C-K> <C-W>k
-    map <C-L> <C-W>l
-    map <C-H> <C-W>h
-    map <C-K> <C-W>k
-    map <S-H> gT
-    map <S-L> gt
+    noremap <C-J> <C-W>j
+    noremap <C-K> <C-W>k
+    noremap <C-L> <C-W>l
+    noremap <C-H> <C-W>h
+    noremap <C-K> <C-W>k
+    noremap <S-H> gT
+    noremap <S-L> gt
 "    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
     " Stupid shift key fixes
-    cmap W w
-    cmap WQ wq
-    cmap wQ wq
-    cmap Q q
-    cmap Tabe tabe
+    cnoremap W w
+    cnoremap WQ wq
+    cnoremap wQ wq
+    cnoremap Q q
+    cnoremap Tabe tabe
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
@@ -245,7 +270,7 @@ let g:ctrlp_max_height = 100
     "cmap cwd lcd %:p:h
 
     " Force saving files that require root permission
-    cmap w!! %!sudo tee > /dev/null %
+    cnoremap w!! %!sudo tee > /dev/null %
 
     nnoremap <leader>i :call GtImporter() <CR>
     nnoremap <leader>s :call GtImporter_SortImports() <CR>
@@ -274,7 +299,34 @@ let g:ctrlp_max_height = 100
 let Tlist_Display_Prototype = 1
 
 " Tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 "set omnifunc="<c-x><c-u>"
 let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
@@ -312,10 +364,10 @@ let NERDTreeShowBookmarks = 1
 
 nmap ,n :Sexplore!<CR>
 nmap ,m :Sexplore! .<CR>
-let g:netrw_altv=1
+"let g:netrw_altv=1
 let g:netrw_liststyle=3
-let g:netrw_preview=1
-let g:netrw_browse_split=4
+"let g:netrw_preview=1
+"let g:netrw_browse_split=4
 let g:netrw_winsize=30
 let g:netrw_special_syntax=1
 
@@ -376,6 +428,8 @@ set foldmethod=syntax
 set foldlevel=9999
 set foldcolumn=4
 
+set updatetime=100
+
 set viewoptions=cursor,folds
 au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
 au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
@@ -415,6 +469,8 @@ endif
 
 set tabpagemax=15     " only show 15 tabs
 set showmode                    " display the current mode
+set splitright
+set splitbelow
 
 "set fdm=syntax
 "set fdc=5
@@ -508,17 +564,23 @@ let g:NERDShutUp=1
 let b:match_ignorecase = 1
 
 " ShowMarks
-let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-" Don't leave on by default, use :ShowMarksOn to enable
-let g:showmarks_enable = 0
+"let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 " For marks a-z
-highlight ShowMarksHLl gui=bold guibg=LightBlue guifg=Blue
+highlight ShowMarksHLl ctermbg=black ctermfg=red
 " For marks A-Z
-highlight ShowMarksHLu gui=bold guibg=LightRed guifg=DarkRed
+highlight ShowMarksHLu ctermbg=black ctermfg=red
 " For all other marks
-highlight ShowMarksHLo gui=bold guibg=LightYellow guifg=DarkYellow
+highlight ShowMarksHLo ctermbg=black ctermfg=cyan
 " For multiple marks on the same line.
-highlight ShowMarksHLm gui=bold guibg=LightGreen guifg=DarkGreen
+highlight ShowMarksHLm ctermbg=black ctermfg=white
+
+augroup Marks
+  autocmd!
+  autocmd CursorHold * :ShowMarksOn
+  autocmd CursorHoldI * :ShowMarksOn
+  "autocmd CursorMoved * :ShowMarksOn
+  "autocmd CursorMovedI * :ShowMarksOn
+augroup END
 
 " Popup menu hightLight Group
 "highlight Pmenu  ctermbg=13  guibg=DarkBlue
@@ -570,7 +632,7 @@ endif
 
 set ssop-=options "do not store variables in session file
 
-set ssop+=resize,winpos "remember windows size and position
+set viminfo='1000,f1
 
 "    set diffopt+=iwhite "ignore whitespaces in vimdiff
 set diffopt+=vertical
