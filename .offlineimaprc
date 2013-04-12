@@ -25,8 +25,10 @@ localfolders = ~/Maildir/personal
 [Repository personal-remote]
 type = Gmail
 remotehost = imap.gmail.com
-remoteusereval = get_user("personal")
-remotepasseval = get_password("personal")
+remoteuser = tiziano88@gmail.com
+#remoteusereval = get_user("personal")
+remotepasseval = mailpassword("personal")
+#remotepasseval = get_password("personal")
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
 ssl = yes
@@ -39,8 +41,10 @@ localfolders = ~/Maildir/corp
 [Repository corp-remote]
 type = Gmail
 remotehost = imap.gmail.com
-remoteusereval = get_user("corp")
-remotepasseval = get_password("corp")
+remoteuser = tzn@google.com
+#remoteusereval = get_user("corp")
+remotepasseval = mailpassword("corp")
+#remotepasseval = get_password("corp")
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
 ssl = yes

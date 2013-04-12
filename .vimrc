@@ -127,6 +127,8 @@ let g:ctrlp_max_height = 100
     let g:neocomplcache_omni_patterns.java = '\%(\h\w*\|)\)\.'
     let g:neocomplcache_omni_patterns.go = '\%(\h\w*\|)\)\.'
 
+    let g:neocomplcache_omni_patterns = {}
+
     inoremap <expr><C-j> neocomplcache#manual_omni_complete()
 
     "if !exists('g:neocomplcache_omni_functions')
@@ -186,8 +188,8 @@ let g:ctrlp_max_height = 100
     let mapleader = ","
 
     " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplcache#close_popup()
+    "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    "inoremap <expr><C-y>  neocomplcache#close_popup()
 
     " Disable Ex mode
     nnoremap Q <nop>
@@ -348,11 +350,12 @@ nnoremap ;e :call PT_LoadActiveAsBuffers()<CR>
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org set filetype=org
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.borg set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.xml set colorcolumn=80
 "au BufEnter *.org set filetype=org
 
 
 " Open NERDTree if no files were specified
-"autocmd vimenter * if !argc() | NERDTree | endif
+autocmd vimenter * if !argc() | NERDTree | endif
 " Close vim if the only window left is NERDTree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Let Vim follow NERDTree root as current dir
@@ -733,6 +736,15 @@ function! DoGit5Diff()
   exe "Gdiff " . s:revision
 endfunction
 command! G5diff call DoGit5Diff()
+
+function! G3RelPath()
+  let path = expand('%:.:h')
+  let rule = path . ":all"
+  execute ':!blaze build '.rule
+  echo rule
+endfunction
+
+command! BB :call G3RelPath()
 
 " Relative numbers
 " set rnu

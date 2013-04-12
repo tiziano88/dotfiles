@@ -1,4 +1,4 @@
 #!/bin/sh
 #export PWDSAFEPASSWORD=abc
-exec nohup offlineimap >~/offlineimap.log 2>&1 &
+exec nohup offlineimap >>~/offlineimap.log &
 #exec offlineimap
