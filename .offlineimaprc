@@ -7,15 +7,15 @@ maxsyncaccounts = 2
 [Account personal]
 localrepository = personal-local
 remoterepository = personal-remote
-autorefresh = 1
-quick = 10
+autorefresh = 0.1
+quick = 100
 status_backend = sqlite
 
 [Account corp]
 localrepository = corp-local
 remoterepository = corp-remote
-autorefresh = 1
-quick = 10
+autorefresh = 0.1
+quick = 100
 status_backend = sqlite
 
 [Repository personal-local]
@@ -32,6 +32,7 @@ remotepasseval = mailpassword("personal")
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
 ssl = yes
+maxconnections = 3
 realdelete = no
 
 [Repository corp-local]
@@ -48,6 +49,7 @@ remotepasseval = mailpassword("corp")
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
 ssl = yes
+maxconnections = 3
 realdelete = no
 
 [mbnames]
