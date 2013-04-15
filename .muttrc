@@ -41,7 +41,7 @@ folder-hook +personal \
 folder-hook +corp \
   set from = "tzn@google.com"
 
-set sendmail = "/usr/local/bin/msmtp"
+set sendmail = "msmtp"
 set use_from = yes
 set envelope_from = yes
 

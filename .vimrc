@@ -64,6 +64,7 @@ Bundle "ShowMarks"
 
 try
   source /usr/share/vim/google/google.vim
+  source /usr/share/vim/google/runtime/grok.vim
 "  source /usr/share/vim/google/gtags.vim
   "source /usr/share/vim/google/runtime/gtimporter.vim
   "source ~/gtimporter.vim
