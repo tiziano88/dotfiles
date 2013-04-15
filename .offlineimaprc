@@ -8,14 +8,14 @@ maxsyncaccounts = 2
 localrepository = personal-local
 remoterepository = personal-remote
 autorefresh = 0.1
-quick = 100
+quick = 1000
 status_backend = sqlite
 
 [Account corp]
 localrepository = corp-local
 remoterepository = corp-remote
 autorefresh = 0.1
-quick = 100
+quick = 1000
 status_backend = sqlite
 
 [Repository personal-local]
