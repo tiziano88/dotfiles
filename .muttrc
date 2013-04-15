@@ -64,6 +64,7 @@ bind editor <space> noop
 
 bind index - collapse-thread
 bind index _ collapse-all
+bind index R group-reply
 
 #bind index "^" imap-fetch-mail
 macro index ^ "<shell-escape>offlineimap&<enter>"
