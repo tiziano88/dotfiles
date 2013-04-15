@@ -162,7 +162,7 @@ let g:ctrlp_max_height = 100
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 
-  autocmd FileType go set noexpandtab | set softtabstop=0 | set shiftwidth=4
+  autocmd FileType go set noexpandtab | set softtabstop=0 | set shiftwidth=4 | set tabstop=4
   autocmd FileType html set expandtab | set softtabstop=0 | set shiftwidth=2 | set tabstop=2
   autocmd FileType xml set expandtab | set softtabstop=0 | set shiftwidth=2
 
