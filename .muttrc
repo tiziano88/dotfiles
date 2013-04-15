@@ -33,13 +33,17 @@ set mail_check = 0
 set spoolfile = +personal/INBOX
 
 mailboxes = +personal/INBOX \
-            +corp/INBOX
+            +personal/[Gmail].Drafts \
+            +corp/INBOX \
+            +corp/[Gmail].Drafts
 
 folder-hook +personal \
-  set from = "tiziano88@gmail.com"
+  set from = "tiziano88@gmail.com" \
+      postponed = +personal/[Gmail].Drafts
 
 folder-hook +corp \
-  set from = "tzn@google.com"
+  set from = "tzn@google.com" \
+      postponed = +corp/[Gmail].Drafts
 
 set sendmail = "msmtp"
 set use_from = yes

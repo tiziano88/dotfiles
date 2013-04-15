@@ -21,6 +21,7 @@ status_backend = sqlite
 [Repository personal-local]
 type = Maildir
 localfolders = ~/Maildir/personal
+#nametrans = lambda foldername: '[Gmail].' + foldername
 
 [Repository personal-remote]
 type = Gmail
@@ -28,7 +29,8 @@ remotehost = imap.gmail.com
 remoteuser = tiziano88@gmail.com
 remotepasseval = mailpassword("personal")
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
-folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
+folderfilter = lambda foldername: foldername in ['INBOX', '[Gmail]/Drafts']
+#nametrans = lambda foldername: re.sub('^\[Gmail\]\.', '', foldername)
 ssl = yes
 maxconnections = 3
 realdelete = no
@@ -36,6 +38,7 @@ realdelete = no
 [Repository corp-local]
 type = Maildir
 localfolders = ~/Maildir/corp
+#nametrans = lambda foldername: '[Gmail].' + foldername
 
 [Repository corp-remote]
 type = Gmail
@@ -43,7 +46,8 @@ remotehost = imap.gmail.com
 remoteuser = tzn@google.com
 remotepasseval = mailpassword("corp")
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
-folderfilter = lambda foldername: foldername in '[Gmail]/INBOX'
+folderfilter = lambda foldername: foldername in ['INBOX', '[Gmail]/Drafts']
+#nametrans = lambda foldername: re.sub('^\[Gmail\]\.', '', foldername)
 ssl = yes
 maxconnections = 3
 realdelete = no
