@@ -1,0 +1,34 @@
+{
+	"default_module": "powerline.segments.common",
+	"segment_data": {},
+	"segments": {
+		"right": [
+			{
+				"name": "maildir",
+				"args": {
+					"directory": "~/Maildir/personal/INBOX/new"
+				}
+			},
+			{
+				"name": "maildir",
+				"args": {
+					"directory": "~/Maildir/corp/INBOX/new"
+				}
+			},
+			{
+				"name": "system_load",
+				"priority": 50
+			},
+			{
+				"name": "date",
+				"args": {
+					"format": "%H:%M",
+					"istime": true
+				}
+			},
+			{
+				"name": "hostname"
+			}
+		]
+	}
+}
