@@ -23,25 +23,10 @@
 				"name": "user"
 			},
 			{
-				"name": "virtualenv"
-			},
-			{
 				"name": "cwd",
 				"args": {
 					"dir_limit_depth": 3,
 					"use_path_separator": true
-				}
-			},
-			{
-				"name": "branch",
-				"args": {
-					"status_colors": true
-				}
-			},
-			{
-				"name": "maildir",
-				"args": {
-					"directory": "~/Maildir/personal/INBOX/new"
 				}
 			},
 			{

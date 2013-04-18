@@ -16,7 +16,9 @@ SOURCES=.Xdefaults \
 		.xmonad \
 		.xsession \
 		.zshrc \
-		.config/powerline
+		.config/powerline \
+		.gnupg/gpg-agent.conf \
+		.gnupg/gpg.conf
 
 TARGETS=$(addprefix ~/, $(SOURCES))
 
