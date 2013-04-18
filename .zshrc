@@ -37,7 +37,7 @@ source_() {
 }
 
 source $ZSH/oh-my-zsh.sh
-#source $HOME/src/powerline/powerline/bindings/zsh/powerline.zsh
+source $HOME/src/powerline/powerline/bindings/zsh/powerline.zsh
 
 # citc
 source_ /etc/bash_completion.d/g4d
@@ -79,6 +79,12 @@ bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
+
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
 bindkey '^V' paste-from-clipboard
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
