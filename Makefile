@@ -16,7 +16,8 @@ SOURCES=.Xdefaults \
 		.xmonad \
 		.xsession \
 		.zshrc \
-		.config/powerline
+		.config/powerline \
+		.ssh/config
 
 TARGETS=$(addprefix ~/, $(SOURCES))
 
