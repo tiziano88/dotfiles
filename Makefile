@@ -18,6 +18,8 @@ SOURCES=.Xdefaults \
 		.zshrc \
 		.config/powerline \
 		.ssh/config
+		.gnupg/gpg-agent.conf \
+		.gnupg/gpg.conf
 
 TARGETS=$(addprefix ~/, $(SOURCES))
 

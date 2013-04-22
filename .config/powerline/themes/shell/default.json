@@ -23,9 +23,6 @@
 				"name": "user"
 			},
 			{
-				"name": "virtualenv"
-			},
-			{
 				"name": "cwd",
 				"args": {
 					"dir_limit_depth": 3,

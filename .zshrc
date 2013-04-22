@@ -37,7 +37,7 @@ source_() {
 }
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/src/powerline/powerline/bindings/zsh/powerline.zsh
+#source $HOME/src/powerline/powerline/bindings/zsh/powerline.zsh
 
 # citc
 source_ /etc/bash_completion.d/g4d
