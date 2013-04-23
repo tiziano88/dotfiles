@@ -17,6 +17,7 @@ SOURCES=.Xdefaults \
 		.xsession \
 		.zshrc \
 		.config/powerline \
+		.config/terminator \
 		.gnupg/gpg-agent.conf \
 		.gnupg/gpg.conf
 

@@ -11,9 +11,7 @@ citc=True
 
 [export]
 tap-project=asfe_all
-#tap-options=use-green,detach
 tap-options=use-green,detach,email
-#submit-queue=True
 fast-export=True
 citc=True
 
