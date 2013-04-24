@@ -1,25 +1,27 @@
-SOURCES=.Xdefaults \
+SOURCES=\
+		.Xdefaults \
 		.aliases \
 		.blazerc \
+		.config/powerline \
+		.config/terminator \
 		.env \
 		.fonts.conf \
 		.git5rc \
 		.gitconfig \
 		.gitignore_global \
 		.gitk \
+		.gnupg/gpg-agent.conf \
+		.gnupg/gpg.conf \
 		.msmtprc \
 		.muttrc \
 		.offlineimap.py \
 		.offlineimaprc \
+		.ssh/config \
 		.tmux.conf \
 		.vimrc \
 		.xmonad \
 		.xsession \
 		.zshrc \
-		.config/powerline \
-		.config/terminator \
-		.gnupg/gpg-agent.conf \
-		.gnupg/gpg.conf
 
 TARGETS=$(addprefix ~/, $(SOURCES))
 
