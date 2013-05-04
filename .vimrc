@@ -573,11 +573,11 @@ let g:NERDShutUp=1
 let b:match_ignorecase = 1
 
 " ShowMarks
-"let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'"
 " For marks a-z
 highlight ShowMarksHLl ctermbg=black ctermfg=red
 " For marks A-Z
-highlight ShowMarksHLu ctermbg=black ctermfg=red
+highlight ShowMarksHLu ctermbg=black ctermfg=darkred
 " For all other marks
 highlight ShowMarksHLo ctermbg=black ctermfg=cyan
 " For multiple marks on the same line.

@@ -86,8 +86,8 @@ macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 
 macro index,pager gg "="
 macro index,pager G "*"
-macro index,pager \Cj "jjjjj"
-macro index,pager \Ck "kkkkk"
+#macro index,pager "\Cj" "jjjjj"
+#macro index,pager "\Ck" "kkkkk"
 
 macro index c "<change-folder>?<toggle-mailboxes>"
 macro pager c "<change-folder>?<toggle-mailboxes>"
