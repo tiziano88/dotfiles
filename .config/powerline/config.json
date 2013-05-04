@@ -15,7 +15,7 @@
 	},
 	"ext": {
 		"ipython": {
-			"colorscheme": "Solarized Dark",
+			"colorscheme": "default",
 			"theme": "in",
 			"local_themes": {
 				"rewrite": "rewrite",

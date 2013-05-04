@@ -16,15 +16,6 @@
 					"istime": true
 				},
 				"before": "⌚ "
-			},
-			{
-				"name": "email_imap_alert",
-				"before": "✉ ",
-				"priority": 10,
-				"args": {
-					"username": "",
-					"password": ""
-				}
 			}
 		]
 	}

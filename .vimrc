@@ -61,6 +61,7 @@ Bundle "majutsushi/tagbar"
 Bundle "tpope/vim-fugitive"
 Bundle "kablamo/vim-git-log"
 Bundle "ShowMarks"
+Bundle "mhinz/vim-startify"
 
 try
   source /usr/share/vim/google/google.vim

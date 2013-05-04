@@ -7,13 +7,6 @@
 				"name": "maildir",
 				"args": {
 					"directory": "~/Maildir/personal/INBOX/new",
-                    "name": "P"
-				}
-			},
-			{
-				"name": "maildir",
-				"args": {
-					"directory": "~/Maildir/personal/INBOX/new",
                     "placeholder": "P"
 				}
 			},
