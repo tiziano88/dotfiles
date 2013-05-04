@@ -20,7 +20,7 @@ myWorkSpaces =
   ]
 
 myManageHook = composeAll
-  [ className =? "google-chrome" --> doFloat
+  [ className =? "google-chrome" --> doShift "2:web"
   , className =? "intellij" --> doShift "3:IDE"
   , className =? "eclipse" --> doShift "3:IDE"
   ]

@@ -16,7 +16,7 @@
     foreground_color = "#839496"
     scroll_on_output = False
     scroll_on_keystroke = False
-    font = Ubuntu Mono for Powerline 9
+    font = Terminus (TTF) Medium 9
     background_color = "#002b36"
     scrollback_infinite = True
   [[solarized-light]]

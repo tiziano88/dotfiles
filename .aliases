@@ -14,7 +14,10 @@ alias gtags=/home/build/nonconf/google3/tools/tags/gtags.sh
 alias g5='/google/data/ro/projects/shelltoys/g5.sar'
 
 alias ge='git5 export'
+alias gt='git5 tap'
 alias gd='git diff'
+
+alias g3='cd "${PWD/\/google3\/*//google3}"'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

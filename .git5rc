@@ -1,25 +1,30 @@
 [sync]
 tap-project=asfe_all
 tap-options=use-green
-sync-at=head
+#sync-at=head
+sync-at=green
 
 [mail]
-tap-project=asfe_all
-tap-options=use-green,detach,email
+tap-project=asfe_all,mercury
+#tap-options=use-green,detach,email
 fast-export=True
 citc=True
 
 [export]
-tap-project=asfe_all
+tap-project=asfe_all,mercury
 tap-options=use-green,detach,email
 fast-export=True
 citc=True
 
 [submit]
-tap-project=asfe_all
+tap-project=asfe_all,mercury
 #tap-options=use-green
 submit-queue=True
 fast-export=True
 
 [diff]
 #command = difftool
+
+[alias]
+tap = export --submit-queue --tap-options=detach,no-email
+head = sync '#head'
