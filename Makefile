@@ -30,5 +30,5 @@ TARGETS=$(addprefix ~/, $(SOURCES))
 install: $(TARGETS)
 
 ~/%: %
-	- mkdir p $(dir $@)
+	- mkdir -p $(dir $@)
 	ln -s ~/dotfiles/$< $@
