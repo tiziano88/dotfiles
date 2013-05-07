@@ -295,7 +295,7 @@ let g:ctrlp_max_height = 100
 
     "  Save the current file, run buildifier to fix formatting, and reload it
     command! Buildify :w | execute "!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %" | edit
-    command! Gofmt :w | execute "!go fmt %" | edit | redraw!
+    command! Gofmt :w | execute "!go fmt %"
 
 "    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
 " }
@@ -731,7 +731,7 @@ let g:EclimCompletionMethod='omnifunc'
 
 " Offer to reload the file if it changed.
 :au BufEnter * checktime
-" set autoread should do it without prompting
+set autoread " should do it without prompting
 
 function! DoGit5Diff()
   let s:revision = system('git5 status --base')
