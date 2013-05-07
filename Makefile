@@ -16,6 +16,7 @@ SOURCES=\
 		.muttrc \
 		.offlineimap.py \
 		.offlineimaprc \
+		.signature \
 		.ssh/config \
 		.tmux.conf \
 		.vimrc \

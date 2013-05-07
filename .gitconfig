@@ -1,6 +1,8 @@
 [apply]
 	whitespace = fix
 [color]
+	ui = auto
+	interactive = auto
 	branch = auto
 	diff = auto
 	status = auto
@@ -16,6 +18,7 @@
 	current = green
 	remote = yellow
 [core]
+	editor = vim
 	whitespace = fix
 	excludesfile = /usr/local/google/home/tzn/.gitignore_global
 [diff]
@@ -40,3 +43,9 @@
 	name = Tiziano Santoro
 [push]
 	default = matching
+[help]
+	autocorrect = 1
+[alias]
+	lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d %Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
+	lga = log --all --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d %Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
+
