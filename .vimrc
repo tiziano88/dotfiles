@@ -207,7 +207,8 @@ let g:ctrlp_max_height = 100
     vnoremap <leader>P "+P
 
     " Explorer
-    nnoremap <leader>e :Explore<CR>
+    " nnoremap <leader>e :Explore<CR>
+    nnoremap <leader>e :Explore .<CR>
 
     " Arrow keys resize
     noremap <Up> <C-w>-
@@ -436,7 +437,7 @@ set foldmethod=syntax
 set foldlevel=9999
 set foldcolumn=4
 
-set updatetime=100
+set updatetime=1000
 
 set viewoptions=cursor,folds
 au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
