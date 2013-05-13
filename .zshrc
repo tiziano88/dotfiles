@@ -119,3 +119,5 @@ fi
 
 export COMPLETION_WAITING_DOTS="true"
 
+source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
