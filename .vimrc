@@ -210,6 +210,9 @@ let g:ctrlp_max_height = 100
     " nnoremap <leader>e :Explore<CR>
     nnoremap <leader>e :Explore .<CR>
 
+    " BufExplorer
+    nnoremap <leader>b :CtrlPBuffer<CR>
+
     " Arrow keys resize
     noremap <Up> <C-w>-
     noremap <Down> <C-w>+
