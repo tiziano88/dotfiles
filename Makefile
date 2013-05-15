@@ -24,6 +24,8 @@ SOURCES=\
 		.xsession \
 		.zshrc \
 
+# git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+
 TARGETS=$(addprefix ~/, $(SOURCES))
 
 .PHONY: install

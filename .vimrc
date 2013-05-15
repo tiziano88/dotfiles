@@ -438,6 +438,7 @@ set mouse=a     " automatically enable mouse usage
 set foldenable
 set foldmethod=syntax
 set foldlevel=9999
+set foldlevelstart=9999
 set foldcolumn=4
 
 set updatetime=1000
