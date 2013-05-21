@@ -17,6 +17,7 @@ endif
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Bundle "vundle"
 
+Bundle "amiorin/vim-project"
 Bundle "Lokaltog/vim-easymotion"
 Bundle "Lokaltog/vim-powerline"
 "Bundle "Rip-Rip/clang_complete"
@@ -34,6 +35,7 @@ Bundle "Lokaltog/vim-powerline"
 "Bundle "hsitz/VimOrganizer"
 "Bundle "jceb/vim-orgmode"
 "Bundle "mbbill/VimExplorer"
+Bundle "mhinz/vim-startify"
 "Bundle "mileszs/ack.vim"
 "Bundle "msanders/snipmate.vim"
 "Bundle "nathanaelkane/vim-indent-guides"
@@ -361,7 +363,7 @@ au! BufRead,BufWrite,BufWritePost,BufNewFile *.xml set colorcolumn=80
 
 
 " Open NERDTree if no files were specified
-autocmd vimenter * if !argc() | NERDTree | endif
+" autocmd vimenter * if !argc() | NERDTree | endif
 " Close vim if the only window left is NERDTree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Let Vim follow NERDTree root as current dir
