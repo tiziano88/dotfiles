@@ -71,8 +71,8 @@ source_ /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash
 source_ /usr/local/git/contrib/completion/git-completion.bash
 source_ /opt/local/etc/bash_completion
 
-source_ /home/build/google3/devtools/blaze/scripts/blaze-complete.bash
-source_ /home/build/google3/ads/branding/adplanner/git5/git5_completion.sh
+#source_ /home/build/google3/devtools/blaze/scripts/blaze-complete.bash
+#source_ /home/build/google3/ads/branding/adplanner/git5/git5_completion.sh
 
 set -o vi
 bindkey -v

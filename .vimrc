@@ -76,7 +76,7 @@ catch
 endtry
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$\|magicjar',
   \ 'file': '\.class$|\.exe$\|\.so$\|\.dll$',
   \ 'link': 'blaze-bin\|blaze-genfiles\|blaze-google3\|blaze-out\|blaze-testlogs\|READONLY$',
   \ }
@@ -128,7 +128,7 @@ let g:ctrlp_max_height = 100
     let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
     let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
     let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-    let g:neocomplcache_omni_patterns.java = '\%(\h\w*\|)\)\.'
+    let g:neocomplcache_omni_patterns.java = '\%(\.\|->\)\h\w*'
     let g:neocomplcache_omni_patterns.go = '\%(\h\w*\|)\)\.'
 
     let g:neocomplcache_omni_patterns = {}

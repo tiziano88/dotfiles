@@ -5,6 +5,7 @@ import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig
+import qualified XMonad.StackSet as W
 import qualified Data.Map as Map
 
 myWorkSpaces =
@@ -23,6 +24,7 @@ myManageHook = composeAll
   [ className =? "google-chrome" --> doShift "2:web"
   , className =? "intellij" --> doShift "3:IDE"
   , className =? "eclipse" --> doShift "3:IDE"
+  , className =? "Xfce4-notifyd" --> doF W.focusDown
   ]
 
 --myKeys conf@(Xconfig {Xmonad.modMask = modm}) = M.fromList $
