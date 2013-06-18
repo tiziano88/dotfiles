@@ -4,7 +4,7 @@ syntax on
 let g:disable_google_optional_settings=1
 
 set rtp+=~/.vim/bundle/vundle/
-set rtp+=/usr/local/go/misc/vim/
+"set rtp+=/usr/local/go/misc/vim/
 call vundle#rc()
 
 if &term =~ '^screen'
@@ -40,7 +40,7 @@ Bundle "mhinz/vim-startify"
 "Bundle "msanders/snipmate.vim"
 "Bundle "nathanaelkane/vim-indent-guides"
 "Bundle "scrooloose/nerdcommenter"
-Bundle "scrooloose/nerdtree"
+"Bundle "scrooloose/nerdtree"
 "Bundle "scrooloose/syntastic"
 "Bundle "sjl/gundo.vim"
 "Bundle "sjl/splice.vim"
@@ -236,6 +236,8 @@ let g:ctrlp_max_height = 100
       autocmd!
       autocmd InsertEnter * :set number
       autocmd InsertLeave * :set relativenumber
+      autocmd FocusLost * :set number
+      autocmd FocusGained * :set relativenumber
       autocmd BufNewFile * :set number
       autocmd BufReadPost * :set number
     augroup END
@@ -379,7 +381,8 @@ let NERDTreeShowBookmarks = 1
 nmap ,n :Sexplore!<CR>
 nmap ,m :Sexplore! .<CR>
 "let g:netrw_altv=1
-let g:netrw_liststyle=3
+" What's wrong here?
+"let g:netrw_liststyle=3
 "let g:netrw_preview=1
 "let g:netrw_browse_split=4
 let g:netrw_winsize=30
@@ -387,7 +390,7 @@ let g:netrw_special_syntax=1
 
 augroup netrw
   autocmd!
-  autocmd filetype netrw call Netrw()
+"  autocmd filetype netrw call Netrw()
 augroup END
 function! Netrw()
   nmap <buffer> o <CR>

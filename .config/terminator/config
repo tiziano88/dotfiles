@@ -1,5 +1,5 @@
 [global_config]
-  enabled_plugins = ,
+  enabled_plugins = CustomCommandsMenu,
   focus = system
   title_transmit_fg_color = "#eee8d5"
   title_inactive_fg_color = "#93a1a1"

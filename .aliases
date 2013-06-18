@@ -1,12 +1,17 @@
 #!/bin/bash
 
-alias run-asfe="java/com/google/ads/syn/adsense/fe/devtools/run-asfe --fusion --debug"
+alias run-sdm="java/com/google/ads/syn/adsense/fe/devtools/run-sdm --fusion"
+alias run-fusion="java/com/google/ads/syn/adsense/fe/devtools/run-asfe --fusion --debug"
+alias run-asfe="java/com/google/ads/syn/adsense/fe/devtools/run-asfe --debug"
 alias run-adx=java/com/google/ads/syn/adsense/fe/run-adx
 alias run-oophm="java/com/google/ads/syn/adsense/fe/devtools/run-oophm --fusion --debug"
 alias run-arc-service="java/com/google/ads/syn/adsense/fe/star/service/run-arc-service"
 alias sync-asfe-green='git5 sync @`/home/build/static/projects/testing/tap/scripts/last_green_cl --project asfe_all`'
 alias tap-submit="/home/build/static/projects/testing/tap/scripts/tap_presubmit --project=asfe_all"
 alias run-inventory="java/com/google/ads/syn/inventory/service/run-inventory-service --setup_alerts_server"
+
+alias ubclient="/google/data/ro/projects/ads/production/ultraborgdiff/ubclient"
+alias borgdiff="/google/data/ro/projects/borg/borgdiff"
 
 alias lj=/home/flume-user/bin/lj
 alias gtags=/home/build/nonconf/google3/tools/tags/gtags.sh

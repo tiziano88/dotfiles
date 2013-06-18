@@ -3,6 +3,9 @@ xinput set-int-prop "Logitech USB Trackball" "Evdev Wheel Emulation Button" 8 8
 xinput set-int-prop "Logitech USB Trackball" "Evdev Wheel Emulation" 8 1
 xinput set-prop "Logitech USB Trackball" "Evdev Wheel Emulation Axes" 6 7 4 5
 xinput set-ptr-feedback "Logitech USB Trackball" 0 100 30
+
+#xinput set-button-map "Kingsis Peripherals  Evoluent VerticalMouse 3 0" 1 2 3 0 0
+
 setxkbmap gb
 
 envfile="${HOME}/.gnupg/gpg-agent.env"

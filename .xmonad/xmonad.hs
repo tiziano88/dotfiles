@@ -36,7 +36,7 @@ main = xmonad =<< xmobar defaultConfig
   , borderWidth = 5
   , modMask = mod4Mask
 --  , keys = myKeys
-  , startupHook = setWMName "LG3D"
+  , startupHook = setWMName "LG3D" >> takeTopFocus
   , logHook = takeTopFocus
   , workspaces = myWorkSpaces
   , manageHook = myManageHook <+> manageHook defaultConfig

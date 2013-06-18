@@ -25,6 +25,7 @@ SOURCES=\
 		.zshrc \
 
 # git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+# sudo apt-get install atool
 
 TARGETS=$(addprefix ~/, $(SOURCES))
 

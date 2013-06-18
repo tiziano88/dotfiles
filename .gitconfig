@@ -26,6 +26,10 @@
 [gui]
 	fontui = -family Ubuntu -size -12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Ubuntu Mono\" -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+[log]
+  graph = true
+  pretty = format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
+  abbrev-commit = true
 [merge]
 	tool = vimdiff
 [mergetool]

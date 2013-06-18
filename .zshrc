@@ -25,7 +25,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -51,6 +51,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' hosts off
 setopt NO_CDABLE_VARS
+
+skip_global_compinit=1
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -117,7 +119,6 @@ then
   mux default
 fi
 
-export COMPLETION_WAITING_DOTS="true"
-
 source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
