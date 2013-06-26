@@ -55,7 +55,7 @@ Bundle "vimoutliner/vimoutliner"
 "Bundle "wincent/Command-T"
 "Bundle "myusuf3/numbers.vim"
 "Bundle "mhinz/vim-tmuxify"
-Bundle "Shougo/neocomplcache"
+"Bundle "Shougo/neocomplcache"
 Bundle "airblade/vim-gitgutter"
 Bundle "altercation/vim-colors-solarized"
 Bundle "kien/ctrlp.vim"
@@ -74,6 +74,8 @@ try
 "  source /google/data/ro/projects/vigor/vigor.vim
 catch
 endtry
+
+Glug youcompleteme-google
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$\|magicjar',
@@ -150,8 +152,8 @@ let g:ctrlp_max_height = 100
         set conceallevel=2 concealcursor=i
     endif
 
-    inoremap <expr><CR> pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
-    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+    "inoremap <expr><CR> pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
+    "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
     "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
     function! s:check_back_space()
