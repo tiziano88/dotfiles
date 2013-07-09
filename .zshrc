@@ -30,14 +30,60 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode)
+#plugins=(git vi-mode)
 
 source_() {
   [[ -f $1 ]] && source $1
 }
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 #source $HOME/src/powerline/powerline/bindings/zsh/powerline.zsh
+
+prompt_git() {
+  local ref dirty
+  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+#    dirty=$(parse_git_dirty)
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+
+#    if [[ -n $dirty ]]; then
+#      prompt_segment yellow black
+#    else
+#      prompt_segment green black
+#    fi
+
+    setopt promptsubst
+    autoload -Uz vcs_info
+
+    zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:*' get-revision true
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' stagedstr '✚'
+    zstyle ':vcs_info:git:*' unstagedstr '●'
+    zstyle ':vcs_info:*' formats ' %u%c'
+    zstyle ':vcs_info:*' actionformats '%u%c'
+    vcs_info
+    echo -n "${ref/refs\/heads\// }${vcs_info_msg_0_}"
+  fi
+}
+
+# or use pre_cmd, see man zshcontrib
+vcs_info_wrapper() {
+  vcs_info
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+  fi
+}
+
+autoload -U colors && colors
+
+source_ /usr/local/etc/bash_completion.d/git-prompt.sh
+source_ /usr/local/etc/bash_completion.d/git-completion.bash
+source_ /usr/local/etc/bash_completion.d/go-completion.bash
+source_ /usr/local/etc/bash_completion.d/tmux
+
+
+#export PROMPT="%{%f%b%k%}$(build_prompt) "
+export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %DT%T %{$fg[yellow]%}%~%{$reset_color%} %# "
 
 # citc
 source_ /etc/bash_completion.d/g4d

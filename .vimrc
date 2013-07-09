@@ -24,7 +24,7 @@ Bundle "Lokaltog/vim-powerline"
 "Bundle "SirVer/ultisnips"
 "Bundle "Townk/vim-autoclose"
 "Bundle "Twinside/vim-haskellConceal"
-"Bundle "Valloric/YouCompleteMe"
+Bundle "Valloric/YouCompleteMe"
 "Bundle "Yggdroot/indentLine"
 "Bundle "a.vim"
 "Bundle "chrisbra/NrrwRgn"
@@ -56,9 +56,11 @@ Bundle "vimoutliner/vimoutliner"
 "Bundle "myusuf3/numbers.vim"
 "Bundle "mhinz/vim-tmuxify"
 "Bundle "Shougo/neocomplcache"
+Bundle "Shougo/unite.vim"
+Bundle "Shougo/vimproc.vim"
 Bundle "airblade/vim-gitgutter"
 Bundle "altercation/vim-colors-solarized"
-Bundle "kien/ctrlp.vim"
+"Bundle "kien/ctrlp.vim"
 Bundle "majutsushi/tagbar"
 Bundle "tpope/vim-fugitive"
 Bundle "kablamo/vim-git-log"
@@ -72,10 +74,10 @@ try
   "source /usr/share/vim/google/runtime/gtimporter.vim
   "source ~/gtimporter.vim
 "  source /google/data/ro/projects/vigor/vigor.vim
+  Glug youcompleteme-google
 catch
 endtry
 
-Glug youcompleteme-google
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$\|magicjar',
@@ -310,11 +312,13 @@ let g:ctrlp_max_height = 100
 "    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
 " }
 
+nnoremap <C-p> :<C-u>Unite file_rec<CR>
+
 " taglist
 let Tlist_Display_Prototype = 1
 
 " powerline
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'compatible'
 
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
@@ -380,11 +384,11 @@ let g:NERDTreeCasadeOpenSingleChildDir=1
 " Toggle NERDTree visibility
 let NERDTreeShowBookmarks = 1
 
-nmap ,n :Sexplore!<CR>
-nmap ,m :Sexplore! .<CR>
+nmap ,n :Explore!<CR>
+nmap ,m :Explore! .<CR>
 "let g:netrw_altv=1
 " What's wrong here?
-"let g:netrw_liststyle=3
+let g:netrw_liststyle=1
 "let g:netrw_preview=1
 "let g:netrw_browse_split=4
 let g:netrw_winsize=30
@@ -395,8 +399,8 @@ augroup netrw
 "  autocmd filetype netrw call Netrw()
 augroup END
 function! Netrw()
-  nmap <buffer> o <CR>
-  nmap <buffer> u -
+"  nmap <buffer> o <CR>
+"  nmap <buffer> u -
 endfunction
 
 " not every vim is compiled with this, use the following line instead
@@ -579,8 +583,8 @@ let b:VCSCommandVCSType='git'
 let g:checksyntax_auto = 0
 
 "comment out line(s) in visual mode
-vmap  o  :call NERDComment(1, 'toggle')<CR>
-let g:NERDShutUp=1
+"vmap  o  :call NERDComment(1, 'toggle')<CR>
+"let g:NERDShutUp=1
 
 let b:match_ignorecase = 1
 
@@ -663,7 +667,6 @@ function! ToggleWrap()
   if &wrap
     echo "Wrap OFF"
     setlocal nowrap
-    set virtualedit=all
     silent! nunmap <buffer> <Up>
     silent! nunmap <buffer> <Down>
     silent! nunmap <buffer> <Home>
@@ -675,7 +678,6 @@ function! ToggleWrap()
   else
     echo "Wrap ON"
     setlocal wrap linebreak nolist
-    set virtualedit=
     setlocal display+=lastline
     noremap  <buffer> <silent> <Up>   gk
     noremap  <buffer> <silent> <Down> gj

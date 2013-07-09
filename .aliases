@@ -28,6 +28,10 @@ alias gtags='/home/build/nonconf/google3/tools/tags/gtags.sh'
 alias g5='/google/data/ro/projects/shelltoys/g5.sar'
 
 # Git(5) shortcuts
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gst='git status'
 alias ge='git5 export'
 alias gt='git5 tap'
 alias gd='git diff'
@@ -50,9 +54,14 @@ fi
 #alias less='/usr/share/vim/vim73/macros/less.sh'
 
 # some more ls aliases
+alias ls='ls -G'
 alias ll='ls -ahlF'
 alias la='ls -A'
 alias l='ls -CF'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 alias tmux='TERM=screen-256color-bce tmux'
 
