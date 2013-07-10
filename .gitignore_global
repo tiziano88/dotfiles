@@ -5,6 +5,7 @@
 *.iws
 magicjar
 magicjar.jar
+.nfs*
 .idea
 blaze_profile.dat
 cache_*
