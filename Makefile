@@ -6,6 +6,7 @@ SOURCES=\
 		.config/terminator \
 		.env \
 		.fonts.conf \
+		.git-prompt.sh \
 		.git5rc \
 		.gitconfig \
 		.gitignore_global \
