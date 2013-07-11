@@ -84,7 +84,7 @@ source_ /usr/local/etc/bash_completion.d/tmux
 source_ ~/.git-prompt.sh
 
 #export PROMPT="%{%f%b%k%}$(build_prompt) "
-export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %DT%T %{$fg[yellow]%}%~%{$reset_color%}$(__git_ps1) %# "
+export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %# "
 
 # citc
 source_ /etc/bash_completion.d/g4d
