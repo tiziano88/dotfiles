@@ -69,6 +69,8 @@ alias emacs='emacs -nw'
 
 alias menu='/home/shine/share/menu/menu.par puddinglane,pavilion,londondeli'
 alias ack=ack-grep
+alias mount='mount | column -t'
+alias ports='netstat -tulanp'
 
 alias buildifier='/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix'
 alias fixdeps='/google/data/ro/projects/demolition/requireddeps.par --fix'
