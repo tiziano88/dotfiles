@@ -312,6 +312,8 @@ let g:ctrlp_max_height = 100
 "    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
 " }
 
+set wildignore+=*/READONLY/*,*/blaze-*
+
 nnoremap <C-p> :<C-u>Unite file_rec<CR>
 
 " taglist
