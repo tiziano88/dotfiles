@@ -35,7 +35,6 @@ Bundle "Valloric/YouCompleteMe"
 "Bundle "hsitz/VimOrganizer"
 "Bundle "jceb/vim-orgmode"
 "Bundle "mbbill/VimExplorer"
-Bundle "mhinz/vim-startify"
 "Bundle "mileszs/ack.vim"
 "Bundle "msanders/snipmate.vim"
 "Bundle "nathanaelkane/vim-indent-guides"
@@ -65,7 +64,7 @@ Bundle "majutsushi/tagbar"
 Bundle "tpope/vim-fugitive"
 Bundle "kablamo/vim-git-log"
 Bundle "ShowMarks"
-Bundle "mhinz/vim-startify"
+"Bundle "mhinz/vim-startify"
 
 try
   source /usr/share/vim/google/google.vim
@@ -314,7 +313,7 @@ let g:ctrlp_max_height = 100
 
 set wildignore+=*/READONLY/*,*/blaze-*
 
-nnoremap <C-p> :<C-u>Unite file_rec<CR>
+nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
 
 " taglist
 let Tlist_Display_Prototype = 1
@@ -431,13 +430,13 @@ set backup       " backups are nice ...
 :call EnsureDir("~/.vim/swap")
 :call EnsureDir("~/.vim/views")
 :call EnsureDir("~/.vim/undo")
-set backupdir=~/.vim/backup// " but not when they clog .
+set backupdir=~/.vim/backup " but not when they clog .
 " For crontab -e editing
 set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim/swap//  " Same for swap files
-set viewdir=~/.vim/views//  " same but for view files
-set undodir=~/.vim/undo//
-set autochdir
+set directory=~/.vim/swap  " Same for swap files
+set viewdir=~/.vim/views  " same but for view files
+set undodir=~/.vim/undo
+set noautochdir
 
 set expandtab
 set textwidth=0

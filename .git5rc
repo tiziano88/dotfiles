@@ -27,4 +27,5 @@ fast-export=True
 
 [alias]
 tap = export --submit-queue --tap-options=detach,no-email
+tap-mail = export --submit-queue --tap-options=detach,email
 head = sync '#head'
