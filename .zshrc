@@ -83,6 +83,16 @@ autoload -U colors
 colors
 setopt prompt_subst
 
+setopt share_history
+setopt inc_append_history
+HISTSIZE=1000000
+if (( ! EUID )); then
+  HISTFILE=~/.history_root
+else
+  HISTFILE=~/.history
+fi
+SAVEHIST=$HISTSIZE
+
 source_ ~/.git-prompt.sh
 
 export GIT_PS1_SHOWDIRTYSTATE=1

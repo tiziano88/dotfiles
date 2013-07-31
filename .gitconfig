@@ -31,6 +31,7 @@
   pretty = format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
   abbrev-commit = true
 [merge]
+	ff = false
 	tool = vimdiff
 [mergetool]
 	prompt = false
