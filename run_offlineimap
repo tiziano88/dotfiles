@@ -1,5 +1,6 @@
 #!/bin/sh
 #export PWDSAFEPASSWORD=abc
+eval $(keychain --eval)
 gpg --use-agent --quiet --output /dev/null ~/.passwd/prime.gpg
 killall offlineimap
 nohup offlineimap >>~/offlineimap.log &

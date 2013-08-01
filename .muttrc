@@ -6,6 +6,8 @@ set realname = "Tiziano Santoro"
 # Change the following line to a different editor you prefer.
 set editor = "vim"
 
+set sidebar_width = 40
+
 source ~/Maildir/muttrc.mailboxes
 
 # Basic config, you can leave this as is

@@ -73,7 +73,7 @@ try
   "source /usr/share/vim/google/runtime/gtimporter.vim
   "source ~/gtimporter.vim
 "  source /google/data/ro/projects/vigor/vigor.vim
-  Glug youcompleteme-google
+"  Glug youcompleteme-google
 catch
 endtry
 
