@@ -65,6 +65,7 @@ Bundle "tpope/vim-fugitive"
 Bundle "kablamo/vim-git-log"
 Bundle "ShowMarks"
 "Bundle "mhinz/vim-startify"
+Bundle "sudar/vim-arduino-syntax"
 
 try
   source /usr/share/vim/google/google.vim
@@ -172,6 +173,7 @@ let g:ctrlp_max_height = 100
   autocmd FileType go set noexpandtab | set softtabstop=0 | set shiftwidth=8 | set tabstop=8
   autocmd FileType html set expandtab | set softtabstop=0 | set shiftwidth=2 | set tabstop=2
   autocmd FileType xml set expandtab | set softtabstop=0 | set shiftwidth=2
+  autocmd FileType arduino set expandtab | set softtabstop=0 | set shiftwidth=2
 
 "  autocmd VimEnter * RainbowParenthesesToggle
 "  autocmd Syntax * RainbowParenthesesLoadRound
@@ -408,11 +410,11 @@ endfunction
 "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 scriptencoding utf-8
 
-if has('win32') || has('win64')
-  set guifont=Terminus:h12
-else
-  set guifont=Terminus\ Medium\ 9
-endif
+"if has('win32') || has('win64')
+"  set guifont=Terminus:h12
+"else
+"  set guifont=Terminus\ Medium\ 9
+"endif
 
 "set autowrite
 set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
@@ -477,15 +479,21 @@ let g:solarized_diffmode="high"    "default value is normal
 colorscheme solarized
 
 func! DiffSetup()
+  " Do not hide any of the unchanged lines.
   set diffopt=filler,context:1000000000
+  " Make sure split is even.
   wincmd =
+  " tkdiff style keys.
   map n ]c
   map N [c
   map <C-N> :qa<CR>
+  " Move to bottom-right split (containing the most recent file).
   wincmd j
   wincmd l
-  autocmd BufWrite diffupdate
+  " Move the cursor to the beginning of the file.
   call setpos('.', [0, 0, 0, 0])
+  " Update diff at every edit.
+  autocmd BufWrite diffupdate
 endfun
 
 if &diff
@@ -829,3 +837,15 @@ function! GvimColorTest(outfile)
   source %
 endfunction
 command! GvimColorTest call GvimColorTest('gvim-color-test.tmp')
+
+map gf :call DoGf()<ENTER>
+
+function! DoGf()
+  let file = expand("<cfile>")
+  if match(file, "^//production") == 0
+    let google3 = substitute(expand("%:p"), "/google3/.*", "/google3/", "")
+  else
+    let google3 = ""
+  endif
+  exe "edit " . google3 . file
+endfun
