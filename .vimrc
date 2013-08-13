@@ -124,6 +124,8 @@ let g:ctrlp_max_height = 100
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+    autocmd BufWrite *.go :silent Fmt
+
     " Enable heavy omni completion.
     if !exists('g:neocomplcache_omni_patterns')
         let g:neocomplcache_omni_patterns = {}
@@ -667,6 +669,7 @@ endif
 "au BufNewFile,BufRead *.cl set filetype=cpp
 
 set ssop-=options "do not store variables in session file
+set ssop-=curdir "do not store current dir in session file
 
 set viminfo='1000,f1
 
