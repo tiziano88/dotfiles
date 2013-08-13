@@ -315,6 +315,8 @@ let g:ctrlp_max_height = 100
 
 set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
 
+let g:unite_source_rec_min_cache_files=0
+let g:unite_source_rec_max_cache_files=0
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async<CR>
 
 " taglist
