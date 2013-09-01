@@ -66,6 +66,7 @@ Bundle "kablamo/vim-git-log"
 Bundle "ShowMarks"
 "Bundle "mhinz/vim-startify"
 Bundle "sudar/vim-arduino-syntax"
+Bundle "groenewege/vim-less"
 
 try
   source /usr/share/vim/google/google.vim
@@ -125,6 +126,8 @@ let g:ctrlp_max_height = 100
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     autocmd BufWrite *.go :silent Fmt
+
+    autocmd BufNewFile,BufRead *.less setf less
 
     " Enable heavy omni completion.
     if !exists('g:neocomplcache_omni_patterns')
@@ -216,8 +219,7 @@ let g:ctrlp_max_height = 100
     vnoremap <leader>P "+P
 
     " Explorer
-    " nnoremap <leader>e :Explore<CR>
-    nnoremap <leader>e :Explore .<CR>
+    nnoremap <leader>e :Explore<CR>
 
     " BufExplorer
     nnoremap <leader>b :CtrlPBuffer<CR>
@@ -668,8 +670,9 @@ endif
 
 "au BufNewFile,BufRead *.cl set filetype=cpp
 
-set ssop-=options "do not store variables in session file
-set ssop-=curdir "do not store current dir in session file
+set sessionoptions-=options "do not store variables in session file
+set sessionoptions-=curdir "do not store current dir in session file
+set viewoptions-=folds
 
 set viminfo='1000,f1
 
