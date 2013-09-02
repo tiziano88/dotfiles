@@ -8,6 +8,7 @@ sync-at=green
 tap-project=asfe_all,mercury
 #tap-options=use-green,detach,email
 fast-export=True
+suppress-diffs=True
 citc=True
 
 [export]
