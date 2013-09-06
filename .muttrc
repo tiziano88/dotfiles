@@ -87,6 +87,8 @@ color message white black
 color status white blue
 
 # Gmail-style key bindings
+bind index,pager j next-entry
+bind index,pager k previous-entry
 bind index,pager r reply
 bind index,pager a group-reply
 #bind index,pager c mail
