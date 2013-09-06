@@ -77,9 +77,6 @@ bind editor <space> noop
 bind index - collapse-thread
 bind index _ collapse-all
 
-bind index R group-reply
-bind pager R group-reply
-
 bind index \CU half-up
 bind index \CD half-down
 
@@ -89,8 +86,14 @@ macro index ^ "<shell-escape>offlineimap&<enter>"
 color message white black
 color status white blue
 
+# Gmail-style key bindings
+bind index,pager r reply
+bind index,pager a group-reply
+bind index,pager c mail
+bind index,pager e delete-thread
+
 # Gmail-style keyboard shortcuts
-macro index,pager e "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
+#macro index,pager e "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
 #macro index,pager d "<enter-command>set trash=\"imaps://imap.googlemail.com/[GMail]/Bin\"\n <delete-message>" "Gmail delete message"
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
@@ -102,8 +105,8 @@ macro index,pager G "*"
 #macro index,pager "\Cj" "jjjjj"
 #macro index,pager "\Ck" "kkkkk"
 
-macro index c "<change-folder>?<toggle-mailboxes>"
-macro pager c "<change-folder>?<toggle-mailboxes>"
+#macro index c "<change-folder>?<toggle-mailboxes>"
+#macro pager c "<change-folder>?<toggle-mailboxes>"
 
 #macro index q '<change-folder>?<toggle-mailboxes>'
 #macro browser q '<exit><quit>'
