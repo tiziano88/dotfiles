@@ -323,6 +323,7 @@ set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
 let g:unite_source_rec_min_cache_files=0
 let g:unite_source_rec_max_cache_files=0
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async<CR>
+nnoremap <C-r> <plug>(unite_redraw)
 
 " taglist
 let Tlist_Display_Prototype = 1
