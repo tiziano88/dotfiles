@@ -580,7 +580,14 @@ set softtabstop=2
 set expandtab
 "set matchpairs+=<:>             " match, to be used with %
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-set formatoptions+=l
+set formatoptions+=l " don't break long lines in insert mode
+set formatoptions+=c " wrap comments
+set formatoptions+=r " insert comment leader after <enter>
+set formatoptions-=c " do not insert comment leader after o or O
+set formatoptions+=j " remove comment leader when joining lines
+
+autocmd FileType mail set formatoptions+=aw
+autocmd FileType mail set colorcolumn=72
 "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 "set lcs=tab:??,trail:?,extends:>,precedes:<,nbsp:&
 

@@ -164,6 +164,10 @@ bindkey -M viins '^w'  backward-kill-word
 bindkey -M viins '^h'  backward-delete-char
 bindkey -M viins '^?'  backward-delete-char
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 function tmux_has_main() {
   tmux -2 has-session -t "main"
 }

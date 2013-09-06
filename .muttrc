@@ -55,6 +55,12 @@ set include
 set sort = 'threads'
 set sort_aux = 'last-date-received'
 set auto_tag = yes
+
+# Better quotations in emails:
+# Note: this needs adding formatoptions=w in vim.
+set text_flowed = yes
+#set stuff_quoted
+
 set pager_index_lines = 20
 set index_format = "%?M?+& ?%2M %2e %Z %D %-30.30F (%4c) [%B] %3C %s"
 #set max_line_length = 120
@@ -70,7 +76,12 @@ bind editor <space> noop
 
 bind index - collapse-thread
 bind index _ collapse-all
+
 bind index R group-reply
+bind pager R group-reply
+
+bind index \CU half-up
+bind index \CD half-down
 
 #bind index "^" imap-fetch-mail
 macro index ^ "<shell-escape>offlineimap&<enter>"
