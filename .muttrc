@@ -89,7 +89,7 @@ color status white blue
 # Gmail-style key bindings
 bind index,pager r reply
 bind index,pager a group-reply
-bind index,pager c mail
+#bind index,pager c mail
 bind index,pager e delete-thread
 
 # Gmail-style keyboard shortcuts
@@ -105,8 +105,7 @@ macro index,pager G "*"
 #macro index,pager "\Cj" "jjjjj"
 #macro index,pager "\Ck" "kkkkk"
 
-#macro index c "<change-folder>?<toggle-mailboxes>"
-#macro pager c "<change-folder>?<toggle-mailboxes>"
+macro index,pager c "<change-folder>?<toggle-mailboxes>"
 
 #macro index q '<change-folder>?<toggle-mailboxes>'
 #macro browser q '<exit><quit>'
