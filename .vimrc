@@ -222,9 +222,6 @@ let g:ctrlp_max_height = 100
     " Explorer
     nnoremap <leader>e :Explore<CR>
 
-    " BufExplorer
-    nnoremap <leader>b :CtrlPBuffer<CR>
-
     " Arrow keys resize
     noremap <Up> <C-w>-
     noremap <Down> <C-w>+
@@ -323,7 +320,7 @@ set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
 let g:unite_source_rec_min_cache_files=0
 let g:unite_source_rec_max_cache_files=0
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async<CR>
-nnoremap <C-r> <plug>(unite_redraw)
+nnoremap <leader>b :<C-u>Unite buffer<CR>
 
 " taglist
 let Tlist_Display_Prototype = 1
@@ -502,11 +499,50 @@ func! DiffSetup()
   call setpos('.', [0, 0, 0, 0])
   " Update diff at every edit.
   autocmd BufWrite diffupdate
+
 endfun
+
+func! MultiDiffSetup()
+  " multi diff setup:
+  set lazyredraw
+  set splitright  " put new version right of the old version
+
+  " $P4DIFF is called with ': $OLD1 $NEW1 : $OLD2 $NEW2 ...' as args
+  " First we strip out all the : arguments
+  argdelete *:
+
+  " Then we pair up everything else in tabs with vertical diff splits
+  exe "silent edit " . fnameescape(argv(0))
+  exe "silent vertical diffsplit " . fnameescape(argv(1))
+  wincmd =
+
+  let s:idx = 2
+  while s:idx < argc()
+    tabnew
+    exe "silent edit " . fnameescape(argv(s:idx))
+    exe "silent vertical diffsplit " . fnameescape(argv(s:idx + 1))
+    wincmd =
+    let s:idx += 2
+  endwhile
+
+  " Go to first tab page
+  tabrewind
+
+  " redraw now
+  set nolazyredraw
+  redraw
+endfun
+
 
 if &diff
   autocmd VimEnter * call DiffSetup()
 endif
+
+augroup g4file
+  " Do filetypedetect for files ending in version markers as if they didn't
+  au!
+  au BufRead ?\+#[0-9]\+  exe "doau filetypedetect BufRead " . fnameescape(substitute(expand("<afile>"), '#[0-9]\+$', '', ''))
+augroup END
 
 set tabpagemax=15     " only show 15 tabs
 set showmode                    " display the current mode
