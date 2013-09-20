@@ -1,5 +1,6 @@
 import XMonad
 import XMonad.Config.Kde
+import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ICCCMFocus
@@ -31,15 +32,17 @@ myManageHook = composeAll
 myKeys conf = Map.fromList $
   [ ((mod4Mask .|. shiftMask, xK_l), spawn $ "gnome_screensaver_command -l") ]
 
-main = xmonad =<< xmobar defaultConfig
-  { terminal = "terminator"
-  , borderWidth = 5
-  , modMask = mod4Mask
+-- defaultConfig
+main = xmonad =<< xmobar gnomeConfig {
+-- terminal = "gnome-terminal"
+  borderWidth = 5,
+  modMask = mod4Mask,
 --  , keys = myKeys
-  , startupHook = setWMName "LG3D" >> takeTopFocus
-  , logHook = takeTopFocus
-  , workspaces = myWorkSpaces
-  , manageHook = myManageHook <+> manageHook defaultConfig
-  } --`additionalKeys`
+  startupHook = setWMName "LG3D" >> takeTopFocus,
+  logHook = takeTopFocus,
+  workspaces = myWorkSpaces,
+  manageHook = myManageHook <+> manageHook defaultConfig
+  }
+--`additionalKeys`
 --  [ ((mod4Mask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
 --  ]
