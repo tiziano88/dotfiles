@@ -120,7 +120,7 @@ setopt NO_CDABLE_VARS
 skip_global_compinit=1
 
 # cd into whatever you type if it's not a command.
-shopt -s autocd
+# shopt -s autocd
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
