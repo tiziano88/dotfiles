@@ -1,5 +1,6 @@
 set nocompatible   " must be first line
 filetype plugin on
+filetype indent on
 syntax on
 let g:disable_google_optional_settings=1
 
@@ -322,8 +323,12 @@ set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
 
 let g:unite_source_rec_min_cache_files=0
 let g:unite_source_rec_max_cache_files=0
+let g:unite_source_history_yank_enable = 1
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async<CR>
-nnoremap <C-r> <plug>(unite_redraw)
+nnoremap <leader>/ :<C-u>Unite grep:.<CR>
+nnoremap <leader>y :<C-u>Unite history/yank<cr>
+nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
+"nnoremap <C-r> <plug>(unite_redraw)
 
 " taglist
 let Tlist_Display_Prototype = 1
@@ -449,7 +454,7 @@ set undodir=~/.vim/undo
 set noautochdir
 
 set expandtab
-set textwidth=0
+set textwidth=100 "0
 set history=1000
 set undofile
 set undolevels=1000
@@ -589,6 +594,9 @@ set formatoptions+=j " remove comment leader when joining lines
 
 autocmd FileType mail set formatoptions+=aw
 autocmd FileType mail set colorcolumn=72
+
+"autocmd FileType html set formatoptions+=a
+"autocmd FileType html set textwidth=80
 "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 "set lcs=tab:??,trail:?,extends:>,precedes:<,nbsp:&
 
@@ -646,17 +654,17 @@ noremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 inoremap <F12> <Esc> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 
 " EasyTags
-let g:easytags_cmd = '/usr/local/bin/ctags'
+"let g:easytags_cmd = '/usr/local/bin/ctags'
 
 " Delimitmate
-au FileType * let b:delimitMate_autoclose = 1
+"au FileType * let b:delimitMate_autoclose = 1
 
 " If using html auto complete (complete closing tag)
-au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],:"
+"au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],:"
 
 " AutoCloseTag
 " Make it so AutoCloseTag works for xml and xhtml files as well
-au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+"au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
 
 " AutoClose
 let g:AutoClosePairs_del = "{}"
