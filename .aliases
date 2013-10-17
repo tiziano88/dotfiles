@@ -68,6 +68,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias gitbox='~/src/gitbox/gitbox'
+
 alias tmux='TERM=screen-256color-bce tmux'
 
 alias emacs='emacs -nw'
