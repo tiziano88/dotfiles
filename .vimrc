@@ -176,10 +176,10 @@ let g:ctrlp_max_height = 100
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 
-  autocmd FileType go set noexpandtab | set softtabstop=0 | set shiftwidth=8 | set tabstop=8
-  autocmd FileType html set expandtab | set softtabstop=0 | set shiftwidth=2 | set tabstop=2
-  autocmd FileType xml set expandtab | set softtabstop=0 | set shiftwidth=2
-  autocmd FileType arduino set expandtab | set softtabstop=0 | set shiftwidth=2
+  autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
+  autocmd FileType html setl expandtab | setl softtabstop=0 | setl shiftwidth=2 | setl tabstop=2
+  autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
+  autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 
 "  autocmd VimEnter * RainbowParenthesesToggle
 "  autocmd Syntax * RainbowParenthesesLoadRound
@@ -321,6 +321,7 @@ let g:unite_source_rec_min_cache_files=0
 let g:unite_source_rec_max_cache_files=0
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async<CR>
 nnoremap <leader>b :<C-u>Unite buffer<CR>
+nnoremap <leader>g :<C-u>Unite grep:.<CR>
 
 " taglist
 let Tlist_Display_Prototype = 1
@@ -364,7 +365,7 @@ let g:SuperTabDefaultCompletionTypeDiscovery = ["&completefunc:<c-x><c-u>","&omn
 let g:SuperTabLongestHighlight = 1
 
 "source /google/src/head/depot/eng/vim/runtime/outline_window.vim
-nnoremap ,g :call OutlineWindow()<CR>
+"nnoremap ,g :call OutlineWindow()<CR>
 
 "source /google/src/head/depot/eng/vim/runtime/util/piper_tools.vim
 nnoremap ;j :call PT_SelectActiveFiles()<CR>
@@ -401,6 +402,7 @@ let g:netrw_liststyle=1
 "let g:netrw_browse_split=4
 let g:netrw_winsize=30
 let g:netrw_special_syntax=1
+let g:netrw_maxfilenamelen=40
 
 augroup netrw
   autocmd!
@@ -420,6 +422,7 @@ scriptencoding utf-8
 "else
 "  set guifont=Terminus\ Medium\ 9
 "endif
+set guifont=Terminus\ 9
 
 "set autowrite
 set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
@@ -620,7 +623,7 @@ set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 set formatoptions+=l " don't break long lines in insert mode
 set formatoptions+=c " wrap comments
 set formatoptions+=r " insert comment leader after <enter>
-set formatoptions-=c " do not insert comment leader after o or O
+set formatoptions-=o " do not insert comment leader after o or O
 set formatoptions+=j " remove comment leader when joining lines
 
 autocmd FileType mail set formatoptions+=aw

@@ -22,6 +22,8 @@ alias t='blaze test'
 alias ubclient='/google/data/ro/projects/ads/production/ultraborgdiff/ubclient'
 alias borgdiff='/google/data/ro/projects/borg/borgdiff'
 
+alias btcfg='/google/data/ro/projects/bigtable/contrib/btcfg/btcfg'
+
 alias lj='/home/flume-user/bin/lj'
 alias gtags='/home/build/nonconf/google3/tools/tags/gtags.sh'
 
