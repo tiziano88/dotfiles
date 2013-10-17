@@ -4,6 +4,7 @@ SOURCES=\
 		.blazerc \
 		.config/powerline \
 		.config/terminator \
+		.dircolors \
 		.env \
 		.fonts.conf \
 		.git-prompt.sh \

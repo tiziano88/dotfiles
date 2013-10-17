@@ -1,3 +1,5 @@
+# vim: ft=zsh
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -118,7 +120,7 @@ setopt NO_CDABLE_VARS
 skip_global_compinit=1
 
 # cd into whatever you type if it's not a command.
-shopt -s autocd
+# shopt -s autocd
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -193,3 +195,4 @@ source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 eval $(keychain --eval)
+eval $(dircolors ~/.dircolors)

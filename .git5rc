@@ -33,3 +33,4 @@ sync-at=head
 tap = export --submit-queue --tap-options=detach,no-email
 tap-mail = export --submit-queue --tap-options=detach,email
 head = sync '#head'
+rerun = submit --tap-options='rerun=last'
