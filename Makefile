@@ -14,6 +14,7 @@ SOURCES=\
 		.gitk \
 		.gnupg/gpg-agent.conf \
 		.gnupg/gpg.conf \
+		.inputrc \
 		.msmtprc \
 		.muttrc \
 		.offlineimap.py \
