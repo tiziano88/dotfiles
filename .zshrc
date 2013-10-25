@@ -81,6 +81,9 @@ source_ /usr/local/etc/bash_completion.d/git-completion.bash
 source_ /usr/local/etc/bash_completion.d/go-completion.bash
 source_ /usr/local/etc/bash_completion.d/tmux
 
+# ^ in glob negates pattern following it
+setopt extendedglob
+
 autoload -U colors
 colors
 setopt prompt_subst

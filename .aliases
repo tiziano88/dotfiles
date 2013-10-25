@@ -80,6 +80,7 @@ alias mount='mount | column -t'
 alias ports='netstat -tulanp'
 
 alias buildifier='/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix'
+alias gclfmt='/google/data/ro/projects/borg/gclfmt -a'
 alias fixdeps='/google/data/ro/projects/demolition/requireddeps.par --fix'
 #alias lock='gnome-screensaver-command -l'
 alias org='vim ~/tzn.org'
