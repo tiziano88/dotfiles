@@ -12,6 +12,8 @@ alias sync-asfe-green='git5 sync @`/home/build/static/projects/testing/tap/scrip
 alias tap-submit='/home/build/static/projects/testing/tap/scripts/tap_presubmit --project=asfe_all'
 alias run-inventory='java/com/google/ads/syn/inventory/service/run-inventory-service --setup_alerts_server'
 
+alias wp_summary='/home/build/google3/experimental/tzn/monetizer/wp_summary.sh'
+
 alias adb='/home/build/static/projects/android/adb'
 
 # Blaze shortcuts
@@ -86,3 +88,5 @@ alias org='vim ~/tzn.org'
 
 alias glaze='/google/src/head/depot/google3/third_party/go/bin/glaze'
 alias live_borgdiff='live_borgdiff --diff_command="diff -u"'
+
+alias prodaccess='prodaccess -g'

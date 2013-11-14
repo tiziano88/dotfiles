@@ -15,6 +15,8 @@ def get_password(account):
   print("pass: " + ret)
   return ret
 
+# echo "$PASSWORD" | gpg --use-agent -e > ~/.passwd/$ACCOUNT.gpg
+
 def mailpassword(account):
   account = os.path.basename(account)
   home = os.getenv("HOME")

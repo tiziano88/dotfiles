@@ -24,6 +24,7 @@ SOURCES=\
 		.tmux.conf \
 		.vimrc \
 		.xmonad \
+		.xmobarrc \
 		.xsession \
 		.zshrc \
 
