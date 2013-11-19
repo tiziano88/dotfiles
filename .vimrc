@@ -633,8 +633,15 @@ set formatoptions+=r " insert comment leader after <enter>
 set formatoptions-=o " do not insert comment leader after o or O
 set formatoptions+=j " remove comment leader when joining lines
 
-autocmd FileType mail set formatoptions+=aw
-autocmd FileType mail set colorcolumn=72
+autocmd FileType mail setlocal formatoptions+=aw
+autocmd FileType mail setlocal colorcolumn=72
+autocmd FileType mail setlocal textwidth=72
+autocmd FileType mail setlocal formatoptions+=a
+autocmd FileType mail setlocal spell
+autocmd FileType mail setlocal completeopt=
+autocmd FileType mail setlocal completefunc=
+
+autocmd FileType help setlocal colorcolumn=80
 
 "autocmd FileType html set formatoptions+=a
 "autocmd FileType html set textwidth=80
