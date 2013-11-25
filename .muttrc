@@ -62,6 +62,8 @@ set sort = 'threads'
 set sort_aux = 'last-date-received'
 set auto_tag = yes
 
+set imap_peek = no
+
 # Better quotations in emails:
 # Note: this needs adding formatoptions=w in vim.
 set text_flowed = yes
@@ -109,7 +111,7 @@ macro index,pager G "*"
 #macro index,pager "\Cj" "jjjjj"
 #macro index,pager "\Ck" "kkkkk"
 
-macro index,pager c "<change-folder>?<toggle-mailboxes>"
+#macro index,pager c "<change-folder>?<toggle-mailboxes>"
 
 #macro index q '<change-folder>?<toggle-mailboxes>'
 #macro browser q '<exit><quit>'
