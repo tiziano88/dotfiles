@@ -22,9 +22,10 @@ SOURCES=\
 		.signature \
 		.ssh/config \
 		.tmux.conf \
+		.vim/mysnippets \
 		.vimrc \
-		.xmonad \
 		.xmobarrc \
+		.xmonad \
 		.xsession \
 		.zshrc \
 

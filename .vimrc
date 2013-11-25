@@ -22,7 +22,7 @@ Bundle "amiorin/vim-project"
 Bundle "Lokaltog/vim-easymotion"
 Bundle "Lokaltog/vim-powerline"
 "Bundle "Rip-Rip/clang_complete"
-"Bundle "SirVer/ultisnips"
+Bundle "SirVer/ultisnips"
 "Bundle "Townk/vim-autoclose"
 "Bundle "Twinside/vim-haskellConceal"
 Bundle "Valloric/YouCompleteMe"
@@ -145,18 +145,6 @@ let g:ctrlp_max_height = 100
     let g:neocomplcache_omni_patterns.go = '\%(\h\w*\|)\)\.'
 
     let g:neocomplcache_omni_patterns = {}
-
-    inoremap <expr><C-j> neocomplcache#manual_omni_complete()
-
-    "if !exists('g:neocomplcache_omni_functions')
-    "  let g:neocomplcache_omni_functions = {}
-    "endif
-    "let g:neocomplcache_omni_functions.java  = 'eclim#java#complete#CodeComplete'
-
-    "if !exists('g:neocomplcache_vim_completefuncs')
-    "  let g:neocomplcache_vim_completefuncs = {}
-    "endif
-    "let g:neocomplcache_vim_completefuncs.java  = 'eclim#java#complete#CodeComplete'
 
     " For snippet_complete marker.
     if has('conceal')
@@ -455,6 +443,12 @@ set viewdir=~/.vim/views  " same but for view files
 set undodir=~/.vim/undo
 set noautochdir
 
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+let g:UltiSnipsSnippetsDir="~/.vim/mysnippets"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "mysnippets"]
+
 set expandtab
 set textwidth=100 "0
 set history=1000
@@ -638,8 +632,8 @@ func! MailSetup()
   setlocal colorcolumn=72
   setlocal textwidth=72
   setlocal spell
-  setlocal completeopt=
-  setlocal completefunc=
+"  setlocal completeopt=
+"  setlocal completefunc=
 endfun
 
 autocmd FileType mail call MailSetup()
@@ -658,6 +652,7 @@ let g:ycm_filetype_blacklist = {
       \ 'unite' : 1,
       \ 'vimwiki' : 1,
       \}
+
 
 "autocmd FileType html set formatoptions+=a
 "autocmd FileType html set textwidth=80
