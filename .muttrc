@@ -4,6 +4,7 @@
 set realname = "Tiziano Santoro"
 
 # Change the following line to a different editor you prefer.
+# "vim +" will open the file at the end.
 set editor = "vim"
 
 set sidebar_width = 40

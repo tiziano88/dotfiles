@@ -653,7 +653,6 @@ let g:ycm_filetype_blacklist = {
       \ 'vimwiki' : 1,
       \}
 
-
 "autocmd FileType html set formatoptions+=a
 "autocmd FileType html set textwidth=80
 "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
