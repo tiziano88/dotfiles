@@ -14,6 +14,8 @@ alias run-inventory='java/com/google/ads/syn/inventory/service/run-inventory-ser
 
 alias wp_summary='/home/build/google3/experimental/tzn/monetizer/wp_summary.sh'
 
+alias cl_deps='/google/data/ro/projects/devtools/depserver/deps/legacy/cl_deps.par'
+
 alias adb='/home/build/static/projects/android/adb'
 
 # Blaze shortcuts
