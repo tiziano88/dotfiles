@@ -230,17 +230,17 @@ let g:ctrlp_max_height = 100
     inoremap jj <Esc>
 
     " Use relative numbers when out of insert mode
-    augroup Numbers
-      autocmd!
-      autocmd InsertEnter * :set number
-      autocmd InsertLeave * :set relativenumber
-      autocmd FocusLost * :set number
-      autocmd FocusGained * :set relativenumber
-      autocmd BufNewFile * :set number
-      autocmd BufReadPost * :set number
-    augroup END
+    " augroup Numbers
+    "   autocmd!
+    "   autocmd InsertEnter * :set number
+    "   autocmd InsertLeave * :set relativenumber
+    "   autocmd FocusLost * :set number
+    "   autocmd FocusGained * :set relativenumber
+    "   autocmd BufNewFile * :set number
+    "   autocmd BufReadPost * :set number
+    " augroup END
     " If Esc a second time, then use absolute numbers
-    nnoremap <Esc> <Esc>:set number<CR>
+    " nnoremap <Esc> <Esc>:set number<CR>
 
 
     noremap [[ ?{<CR>w99[{
@@ -313,6 +313,7 @@ let g:unite_source_rec_max_cache_files=0
 let g:unite_source_history_yank_enable = 1
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async<CR>
 nnoremap <leader>/ :<C-u>Unite grep:.<CR>
+nnoremap <leader>* :<C-u>Unite grep:.<CR><C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>y :<C-u>Unite history/yank<cr>
 nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
 nnoremap <leader>g :<C-u>Unite grep:.<CR>

@@ -86,8 +86,10 @@ bind editor <space> noop
 bind index - collapse-thread
 bind index _ collapse-all
 
-bind index \CU half-up
-bind index \CD half-down
+#bind index \CU half-up
+#bind index \CD half-down
+macro index \CU kkkkkkkk
+macro index \CD jjjjjjjj
 
 #bind index "^" imap-fetch-mail
 macro index ^ "<shell-escape>offlineimap&<enter>"
