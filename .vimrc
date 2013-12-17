@@ -638,7 +638,6 @@ func! MailSetup()
 endfun
 
 autocmd FileType mail call MailSetup()
-autocmd FileType git5message call MailSetup()
 
 autocmd FileType help setlocal colorcolumn=80
 
