@@ -18,9 +18,10 @@ endif
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Bundle "vundle"
 
-Bundle "amiorin/vim-project"
+"Bundle "amiorin/vim-project"
 Bundle "Lokaltog/vim-easymotion"
-Bundle "Lokaltog/vim-powerline"
+"Bundle "Lokaltog/vim-powerline"
+Bundle "bling/vim-airline"
 "Bundle "Rip-Rip/clang_complete"
 Bundle "SirVer/ultisnips"
 "Bundle "Townk/vim-autoclose"
@@ -53,7 +54,7 @@ Bundle "jnwhiteh/vim-golang"
 "Bundle "vim-scripts/Mark--Karkat"
 "Bundle "vim-scripts/YankRing.vim"
 "Bundle "vim-scripts/taglist.vim"
-Bundle "vimoutliner/vimoutliner"
+"Bundle "vimoutliner/vimoutliner"
 "Bundle "wincent/Command-T"
 "Bundle "myusuf3/numbers.vim"
 "Bundle "mhinz/vim-tmuxify"
@@ -66,11 +67,11 @@ Bundle "altercation/vim-colors-solarized"
 Bundle "majutsushi/tagbar"
 Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-dispatch"
-Bundle "kablamo/vim-git-log"
+"Bundle "kablamo/vim-git-log"
 Bundle "ShowMarks"
 "Bundle "mhinz/vim-startify"
-Bundle "sudar/vim-arduino-syntax"
-Bundle "groenewege/vim-less"
+"Bundle "sudar/vim-arduino-syntax"
+"Bundle "groenewege/vim-less"
 
 try
   source /usr/share/vim/google/google.vim
@@ -324,6 +325,28 @@ let Tlist_Display_Prototype = 1
 
 " powerline
 let g:Powerline_symbols = 'compatible'
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_right_sep = '«'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+  " Too noisy for google3
+  let g:airline#extensions#whitespace#enabled = 0
+
+  let g:airline#extensions#default#layout = [
+        \ [ 'a', 'b', 'c' ],
+        \ [ 'x', 'z', 'warning' ]
+        \ ]
 
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
@@ -581,14 +604,14 @@ if has('cmdline_info')
   " selected characters/lines in visual mode
 endif
 
-if has('statusline')
-  set laststatus=2            " Always show statusline
+set laststatus=2            " Always show statusline
+"if has('statusline')
   " Use the commented line if fugitive isn't installed
-  set statusline=%f%m%r%h%w\ %y\ [ASCII=\%03.3b=0x\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+  "set statusline=%f%m%r%h%w\ %y\ [ASCII=\%03.3b=0x\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
   "set statusline=%f%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
   " set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
   "set statusline=%<%f\ %h%m%r%fugitive#statusline()%=%-14.(%l,%c%V%)\ %P
-endif
+"endif
 
 set backspace=indent,eol,start  " backspace for dummys
 set cino-=(0 "do not align to open parenthesis
@@ -640,6 +663,9 @@ endfun
 autocmd FileType mail call MailSetup()
 
 autocmd FileType help setlocal colorcolumn=80
+
+autocmd FileType git5message setlocal colorcolumn=0
+autocmd FileType git5message setlocal textwidth=0
 
 let g:ycm_filetype_blacklist = {
       \ 'git5message' : 1,
