@@ -67,11 +67,12 @@ Bundle "altercation/vim-colors-solarized"
 Bundle "majutsushi/tagbar"
 Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-dispatch"
+Bundle "tpope/vim-vinegar"
 "Bundle "kablamo/vim-git-log"
 Bundle "ShowMarks"
 "Bundle "mhinz/vim-startify"
 "Bundle "sudar/vim-arduino-syntax"
-"Bundle "groenewege/vim-less"
+Bundle "groenewege/vim-less"
 
 try
   source /usr/share/vim/google/google.vim
