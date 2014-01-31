@@ -71,6 +71,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# copy to/from system clipboard (ctrl+v)
+alias xclip="xclip -selection c"
+
 alias gitbox='~/src/gitbox/gitbox'
 
 alias tmux='TERM=screen-256color-bce tmux'
