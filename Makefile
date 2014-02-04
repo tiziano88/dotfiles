@@ -6,6 +6,7 @@ SOURCES=\
 		.config/terminator \
 		.dircolors \
 		.env \
+		.emacs \
 		.fonts.conf \
 		.git-prompt.sh \
 		.git5rc \
