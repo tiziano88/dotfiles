@@ -4,7 +4,7 @@ SOURCES=\
 		.blazerc \
 		.config/powerline \
 		.config/terminator \
-		.dircolors \
+		.dir_colors \
 		.env \
 		.emacs \
 		.fonts.conf \

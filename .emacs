@@ -6,13 +6,30 @@
                          ))
 
 (package-initialize)
+
 (require 'evil)
+(evil-mode 1)
+
 (require 'magit)
+
 (require 'org)
 
 (require 'color-theme)
-;;(require 'color-theme-solarized)
 (load-theme 'solarized-dark t)
+
+;;(require 'icicle)
+
+(require 'column-marker)
+(column-marker-1 20)
+
+(require 'whitespace)
+
+(global-hl-line-mode 1)
+
+(require 'linum)
+(global-linum-mode 1)
+
+(setq linum-format "%3d ")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
