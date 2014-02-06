@@ -198,4 +198,4 @@ source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 eval $(keychain --eval)
-eval $(dircolors ~/.dircolors)
+eval $(dircolors ~/.dir_colors)
