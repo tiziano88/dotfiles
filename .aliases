@@ -97,3 +97,12 @@ alias glaze='/google/src/head/depot/google3/third_party/go/bin/glaze'
 alias live_borgdiff='live_borgdiff --diff_command="diff -u"'
 
 alias prodaccess='prodaccess -g'
+
+# https://github.com/LuRsT/hr/blob/master/hr
+function hr {
+  ch=${1:-=}
+  for i in $(seq 1 $(tput cols));
+  do
+    echo -n "$ch"
+  done
+}
