@@ -598,6 +598,12 @@ set list
 
 set cursorline      " highlight current line
 
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
 if has('cmdline_info')
   set noruler                   " show the ruler
   "  set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
@@ -719,8 +725,8 @@ highlight ShowMarksHLm ctermbg=black ctermfg=white
 
 augroup Marks
   autocmd!
-  autocmd CursorHold * :ShowMarksOn
-  autocmd CursorHoldI * :ShowMarksOn
+  "autocmd CursorHold * :ShowMarksOn
+  "autocmd CursorHoldI * :ShowMarksOn
   "autocmd CursorMoved * :ShowMarksOn
   "autocmd CursorMovedI * :ShowMarksOn
 augroup END
