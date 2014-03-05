@@ -196,6 +196,10 @@ fi
 
 source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# liquidprompt
+# git clone https://github.com/nojhan/liquidprompt.git
+source ~/liquidprompt/liquidprompt
+
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 eval $(keychain --eval)
 eval $(dircolors ~/.dir_colors)

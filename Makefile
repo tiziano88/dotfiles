@@ -16,6 +16,7 @@ SOURCES=\
 		.gnupg/gpg-agent.conf \
 		.gnupg/gpg.conf \
 		.inputrc \
+		.liquidpromptrc \
 		.msmtprc \
 		.muttrc \
 		.offlineimap.py \
