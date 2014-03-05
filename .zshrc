@@ -104,9 +104,6 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWCOLORHINTS=1
 
-#export PROMPT="%{%f%b%k%}$(build_prompt) "
-export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%}$(__git_ps1) %(1j.[%j] .)%# '
-
 # citc
 source_ /etc/bash_completion.d/g4d
 
@@ -199,6 +196,9 @@ source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # liquidprompt
 # git clone https://github.com/nojhan/liquidprompt.git
 source ~/liquidprompt/liquidprompt
+
+#export PROMPT="%{%f%b%k%}$(build_prompt) "
+export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%}$(__git_ps1) %(1j.[%j] .)%# '
 
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 eval $(keychain --eval)
