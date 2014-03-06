@@ -16,11 +16,12 @@ tap-project=asfe_all,mercury
 tap-options=use-green,detach,email
 fast-export=True
 citc=True
+commit=True
 
 [submit]
-tap-project=asfe_all,mercury
+#tap-project=asfe_all,mercury
 #tap-options=use-green
-submit-queue=True
+#submit-queue=True
 fast-export=True
 
 [diff]
