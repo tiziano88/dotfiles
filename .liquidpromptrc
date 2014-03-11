@@ -122,6 +122,12 @@ LP_ENABLE_TEMP=1
 # Recommended value is 0
 LP_TIME_ANALOG=0
 
+# If present, when showing time, use the following format string
+# instead of the default format. See strftime(3) for more details.
+# Example (pseudo-RFC3339):
+# LP_TIME_FORMAT="%Y-%m-%dT%H:%M:%S"
+LP_TIME_FORMAT=""
+
 # Use the liquid prompt as the title of the terminal window
 # The content is not customizable, the implementation is very basic,
 # and this may not work properly on exotic terminals, thus the
@@ -139,5 +145,9 @@ LP_ENABLE_SSH_COLORS=0
 # Specify a list of complete and colon (":") separated paths in which, all vcs
 # will be disabled
 LP_DISABLED_VCS_PATH=""
+
+# Specify a list of complete and colon (":") separated paths in which local
+# maildirs are present.
+LP_MAILDIR_PATH="/Users/tzn/xxx"
 
 # vim: set et sts=4 sw=4 tw=120 ft=sh:

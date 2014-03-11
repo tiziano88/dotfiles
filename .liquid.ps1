@@ -41,7 +41,7 @@ else
     [[ "$LP_ENABLE_VCS_ROOT" = "1" ]] && LP_PS1="${LP_PS1}${LP_VCS}"
 fi
 # add return code and prompt mark
-LP_PS1="${LP_PS1}${LP_RUNTIME}${LP_ERR}${LP_MARK}"
+LP_PS1="${LP_PS1}${LP_MAILDIR}${LP_RUNTIME}${LP_ERR}${LP_MARK}"
 
 # "invisible" parts
 # Get the current prompt on the fly and make it a title
