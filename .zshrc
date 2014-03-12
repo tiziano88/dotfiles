@@ -137,6 +137,9 @@ source_ ~/.env
 # blaze autocompletion
 source_ /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash
 
+# fileutil autocompletion
+source_ /home/miotov/.bash_fileutil_autocomplete
+
 # Set git autocompletion and PS1 integration
 source_ /usr/local/git/contrib/completion/git-completion.bash
 source_ /opt/local/etc/bash_completion
