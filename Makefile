@@ -22,6 +22,7 @@ SOURCES=\
 		.muttrc \
 		.offlineimap.py \
 		.offlineimaprc \
+		.profile \
 		.signature \
 		.ssh/config \
 		.tmux.conf \
