@@ -13,7 +13,8 @@ citc=True
 
 [export]
 tap-project=asfe_all,mercury
-tap-options=use-green,detach,email
+#tap-options=use-green,detach,email
+tap-options=detach,email
 fast-export=True
 citc=True
 commit=True

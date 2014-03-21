@@ -528,8 +528,7 @@ func! DiffSetup()
   " Move the cursor to the beginning of the file.
   call setpos('.', [0, 0, 0, 0])
   " Update diff at every edit.
-  autocmd BufWrite diffupdate
-
+  autocmd BufWritePost * diffupdate
 endfun
 
 func! MultiDiffSetup()
