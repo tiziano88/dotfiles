@@ -39,7 +39,9 @@ SOURCES=\
 # stow
 # zsh
 # atool
+# keychain
 # git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+# git clone git@github.com:nojhan/liquidprompt.git
 
 TARGETS=$(addprefix ~/, $(SOURCES))
 
