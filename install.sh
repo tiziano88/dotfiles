@@ -27,4 +27,5 @@
 # cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "cat >> ~/.ssh/authorized_keys"
 
 set -x
-stow -v -d ~/dotfiles common
+stow -v -d ~/dotfiles -t ~ common
+stow -v -d ~/dotfiles -t /etc etc
