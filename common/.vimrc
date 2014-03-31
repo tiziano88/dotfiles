@@ -697,6 +697,8 @@ set complete=.,i
 
 " Complete options (disable preview scratch window)
 set completeopt=menu,menuone,longest
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Plugins
 

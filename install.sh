@@ -8,6 +8,7 @@
 # htop
 # keychain
 # mutt
+# ntfs-3g
 # parted
 # python
 # stow
