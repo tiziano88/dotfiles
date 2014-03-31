@@ -1,19 +1,5 @@
 # vim: ft=zsh
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
-#ZSH_THEME="blinks"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -38,49 +24,6 @@ source_() {
   [[ -f $1 ]] && source $1
 }
 
-#source $ZSH/oh-my-zsh.sh
-#source $HOME/src/powerline/powerline/bindings/zsh/powerline.zsh
-
-prompt_git() {
-  local ref dirty
-  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-#    dirty=$(parse_git_dirty)
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
-
-#    if [[ -n $dirty ]]; then
-#      prompt_segment yellow black
-#    else
-#      prompt_segment green black
-#    fi
-
-    setopt promptsubst
-    autoload -Uz vcs_info
-
-    zstyle ':vcs_info:*' enable git
-    zstyle ':vcs_info:*' get-revision true
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '✚'
-    zstyle ':vcs_info:git:*' unstagedstr '●'
-    zstyle ':vcs_info:*' formats ' %u%c'
-    zstyle ':vcs_info:*' actionformats '%u%c'
-    vcs_info
-    echo -n "${ref/refs\/heads\// }${vcs_info_msg_0_}"
-  fi
-}
-
-# or use pre_cmd, see man zshcontrib
-vcs_info_wrapper() {
-  vcs_info
-  if [ -n "$vcs_info_msg_0_" ]; then
-    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
-  fi
-}
-
-source_ /usr/local/etc/bash_completion.d/git-prompt.sh
-source_ /usr/local/etc/bash_completion.d/git-completion.bash
-source_ /usr/local/etc/bash_completion.d/go-completion.bash
-source_ /usr/local/etc/bash_completion.d/tmux
-
 # ^ in glob negates pattern following it
 setopt extendedglob
 
@@ -97,8 +40,6 @@ else
   HISTFILE=~/.history
 fi
 SAVEHIST=$HISTSIZE
-
-source_ ~/.git-prompt.sh
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -133,19 +74,11 @@ skip_global_compinit=1
 source_ ~/.aliases
 source_ ~/.env
 
-
 # blaze autocompletion
 source_ /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash
 
 # fileutil autocompletion
 source_ /home/miotov/.bash_fileutil_autocomplete
-
-# Set git autocompletion and PS1 integration
-source_ /usr/local/git/contrib/completion/git-completion.bash
-source_ /opt/local/etc/bash_completion
-
-#source_ /home/build/google3/devtools/blaze/scripts/blaze-complete.bash
-#source_ /home/build/google3/ads/branding/adplanner/git5/git5_completion.sh
 
 set -o vi
 bindkey -v
