@@ -6,4 +6,5 @@ build --cpu=k8 -c opt --use_sponge=no
 query --keep_going
 test --test_output=errors --use_sponge=streamed
 startup --noremote_logging
+startup --blaze_cpu=k8
 #--experimental_rabbit

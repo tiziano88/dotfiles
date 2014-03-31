@@ -18,15 +18,15 @@ endif
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Bundle "vundle"
 
+"Bundle "kablamo/vim-git-log"
+"Bundle "mhinz/vim-startify"
+"Bundle "sudar/vim-arduino-syntax"
 "Bundle "amiorin/vim-project"
-Bundle "Lokaltog/vim-easymotion"
 "Bundle "Lokaltog/vim-powerline"
-Bundle "bling/vim-airline"
 "Bundle "Rip-Rip/clang_complete"
-Bundle "SirVer/ultisnips"
+"Bundle "Shougo/neocomplcache"
 "Bundle "Townk/vim-autoclose"
 "Bundle "Twinside/vim-haskellConceal"
-Bundle "Valloric/YouCompleteMe"
 "Bundle "Yggdroot/indentLine"
 "Bundle "a.vim"
 "Bundle "chrisbra/NrrwRgn"
@@ -34,13 +34,15 @@ Bundle "Valloric/YouCompleteMe"
 "Bundle "corntrace/bufexplorer"
 "Bundle "csv.vim"
 "Bundle "ervandew/supertab"
-Bundle "gregsexton/gitv"
 "Bundle "hsitz/VimOrganizer"
 "Bundle "jceb/vim-orgmode"
-Bundle "jnwhiteh/vim-golang"
+"Bundle "kien/ctrlp.vim"
 "Bundle "mbbill/VimExplorer"
+"Bundle "mhinz/vim-signify"
+"Bundle "mhinz/vim-tmuxify"
 "Bundle "mileszs/ack.vim"
 "Bundle "msanders/snipmate.vim"
+"Bundle "myusuf3/numbers.vim"
 "Bundle "nathanaelkane/vim-indent-guides"
 "Bundle "scrooloose/nerdcommenter"
 "Bundle "scrooloose/nerdtree"
@@ -56,23 +58,26 @@ Bundle "jnwhiteh/vim-golang"
 "Bundle "vim-scripts/taglist.vim"
 "Bundle "vimoutliner/vimoutliner"
 "Bundle "wincent/Command-T"
-"Bundle "myusuf3/numbers.vim"
-"Bundle "mhinz/vim-tmuxify"
-"Bundle "Shougo/neocomplcache"
+
+Bundle "Lokaltog/vim-easymotion"
 Bundle "Shougo/unite.vim"
 Bundle "Shougo/vimproc.vim"
+Bundle "ShowMarks"
+Bundle "SirVer/ultisnips"
+Bundle "Valloric/YouCompleteMe"
 Bundle "airblade/vim-gitgutter"
 Bundle "altercation/vim-colors-solarized"
-"Bundle "kien/ctrlp.vim"
+Bundle "bling/vim-airline"
+Bundle "gregsexton/gitv"
+Bundle "groenewege/vim-less"
+"Bundle "jnwhiteh/vim-golang"
 Bundle "majutsushi/tagbar"
-Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-dispatch"
 Bundle "tpope/vim-vinegar"
-"Bundle "kablamo/vim-git-log"
-Bundle "ShowMarks"
-"Bundle "mhinz/vim-startify"
-"Bundle "sudar/vim-arduino-syntax"
-Bundle "groenewege/vim-less"
+Bundle "Blackrush/vim-gocode"
+
+"may be slow
+Bundle "tpope/vim-fugitive"
 
 try
   source /usr/share/vim/google/google.vim
@@ -131,6 +136,7 @@ let g:ctrlp_max_height = 100
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType go setlocal omnifunc=go#complete#Complete
 
     autocmd BufWrite *.go :silent Fmt
 
