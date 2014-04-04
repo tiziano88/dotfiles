@@ -1,28 +1,11 @@
 # vim: ft=zsh
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git vi-mode)
-
 source_() {
   [[ -f $1 ]] && source $1
 }
+
+source ~/.env
+source ~/.aliases
 
 # ^ in glob negates pattern following it
 setopt extendedglob
@@ -41,9 +24,11 @@ else
 fi
 SAVEHIST=$HISTSIZE
 
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWCOLORHINTS=1
+# liquidprompt
+# git clone https://github.com/nojhan/liquidprompt.git
+source ~/liquidprompt/liquidprompt
+
+source_ ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # citc
 source_ /etc/bash_completion.d/g4d
@@ -61,21 +46,20 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' hosts off
 setopt NO_CDABLE_VARS
 
-skip_global_compinit=1
+# http://stackoverflow.com/a/844299
+expand-or-complete-with-dots() {
+  echo -n "\e[31m...\e[0m"
+  zle expand-or-complete
+  zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
 
-# cd into whatever you type if it's not a command.
-# shopt -s autocd
+skip_global_compinit=1
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 # shopt -s checkwinsize
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-source_ ~/.aliases
-source_ ~/.env
 
 # blaze autocompletion
 source_ /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash
@@ -129,12 +113,6 @@ then
 
   mux default
 fi
-
-source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# liquidprompt
-# git clone https://github.com/nojhan/liquidprompt.git
-source ~/liquidprompt/liquidprompt
 
 #export PROMPT="%{%f%b%k%}$(build_prompt) "
 export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%}$(__git_ps1) %(1j.[%j] .)%# '
