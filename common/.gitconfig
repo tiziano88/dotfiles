@@ -40,14 +40,14 @@
 	cmd = "gvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
 	trustExitCode = true
 [mergetool "vimdiffnice"]
-	cmd = vimdiff -c \"wincmd J\" -c \"0\" $MERGED $LOCAL $BASE $REMOTE
+	cmd = vimdiff $MERGED $LOCAL $BASE $REMOTE
 [rerere]
 	enabled = 0
 [user]
 	email = tzn@google.com
 	name = Tiziano Santoro
 [push]
-	default = matching
+	default = simple
 [help]
 	autocorrect = 1
 [alias]
