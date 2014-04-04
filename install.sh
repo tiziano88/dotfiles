@@ -22,5 +22,7 @@
 # git clone git@github.com:nojhan/liquidprompt.git
 # git clone git@github.com:gmarik/Vundle.vim.git ~/.vim/bundle/vundle
 
+# wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
 set -x
 stow -v -d ~/dotfiles common

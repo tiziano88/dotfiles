@@ -48,6 +48,9 @@ export GIT_PS1_SHOWCOLORHINTS=1
 # citc
 source_ /etc/bash_completion.d/g4d
 
+# git
+fpath=(~/.zsh $fpath)
+
 # Customize to your needs...
 # export PATH=/home/tzn/bin:/home/tzn/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
