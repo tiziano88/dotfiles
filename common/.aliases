@@ -23,7 +23,6 @@ alias b='blaze build'
 alias t='blaze test'
 
 # Borg
-alias ubclient='/google/data/ro/projects/ads/production/ultraborgdiff/ubclient'
 alias borgdiff='/google/data/ro/projects/borg/borgdiff'
 
 alias btcfg='/google/data/ro/projects/bigtable/contrib/btcfg/btcfg'

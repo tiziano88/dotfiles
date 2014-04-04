@@ -91,7 +91,7 @@ bindkey '\e[B' history-search-forward
 set show-all-if-ambiguous on
 set completion-ignore-case on
 
-bindkey '^V' paste-from-clipboard
+# bindkey '^V' paste-from-clipboard
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 bindkey -M vicmd '^[h' run-help

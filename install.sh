@@ -9,6 +9,7 @@
 # keychain
 # mutt
 # ntfs-3g
+# parcellite
 # parted
 # python
 # stow
