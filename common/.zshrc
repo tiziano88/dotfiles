@@ -65,7 +65,7 @@ skip_global_compinit=1
 source_ /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash
 
 # fileutil autocompletion
-source_ /home/miotov/.bash_fileutil_autocomplete
+# source_ /home/miotov/.bash_fileutil_autocomplete
 
 set -o vi
 bindkey -v
