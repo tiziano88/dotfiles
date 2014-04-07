@@ -37,3 +37,4 @@ tap-mail = export --submit-queue --tap-options=detach,email
 head = sync '#head'
 rerun = submit --tap-options='rerun=last'
 difftool = diff -c difftool
+presubmit = export -p all

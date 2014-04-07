@@ -60,6 +60,7 @@ xterm*boldMode: false
 
 ! Ctrl-Shift-V to paste.
 xterm*selectToClipboard: true
+xterm*faceName: Terminus:pixelsize=12
 
 *font: xft:Terminus:pixelsize=12
 !*font: xft:Source Code Pro for Powerline:pixelsize=10
