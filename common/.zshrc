@@ -4,8 +4,8 @@ source_() {
   [[ -f $1 ]] && source $1
 }
 
-source ~/.env
 source ~/.aliases
+source ~/.env
 
 # ^ in glob negates pattern following it
 setopt extendedglob
