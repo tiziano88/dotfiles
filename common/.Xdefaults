@@ -70,6 +70,8 @@ xterm*faceName: Terminus:pixelsize=12
 
 xterm*cursorBlink: true
 
+xterm*fastScroll: true
+
 ! Ctrl-Shift-V to paste.
 *VT100*translations: #override \
     Ctrl <Btn1Up>: exec-formatted("xmessage '%t'", PRIMARY) \n\
