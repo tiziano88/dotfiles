@@ -35,7 +35,7 @@ myKeys conf = Map.fromList $
 -- defaultConfig
 main = xmonad =<< xmobar gnomeConfig {
 -- terminal = "gnome-terminal"
-  terminal = "xterm",
+  terminal = "urxvt",
   borderWidth = 5,
   modMask = mod4Mask,
 --  , keys = myKeys

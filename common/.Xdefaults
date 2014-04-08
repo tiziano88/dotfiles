@@ -1,3 +1,5 @@
+*font: xft:Terminus:pixelsize=12
+
 !-------------------------------------------------------------------------------
 ! Xft settings
 !-------------------------------------------------------------------------------
@@ -31,11 +33,11 @@ URxvt.lineSpace:            0
 URxvt.allow_bold:           true
 
 /* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-URxvt*font: xft:Terminus:pixelsize=13
+URxvt*font: xft:Terminus:pixelsize=12
 !URxvt*boldFont: xft:Monospace:pixelsize=14
 
 ! Fix font space
-URxvt*letterSpace: -1
+! URxvt*letterSpace: -1
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
@@ -54,15 +56,26 @@ URxvt.cursorUnderline:      false
 ! Pointer
 URxvt.pointerBlank:         true
 
+!-------------------------------------------------------------------------------
+! xterm settings
+!-------------------------------------------------------------------------------
+
+
 xterm*font: fixed
 xterm*boldFont: fixed
 xterm*boldMode: false
 
-! Ctrl-Shift-V to paste.
 xterm*selectToClipboard: true
 xterm*faceName: Terminus:pixelsize=12
 
-*font: xft:Terminus:pixelsize=12
+xterm*cursorBlink: true
+
+! Ctrl-Shift-V to paste.
+*VT100*translations: #override \
+    Ctrl <Btn1Up>: exec-formatted("xmessage '%t'", PRIMARY) \n\
+    Ctrl Shift <KeyPress> V: insert-selection(PRIMARY, CUT_BUFFER0) \n
+http://google.com
+
 !*font: xft:Source Code Pro for Powerline:pixelsize=10
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
