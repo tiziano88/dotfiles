@@ -82,13 +82,15 @@ Bundle "tpope/vim-fugitive"
 try
   source /usr/share/vim/google/google.vim
   Glug grok
-  " source /usr/share/vim/google/runtime/grok.vim
+  Glug relatedfiles
+  Glug blaze
+  Glug grok
+  Glug gtimporter
 "  source /usr/share/vim/google/gtags.vim
-  "source /usr/share/vim/google/runtime/gtimporter.vim
-  "source ~/gtimporter.vim
 "  source /google/data/ro/projects/vigor/vigor.vim
 "  Glug youcompleteme-google
 catch
+  " Ignore errors if not running in Google.
 endtry
 
 
@@ -107,68 +109,24 @@ let g:ctrlp_max_height = 100
 "let g:changes_vcs_check=1
 "let g:changes_vcs_system='git'
 
- " neocomplcache {
-    let g:neocomplcache_enable_at_startup = 1
-    let g:neocomplcache_enable_camel_case_completion = 1
-    let g:neocomplcache_enable_smart_case = 1
-    let g:neocomplcache_enable_underbar_completion = 1
-    let g:neocomplcache_min_syntax_length = 3
-    let g:neocomplcache_enable_auto_delimiter = 1
-    let g:neocomplcache_max_list = 15
-    let g:neocomplcache_auto_completion_start_length = 3
-    let g:neocomplcache_force_overwrite_completefunc = 1
-    "let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
+  " Enable omni completion.
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType go setlocal omnifunc=go#complete#Complete
 
-    " AutoComplPop like behavior.
-    let g:neocomplcache_enable_auto_select = 0
+  autocmd BufWrite *.go :silent Fmt
 
-    " Define keyword.
-    if !exists('g:neocomplcache_keyword_patterns')
-      let g:neocomplcache_keyword_patterns = {}
-    endif
-    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+  autocmd BufNewFile,BufRead *.less setf less
 
-    " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType go setlocal omnifunc=go#complete#Complete
-
-    autocmd BufWrite *.go :silent Fmt
-
-    autocmd BufNewFile,BufRead *.less setf less
-
-    " Enable heavy omni completion.
-    if !exists('g:neocomplcache_omni_patterns')
-        let g:neocomplcache_omni_patterns = {}
-    endif
-    let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-    let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-    let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-    let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-    let g:neocomplcache_omni_patterns.java = '\%(\.\|->\)\h\w*'
-    let g:neocomplcache_omni_patterns.go = '\%(\h\w*\|)\)\.'
-
-    let g:neocomplcache_omni_patterns = {}
-
-    " For snippet_complete marker.
-    if has('conceal')
-        set conceallevel=2 concealcursor=i
-    endif
-
-    "inoremap <expr><CR> pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
-    "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-    "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
-    function! s:check_back_space()
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1] =~ '\s'
-    endfunction
- " }
+  " For snippet_complete marker.
+  if has('conceal')
+      set conceallevel=2 concealcursor=i
+  endif
 
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_guide_size = 1
@@ -180,11 +138,6 @@ let g:ctrlp_max_height = 100
   autocmd FileType html setl expandtab | setl softtabstop=0 | setl shiftwidth=2 | setl tabstop=2
   autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
   autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
-
-"  autocmd VimEnter * RainbowParenthesesToggle
-"  autocmd Syntax * RainbowParenthesesLoadRound
-"  autocmd Syntax * RainbowParenthesesLoadSquare
-"  autocmd Syntax * RainbowParenthesesLoadBraces
 
 " org-mode {
   let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
