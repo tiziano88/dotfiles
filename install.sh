@@ -24,5 +24,7 @@
 
 # wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
+# cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "cat >> ~/.ssh/authorized_keys"
+
 set -x
 stow -v -d ~/dotfiles common
