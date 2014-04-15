@@ -86,7 +86,7 @@ try
   Glug blaze
   Glug grok
   Glug gtimporter
-"  source /usr/share/vim/google/gtags.vim
+  source /usr/share/vim/google/gtags.vim
 "  source /google/data/ro/projects/vigor/vigor.vim
 "  Glug youcompleteme-google
 catch
@@ -260,6 +260,7 @@ let g:ctrlp_max_height = 100
     " ,jc shows corrections for the current line of java
     nnoremap <silent> <LocalLeader>jc :JavaCorrect<cr>
     " 'open' on OSX will open the url in the default browser without issue
+    let g:EclimLoggingDisabled = 1
 
     "  Save the current file, run buildifier to fix formatting, and reload it
     command! Buildify :w | execute "!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %" | edit
