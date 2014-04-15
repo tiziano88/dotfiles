@@ -1,5 +1,5 @@
 [apply]
-	whitespace = fix
+    #whitespace = fix
 [color]
 	ui = auto
 	interactive = auto
