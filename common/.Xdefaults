@@ -29,6 +29,9 @@ URxvt.saveLines:            50
 URxvt.internalBorder:       3
 URxvt.lineSpace:            0
 
+! Disable box for inputting unicode symbols.
+URxvt.iso14755: false
+
 ! Fonts
 URxvt.allow_bold:           true
 
@@ -44,9 +47,13 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher
+URxvt.perl-ext-common:      default,matcher,clipboard
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          google-chrome
+
+!URxvt.keysym.C-S-c:   perl:clipboard:copy
+URxvt.keysym.C-v:   perl:clipboard:paste
+URxvt.keysym.C-S-v: perl:clipboard:paste
 
 ! Cursor
 URxvt.cursorBlink:          true
@@ -56,10 +63,10 @@ URxvt.cursorUnderline:      false
 ! Pointer
 URxvt.pointerBlank:         true
 
+
 !-------------------------------------------------------------------------------
 ! xterm settings
 !-------------------------------------------------------------------------------
-
 
 xterm*font: fixed
 xterm*boldFont: fixed

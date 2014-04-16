@@ -81,11 +81,13 @@ Bundle "tpope/vim-fugitive"
 
 try
   source /usr/share/vim/google/google.vim
-  Glug grok
-  Glug relatedfiles
   Glug blaze
+  Glug codefmt auto_filetypes+=BUILD
+  Glug grok
   Glug grok
   Glug gtimporter
+  Glug relatedfiles
+  Glug ultisnips-google
   source /usr/share/vim/google/gtags.vim
 "  source /google/data/ro/projects/vigor/vigor.vim
 "  Glug youcompleteme-google
