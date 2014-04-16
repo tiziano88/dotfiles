@@ -73,7 +73,8 @@ Plugin 'groenewege/vim-less'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-vinegar'
-Plugin 'Blackrush/vim-gocode'
+"Plugin 'Blackrush/vim-gocode'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -121,7 +122,6 @@ let g:ctrlp_max_height = 100
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType go setlocal omnifunc=go#complete#Complete
 
   autocmd BufWrite *.go :silent Fmt
 
