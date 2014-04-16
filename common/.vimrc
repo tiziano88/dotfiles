@@ -63,7 +63,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'ShowMarks'
-Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
@@ -75,6 +74,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-vinegar'
 Plugin 'Blackrush/vim-gocode'
+
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 "may be slow
 Plugin 'tpope/vim-fugitive'
