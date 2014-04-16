@@ -265,8 +265,8 @@ let g:ctrlp_max_height = 100
     let g:EclimLoggingDisabled = 1
 
     "  Save the current file, run buildifier to fix formatting, and reload it
-    command! Buildify :w | execute "!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %" | edit
-    command! Gofmt :w | execute "!go fmt %"
+    command! Buildify :w | execute '!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %' | edit
+    command! Gofmt :w | execute '!go fmt %'
 
 "    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
 " }
@@ -343,8 +343,8 @@ let g:tagbar_type_go = {
 \ }
 
 "set omnifunc="<c-x><c-u>"
-let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-let g:SuperTabDefaultCompletionTypeDiscovery = ["&completefunc:<c-x><c-u>","&omnifunc:<c-x><c-u>"]
+let g:SuperTabDefaultCompletionType = '<c-x><c-u>'
+let g:SuperTabDefaultCompletionTypeDiscovery = ['&completefunc:<c-x><c-u>','&omnifunc:<c-x><c-u>']
 let g:SuperTabLongestHighlight = 1
 
 "source /google/src/head/depot/eng/vim/runtime/outline_window.vim
@@ -413,16 +413,16 @@ set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
 
 function! EnsureDir(dir)
   if isdirectory(a:dir) == 0
-    execute "silent !mkdir -p " . a:dir
+    execute 'silent !mkdir -p ' . a:dir
   endif
 endfunction
 
 " Setting up the directories
 set backup       " backups are nice ...
-:call EnsureDir("~/.vim/backup")
-:call EnsureDir("~/.vim/swap")
-:call EnsureDir("~/.vim/views")
-:call EnsureDir("~/.vim/undo")
+:call EnsureDir('~/.vim/backup')
+:call EnsureDir('~/.vim/swap')
+:call EnsureDir('~/.vim/views')
+:call EnsureDir('~/.vim/undo')
 set backupdir=~/.vim/backup " but not when they clog .
 " For crontab -e editing
 set backupskip=/tmp/*,/private/tmp/*
@@ -434,8 +434,8 @@ set noautochdir
 let g:UltiSnipsExpandTrigger='<c-j>'
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
-let g:UltiSnipsSnippetsDir="~/.vim/mysnippets"
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "mysnippets"]
+let g:UltiSnipsSnippetsDir='~/.vim/mysnippets'
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'mysnippets']
 
 set expandtab
 set textwidth=100 "0
@@ -470,8 +470,8 @@ set background=dark     " Assume a dark background
 "    let g:solarized_termtrans=1
 let g:solarized_termcolors=16
 "    let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_diffmode="high"    "default value is normal
+let g:solarized_contrast='high'
+let g:solarized_diffmode='high'    "default value is normal
 "    let g:solarized_visibility="high"
 colorscheme solarized
 
@@ -503,15 +503,15 @@ func! MultiDiffSetup()
   argdelete *:
 
   " Then we pair up everything else in tabs with vertical diff splits
-  exe "silent edit " . fnameescape(argv(0))
-  exe "silent vertical diffsplit " . fnameescape(argv(1))
+  exe 'silent edit ' . fnameescape(argv(0))
+  exe 'silent vertical diffsplit ' . fnameescape(argv(1))
   wincmd =
 
   let s:idx = 2
   while s:idx < argc()
     tabnew
-    exe "silent edit " . fnameescape(argv(s:idx))
-    exe "silent vertical diffsplit " . fnameescape(argv(s:idx + 1))
+    exe 'silent edit ' . fnameescape(argv(s:idx))
+    exe 'silent vertical diffsplit ' . fnameescape(argv(s:idx + 1))
     wincmd =
     let s:idx += 2
   endwhile
@@ -532,7 +532,7 @@ endif
 augroup g4file
   " Do filetypedetect for files ending in version markers as if they didn't
   au!
-  au BufRead ?\+#[0-9]\+  exe "doau filetypedetect BufRead " . fnameescape(substitute(expand("<afile>"), '#[0-9]\+$', '', ''))
+  au BufRead ?\+#[0-9]\+  exe 'doau filetypedetect BufRead ' . fnameescape(substitute(expand('<afile>'), '#[0-9]\+$', '', ''))
 augroup END
 
 set tabpagemax=15     " only show 15 tabs
@@ -723,7 +723,7 @@ inoremap <F12> <Esc> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 "au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
 
 " AutoClose
-let g:AutoClosePairs_del = "{}"
+let g:AutoClosePairs_del = '{}'
 
 " GUI Settings
 " GVIM- (here instead of .gvimrc)
@@ -755,7 +755,7 @@ set diffopt+=vertical
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function! ToggleWrap()
   if &wrap
-    echo "Wrap OFF"
+    echo 'Wrap OFF'
     setlocal nowrap
     silent! nunmap <buffer> <Up>
     silent! nunmap <buffer> <Down>
@@ -766,7 +766,7 @@ function! ToggleWrap()
     silent! iunmap <buffer> <Home>
     silent! iunmap <buffer> <End>
   else
-    echo "Wrap ON"
+    echo 'Wrap ON'
     setlocal wrap linebreak nolist
     setlocal display+=lastline
     noremap  <buffer> <silent> <Up>   gk
@@ -786,10 +786,10 @@ command! -nargs=* -complete=file PRevert :!g4 revert %
 command! -nargs=* -complete=file PDiff :!g4 diff %
 
 function! s:CheckOutFile()
-  if filereadable(expand("%")) && ! filewritable(expand("%"))
+  if filereadable(expand('%')) && ! filewritable(expand('%'))
     let s:pos = getpos('.')
-    let option = confirm("Readonly file, do you want to checkout from p4?"
-          \, "&Yes\n&No", 1, "Question")
+    let option = confirm('Readonly file, do you want to checkout from p4?'
+          \, '&Yes\n&No', 1, 'Question')
     if option == 1
       PEdit
     endif
@@ -845,7 +845,7 @@ command! G5diff call DoGit5Diff()
 
 function! G3RelPath()
   let path = expand('%:.:h')
-  let rule = path . ":all"
+  let rule = path . ':all'
   execute ':!blaze build '.rule
   echo rule
 endfunction
@@ -922,11 +922,11 @@ command! GvimColorTest call GvimColorTest('gvim-color-test.tmp')
 map gf :call DoGf()<ENTER>
 
 function! DoGf()
-  let file = expand("<cfile>")
-  if match(file, "^//production") == 0
-    let google3 = substitute(expand("%:p"), "/google3/.*", "/google3/", "")
+  let file = expand('<cfile>')
+  if match(file, '^//production') == 0
+    let google3 = substitute(expand('%:p'), '/google3/.*', '/google3/', '')
   else
-    let google3 = ""
+    let google3 = ''
   endif
-  exe "edit " . google3 . file
+  exe 'edit ' . google3 . file
 endfun
