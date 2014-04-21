@@ -92,7 +92,6 @@ try
   Glug relatedfiles
   Glug ultisnips-google
   source /usr/share/vim/google/gtags.vim
-"  source /google/data/ro/projects/vigor/vigor.vim
 "  Glug youcompleteme-google
 catch
   " Ignore errors if not running in Google.
@@ -348,13 +347,6 @@ let g:tagbar_type_go = {
 let g:SuperTabDefaultCompletionType = '<c-x><c-u>'
 let g:SuperTabDefaultCompletionTypeDiscovery = ['&completefunc:<c-x><c-u>','&omnifunc:<c-x><c-u>']
 let g:SuperTabLongestHighlight = 1
-
-"source /google/src/head/depot/eng/vim/runtime/outline_window.vim
-"nnoremap ,g :call OutlineWindow()<CR>
-
-"source /google/src/head/depot/eng/vim/runtime/util/piper_tools.vim
-nnoremap ;j :call PT_SelectActiveFiles()<CR>
-nnoremap ;e :call PT_LoadActiveAsBuffers()<CR>
 
 " General
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org set filetype=org

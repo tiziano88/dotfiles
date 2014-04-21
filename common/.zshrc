@@ -7,6 +7,8 @@ source_() {
 source ~/.aliases
 source ~/.env
 
+source_ ~/.google.sh
+
 # ^ in glob negates pattern following it
 setopt extendedglob
 
@@ -29,9 +31,6 @@ SAVEHIST=$HISTSIZE
 source ~/liquidprompt/liquidprompt
 
 source_ ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# citc
-source_ /etc/bash_completion.d/g4d
 
 # git
 fpath=(~/.zsh $fpath)
@@ -60,9 +59,6 @@ skip_global_compinit=1
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 # shopt -s checkwinsize
-
-# blaze autocompletion
-source_ /home/build/nonconf/google3/devtools/blaze/scripts/blaze-complete.bash
 
 # fileutil autocompletion
 # source_ /home/miotov/.bash_fileutil_autocomplete
