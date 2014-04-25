@@ -52,8 +52,8 @@ URxvt.matcher.button:       1
 URxvt.urlLauncher:          google-chrome
 
 !URxvt.keysym.C-S-c:   perl:clipboard:copy
-URxvt.keysym.C-v:   perl:clipboard:paste
-URxvt.keysym.C-S-v: perl:clipboard:paste
+!URxvt.keysym.C-v:   perl:clipboard:paste
+URxvt.keysym.C-S-v:          perl:clipboard:paste
 
 ! Cursor
 URxvt.cursorBlink:          true

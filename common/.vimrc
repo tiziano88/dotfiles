@@ -75,6 +75,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-vinegar'
 "Plugin 'Blackrush/vim-gocode'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-pandoc/vim-pandoc'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
