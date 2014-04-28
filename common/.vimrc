@@ -63,7 +63,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'ShowMarks'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
@@ -84,7 +83,7 @@ Plugin 'honza/vim-snippets'
 "may be slow
 Plugin 'tpope/vim-fugitive'
 
-try
+if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
   Glug blaze
   Glug codefmt auto_filetypes+=BUILD
@@ -93,12 +92,11 @@ try
   Glug gtimporter
   Glug relatedfiles
   Glug ultisnips-google
+  Glug youcompleteme-google
   source /usr/share/vim/google/gtags.vim
-"  Glug youcompleteme-google
-catch
-  " Ignore errors if not running in Google.
-endtry
-
+else
+  Plugin 'Valloric/YouCompleteMe'
+endif
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$\|magicjar',
