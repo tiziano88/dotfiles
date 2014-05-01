@@ -28,4 +28,3 @@
 
 set -x
 stow -v -d ~/dotfiles -t ~ common
-stow -v -d ~/dotfiles -t /etc etc
