@@ -1,7 +1,8 @@
 Config {
   bgColor = "black",
   fgColor = "green",
-  position = TopSize C 100 10,
+  position = Bottom,
+  -- position = TopSize C 100 10,
   lowerOnStart = False,
   allDesktops = True,
   borderColor = "blue",
