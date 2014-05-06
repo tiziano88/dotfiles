@@ -1,49 +1,13 @@
 #!/bin/bash
 
-# ASFE shortcuts
-# Super dev mode
-alias run-sdm='java/com/google/ads/syn/adsense/fe/devtools/run-sdm --fusion'
-alias run-fusion='java/com/google/ads/syn/adsense/fe/devtools/run-asfe --fusion --debug'
-alias run-asfe='java/com/google/ads/syn/adsense/fe/devtools/run-asfe --debug'
-alias run-adx='java/com/google/ads/syn/adsense/fe/run-adx'
-alias run-oophm='java/com/google/ads/syn/adsense/fe/devtools/run-oophm --fusion --debug'
-alias run-arc-service='java/com/google/ads/syn/adsense/fe/star/service/run-arc-service'
-alias sync-asfe-green='git5 sync @`/home/build/static/projects/testing/tap/scripts/last_green_cl --project asfe_all`'
-alias tap-submit='/home/build/static/projects/testing/tap/scripts/tap_presubmit --project=asfe_all'
-alias run-inventory='java/com/google/ads/syn/inventory/service/run-inventory-service --setup_alerts_server'
-
-alias wp_summary='/home/build/google3/experimental/tzn/monetizer/wp_summary.sh'
-
-alias cl_deps='/google/data/ro/projects/devtools/depserver/deps/legacy/cl_deps.par'
-
-alias adb='/home/build/static/projects/android/adb'
-
-# Blaze shortcuts
-alias b='blaze build'
-alias t='blaze test'
-
-# Borg
-alias borgdiff='/google/data/ro/projects/borg/borgdiff'
-
-alias btcfg='/google/data/ro/projects/bigtable/contrib/btcfg/btcfg'
-
-alias lj='/home/flume-user/bin/lj'
-alias gtags='/home/build/nonconf/google3/tools/tags/gtags.sh'
-
-alias g5='/google/data/ro/projects/shelltoys/g5.sar'
-
-# Git(5) shortcuts
+# Git shortcuts
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
 alias gco='git checkout'
 alias gp='git push'
 alias gst='git status'
-alias ge='git5 export'
-alias gt='git5 tap'
 alias gd='git diff'
-
-alias g3='cd "${PWD/\/google3\/*//google3}"'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -77,25 +41,14 @@ alias gitbox='~/src/gitbox/gitbox'
 
 alias tmux='TERM=screen-256color-bce tmux'
 
-alias gitbox='~/src/gitbox/gitbox'
-
 alias emacs='emacs -nw'
 
 alias menu='/home/shine/share/menu/menu.par puddinglane,pavilion,londondeli'
 alias ack=ack-grep
-#alias mount='mount | column -t'
 alias ports='netstat -tulanp'
 
-alias buildifier='/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix'
-alias gclfmt='/google/data/ro/projects/borg/gclfmt -a'
-alias fixdeps='/google/data/ro/projects/demolition/requireddeps.par --fix'
 #alias lock='gnome-screensaver-command -l'
 alias org='vim ~/tzn.org'
-
-alias glaze='/google/src/head/depot/google3/third_party/go/bin/glaze'
-alias live_borgdiff='live_borgdiff --diff_command="diff -u"'
-
-alias prodaccess='prodaccess -g'
 
 # https://github.com/LuRsT/hr/blob/master/hr
 function hr {

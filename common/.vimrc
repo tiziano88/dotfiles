@@ -85,7 +85,7 @@ Plugin 'tpope/vim-fugitive'
 
 if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
-  Glug blaze
+  Glug blaze plugin[mappings]='<leader>b'
   Glug codefmt auto_filetypes+=BUILD
   Glug grok
   Glug grok
@@ -281,7 +281,7 @@ nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async<CR>
 nnoremap <leader>/ :<C-u>Unite grep:.<CR>
 nnoremap <leader>* :<C-u>Unite grep:.<CR><C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>y :<C-u>Unite history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
+"nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
 nnoremap <leader>g :<C-u>Unite grep:.<CR>
 "nnoremap <C-r> <plug>(unite_redraw)
 
