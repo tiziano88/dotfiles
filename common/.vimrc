@@ -559,6 +559,11 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
+augroup AutoDiffUpdate
+  au!
+  autocmd InsertLeave * if &diff | diffupdate | endif
+augroup end
+
 if has('cmdline_info')
   set noruler                   " show the ruler
   "  set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
