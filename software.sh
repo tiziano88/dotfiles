@@ -17,6 +17,7 @@ SOFTWARE=(
   parcellite
   parted
   python
+  python-dev
   rxvt-unicode
   stow
   sudo
