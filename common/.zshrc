@@ -64,13 +64,41 @@ skip_global_compinit=1
 # source_ /home/miotov/.bash_fileutil_autocomplete
 
 set -o vi
+
+# Timeout for escape sequences, in 0.01 seconds.
+# http://dougblack.io/words/zsh-vi-mode.html
+export KEYTIMEOUT=1
+
+# Mode indicator.
+# http://dougblack.io/words/zsh-vi-mode.html
+function zle-line-init zle-keymap-select {
+  typeset -A namemap
+  namemap=(
+    main INSERT
+    vicmd NORMAL
+  )
+  typeset -A colormap
+  colormap=(
+    main ${bg[yellow]}${fg[white]}
+    vicmd ${bg[red]}${fg[white]}
+  )
+  VIM_PROMPT="%{${colormap[$KEYMAP]}%}${namemap[$KEYMAP]}%{$reset_color%}"
+  RPS1="$VIM_PROMPT $EPS1"
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 
-bindkey '\e[A' history-search-backward
-bindkey '\e[B' history-search-forward
+#bindkey '\e[A' history-search-backward
+#bindkey '\e[B' history-search-forward
+bindkey '\e[A' up-line-or-search
+bindkey '\e[B' down-line-or-search
 set show-all-if-ambiguous on
 set completion-ignore-case on
 
@@ -79,8 +107,8 @@ bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 bindkey -M vicmd '^[h' run-help
 bindkey -M viins '^[h' run-help
-bindkey -M viins '^p'  up-line-or-history
-bindkey -M viins '^n'  down-line-or-history
+#bindkey -M viins '^p'  up-line-or-history
+#bindkey -M viins '^n'  down-line-or-history
 bindkey -M viins '^w'  backward-kill-word
 bindkey -M viins '^h'  backward-delete-char
 bindkey -M viins '^?'  backward-delete-char
