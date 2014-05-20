@@ -5,6 +5,7 @@ set -x
 # to install:
 SOFTWARE=(
   atool
+  build-essential
   cmake
   git
   golang
