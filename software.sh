@@ -1,12 +1,14 @@
 #!/bin/sh
 
+set -x
+
 # to install:
 SOFTWARE=(
   atool
   cmake
   git
-  go
-  gvim
+  golang
+  vim
   htop
   keychain
   mutt
@@ -23,10 +25,7 @@ SOFTWARE=(
   zsh
 )
 
-for i in "${SOFTWARE[@]}"
-do
-  sudo apt-get install $i
-done
+sudo apt-get install "${SOFTWARE[@]}"
 
 # git clone git@bitbucket.org:tiziano88/dotfiles.git
 # git clone git@github.com:zsh-users/zsh-syntax-highlighting.git
