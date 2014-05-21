@@ -18,6 +18,7 @@ SOFTWARE=(
   parted
   python
   python-dev
+  rlwrap
   rxvt-unicode
   stow
   sudo
