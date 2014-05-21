@@ -90,6 +90,15 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+# Clean up previous lines.
+function zle-line-finish {
+  VIM_PROMPT=""
+  RPS1="$VIM_PROMPT $EPS1"
+  zle reset-prompt
+}
+
+zle -N zle-line-finish
+
 bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
@@ -103,10 +112,10 @@ set show-all-if-ambiguous on
 set completion-ignore-case on
 
 # bindkey '^V' paste-from-clipboard
-bindkey '^[[7~' beginning-of-line
-bindkey '^[[8~' end-of-line
-bindkey -M vicmd '^[h' run-help
-bindkey -M viins '^[h' run-help
+#bindkey '^[[7~' beginning-of-line
+#bindkey '^[[8~' end-of-line
+#bindkey -M vicmd '^[h' run-help
+#bindkey -M viins '^[h' run-help
 #bindkey -M viins '^p'  up-line-or-history
 #bindkey -M viins '^n'  down-line-or-history
 bindkey -M viins '^w'  backward-kill-word

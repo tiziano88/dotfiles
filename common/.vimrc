@@ -18,10 +18,7 @@ endif
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Plugin 'gmarik/vundle'
 
-"Plugin 'kablamo/vim-git-log'
-"Plugin 'mhinz/vim-startify'
-"Plugin 'sudar/vim-arduino-syntax'
-"Plugin 'amiorin/vim-project'
+
 "Plugin 'Lokaltog/vim-powerline'
 "Plugin 'Rip-Rip/clang_complete'
 "Plugin 'Shougo/neocomplcache'
@@ -29,6 +26,7 @@ Plugin 'gmarik/vundle'
 "Plugin 'Twinside/vim-haskellConceal'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'a.vim'
+"Plugin 'amiorin/vim-project'
 "Plugin 'chrisbra/NrrwRgn'
 "Plugin 'chrisbra/changesPlugin'
 "Plugin 'corntrace/bufexplorer'
@@ -36,9 +34,11 @@ Plugin 'gmarik/vundle'
 "Plugin 'ervandew/supertab'
 "Plugin 'hsitz/VimOrganizer'
 "Plugin 'jceb/vim-orgmode'
+"Plugin 'kablamo/vim-git-log'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'mbbill/VimExplorer'
 "Plugin 'mhinz/vim-signify'
+"Plugin 'mhinz/vim-startify'
 "Plugin 'mhinz/vim-tmuxify'
 "Plugin 'mileszs/ack.vim'
 "Plugin 'msanders/snipmate.vim'
@@ -46,9 +46,9 @@ Plugin 'gmarik/vundle'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/syntastic'
 "Plugin 'sjl/gundo.vim'
 "Plugin 'sjl/splice.vim'
+"Plugin 'sudar/vim-arduino-syntax'
 "Plugin 't9md/vim-quickhl'
 "Plugin 'tsaleh/vim-matchit'
 "Plugin 'tyok/nerdtree-ack'
@@ -58,6 +58,7 @@ Plugin 'gmarik/vundle'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vimoutliner/vimoutliner'
 "Plugin 'wincent/Command-T'
+"Plugin 'vim-pandoc/vim-pandoc'
 
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
@@ -70,12 +71,12 @@ Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
-"Plugin 'Blackrush/vim-gocode'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'tpope/vim-markdown'
-"Plugin 'vim-pandoc/vim-pandoc'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -93,6 +94,7 @@ if filereadable(expand('~/.at_google'))
   Glug relatedfiles
   Glug ultisnips-google
   Glug youcompleteme-google
+  Glug syntastic-google
   source /usr/share/vim/google/gtags.vim
 else
   Plugin 'Valloric/YouCompleteMe'
@@ -106,6 +108,8 @@ let g:ctrlp_custom_ignore = {
 " match by filename rather than full path (<c-d> in the prompt)
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 100
+
+let g:syntastic_always_populate_loc_list = 1
 
 " changesPlugin
 
