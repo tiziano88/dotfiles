@@ -4,10 +4,6 @@ filetype indent on
 syntax on
 let g:disable_google_optional_settings=1
 
-set rtp+=~/.vim/bundle/vundle/
-"set rtp+=/usr/local/go/misc/vim/
-call vundle#rc()
-
 if &term =~ '^screen'
   " tmux will send xterm-style keys when its xterm-keys option is on
   execute "set <xUp>=\e[1;*A"
@@ -15,6 +11,12 @@ if &term =~ '^screen'
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
 endif
+
+"set rtp+=/usr/local/go/misc/vim/
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Plugin 'gmarik/vundle'
 
@@ -83,6 +85,8 @@ Plugin 'honza/vim-snippets'
 
 "may be slow
 Plugin 'tpope/vim-fugitive'
+
+call vundle#end()
 
 if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
