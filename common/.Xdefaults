@@ -29,6 +29,9 @@ URxvt.saveLines:            50
 URxvt.internalBorder:       3
 URxvt.lineSpace:            0
 
+! Disable high intensity style for bold font.
+URxvt.intensityStyles:      false
+
 ! Disable box for inputting unicode symbols.
 URxvt.iso14755: false
 

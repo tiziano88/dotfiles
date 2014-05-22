@@ -35,6 +35,9 @@ sudo apt-get install "${SOFTWARE[@]}"
 # git clone git@github.com:nojhan/liquidprompt.git
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+
 # wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
 # cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "cat >> ~/.ssh/authorized_keys"
+
+# Edit /usr/sbin/lightdm-session and remove '-nocpp'.
