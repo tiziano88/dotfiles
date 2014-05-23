@@ -75,6 +75,7 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
@@ -626,6 +627,8 @@ set formatoptions+=c " wrap comments
 set formatoptions+=r " insert comment leader after <enter>
 set formatoptions-=o " do not insert comment leader after o or O
 set formatoptions+=j " remove comment leader when joining lines
+
+set shm+=A " no warnings about swap files
 
 func! MailSetup()
   setlocal formatoptions=aw
