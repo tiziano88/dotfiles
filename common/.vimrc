@@ -92,14 +92,14 @@ call vundle#end()
 if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
   Glug blaze plugin[mappings]='<leader>b'
-  Glug codefmt auto_filetypes+=BUILD
+  Glug codefmt auto_filetypes+=BUILD auto_all=1
   Glug grok
   Glug grok
   Glug gtimporter
   Glug relatedfiles
+  Glug syntastic-google
   Glug ultisnips-google
   Glug youcompleteme-google
-  Glug syntastic-google
   source /usr/share/vim/google/gtags.vim
 else
   Plugin 'Valloric/YouCompleteMe'
