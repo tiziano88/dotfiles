@@ -4,6 +4,7 @@ set -x
 
 # to install:
 SOFTWARE=(
+  ack-grep
   atool
   build-essential
   cmake
