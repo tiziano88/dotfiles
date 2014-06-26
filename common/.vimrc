@@ -133,9 +133,9 @@ let g:syntastic_always_populate_loc_list = 1
 
   autocmd BufWrite *.go :silent Fmt
 
-  autocmd BufNewFile,BufRead *.less :set syntax=less
-  autocmd BufNewFile,BufRead *.sql :set syntax=mysql
-  autocmd BufNewFile,BufRead *.go :set syntax=go
+  autocmd BufNewFile,BufRead *.go setf go
+  autocmd BufNewFile,BufRead *.sql setf mysql
+  autocmd BufNewFile,BufRead *.less setf less
 
   " For snippet_complete marker.
   if has('conceal')
