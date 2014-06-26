@@ -18,7 +18,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 
 "Plugin 'Lokaltog/vim-powerline'
@@ -65,7 +65,7 @@ Plugin 'gmarik/vundle'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'ShowMarks'
+"Plugin 'ShowMarks'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
@@ -96,7 +96,7 @@ if filereadable(expand('~/.at_google'))
   Glug grok
   Glug grok
   Glug gtimporter
-  Glug relatedfiles
+  Glug relatedfiles plugin[mappings]=',f'
   Glug syntastic-google
   Glug ultisnips-google
   Glug youcompleteme-google
@@ -133,7 +133,9 @@ let g:syntastic_always_populate_loc_list = 1
 
   autocmd BufWrite *.go :silent Fmt
 
-  autocmd BufNewFile,BufRead *.less setf less
+  autocmd BufNewFile,BufRead *.less :set syntax=less
+  autocmd BufNewFile,BufRead *.sql :set syntax=mysql
+  autocmd BufNewFile,BufRead *.go :set syntax=go
 
   " For snippet_complete marker.
   if has('conceal')
