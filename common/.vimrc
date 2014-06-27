@@ -364,6 +364,7 @@ au! BufRead,BufWrite,BufWritePost,BufNewFile *.org set filetype=org
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.borg set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.xml set colorcolumn=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.gcl set colorcolumn=80
 "au BufEnter *.org set filetype=org
 
 
