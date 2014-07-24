@@ -71,14 +71,15 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
-Plugin 'jnwhiteh/vim-golang'
+"Plugin 'jnwhiteh/vim-golang'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+"Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-markdown'
 
 Plugin 'SirVer/ultisnips'
@@ -131,9 +132,11 @@ let g:syntastic_always_populate_loc_list = 1
   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-  autocmd BufWrite *.go :silent Fmt
+  let g:go_auto_type_info = 1
 
-  autocmd BufNewFile,BufRead *.go setf go
+  "autocmd BufWrite *.go :silent Fmt
+
+  "autocmd BufNewFile,BufRead *.go setf go
   autocmd BufNewFile,BufRead *.sql setf mysql
   autocmd BufNewFile,BufRead *.less setf less
 
@@ -304,25 +307,46 @@ let g:Powerline_symbols = 'compatible'
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+" let g:airline_left_sep = '»'
+" let g:airline_right_sep = '«'
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '|'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" Too noisy for google3
+let g:airline#extensions#whitespace#enabled = 0
+
+" Show Go identifier under cursor instead of tagbar section.
+let s:go_last_lookup_time = 0
+let s:go_last_lookup_value = ''
+function! GoI()
+  if s:go_last_lookup_time != localtime()
+    let s:go_last_lookup_value = go#complete#GetInfo()
+    let s:go_last_lookup_time = localtime()
   endif
+  return s:go_last_lookup_value
+endfunction
 
-  " unicode symbols
-  let g:airline_left_sep = '»'
-  let g:airline_right_sep = '«'
-  let g:airline_symbols.linenr = '¶'
-  let g:airline_symbols.branch = '⎇'
-  let g:airline_symbols.paste = 'ρ'
-  let g:airline_symbols.whitespace = 'Ξ'
+function! AirlineGoInit()
+  call airline#parts#define_function('go', 'GoI')
+  let g:airline_section_x = airline#section#create_right(['go', 'filetype'])
+endfunction
+autocmd FileType go call AirlineGoInit()
 
-  " Too noisy for google3
-  let g:airline#extensions#whitespace#enabled = 0
-
-  let g:airline#extensions#default#layout = [
-        \ [ 'a', 'b', 'c' ],
-        \ [ 'x', 'z', 'warning' ]
-        \ ]
+let g:airline#extensions#default#layout = [
+      \ [ 'a', 'b', 'c' ],
+      \ [ 'x', 'z', 'warning' ]
+      \ ]
 
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
@@ -800,14 +824,10 @@ command! -nargs=* -complete=file PDiff :!g4 diff %
 
 function! s:CheckOutFile()
   if filereadable(expand('%')) && ! filewritable(expand('%'))
-    let s:pos = getpos('.')
-    let option = confirm('Readonly file, do you want to checkout from p4?'
-          \, '&Yes\n&No', 1, 'Question')
+    let option = confirm('Readonly file, do you want to checkout from p4?', '&Yes\n&No', 1, 'Question')
     if option == 1
       PEdit
     endif
-    edit!
-    call cursor(s:pos[1:3])
   endif
 endfunction
 au FileChangedRO * nested :call <SID>CheckOutFile()
