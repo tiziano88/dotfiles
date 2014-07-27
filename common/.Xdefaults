@@ -46,19 +46,20 @@ URxvt.iso14755: false
 ! Fonts
 URxvt.allow_bold:           true
 
-/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
+!URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
 
-! Fix font space
-! URxvt*letterSpace: -1
+
+! Perl extensions
+URxvt.perl-ext-common:      default,clipboard,matcher
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          google-chrome
+URxvt.url-select.button:    1
+URxvt.url-select.underline: true
+URxvt.url-select.launcher:  google-chrome
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
-
-! Perl extensions
-URxvt.perl-ext-common:      default,matcher,clipboard
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          google-chrome
 
 !URxvt.keysym.C-S-c:   perl:clipboard:copy
 URxvt.keysym.C-v:   perl:clipboard:paste
@@ -71,7 +72,6 @@ URxvt.cursorUnderline:      false
 
 ! Pointer
 URxvt.pointerBlank:         true
-
 
 !-------------------------------------------------------------------------------
 ! xterm settings
