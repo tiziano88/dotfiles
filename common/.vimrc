@@ -78,8 +78,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
-"Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'fatih/vim-go'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+"Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-markdown'
 
 Plugin 'SirVer/ultisnips'
@@ -341,7 +341,7 @@ function! AirlineGoInit()
   call airline#parts#define_function('go', 'GoI')
   let g:airline_section_x = airline#section#create_right(['go', 'filetype'])
 endfunction
-autocmd FileType go call AirlineGoInit()
+"autocmd FileType go call AirlineGoInit()
 
 let g:airline#extensions#default#layout = [
       \ [ 'a', 'b', 'c' ],

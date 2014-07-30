@@ -104,10 +104,16 @@ bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
-#bindkey '\e[A' up-line-or-search
-#bindkey '\e[B' down-line-or-search
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+#bindkey '\e[A' history-beginning-search-backward
+#bindkey '\e[B' history-beginning-search-forward
+bindkey '\e[A' up-line-or-beginning-search
+bindkey '\e[B' down-line-or-beginning-search
+
 set show-all-if-ambiguous on
 set completion-ignore-case on
 
