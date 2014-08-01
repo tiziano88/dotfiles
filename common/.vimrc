@@ -292,7 +292,7 @@ let g:unite_source_rec_min_cache_files=0
 let g:unite_source_rec_max_cache_files=0
 let g:unite_source_history_yank_enable = 1
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async<CR>
-nnoremap <leader>/ :<C-u>Unite grep:.<CR>
+nnoremap <leader>/ :<C-u>Unite grep:<C-R>=expand('%:p:h')<CR><CR>
 nnoremap <leader>* :<C-u>Unite grep:.<CR><C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>y :<C-u>Unite history/yank<cr>
 "nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>

@@ -159,3 +159,9 @@ export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yello
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 eval $(keychain --eval)
 eval $(dircolors ~/.dir_colors)
+
+# Update prompt every second.
+TMOUT=1
+TRAPALRM() {
+  zle reset-prompt
+}
