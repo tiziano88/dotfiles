@@ -8,6 +8,7 @@ SOFTWARE=(
   atool
   build-essential
   cmake
+  fonts-ubuntu-font-family-console
   git
   golang
   vim
