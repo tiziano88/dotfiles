@@ -39,7 +39,6 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'kablamo/vim-git-log'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'mbbill/VimExplorer'
-"Plugin 'mhinz/vim-signify'
 "Plugin 'mhinz/vim-startify'
 "Plugin 'mhinz/vim-tmuxify'
 "Plugin 'mileszs/ack.vim'
@@ -66,7 +65,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 "Plugin 'ShowMarks'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'gregsexton/gitv'
@@ -80,7 +80,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 "Plugin 'fatih/vim-go'
-Plugin 'tpope/vim-markdown'
+"Plugin 'tpope/vim-markdown'
+Plugin 'terryma/vim-expand-region'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -139,6 +140,7 @@ let g:syntastic_always_populate_loc_list = 1
   "autocmd BufNewFile,BufRead *.go setf go
   autocmd BufNewFile,BufRead *.sql setf mysql
   autocmd BufNewFile,BufRead *.less setf less
+  autocmd BufNewFile,BufRead *.md setf markdown
 
   " For snippet_complete marker.
   if has('conceal')
