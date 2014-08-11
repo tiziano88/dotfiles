@@ -14,6 +14,7 @@ SOFTWARE=(
   vim
   htop
   keychain
+  mercurial
   mutt
   ntfs-3g
   parcellite
@@ -43,3 +44,12 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "cat >> ~/.ssh/authorized_keys"
 
 # Edit /usr/sbin/lightdm-session and remove '-nocpp'.
+
+GO_PACKAGES=(
+  code.google.com/p/go.tools/cmd/goimports
+  code.google.com/p/go.tools/cmd/oracle
+  github.com/golang/lint/golint
+  github.com/nsf/gocode
+)
+
+go get -u "${GO_PACKAGES[@]}"

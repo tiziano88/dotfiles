@@ -78,8 +78,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
-"Plugin 'fatih/vim-go'
+"Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'fatih/vim-go'
 "Plugin 'tpope/vim-markdown'
 Plugin 'terryma/vim-expand-region'
 
@@ -107,6 +107,12 @@ else
   Plugin 'Valloric/YouCompleteMe'
 endif
 
+let g:go_disable_autoinstall = 1
+let g:go_gocode_bin="gocode"
+let g:go_goimports_bin="goimports"
+let g:go_oracle_bin="oracle"
+let g:go_golint_bin="golint"
+
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$\|magicjar',
   \ 'file': '\.class$|\.exe$\|\.so$\|\.dll$',
@@ -133,11 +139,9 @@ let g:syntastic_always_populate_loc_list = 1
   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-  let g:go_auto_type_info = 1
-
   "autocmd BufWrite *.go :silent Fmt
 
-  "autocmd BufNewFile,BufRead *.go setf go
+  autocmd BufNewFile,BufRead *.go setf go
   autocmd BufNewFile,BufRead *.sql setf mysql
   autocmd BufNewFile,BufRead *.less setf less
   autocmd BufNewFile,BufRead *.md setf markdown
@@ -283,7 +287,7 @@ let g:syntastic_always_populate_loc_list = 1
 
     "  Save the current file, run buildifier to fix formatting, and reload it
     command! Buildify :w | execute '!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %' | edit
-    command! Gofmt :w | execute '!go fmt %'
+    "command! Gofmt :w | execute '!go fmt %'
 
 "    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
 " }
@@ -379,11 +383,6 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
-
-"set omnifunc="<c-x><c-u>"
-let g:SuperTabDefaultCompletionType = '<c-x><c-u>'
-let g:SuperTabDefaultCompletionTypeDiscovery = ['&completefunc:<c-x><c-u>','&omnifunc:<c-x><c-u>']
-let g:SuperTabLongestHighlight = 1
 
 " General
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org set filetype=org
