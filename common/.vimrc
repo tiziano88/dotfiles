@@ -142,9 +142,14 @@ let g:syntastic_always_populate_loc_list = 1
   "autocmd BufWrite *.go :silent Fmt
 
   autocmd BufNewFile,BufRead *.go setf go
+
   autocmd BufNewFile,BufRead *.sql setf mysql
+  autocmd BufNewFile,BufRead *.sql set filetype=mysql
+
   autocmd BufNewFile,BufRead *.less setf less
+
   autocmd BufNewFile,BufRead *.md setf markdown
+  autocmd BufNewFile,BufRead *.md set filetype=markdown
 
   " For snippet_complete marker.
   if has('conceal')
@@ -436,7 +441,8 @@ scriptencoding utf-8
 "else
 "  set guifont=Terminus\ Medium\ 9
 "endif
-set guifont=Terminus\ 9
+"set guifont=Terminus\ 16
+set guifont=Ubuntu\ Mono\ 14
 
 "set autowrite
 set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')

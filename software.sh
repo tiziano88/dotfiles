@@ -26,6 +26,7 @@ SOFTWARE=(
   stow
   sudo
   tmux
+  xdotool
   xfonts-terminus
   xfonts-terminus-oblique
   zsh
