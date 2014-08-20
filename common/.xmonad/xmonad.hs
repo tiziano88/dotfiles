@@ -99,8 +99,8 @@ myConfig hs = let c = gnomeConfig {
         takeTopFocus
         multiPP'
             (mergePPOutputs [ dynamicLogString ]) -- onlyTitle
-            myPP
-            myPP{ ppTitle = const "" }
+            focusedPP
+            nonFocusedPP
             hs
         updatePointer (TowardsCentre 0.2 0.2)
     , handleEventHook = ewmhDesktopsEventHook <+> fullscreenEventHook <+>
@@ -117,7 +117,7 @@ myConfig hs = let c = gnomeConfig {
     } in additionalKeysP c (myKeys c)
 
 -------------------- Keys ------------------------------------
-myKeys c = []
+myKeys c = [ ("M-p", shellPromptHere greenXPConfig) ]
 
 -------------------- Support for per-screen xmobars ---------
 -- Some parts of this should be merged into contrib sometime
@@ -127,8 +127,7 @@ getScreens = openDisplay "" >>= liftA2 (<*) f closeDisplay
 
 multiPP :: PP -- ^ The PP to use if the screen is focused
         -> PP -- ^ The PP to use otherwise
-        -> [Handle] -- ^ Handles for the status bars, in order of increasing X
-                    -- screen number
+        -> [Handle] -- ^ Handles for the status bars, in order of increasing X screen number
         -> X ()
 multiPP = multiPP' dynamicLogString
 
@@ -162,8 +161,12 @@ onlyTitle pp = defaultPP { ppCurrent = const ""
 xmobarScreen :: Int -> IO Handle
 xmobarScreen = spawnPipe . ("~/.cabal/bin/xmobar -x " ++) . show
 
-myPP :: PP
-myPP = sjanssenPP { ppLayout = xmobarColor "orange" "", ppUrgent = xmobarColor "red" "" . ('^':) }
+nonFocusedPP :: PP
+nonFocusedPP = xmobarPP { ppLayout = xmobarColor "orange" ""
+                        , ppUrgent = xmobarColor "red" "" . ('^':) }
+
+focusedPP :: PP
+focusedPP = nonFocusedPP
 
 --------------------------------------------------------------------------------
 
