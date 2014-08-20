@@ -69,6 +69,9 @@ set -o vi
 # http://dougblack.io/words/zsh-vi-mode.html
 export KEYTIMEOUT=1
 
+# Do not eat the space between tab completion and pipe.
+export ZLE_SPACE_SUFFIX_CHARS=$'|'
+
 # Mode indicator.
 # http://dougblack.io/words/zsh-vi-mode.html
 function zle-line-init zle-keymap-select {

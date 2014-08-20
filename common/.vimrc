@@ -187,6 +187,9 @@ let g:syntastic_always_populate_loc_list = 1
     "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
     "inoremap <expr><C-y>  neocomplcache#close_popup()
 
+    " Strip leading '//' from paths (e.g. '//depot...' in borgcfg).
+    set includeexpr=substitute(v:fname,'//','')
+
     " Disable Ex mode
     nnoremap Q <nop>
     nnoremap j gj
@@ -970,3 +973,54 @@ function! DoGf()
   endif
   exe 'edit ' . google3 . file
 endfun
+
+"----
+
+function! RelatedfilesGather(args, context)
+
+  let l:related_files_list = []
+  let l:found_files = relatedfiles#GetFiles(expand('%'))
+  for l:key in keys(l:found_files)
+    let l:group_files = l:found_files[l:key]
+    for l:full_filename in l:group_files
+      call add(l:related_files_list, l:full_filename)
+    endfor
+  endfor
+
+  return map(l:related_files_list, '{
+        \ "word": v:val,
+        \ "source": "relatedfiles",
+        \ "kind": "relatedfiles",
+        \ "action__path": printf("%s/%s.vim", v:val[1], v:val[0]),
+        \ "action__directory": v:val[1],
+        \ }')
+endfunction
+
+let s:unite_source = {
+      \ 'name': 'relatedfiles',
+      \ 'gather_candidates': function('RelatedfilesGather'),
+      \ }
+
+call unite#define_source(s:unite_source)
+
+function! Openf(candidate)
+  let l:path = a:candidate.word
+  if isdirectory(l:path)
+    execute 'Explore' l:path
+  else
+    execute 'edit' l:path
+  endif
+endfunction
+
+let s:kind = {
+      \ 'name': 'relatedfiles',
+      \ 'default_action': 'execute',
+      \ 'action_table': {
+      \ 'execute': {
+      \   'func': function('Openf'),
+      \   },
+      \ },
+      \ 'parents': [],
+      \ }
+
+call unite#define_kind(s:kind)

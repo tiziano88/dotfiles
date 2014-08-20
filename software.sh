@@ -29,6 +29,8 @@ SOFTWARE=(
   xdotool
   xfonts-terminus
   xfonts-terminus-oblique
+  xmobar
+  xmonad
   zsh
 )
 

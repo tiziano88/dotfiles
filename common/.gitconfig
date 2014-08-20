@@ -60,6 +60,7 @@
 	g = grep --break --heading --line-number
 	up = "!git remote update -p; git merge --ff-only @{u}"
 	up1 = pull --ff-only --all -p
+	tree = log --graph --oneline --decorate
 [tig "bind"]
 	generic = R !git reset --hard %(commit)
 [grep]
