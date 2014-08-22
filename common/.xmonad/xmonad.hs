@@ -114,8 +114,10 @@ myConfig hs = let c = gnomeConfig {
     } in additionalKeysP c (myKeys c)
 
 -------------------- Keys ------------------------------------
-myKeys c = [ ("M-p", shellPromptHere greenXPConfig)
-           , ("M-S-q", io (exitWith ExitSuccess)) ]
+myKeys c = [
+  ("M-p", shellPromptHere greenXPConfig),
+  ("M-S-q", io (exitWith ExitSuccess))
+  ]
 
 -------------------- Support for per-screen xmobars ---------
 -- Some parts of this should be merged into contrib sometime
