@@ -1,4 +1,9 @@
+-- vim: syntax=haskell
+
+-- Ref.: http://projects.haskell.org/xmobar/
+
 Config {
+  font = "-*-Terminus-medium-r-normal-*-13-*-*-*-*-*-*-*",
   bgColor = "black",
   fgColor = "green",
   position = Bottom,
@@ -6,4 +11,15 @@ Config {
   lowerOnStart = False,
   allDesktops = True,
   borderColor = "blue",
+  commands = [
+    Run Weather "EGLC" ["-t","<station>: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000,
+    Run Memory ["-t", "Mem: <usedbar>"] 10,
+    Run MultiCpu ["-t", "Cpu: <bar>"] 10,
+    Run DynNetwork ["-t", "rx: <rxbar> | tx: <txbar>"] 10,
+    Run TopMem ["-w", "10"] 10,
+    Run TopProc ["-w", "10"] 10,
+    Run StdinReader,
+    Run Date "%a %b %_d %Y %H:%M:%S" "date" 10,
+    Run Swap [] 10 ],
+  template = "%StdinReader% }{ %EGLC% | %dynnetwork% | %memory% [%topmem%] | %swap% | %multicpu% [%top%] | %date%",
 }

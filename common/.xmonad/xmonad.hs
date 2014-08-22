@@ -74,7 +74,6 @@ import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 import qualified XMonad.Util.ExtensibleState as XS
 
-
 myWorkSpaces = [ "1:terminal" , "2:IDE" , "3:web" , "4" ]
 
 main :: IO ()
@@ -102,17 +101,14 @@ myConfig hs = let c = gnomeConfig {
             focusedPP
             nonFocusedPP
             hs
-        updatePointer (TowardsCentre 0.2 0.2)
-    , handleEventHook = ewmhDesktopsEventHook <+> fullscreenEventHook <+>
-                    (\e -> case e of
-                        PropertyEvent{ ev_window = w } -> do
-                            isURXVT <- runQuery (className =? "URxvt") w
-                            if not isURXVT then hintsEventHook e else return (All True)
-                        _ -> return (All True))
+        -- updatePointer (TowardsCentre 0.2 0.2)
+    , handleEventHook = ewmhDesktopsEventHook <+> fullscreenEventHook
     , workspaces = myWorkSpaces
-    , manageHook = mconcat
-                    [manageSpawn
-                    ,manageDocks
+    , manageHook = composeAll [
+                      (className =? "Google-chrome") <&&> (stringProperty "WM_WINDOW_ROLE" =? "app") --> doFloat -- does not work
+                    , (className =? "gvim") --> doFloat
+                    , manageSpawn
+                    , manageDocks
                     ]
     } in additionalKeysP c (myKeys c)
 
@@ -167,25 +163,3 @@ nonFocusedPP = xmobarPP { ppLayout = xmobarColor "orange" ""
 
 focusedPP :: PP
 focusedPP = nonFocusedPP
-
---------------------------------------------------------------------------------
-
-{- | Sometimes this picks the wrong element to merge into (that is, not the
-'focused' element of the group), and SubLayouts breaks up the whole group
--}
-queryMerge pGrp = do
-    w <- ask
-    aws <- liftX $ filterM (runQuery pGrp) =<< gets
-        (W.integrate' . W.stack . W.workspace . W.current . windowset)
-
-    let addRem = False -- run the query with window removed??
-    when addRem
-        (liftX $ modify (\ws -> ws { windowset = W.insertUp w (windowset ws) }))
-    liftX $ windows (W.insertUp w)
-
-    mapM_ (liftX . sendMessage . XMonad.Layout.SubLayouts.Merge w) aws
-
-    when addRem
-        (liftX $ modify (\ws -> ws { windowset = W.delete' w (windowset ws) }))
-
-    idHook
