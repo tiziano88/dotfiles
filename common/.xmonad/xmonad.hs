@@ -21,6 +21,7 @@ import Data.List
 import Data.Maybe
 import Data.Traversable(traverse)
 import Graphics.X11.Xinerama
+import System.Exit
 import System.IO
 import XMonad
 import XMonad
@@ -113,7 +114,8 @@ myConfig hs = let c = gnomeConfig {
     } in additionalKeysP c (myKeys c)
 
 -------------------- Keys ------------------------------------
-myKeys c = [ ("M-p", shellPromptHere greenXPConfig) ]
+myKeys c = [ ("M-p", shellPromptHere greenXPConfig)
+           , ("M-S-q", io (exitWith ExitSuccess)) ]
 
 -------------------- Support for per-screen xmobars ---------
 -- Some parts of this should be merged into contrib sometime
