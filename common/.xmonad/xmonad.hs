@@ -155,7 +155,7 @@ onlyTitle pp = defaultPP { ppCurrent = const ""
 -- | Requires a recent addition to xmobar (>0.9.2), otherwise you have to use
 -- multiple configuration files, which gets messy
 xmobarScreen :: Int -> IO Handle
-xmobarScreen = spawnPipe . ("~/.cabal/bin/xmobar -x " ++) . show
+xmobarScreen = spawnPipe . ("xmobar -x " ++) . show
 
 nonFocusedPP :: PP
 nonFocusedPP = xmobarPP { ppLayout = xmobarColor "orange" ""
