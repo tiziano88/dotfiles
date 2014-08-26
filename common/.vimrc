@@ -69,6 +69,7 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
 "Plugin 'jnwhiteh/vim-golang'
@@ -194,6 +195,12 @@ let g:syntastic_always_populate_loc_list = 1
     nnoremap Q <nop>
     nnoremap j gj
     nnoremap k gk
+
+    " Enter to end of file
+    nnoremap <cr> G
+
+    " Backspace to beginning of file
+    nnoremap <bs> gg
 
     " Clipboard fixes
     vnoremap <leader>y "+y
@@ -827,6 +834,9 @@ function! ToggleWrap()
   endif
 endfunction
 
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
 " perforce commands
 command! -nargs=* -complete=file PEdit :!g4 edit %
 command! -nargs=* -complete=file PRevert :!g4 revert %
@@ -1024,3 +1034,14 @@ let s:kind = {
       \ }
 
 call unite#define_kind(s:kind)
+
+" Prevent replacing paste buffer on paste.
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
