@@ -152,6 +152,8 @@ let g:syntastic_always_populate_loc_list = 1
   autocmd BufNewFile,BufRead *.md setf markdown
   autocmd BufNewFile,BufRead *.md set filetype=markdown
 
+  autocmd BufNewFile,BufRead *.rules set filetype=udevrules
+
   " For snippet_complete marker.
   if has('conceal')
       set conceallevel=2 concealcursor=i
