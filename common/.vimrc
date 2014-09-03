@@ -199,10 +199,10 @@ let g:syntastic_always_populate_loc_list = 1
     nnoremap k gk
 
     " Enter to end of file
-    nnoremap <cr> G
+    " nnoremap <cr> G
 
     " Backspace to beginning of file
-    nnoremap <bs> gg
+    " nnoremap <bs> gg
 
     " Clipboard fixes
     vnoremap <leader>y "+y
