@@ -17,6 +17,7 @@ SOFTWARE=(
   mercurial
   mutt
   ntfs-3g
+  pandoc
   parcellite
   parted
   python
@@ -25,6 +26,7 @@ SOFTWARE=(
   rxvt-unicode
   stow
   sudo
+  tig
   tmux
   xdotool
   xfonts-terminus
