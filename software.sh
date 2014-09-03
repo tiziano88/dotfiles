@@ -43,6 +43,7 @@ sudo apt-get install "${SOFTWARE[@]}"
 # git clone git@github.com:nojhan/liquidprompt.git
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
