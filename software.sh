@@ -59,4 +59,4 @@ GO_PACKAGES=(
   github.com/nsf/gocode
 )
 
-go get -u "${GO_PACKAGES[@]}"
+# go get -u "${GO_PACKAGES[@]}"
