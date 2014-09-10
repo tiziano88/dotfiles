@@ -16,10 +16,11 @@ set copy = no
 set move = no
 #unset record
 
-
 # set folder           = "~/Maildir/$MAIL_USER"
 set folder           = "imaps://imap.gmail.com/"
-set imap_user        = "${MAIL_USER}"
+set imap_user        = "$MAIL_USER"
+set imap_pass        = "`~/dotfiles/get_pass.sh $MAIL_USER`"
+set from             = "$MAIL_USER"
 
 # Note: Maybe there is no need for there, since Mutt creates folders inside.
 set alias_file       = "~/Mail/$MAIL_USER/alias"
@@ -33,7 +34,6 @@ set tmpdir           = "~/Mail/$MAIL_USER/temp"
 #set signature = "~/.signature"
 unset signature
 
-
 set wait_key = no
 set mbox_type = Maildir
 set timeout = 3
@@ -42,11 +42,9 @@ set mail_check = 0
 unset imap_passive
 set imap_check_subscribed
 set mail_check=60
-set imap_pass = "`~/dotfiles/get_pass.sh $MAIL_USER`"
 
 set spoolfile = "+INBOX"
 
-set from = "$MAIL_USER"
 set record = "+[Gmail].Sent"
 set postponed = "+[Gmail].Drafts"
 
