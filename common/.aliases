@@ -9,6 +9,10 @@ alias gp='git push'
 alias gst='git status'
 alias gd='git diff'
 
+# Mutt profiles
+alias mutt_corp="MAIL_USER=tzn@google.com mutt"
+alias mutt_personal="MAIL_USER=tiziano88@gmail.com mutt"
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

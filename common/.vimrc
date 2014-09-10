@@ -95,7 +95,7 @@ call vundle#end()
 if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
   Glug blaze plugin[mappings]='<leader>b'
-  Glug codefmt auto_filetypes+=BUILD auto_all=1
+  Glug codefmt auto_filetypes+=BUILD auto_all=0
   Glug grok
   Glug grok
   Glug gtimporter

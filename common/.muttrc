@@ -9,53 +9,46 @@ set editor = "vim"
 
 set sidebar_width = 40
 
-source ~/Maildir/muttrc.mailboxes
+# source ~/Maildir/muttrc.mailboxes
 
 # Basic config, you can leave this as is
 set copy = no
 set move = no
 #unset record
 
-set folder = ~/Maildir
-set alias_file       = ~/.mutt/alias         # where to store aliases
-set header_cache     = ~/.mutt/cache/headers # where to store headers
-set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
-set certificate_file = ~/.mutt/certificates  # where to store certs
-set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
-set tmpdir           = ~/.mutt/temp          # where to keep temp files
+
+# set folder           = "~/Maildir/$MAIL_USER"
+set folder           = "imaps://imap.gmail.com/"
+set imap_user        = "${MAIL_USER}"
+
+# Note: Maybe there is no need for there, since Mutt creates folders inside.
+set alias_file       = "~/Mail/$MAIL_USER/alias"
+set header_cache     = "~/Mail/$MAIL_USER/cache/headers"
+set message_cachedir = "~/Mail/$MAIL_USER/cache/bodies"
+set certificate_file = "~/Mail/$MAIL_USER/certificates"
+set mailcap_path     = "~/Mail/$MAIL_USER/mailcap"
+set tmpdir           = "~/Mail/$MAIL_USER/temp"
 #set signature        = ~/.mutt/sig           # my signature file
 
 #set signature = "~/.signature"
 unset signature
 
-set record = "+.Sent"
-set postponed = "+.Drafts"
 
 set wait_key = no
 set mbox_type = Maildir
 set timeout = 3
 set mail_check = 0
 
-set spoolfile = +personal/INBOX
+unset imap_passive
+set imap_check_subscribed
+set mail_check=60
+set imap_pass = "`~/dotfiles/get_pass.sh $MAIL_USER`"
 
-mailboxes = +personal/INBOX \
-            +personal/[Gmail].Drafts \
-            +corp/INBOX \
-            +corp/[Gmail].Drafts
+set spoolfile = "+INBOX"
 
-folder-hook +personal \
-  set from = "tiziano88@gmail.com" \
-      postponed = +personal/[Gmail].Drafts
-
-folder-hook +corp \
-  set from = "tzn@google.com" \
-      postponed = +corp/[Gmail].Drafts
-
-folder-hook +personal \
-  macro index,pager c "<change-folder>+corp/INBOX<enter>"
-
-folder-hook +corp \
-  macro index,pager c "<change-folder>+personal/INBOX<enter>"
+set from = "$MAIL_USER"
+set record = "+[Gmail].Sent"
+set postponed = "+[Gmail].Drafts"
 
 set sendmail = "msmtp"
 set use_from = yes
