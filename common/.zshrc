@@ -46,7 +46,7 @@ zstyle ':completion:*' hosts off
 
 # see http://en.wikipedia.org/wiki/ANSI_escape_code
 # zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
-zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#b)($PREFIX)*==7}:${(s.:.)LS_COLORS}")';
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#b)($PREFIX:t)*==7}:${(s/:/)LS_COLORS}")';
 
 setopt NO_CDABLE_VARS
 
