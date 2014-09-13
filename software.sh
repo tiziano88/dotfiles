@@ -26,7 +26,9 @@ SOFTWARE=(
   rxvt-unicode
   stow
   sudo
+  task
   tig
+  tree
   tmux
   xdotool
   xfonts-terminus

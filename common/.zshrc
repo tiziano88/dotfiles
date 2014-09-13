@@ -43,6 +43,11 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # take the first part of the path to be exact
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' hosts off
+
+# see http://en.wikipedia.org/wiki/ANSI_escape_code
+# zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#b)($PREFIX)*==7}:${(s.:.)LS_COLORS}")';
+
 setopt NO_CDABLE_VARS
 
 # http://stackoverflow.com/a/844299
