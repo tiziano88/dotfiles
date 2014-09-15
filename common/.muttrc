@@ -7,9 +7,10 @@ set realname = "Tiziano Santoro"
 # "vim +" will open the file at the end.
 set editor = "vim"
 
-set sidebar_width = 40
+unignore X-Label
+color header white red '^X-Label:'
 
-# source ~/Maildir/muttrc.mailboxes
+# set sidebar_width = 40
 
 # Basic config, you can leave this as is
 set copy = no
@@ -18,6 +19,7 @@ set move = no
 
 # set folder           = "~/Maildir/$MAIL_USER"
 set folder           = "imaps://imap.gmail.com/"
+set folder           = "imap://127.0.0.1:10143/"
 set imap_user        = "$MAIL_USER"
 set imap_pass        = "`~/dotfiles/get_pass.sh $MAIL_USER`"
 set from             = "$MAIL_USER"
@@ -36,21 +38,26 @@ unset signature
 
 set wait_key = no
 set mbox_type = Maildir
-set timeout = 3
-set mail_check = 0
 
 unset imap_passive
 set imap_check_subscribed
 set mail_check=60
+set timeout = 15
 
 set spoolfile = "+INBOX"
 
 set record = "+[Gmail].Sent"
 set postponed = "+[Gmail].Drafts"
+set followup_to = yes
+set mark_old = no # don't mark unread messages as old
+set narrow_tree = no
+set pager_stop = yes # don't go to next message at end of message
 
 set sendmail = "msmtp"
 set use_from = yes
 set envelope_from = yes
+set fast_reply = yes
+set menu_scroll = yes
 
 set include
 set sort = 'threads'
@@ -65,7 +72,7 @@ set text_flowed = yes
 #set stuff_quoted
 
 set pager_index_lines = 20
-set index_format = "%?M?+& ?%2M %2e %Z %D %-30.30F (%4c) [%B] %3C %s"
+set index_format = "%Z %D %-30.30F (%4c) [%B] {%-30.30Y} %3C %?M?+& ?%2M %s"
 #set max_line_length = 120
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
@@ -81,6 +88,9 @@ set query_command = "ls"
 
 bind index - collapse-thread
 bind index _ collapse-all
+set collapse_unread = no
+set uncollapse_jump = yes
+folder-hook . "exec collapse-all"
 
 #bind index \CU half-up
 #bind index \CD half-down
@@ -100,6 +110,10 @@ bind index,pager r reply
 bind index,pager a group-reply
 #bind index,pager c mail
 bind index,pager e delete-thread
+bind index,pager u undelete-thread
+
+macro index,pager [ "<delete-thread>"
+macro index,pager ] "<delete-thread><previous-thread><previous-thread>"
 
 # Gmail-style keyboard shortcuts
 #macro index,pager e "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
@@ -142,7 +156,7 @@ color markers       red             white
 color attachment    white           default
 color search        magenta         default
 #color status        J_black         J_status
-color status        yellow          black
+color status        yellow          default
 color indicator     black           yellow
 color tree          yellow          default                                     # arrow in threads
 
