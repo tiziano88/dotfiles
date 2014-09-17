@@ -1,4 +1,4 @@
 common/.zsh/cache
 common/.xmonad
-#common/.weechat/
-!common/.weechat/*.conf
+common/.weechat/logs
+common/.weechat/*.log
