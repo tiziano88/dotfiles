@@ -83,6 +83,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'fatih/vim-go'
 "Plugin 'tpope/vim-markdown'
 Plugin 'terryma/vim-expand-region'
+"Plugin 'ConradIrwin/vim-bracketed-paste'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -428,21 +429,22 @@ nmap ,n :Explore!<CR>
 nmap ,m :Explore! .<CR>
 "let g:netrw_altv=1
 " What's wrong here?
-let g:netrw_liststyle=1
+let g:netrw_liststyle=3
 "let g:netrw_preview=1
 "let g:netrw_browse_split=4
 let g:netrw_winsize=30
 let g:netrw_special_syntax=1
 let g:netrw_maxfilenamelen=40
 
+function! Netrw()
+"  nmap <buffer> o <CR>
+"  nmap <buffer> u -
+  nmap <buffer> C :Ntree
+endfunction
 augroup netrw
   autocmd!
 "  autocmd filetype netrw call Netrw()
 augroup END
-function! Netrw()
-"  nmap <buffer> o <CR>
-"  nmap <buffer> u -
-endfunction
 
 " not every vim is compiled with this, use the following line instead
 "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
