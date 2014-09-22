@@ -10,15 +10,23 @@ source ~/.env
 source_ ~/.google.sh
 
 # ^ in glob negates pattern following it
-setopt extendedglob
 
 autoload -U colors
 colors
-setopt prompt_subst
 
-setopt share_history
-setopt inc_append_history
-HISTSIZE=1000000
+setopt NO_PROMPT_SUBST
+setopt NO_CDABLE_VARS
+setopt EXTENDED_GLOB
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt AUTO_PUSHD
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt INTERACTIVE_COMMENTS
+
+HISTSIZE=1000000000
 if (( ! EUID )); then
   HISTFILE=~/.history_root
 else
@@ -48,8 +56,6 @@ zstyle ':completion:*' hosts off
 # zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#b)($PREFIX:t)*==7}:${(s/:/)LS_COLORS}")';
 
-setopt NO_CDABLE_VARS
-
 # http://stackoverflow.com/a/844299
 expand-or-complete-with-dots() {
   echo -n "\e[31m...\e[0m"
@@ -58,6 +64,7 @@ expand-or-complete-with-dots() {
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
+bindkey "^_" undo
 
 skip_global_compinit=1
 

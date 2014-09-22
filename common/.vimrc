@@ -35,7 +35,6 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'csv.vim'
 "Plugin 'ervandew/supertab'
 "Plugin 'hsitz/VimOrganizer'
-"Plugin 'jceb/vim-orgmode'
 "Plugin 'kablamo/vim-git-log'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'mbbill/VimExplorer'
@@ -66,10 +65,12 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 "Plugin 'ShowMarks'
 "Plugin 'airblade/vim-gitgutter'
+Plugin 'jceb/vim-orgmode'
 Plugin 'mhinz/vim-signify'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
 "Plugin 'jnwhiteh/vim-golang'
@@ -79,6 +80,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
+Plugin 'tpope/vim-speeddating'
 "Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'fatih/vim-go'
 "Plugin 'tpope/vim-markdown'
@@ -183,6 +185,11 @@ let g:syntastic_always_populate_loc_list = 1
   hi! DONETODO guifg=green
   hi! NOTDONETODO guifg=red
 
+  augroup org
+    autocmd!
+    autocmd FileType org nmap <CR> @<Plug>OrgNewHeadingBelowNormal
+  augroup END
+
 " Key (re)mappings {
     " Consider Space
     let mapleader = ","
@@ -198,6 +205,8 @@ let g:syntastic_always_populate_loc_list = 1
     nnoremap Q <nop>
     nnoremap j gj
     nnoremap k gk
+
+    map [27;2;13~ <S-CR>
 
     " Enter to end of file
     " nnoremap <cr> G
@@ -276,8 +285,8 @@ let g:syntastic_always_populate_loc_list = 1
     nnoremap Y y$
 
     " Reselect visual block after indent.
-    nnoremap < <gv
-    nnoremap > >gv
+    vnoremap < <gv
+    vnoremap > >gv
 
     " Shortcuts
     " Change Working Directory to that of the current file

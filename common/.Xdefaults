@@ -61,9 +61,13 @@ URxvt.url-select.launcher:  google-chrome
 URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
-!URxvt.keysym.C-S-c:   perl:clipboard:copy
-URxvt.keysym.C-v:   perl:clipboard:paste
-URxvt.keysym.C-S-v:          perl:clipboard:paste
+URxvt.keysym.S-Return:      \033[27;2;13~
+
+URxvt.keysym.C-S-C:            perl:clipboard:copy
+URxvt.keysym.C-S-V:            perl:clipboard:paste
+
+URxvt.clipboard.copycmd:  xsel --input  --clipboard
+URxvt.clipboard.pastecmd: xsel --output --clipboard
 
 ! Cursor
 URxvt.cursorBlink:          true
@@ -89,10 +93,10 @@ xterm*cursorBlink: true
 xterm*fastScroll: true
 
 ! Ctrl-Shift-V to paste.
-*VT100*translations: #override \
-    Ctrl <Btn1Up>: exec-formatted("xmessage '%t'", PRIMARY) \n\
-    Ctrl Shift <KeyPress> V: insert-selection(PRIMARY, CUT_BUFFER0) \n
-http://google.com
+!*VT100*translations: #override \
+!    Ctrl <Btn1Up>: exec-formatted("xmessage '%t'", PRIMARY) \n\
+!    Ctrl Shift <KeyPress> V: insert-selection(PRIMARY, CUT_BUFFER0) \n
+!http://google.com
 
 !*font: xft:Source Code Pro for Powerline:pixelsize=10
 
