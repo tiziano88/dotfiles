@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ACCOUNT=$1
 P="${HOME}/.passwd/${ACCOUNT}.gpg"
 
