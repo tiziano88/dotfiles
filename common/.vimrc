@@ -12,22 +12,24 @@ if &term =~ '^screen'
   execute "set <xLeft>=\e[1;*D"
 endif
 
-"set rtp+=/usr/local/go/misc/vim/
+"set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 
-"set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 Plugin 'gmarik/Vundle.vim'
 
-
+"Plugin 'ConradIrwin/vim-bracketed-paste'
 "Plugin 'Lokaltog/vim-powerline'
 "Plugin 'Rip-Rip/clang_complete'
 "Plugin 'Shougo/neocomplcache'
+"Plugin 'ShowMarks'
 "Plugin 'Townk/vim-autoclose'
 "Plugin 'Twinside/vim-haskellConceal'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'a.vim'
+"Plugin 'airblade/vim-gitgutter'
 "Plugin 'amiorin/vim-project'
 "Plugin 'chrisbra/NrrwRgn'
 "Plugin 'chrisbra/changesPlugin'
@@ -35,6 +37,8 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'csv.vim'
 "Plugin 'ervandew/supertab'
 "Plugin 'hsitz/VimOrganizer'
+"Plugin 'jceb/vim-orgmode'
+"Plugin 'jnwhiteh/vim-golang'
 "Plugin 'kablamo/vim-git-log'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'mbbill/VimExplorer'
@@ -44,27 +48,28 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'msanders/snipmate.vim'
 "Plugin 'myusuf3/numbers.vim'
 "Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'nsf/gocode', {'rtp': 'vim/'}
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scrooloose/nerdtree'
 "Plugin 'sjl/gundo.vim'
 "Plugin 'sjl/splice.vim'
 "Plugin 'sudar/vim-arduino-syntax'
 "Plugin 't9md/vim-quickhl'
+"Plugin 'tpope/vim-markdown'
+"Plugin 'tpope/vim-surround'
 "Plugin 'tsaleh/vim-matchit'
 "Plugin 'tyok/nerdtree-ack'
+"Plugin 'vim-pandoc/vim-pandoc'
 "Plugin 'vim-scripts/IndentConsistencyCop'
 "Plugin 'vim-scripts/Mark--Karkat'
 "Plugin 'vim-scripts/YankRing.vim'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vimoutliner/vimoutliner'
 "Plugin 'wincent/Command-T'
-"Plugin 'vim-pandoc/vim-pandoc'
 
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-"Plugin 'ShowMarks'
-"Plugin 'airblade/vim-gitgutter'
 Plugin 'jceb/vim-orgmode'
 Plugin 'mhinz/vim-signify'
 Plugin 'altercation/vim-colors-solarized'
@@ -73,20 +78,14 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
-"Plugin 'jnwhiteh/vim-golang'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-speeddating'
-"Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'fatih/vim-go'
-"Plugin 'tpope/vim-markdown'
 Plugin 'terryma/vim-expand-region'
-"Plugin 'ConradIrwin/vim-bracketed-paste'
-
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
@@ -100,10 +99,9 @@ if filereadable(expand('~/.at_google'))
   Glug blaze plugin[mappings]='<leader>b'
   Glug codefmt auto_filetypes+=BUILD auto_all=0
   Glug grok
-  Glug grok
   Glug gtimporter
   Glug relatedfiles plugin[mappings]=',f'
-  Glug syntastic-google
+  "Glug syntastic-google
   Glug ultisnips-google
   Glug youcompleteme-google
   source /usr/share/vim/google/gtags.vim
