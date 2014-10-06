@@ -46,9 +46,6 @@ URxvt.iso14755: false
 ! Fonts
 URxvt.allow_bold:           true
 
-!URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
-
-
 ! Perl extensions
 URxvt.perl-ext-common:      default,clipboard,matcher
 URxvt.matcher.button:       1
