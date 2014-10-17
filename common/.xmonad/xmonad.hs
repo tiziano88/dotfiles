@@ -71,11 +71,12 @@ import XMonad.Prompt.XMonad
 import XMonad.Util.EZConfig
 import XMonad.Util.Replace
 import XMonad.Util.Run
+import XMonad.Util.WorkspaceCompare
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 import qualified XMonad.Util.ExtensibleState as XS
 
-myWorkSpaces = [ "1:terminal" , "2:IDE" , "3:web" , "4" ]
+myWorkSpaces = [ "1" , "2" , "3" , "4", "5", "6", "7", "8", "9" ]
 
 main :: IO ()
 main = do
@@ -163,7 +164,9 @@ xmobarScreen = spawnPipe . ("xmobar -x " ++) . show
 
 nonFocusedPP :: PP
 nonFocusedPP = xmobarPP { ppLayout = xmobarColor "orange" ""
-                        , ppUrgent = xmobarColor "red" "" . ('^':) }
+                        , ppUrgent = xmobarColor "red" "" . ('^':)
+                        , ppSort = getSortByXineramaPhysicalRule
+                        }
 
 focusedPP :: PP
 focusedPP = nonFocusedPP
