@@ -677,10 +677,14 @@ set softtabstop=2
 set expandtab
 "set matchpairs+=<:>             " match, to be used with %
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+
+set formatoptions-=t " don't reflow 'normal' text.
+set formatoptions-=o " do not insert comment leader after o or O
+
+set formatoptions+=a " Automatically reflow text (only comments if c is set)
 set formatoptions+=l " don't break long lines in insert mode
 set formatoptions+=c " wrap comments
 set formatoptions+=r " insert comment leader after <enter>
-set formatoptions-=o " do not insert comment leader after o or O
 set formatoptions+=j " remove comment leader when joining lines
 
 set shm+=A " no warnings about swap files
