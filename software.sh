@@ -48,6 +48,8 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+git clone https://github.com/clvv/fasd ~/fasd
+
 # wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
 # cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "cat >> ~/.ssh/authorized_keys"

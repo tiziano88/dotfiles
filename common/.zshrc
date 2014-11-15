@@ -1,5 +1,8 @@
 # vim: ft=zsh
 
+# https://github.com/changs/slimzsh
+# http://www.zzapper.co.uk/zshtips.html
+
 source_() {
   [[ -f $1 ]] && source $1
 }
@@ -17,13 +20,17 @@ colors
 setopt NO_PROMPT_SUBST
 setopt NO_CDABLE_VARS
 setopt EXTENDED_GLOB
+
+# man zshoptions
 setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt AUTO_PUSHD
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY # Edit history line on enter.
 setopt INTERACTIVE_COMMENTS
 
 HISTSIZE=1000000000
@@ -169,14 +176,20 @@ then
 fi
 
 #export PROMPT="%{%f%b%k%}$(build_prompt) "
-export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%# '
+export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#❯ '
 
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 eval $(keychain --eval)
 eval $(dircolors ~/.dir_colors)
+
+# https://github.com/clvv/fasd
+eval "$(fasd --init auto)"
 
 # Update prompt every 60 second. Doing it more often makes the up/down keys behave in the wrong way.
 # TMOUT=60
 TRAPALRM() {
   zle reset-prompt
 }
+
+# EXPERIMENTAL
+compdef _gnu_generic -P "*"
