@@ -97,7 +97,7 @@ call vundle#end()
 if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
   Glug blaze plugin[mappings]='<leader>b'
-  Glug codefmt auto_filetypes+=BUILD auto_all=0
+  Glug codefmt-google auto_filetypes+=BUILD auto_all=0
   Glug grok
   Glug gtimporter
   Glug relatedfiles plugin[mappings]=',f'
@@ -415,6 +415,7 @@ au! BufRead,BufWrite,BufWritePost,BufNewFile *.borg set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.xml set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.gcl set colorcolumn=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.py set colorcolumn=80
 "au BufEnter *.org set filetype=org
 
 

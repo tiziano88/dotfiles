@@ -24,6 +24,7 @@ SOFTWARE=(
   python-dev
   rlwrap
   rxvt-unicode
+  sgt-puzzles
   stow
   sudo
   task
