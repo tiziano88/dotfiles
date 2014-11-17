@@ -1,6 +1,7 @@
 # vim: ft=zsh
 
 # https://github.com/changs/slimzsh
+
 # http://www.zzapper.co.uk/zshtips.html
 
 source_() {
@@ -44,8 +45,7 @@ SAVEHIST=$HISTSIZE
 # liquidprompt
 # git clone https://github.com/nojhan/liquidprompt.git
 source ~/liquidprompt/liquidprompt
-
-source_ ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # git
 fpath=(~/.zsh $fpath)
