@@ -21,6 +21,7 @@ colors
 setopt NO_PROMPT_SUBST
 setopt NO_CDABLE_VARS
 setopt EXTENDED_GLOB
+setopt NO_CASE_GLOB
 
 # man zshoptions
 setopt SHARE_HISTORY
@@ -73,7 +74,8 @@ zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 bindkey "^_" undo
 
-skip_global_compinit=1
+autoload -U compinit
+compinit
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

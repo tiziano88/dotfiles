@@ -119,6 +119,11 @@ function hr {
   done
 }
 
+# Similar to ctrl-P
+function p {
+  ls -ahlsF **/*$1*
+}
+
 # The next line updates PATH for the Google Cloud SDK.
 source '/home/tzn/google-cloud-sdk/path.zsh.inc'
 
