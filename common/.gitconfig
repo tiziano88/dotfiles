@@ -66,3 +66,5 @@
 [grep]
 	extendRegexp = true
 	lineNumber = true
+[credential]
+	helper = corpsso

@@ -54,15 +54,23 @@ fpath=(~/.zsh $fpath)
 # Customize to your needs...
 # export PATH=/home/tzn/bin:/home/tzn/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-zstyle ':completion:*' use-cache on
+zstyle ':completion:*' use-cache true
 zstyle ':completion:*' cache-path ~/.zsh/cache
 # take the first part of the path to be exact
 zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' hosts off
+zstyle ':completion:*' hosts false
 
 # see http://en.wikipedia.org/wiki/ANSI_escape_code
 # zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#b)($PREFIX:t)*==7}:${(s/:/)LS_COLORS}")';
+
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:corrections' format '%U%B%d%b (errors %e)%u'
+zstyle ':completion:*:warnings' format '%Bno matches for: %d%b'
+zstyle ':completion:*' verbose true
+
+# For man pages.
+zstyle ':completion:*' separate-sections true
 
 # http://stackoverflow.com/a/844299
 expand-or-complete-with-dots() {
