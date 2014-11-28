@@ -15,6 +15,7 @@ SOFTWARE=(
   htop
   keychain
   mercurial
+  moreutils
   mutt
   ntfs-3g
   pandoc
@@ -44,13 +45,17 @@ sudo apt-get install "${SOFTWARE[@]}"
 # git clone git@bitbucket.org:tiziano88/dotfiles.git
 # git clone git@github.com:zsh-users/zsh-syntax-highlighting.git
 # git clone git@github.com:nojhan/liquidprompt.git
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone git@github.com:gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone git@github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-git clone https://github.com/clvv/fasd ~/fasd
+git clone git@github.com:clvv/fasd ~/fasd
 
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+git clone git@github.com:mooz/percol.git ~/percol
+
+git clone git@github.com:junegunn/fzf.git ~/fzf
+
+git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
 
 # wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 

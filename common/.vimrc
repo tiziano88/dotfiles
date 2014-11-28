@@ -70,24 +70,26 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'jceb/vim-orgmode'
-Plugin 'mhinz/vim-signify'
+Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
+Plugin 'honza/vim-snippets'
+Plugin 'jceb/vim-orgmode'
+Plugin 'junegunn/fzf'
 Plugin 'majutsushi/tagbar'
+Plugin 'mhinz/vim-signify'
+Plugin 'oblitum/rainbow'
 Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-speeddating'
-Plugin 'fatih/vim-go'
-Plugin 'terryma/vim-expand-region'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 
 "may be slow
 Plugin 'tpope/vim-fugitive'
@@ -114,6 +116,9 @@ let g:go_gocode_bin="gocode"
 let g:go_goimports_bin="goimports"
 let g:go_oracle_bin="oracle"
 let g:go_golint_bin="golint"
+
+let g:rainbow_active = 1
+let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$\|magicjar',
@@ -686,7 +691,7 @@ set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 set formatoptions-=t " don't reflow 'normal' text.
 set formatoptions-=o " do not insert comment leader after o or O
 
-set formatoptions+=a " Automatically reflow text (only comments if c is set)
+"set formatoptions+=a " Automatically reflow text (only comments if c is set)
 set formatoptions+=l " don't break long lines in insert mode
 set formatoptions+=c " wrap comments
 set formatoptions+=r " insert comment leader after <enter>

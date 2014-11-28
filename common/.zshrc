@@ -13,6 +13,8 @@ source ~/.env
 
 source_ ~/.google.sh
 
+source_ ~/.fzf.zsh
+
 # ^ in glob negates pattern following it
 
 autoload -U colors
@@ -25,7 +27,7 @@ setopt NO_CASE_GLOB
 
 # man zshoptions
 setopt SHARE_HISTORY
-setopt EXTENDED_HISTORY
+setopt NO_EXTENDED_HISTORY # Timestamp in history.
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt AUTO_PUSHD
@@ -194,6 +196,21 @@ eval $(dircolors ~/.dir_colors)
 
 # https://github.com/clvv/fasd
 eval "$(fasd --init auto)"
+
+function exists { which $1 &> /dev/null }
+
+if exists fzf; then
+  function fuzzy_select_history() {
+    local tac
+    exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+    BUFFER=$(fc -l -n 1 | eval $tac | fzf --extended)
+    CURSOR=$#BUFFER         # move cursor
+    zle -R -c               # refresh
+  }
+
+  zle -N fuzzy_select_history
+  bindkey '^R' fuzzy_select_history
+fi
 
 # Update prompt every 60 second. Doing it more often makes the up/down keys behave in the wrong way.
 # TMOUT=60
