@@ -8,6 +8,7 @@ SOFTWARE=(
   atool
   build-essential
   cmake
+  colortest
   fonts-ubuntu-font-family-console
   git
   golang
@@ -69,6 +70,7 @@ GO_PACKAGES=(
   code.google.com/p/go.tools/cmd/oracle
   github.com/golang/lint/golint
   github.com/nsf/gocode
+  github.com/peco/peco/cmd/peco
 )
 
 # go get -u "${GO_PACKAGES[@]}"
