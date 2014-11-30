@@ -73,4 +73,4 @@ GO_PACKAGES=(
   github.com/peco/peco/cmd/peco
 )
 
-# go get -u "${GO_PACKAGES[@]}"
+go get "${GO_PACKAGES[@]}"

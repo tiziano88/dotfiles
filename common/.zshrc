@@ -4,6 +4,10 @@
 
 # http://www.zzapper.co.uk/zshtips.html
 
+function exists {
+  which $1 &> /dev/null
+}
+
 source_() {
   [[ -f $1 ]] && source $1
 }
@@ -17,8 +21,7 @@ source_ ~/.fzf.zsh
 
 # ^ in glob negates pattern following it
 
-autoload -U colors
-colors
+autoload -U colors && colors
 
 setopt NO_PROMPT_SUBST
 setopt NO_CDABLE_VARS
@@ -84,8 +87,7 @@ zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 bindkey "^_" undo
 
-autoload -U compinit
-compinit
+autoload -U compinit && compinit
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -197,9 +199,7 @@ eval $(dircolors ~/.dir_colors)
 # https://github.com/clvv/fasd
 eval "$(fasd --init auto)"
 
-function exists { which $1 &> /dev/null }
-
-if exists fzf; then
+if exists peco; then
   function fuzzy_select_history() {
     local tac
     exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
@@ -207,9 +207,18 @@ if exists fzf; then
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
-
   zle -N fuzzy_select_history
   bindkey '^R' fuzzy_select_history
+
+  function find_file() {
+    local tac
+    exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+    RBUFFER=$(find . -not -path '*/\.*' | eval $tac | peco)
+    CURSOR=$#BUFFER         # move cursor
+    zle -R -c               # refresh
+  }
+  zle -N find_file
+  bindkey '^P' find_file
 fi
 
 # Update prompt every 60 second. Doing it more often makes the up/down keys behave in the wrong way.
