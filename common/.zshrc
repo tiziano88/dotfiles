@@ -211,9 +211,7 @@ if exists peco; then
   bindkey '^R' fuzzy_select_history
 
   function find_file() {
-    local tac
-    exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-    RBUFFER=$(find . -not -path '*/\.git/*' | eval $tac | peco)
+    RBUFFER=$(find . -not -path '*/\.git/*' | peco)
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
