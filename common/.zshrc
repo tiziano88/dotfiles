@@ -197,13 +197,16 @@ eval $(keychain --eval)
 eval $(dircolors ~/.dir_colors)
 
 # https://github.com/clvv/fasd
-eval "$(fasd --init auto)"
+# eval "$(fasd --init auto)"
+
+# https://github.com/rupa/z
+. ~/z/z.sh
 
 if exists peco; then
   function fuzzy_select_history() {
     local tac
     exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-    BUFFER=$(fc -l -n 1 | eval $tac | peco)
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --prompt 'HISTORY>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -211,12 +214,20 @@ if exists peco; then
   bindkey '^R' fuzzy_select_history
 
   function find_file() {
-    RBUFFER=$(find . -not -path '*/\.git/*' | peco)
+    RBUFFER=$(find . -not -path '*/\.git/*' | peco --prompt 'FILE>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
   zle -N find_file
   bindkey '^P' find_file
+
+  function change_dir() {
+    local dir=$(z -l | cut -c12- | peco --prompt 'DIR>')
+    cd "$dir"
+    zle reset-prompt
+  }
+  zle -N change_dir
+  bindkey '^O' change_dir
 fi
 
 # Update prompt every 60 second. Doing it more often makes the up/down keys behave in the wrong way.

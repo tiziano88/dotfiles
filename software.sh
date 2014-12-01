@@ -52,6 +52,8 @@ git clone git@github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 git clone git@github.com:clvv/fasd ~/fasd
 
+git clone git@github.com:rupa/z.git ~/z
+
 git clone git@github.com:mooz/percol.git ~/percol
 
 git clone git@github.com:junegunn/fzf.git ~/fzf
