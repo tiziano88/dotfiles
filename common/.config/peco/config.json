@@ -2,8 +2,11 @@
     "Style": {
         "Basic": ["on_default", "default"],
         "SavedSelection": ["bold", "on_black", "white"],
-        "Selected": ["underline", "on_black", "white"],
+        "Selected": ["reverse"],
         "Query": ["magenta", "bold"],
-        "Matched": ["reverse"]
+        "Matched": ["red"]
+    },
+    "Keymap": {
+      "Tab": "peco.ToggleSelection"
     }
 }

@@ -206,7 +206,7 @@ if exists peco; then
   function fuzzy_select_history() {
     local tac
     exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-    BUFFER=$(fc -l -n 1 | eval $tac | peco --prompt 'HISTORY>')
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --layout=bottom-up --prompt 'HISTORY>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -214,7 +214,7 @@ if exists peco; then
   bindkey '^R' fuzzy_select_history
 
   function find_file() {
-    RBUFFER=$(find . -not -path '*/\.git/*' | peco --prompt 'FILE>')
+    RBUFFER=$(find . -not -path '*/\.git/*' | peco --layout=bottom-up --prompt 'FILE>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -222,7 +222,7 @@ if exists peco; then
   bindkey '^P' find_file
 
   function change_dir() {
-    local dir=$(z -l | cut -c12- | peco --prompt 'DIR>')
+    local dir=$(z -l | cut -c12- | peco --layout=bottom-up --prompt 'DIR>')
     cd "$dir"
     zle reset-prompt
   }

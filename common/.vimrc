@@ -96,6 +96,14 @@ Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
+function! FindFile()
+  let s:filename = system('find . | peco --prompt ''FILE>''')
+  if !v:shell_error
+    execute 'edit ' . s:filename
+  endif
+  redraw!
+endfunction
+
 if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
   Glug blaze plugin[mappings]='<leader>b'
