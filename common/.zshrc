@@ -35,7 +35,8 @@ setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt AUTO_PUSHD
 setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_DUPS # Only previous entry.
+setopt HIST_IGNORE_ALL_DUPS # Even if not previous entry.
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY # Edit history line on enter.
 setopt INTERACTIVE_COMMENTS
