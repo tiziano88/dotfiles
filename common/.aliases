@@ -20,6 +20,9 @@ alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 alias v='f -t -e vim -b viminfo' # vim
 
+alias j='cd $(pwd | sed s!/javatests/!/java/!)'
+alias jt='cd $(pwd | sed s!/java/!/javatests/!)'
+
 # Mutt profiles
 alias mutt_corp="MAIL_USER=tzn@google.com mutt"
 alias mutt_personal="MAIL_USER=tiziano88@gmail.com mutt"
