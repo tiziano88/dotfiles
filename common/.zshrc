@@ -52,7 +52,7 @@ SAVEHIST=$HISTSIZE
 # liquidprompt
 # git clone https://github.com/nojhan/liquidprompt.git
 source ~/liquidprompt/liquidprompt
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # git
 fpath=(~/.zsh $fpath)
@@ -89,6 +89,7 @@ bindkey "^I" expand-or-complete-with-dots
 bindkey "^_" undo
 
 autoload -U compinit && compinit
+# autoload -U predict-on && predict-on
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
