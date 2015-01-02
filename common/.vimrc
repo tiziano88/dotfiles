@@ -2,6 +2,10 @@ set nocompatible   " must be first line
 filetype plugin on
 filetype indent on
 syntax on
+
+let mapleader=','
+let maplocalleader='#'
+
 let g:disable_google_optional_settings=1
 
 if &term =~ '^screen'
@@ -81,6 +85,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'honza/vim-snippets'
 Plugin 'jceb/vim-orgmode'
 Plugin 'junegunn/fzf'
+Plugin 'krisajenkins/vim-pipe'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
 Plugin 'oblitum/rainbow'
@@ -90,6 +95,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
+Plugin 'vim-scripts/dbext.vim'
 
 "may be slow
 Plugin 'tpope/vim-fugitive'
@@ -160,6 +166,7 @@ let g:syntastic_always_populate_loc_list = 1
 
   autocmd BufNewFile,BufRead *.sql setf mysql
   autocmd BufNewFile,BufRead *.sql set filetype=mysql
+  autocmd BufNewFile,BufRead *.sql let b:vimpipe_command='dremel'
 
   autocmd BufNewFile,BufRead *.less setf less
 
@@ -203,7 +210,6 @@ let g:syntastic_always_populate_loc_list = 1
 
 " Key (re)mappings {
     " Consider Space
-    let mapleader = ","
 
     " <C-h>, <BS>: close popup and delete backword char.
     "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
@@ -296,8 +302,8 @@ let g:syntastic_always_populate_loc_list = 1
     nnoremap Y y$
 
     " Reselect visual block after indent.
-    vnoremap < <gv
-    vnoremap > >gv
+    " vnoremap < <gv
+    " vnoremap > >gv
 
     " Shortcuts
     " Change Working Directory to that of the current file

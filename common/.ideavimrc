@@ -1,1 +1,23 @@
 "source ~/.vimrc
+
+set ignorecase
+set clipboard=unnamed
+
+nmap gD :action GotoImplementation<CR>
+nmap gu :action ShowUsages<CR>
+nmap gU :action FindUsages<CR>
+
+nmap Rr :action RenameElement<CR>
+nmap Rm :action ExtractMethod<CR>
+vnoremap Rm :action ExtractMethod<CR>
+nmap Rv :action IntroduceVariable<CR>
+nmap Ri :action Inline<CR>
+
+nmap <C-e> :action RecentFiles<CR>
+nmap <C-A-n> :action FileStructurePopup<CR>
+
+nmap gb :action ToggleLineBreakpoint<CR>
+nmap gB :action EditBreakpoint<CR>
+
+nmap gc :action CommentByLineComment<CR>
+vmap gc :action CommentByLineComment<CR>
