@@ -7,8 +7,10 @@ SOFTWARE=(
   ack-grep
   atool
   build-essential
+  cabal-install
   cmake
   colortest
+  fonts-mplus
   fonts-ubuntu-font-family-console
   git
   golang
