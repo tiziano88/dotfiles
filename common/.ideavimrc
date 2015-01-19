@@ -13,6 +13,11 @@ vnoremap Rm :action ExtractMethod<CR>
 nmap Rv :action IntroduceVariable<CR>
 nmap Ri :action Inline<CR>
 
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 nmap <C-e> :action RecentFiles<CR>
 nmap <C-A-n> :action FileStructurePopup<CR>
 

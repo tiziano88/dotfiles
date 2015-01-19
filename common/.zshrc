@@ -224,7 +224,8 @@ if exists peco; then
   bindkey '^P' find_file
 
   function change_dir() {
-    local dir=$(z -l | cut -c12- | peco --layout=bottom-up --prompt 'DIR>')
+    # local dir=$(z -l | cut -c12- | peco --layout=bottom-up --prompt 'DIR>')
+    local dir=$(dirs -p | uniq | peco --layout=bottom-up --prompt 'DIR>')
     cd "$dir"
     zle reset-prompt
   }
