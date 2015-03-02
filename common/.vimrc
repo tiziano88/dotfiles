@@ -78,8 +78,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'chrisdone/hindent', {'rtp': 'vim'}
 Plugin 'fatih/vim-go'
-Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
 Plugin 'honza/vim-snippets'
@@ -96,6 +96,10 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-scripts/dbext.vim'
+
+" Must be in this order.
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 "may be slow
 Plugin 'tpope/vim-fugitive'
@@ -440,6 +444,7 @@ au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.xml set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.gcl set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.py set colorcolumn=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.md set colorcolumn=80 textwidth=80 spell
 "au BufEnter *.org set filetype=org
 
 

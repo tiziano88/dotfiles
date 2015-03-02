@@ -49,8 +49,8 @@
 [push]
 	default = current
 [status]
-  short = true
-  branch = true
+  # short = true
+  # branch = true
 [help]
 	autocorrect = 1
 [alias]

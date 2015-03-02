@@ -25,6 +25,7 @@ import System.Exit
 import System.IO
 import XMonad
 import XMonad
+import XMonad.Actions.CopyWindow
 import XMonad.Actions.DwmPromote
 import XMonad.Actions.FloatSnap
 import XMonad.Actions.GridSelect
@@ -109,6 +110,8 @@ myConfig hs = let c = gnomeConfig {
     , manageHook = composeAll [
                       (className =? "Google-chrome") <&&> (stringProperty "WM_WINDOW_ROLE" =? "app") --> doFloat -- does not work
                     , (className =? "gvim") --> doFloat
+                    , (className =? "gnubby_ssh_prompt") --> doFloat
+                    , (className =? "Xfce4-notifyd") --> doF W.focusDown <+> doF copyToAll
                     , manageSpawn
                     , manageDocks
                     ]
