@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set default precision for dc
+alias dc='dc -e "10k" -'
+
 # Git shortcuts
 alias ga='git add'
 alias gb='git branch'

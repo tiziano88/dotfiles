@@ -123,7 +123,7 @@ if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/gtags.vim
   command! Jade !/google/data/ro/teams/jade/jade %
 else
-  Plugin 'Valloric/YouCompleteMe'
+  "Plugin 'Valloric/YouCompleteMe'
 endif
 
 let g:go_disable_autoinstall = 1
@@ -756,6 +756,7 @@ set completeopt=menu,menuone,longest
 set completeopt+=preview
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_auto_trigger = 0
 
 " Plugins
 
