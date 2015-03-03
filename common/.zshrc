@@ -191,6 +191,48 @@ then
   mux default
 fi
 
+function tmux-usurp() {
+  # tmux-usurp
+  #
+  # Finds all other clients attached to the current session and puts them in
+  # a sort of soft-detached state where they can trivially reattach.
+  #
+  # In particular, this makes it easy to attach from my laptop, soft-detach my
+  # desktop's terminals so I can use all my screen real-estate, and then undo the
+  # damage once I get back to my desk.
+
+  if [[ -z "$TMUX" ]]; then
+    echo "Not running under tmux." >&2
+    exit 1
+  fi
+
+  # Grab information about our session & current client.
+  SESSION_ID=$(tmux display-message -p '#{session_id}')
+  SESSION_NAME=$(tmux display-message -p '#{session_name}')
+  CLIENT_TTY=$(tmux display-message -p '#{client_tty}')
+
+  for client in $(tmux list-clients -t $SESSION_ID -F '#{client_tty}'); do
+    if [[ "$client" != "$CLIENT_TTY" ]]; then
+
+      # Build a new session to quick-reattach.
+      # TODO(dhoover): maybe give the session a name to indicate what's going on
+      #                and make it easier to filter from display?
+      # TODO(dhoover): if the session goes away before the clients switch back,
+      #                they just exit when they try to switch back. Is there
+      #                anything friendlier to do there?
+      new_session=$(unset TMUX ; tmux new-session -dP -F '#{session_id}' \
+        "echo \"Hit enter to reattach to session '$SESSION_NAME'...\" \
+        ; read \
+        ; tmux switch-client -l \
+        ")
+
+      # Switch to it
+      tmux switch-client -c "$client" -t "$new_session"
+    fi
+  done
+}
+
+
 #export PROMPT="%{%f%b%k%}$(build_prompt) "
 export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#❯ '
 

@@ -79,6 +79,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'chrisdone/hindent', {'rtp': 'vim'}
+Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'fatih/vim-go'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'

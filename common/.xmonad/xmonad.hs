@@ -24,14 +24,15 @@ import Graphics.X11.Xinerama
 import System.Exit
 import System.IO
 import XMonad
-import XMonad
 import XMonad.Actions.CopyWindow
+import XMonad.Actions.CycleWS
 import XMonad.Actions.DwmPromote
 import XMonad.Actions.FloatSnap
 import XMonad.Actions.GridSelect
 import XMonad.Actions.Search
 import XMonad.Actions.SpawnOn
 import XMonad.Actions.Submap
+import XMonad.Actions.SwapWorkspaces
 import XMonad.Actions.UpdatePointer
 import XMonad.Actions.Warp
 import XMonad.Config.Gnome
@@ -77,7 +78,7 @@ import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 import qualified XMonad.Util.ExtensibleState as XS
 
-myWorkSpaces = [ "1" , "2" , "3" , "4", "5", "6", "7", "8", "9" ]
+myWorkSpaces = [ "T" , "2" , "3" , "4", "5", "6", "7", "8", "9" ]
 
 main :: IO ()
 main = do
@@ -104,6 +105,7 @@ myConfig hs = let c = gnomeConfig {
             focusedPP
             nonFocusedPP
             hs
+        takeTopFocus
         -- updatePointer (TowardsCentre 0.2 0.2)
     , handleEventHook = ewmhDesktopsEventHook <+> fullscreenEventHook
     , workspaces = myWorkSpaces
@@ -120,8 +122,14 @@ myConfig hs = let c = gnomeConfig {
 -------------------- Keys ------------------------------------
 myKeys c = [
   ("M-p", shellPromptHere greenXPConfig),
-  ("M-S-q", io (exitWith ExitSuccess))
+  ("M-S-q", io (exitWith ExitSuccess)),
+  ("M-t", swapTerminal)
   ]
+
+swapTerminal = do
+  -- toggleWS' ["4", "5", "6", "7", "8", "9"]
+  toggleOrView "T"
+  -- windows $ W.greedyView "T"
 
 -------------------- Support for per-screen xmobars ---------
 -- Some parts of this should be merged into contrib sometime
