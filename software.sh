@@ -73,6 +73,7 @@ GO_PACKAGES=(
   code.google.com/p/go.tools/cmd/goimports
   code.google.com/p/go.tools/cmd/oracle
   github.com/golang/lint/golint
+  github.com/jstemmer/gotags
   github.com/nsf/gocode
   github.com/peco/peco/cmd/peco
 )

@@ -762,7 +762,23 @@ set completeopt=menu,menuone,longest
 set completeopt+=preview
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 1
+let g:ycm_min_num_of_chars_for_completion = 10
+
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'go' : ['.'],
+  \   'objc' : ['->', '.'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }
 
 " Plugins
 
@@ -1093,3 +1109,8 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+function! IdemComplete()
+  let filename = expand('%:p')
+  call system('echo xxx')
+endfunction
