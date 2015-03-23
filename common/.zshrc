@@ -35,8 +35,8 @@ setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt AUTO_PUSHD
 setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_DUPS # Only previous entry.
-setopt HIST_IGNORE_ALL_DUPS # Even if not previous entry.
+# setopt HIST_IGNORE_DUPS # Only previous entry.
+# setopt HIST_IGNORE_ALL_DUPS # Even if not previous entry.
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY # Edit history line on enter.
 setopt INTERACTIVE_COMMENTS
@@ -244,21 +244,29 @@ eval $(dircolors ~/.dir_colors)
 # eval "$(fasd --init auto)"
 
 # https://github.com/rupa/z
-. ~/z/z.sh
+source ~/z/z.sh
 
 if exists peco; then
   function fuzzy_select_history() {
-    local tac
-    exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-    BUFFER=$(fc -l -n 1 | eval $tac | peco --layout=bottom-up --prompt 'HISTORY>')
+    BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | peco --layout=bottom-up --prompt 'HISTORY>' | sed 's/\\n/\n/g')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
   zle -N fuzzy_select_history
   bindkey '^R' fuzzy_select_history
 
+  function fuzzy_clean_history() {
+    set -x
+    SELECTION=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | peco --layout=bottom-up --prompt 'HISTORY DELETE>')
+    sed -i "/;$SELECTION$/d" "$HISTFILE"
+  }
+  zle -N fuzzy_clean_history
+  bindkey '^T' fuzzy_clean_history
+
   function find_file() {
-    RBUFFER=$(find . -not -path '*/\.git/*' | peco --layout=bottom-up --prompt 'FILE>')
+    # TODO: Use current prefix.
+    # RBUFFER=$(find . -not -path '*/\.git/*' | peco --layout=bottom-up --prompt 'FILE>')
+    RBUFFER=$(ag -l . | peco --layout=bottom-up --prompt 'FILE>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }

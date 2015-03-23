@@ -78,7 +78,7 @@ import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 import qualified XMonad.Util.ExtensibleState as XS
 
-myWorkSpaces = [ "T" , "2" , "3" , "4", "5", "6", "7", "8", "9" ]
+myWorkSpaces = [ "1:T" , "2" , "3" , "4", "5", "6", "7", "8", "9" ]
 
 main :: IO ()
 main = do

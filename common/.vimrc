@@ -53,7 +53,6 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'myusuf3/numbers.vim'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'nsf/gocode', {'rtp': 'vim/'}
-"Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scrooloose/nerdtree'
 "Plugin 'sjl/gundo.vim'
 "Plugin 'sjl/splice.vim'
@@ -71,6 +70,7 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'vimoutliner/vimoutliner'
 "Plugin 'wincent/Command-T'
 
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
@@ -97,6 +97,7 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-scripts/dbext.vim'
+Plugin 'vim-scripts/argtextobj.vim'
 
 " Must be in this order.
 Plugin 'godlygeek/tabular'
@@ -767,7 +768,6 @@ let g:ycm_min_num_of_chars_for_completion = 10
 
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.'],
-  \   'go' : ['.'],
   \   'objc' : ['->', '.'],
   \   'ocaml' : ['.', '#'],
   \   'cpp,objcpp' : ['->', '.', '::'],

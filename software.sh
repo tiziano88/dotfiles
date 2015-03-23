@@ -28,6 +28,7 @@ SOFTWARE=(
   python-dev
   rlwrap
   rxvt-unicode
+  silversearcher-ag
   sgt-puzzles
   stow
   sudo
