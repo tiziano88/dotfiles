@@ -47,7 +47,8 @@ fi
 
 # some more ls aliases
 # alias ls='ls -G'
-alias ll='ls --all --human-readable --classify --dereference -l'
+# --dereference
+alias ll='ls --all --human-readable --classify -l'
 # alias la='ls'
 alias l='ls --classify -C'
 
