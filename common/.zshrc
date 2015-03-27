@@ -237,7 +237,7 @@ function tmux-usurp() {
 export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#❯ '
 
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
-eval $(keychain --eval)
+#eval $(keychain --eval)
 eval $(dircolors ~/.dir_colors)
 
 # https://github.com/clvv/fasd

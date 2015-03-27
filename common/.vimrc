@@ -760,7 +760,7 @@ set complete=.,i
 
 " Complete options (disable preview scratch window)
 set completeopt=menu,menuone,longest
-set completeopt+=preview
+"set completeopt+=preview
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_auto_trigger = 1

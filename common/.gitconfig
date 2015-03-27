@@ -32,15 +32,11 @@
   abbrev-commit = true
 [merge]
 #	ff = false
-	tool = vimdiff
+	tool = vimdiff2
+  conflictstyle = diff3
 [mergetool]
 	prompt = false
 	keepBackup = false
-[mergetool "splice"]
-	cmd = "gvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-	trustExitCode = true
-[mergetool "vimdiffnice"]
-	cmd = vimdiff $MERGED $LOCAL $BASE $REMOTE
 [rerere]
 	enabled = 0
 [user]
