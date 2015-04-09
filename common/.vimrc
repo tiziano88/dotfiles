@@ -1114,3 +1114,11 @@ function! IdemComplete()
   let filename = expand('%:p')
   call system('echo xxx')
 endfunction
+
+function! RunTerminal()
+  let line = getline('.')
+  execute "silent !tmux send-keys -t '.+' '" . line . "' ENTER"
+  redraw!
+endfunction
+autocmd FileType sh nnoremap <CR> :call RunTerminal()<CR>
+
