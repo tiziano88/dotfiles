@@ -70,6 +70,7 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'vimoutliner/vimoutliner'
 "Plugin 'wincent/Command-T'
 
+Plugin 'akesling/ondemandhighlight'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
@@ -901,46 +902,6 @@ endfunction
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" perforce commands
-command! -nargs=* -complete=file PEdit :!g4 edit %
-command! -nargs=* -complete=file PRevert :!g4 revert %
-command! -nargs=* -complete=file PDiff :!g4 diff %
-
-function! s:CheckOutFile()
-  if filereadable(expand('%')) && ! filewritable(expand('%'))
-    let option = confirm('Readonly file, do you want to checkout from p4?', '&Yes\n&No', 1, 'Question')
-    if option == 1
-      PEdit
-    endif
-  endif
-endfunction
-au FileChangedRO * nested :call <SID>CheckOutFile()
-
-function! G4Blame(on_file)
-  " Grab the filename from the argument, use expand() to expand '%'.
-  let file = expand(a:on_file)
-  " Lock scrolling in right pane
-  setl scb
-  " Create left pane
-  vnew
-  " It's 37 columns wide
-  vert res 37
-  " Get the output, split it on newline and keep empty lines, skip the first 5
-  " lines because they're headers we don't need, and put it in starting on line
-  " 1 of the left pane
-  call setline(1, split(system('g4 blame ' . file), '\n', 1)[5:])
-  " Lock scrolling in left pane, turn off word wrap, set the buffer as
-  " not-modified, remove any listchars highlighting (common in google code), set
-  " it readonly (to make modifications slightly more annoying.
-  setl scb nowrap nomod nolist ro
-  " Move back to the right pane (not sure if there's a better way to do this?)
-  exe "normal \<c-w>\<right>"
-  " Get the non-active pane scrolled to the same relative offset.
-  syncbind
-endfunction
-
-com! -nargs=1 Blame :call G4Blame(<args>)
-
 set noesckeys    " disable keys sending escape sequences in insert mode (fixes delay after pressing ESC in terminal)
 
 " Eclim settings
@@ -1122,3 +1083,20 @@ function! RunTerminal()
 endfunction
 autocmd FileType sh nnoremap <CR> :call RunTerminal()<CR>
 
+function! ExtraJavaSyntax()
+  set conceallevel=1
+  set concealcursor=nci
+  " TODO: git merge markers.
+  syn match _JavaAngleOpenClose '<[a-zA-Z., ?<>]*>' contains=_JavaAngleOpen,_JavaAngleClose
+  syn match _JavaAngleOpen '<' conceal contained cchar=⟨
+  syn match _JavaAngleClose '>' conceal contained cchar=⟩
+  highlight link _JavaAngleOpen Special
+  highlight link _JavaAngleClose Special
+
+  syntax match _JavaClassName '\<[A-Z][A-Za-z0-9_]*\>'
+  highlight link _JavaClassName Identifier
+
+  syntax match _JavaConstant '\<[A-Z_]*\>'
+  highlight link _JavaConstant Constant
+endfunction
+autocmd! FileType java call ExtraJavaSyntax()
