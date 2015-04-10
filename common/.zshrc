@@ -291,3 +291,20 @@ TRAPALRM() {
 
 # EXPERIMENTAL
 compdef _gnu_generic -P "*"
+
+# Setup zsh-autosuggestions
+source /usr/local/google/home/tzn/.zsh-autosuggestions/autosuggestions.zsh
+
+# Enable autosuggestions automatically
+zle-line-init() {
+    zle autosuggest-start
+}
+
+zle -N zle-line-init
+
+export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
+
+# use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
+# zsh-autosuggestions is designed to be unobtrusive)
+bindkey '^T' autosuggest-toggle
+bindkey '^f' vi-forward-word
