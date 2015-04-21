@@ -72,6 +72,8 @@ alias ports='netstat -tulanp'
 #alias lock='gnome-screensaver-command -l'
 alias org='vim ~/tzn.org'
 
+alias mosh='mosh --ssh="ssh -o ProxyUseFdpass=no -o UseProxyIf=true -o GSSAPITrustDns=no"'
+
 # jump/mark
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 export MARKPATH=$HOME/.marks
