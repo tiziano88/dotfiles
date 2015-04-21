@@ -19,6 +19,7 @@ SOFTWARE=(
   keychain
   mercurial
   moreutils
+  mosh
   mutt
   ntfs-3g
   pandoc

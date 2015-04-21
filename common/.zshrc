@@ -265,7 +265,9 @@ if exists peco; then
 
   function find_file() {
     # TODO: Use current prefix.
-    # RBUFFER=$(find . -not -path '*/\.git/*' | peco --layout=bottom-up --prompt 'FILE>')
+    f="find . -not -path '*/\\.git/*'"
+    # f='ag -l .'
+    # f='find .'
     RBUFFER=$(ag -l . | peco --layout=bottom-up --prompt 'FILE>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
@@ -297,7 +299,7 @@ source /usr/local/google/home/tzn/.zsh-autosuggestions/autosuggestions.zsh
 
 # Enable autosuggestions automatically
 zle-line-init() {
-    zle autosuggest-start
+#    zle autosuggest-start
 }
 
 zle -N zle-line-init

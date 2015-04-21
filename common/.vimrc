@@ -81,6 +81,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'chrisdone/hindent', {'rtp': 'vim'}
+Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'fatih/vim-go'
 Plugin 'gregsexton/gitv'
@@ -119,6 +120,7 @@ function! FindFile()
 endfunction
 
 if filereadable(expand('~/.at_google'))
+  let g:auto_buildifier = 1
   source /usr/share/vim/google/google.vim
   Glug blaze plugin[mappings]='<leader>b'
   Glug codefmt-google auto_filetypes+=BUILD auto_all=0
