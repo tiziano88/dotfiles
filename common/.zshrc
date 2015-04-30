@@ -310,3 +310,9 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 # zsh-autosuggestions is designed to be unobtrusive)
 bindkey '^T' autosuggest-toggle
 bindkey '^f' vi-forward-word
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/tzn/google-cloud-sdk/path.bash.inc'
+
+# The next line enables bash completion for gcloud.
+source '/home/tzn/google-cloud-sdk/completion.bash.inc'
