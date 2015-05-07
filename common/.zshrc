@@ -16,8 +16,8 @@ source ~/.aliases
 source ~/.env
 
 source_ ~/.google.sh
-
-source_ ~/.fzf.zsh
+# source_ ~/.fzf/shell/completion.bash
+source_ ~/.fzf/shell/key-bindings.zsh
 
 # ^ in glob negates pattern following it
 
@@ -246,9 +246,9 @@ eval $(dircolors ~/.dir_colors)
 # https://github.com/rupa/z
 source ~/z/z.sh
 
-if exists peco; then
+if exists fzf; then
   function fuzzy_select_history() {
-    BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | peco --layout=bottom-up --prompt 'HISTORY>' | sed 's/\\n/\n/g')
+    BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | fzf --prompt='HISTORY>' | sed 's/\\n/\n/g')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -257,7 +257,7 @@ if exists peco; then
 
   function fuzzy_clean_history() {
     set -x
-    SELECTION=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | peco --layout=bottom-up --prompt 'HISTORY DELETE>')
+    SELECTION=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | fzf --prompt='DELETE HISTORY>')
     sed -i "/;$SELECTION$/d" "$HISTFILE"
   }
   zle -N fuzzy_clean_history
@@ -268,7 +268,7 @@ if exists peco; then
     f="find . -not -path '*/\\.git/*'"
     # f='ag -l .'
     # f='find .'
-    RBUFFER=$(ag -l . | peco --layout=bottom-up --prompt 'FILE>')
+    RBUFFER=$(ag -l . | fzf --prompt='FILE>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -276,8 +276,8 @@ if exists peco; then
   bindkey '^P' find_file
 
   function change_dir() {
-    # local dir=$(z -l | cut -c12- | peco --layout=bottom-up --prompt 'DIR>')
-    local dir=$(dirs -p | uniq | peco --layout=bottom-up --prompt 'DIR>')
+    # local dir=$(z -l | cut -c12- | fzf --layout=bottom-up --prompt 'DIR>')
+    local dir=$(dirs -p | uniq | fzf --prompt='DIR>')
     cd "$dir"
     zle reset-prompt
   }
@@ -292,10 +292,10 @@ TRAPALRM() {
 }
 
 # EXPERIMENTAL
-compdef _gnu_generic -P "*"
+# compdef _gnu_generic -P "*"
 
 # Setup zsh-autosuggestions
-source /usr/local/google/home/tzn/.zsh-autosuggestions/autosuggestions.zsh
+# source /usr/local/google/home/tzn/.zsh-autosuggestions/autosuggestions.zsh
 
 # Enable autosuggestions automatically
 zle-line-init() {

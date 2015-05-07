@@ -110,6 +110,8 @@ Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
+set rtp+='~/.fzf'
+
 function! FindFile()
   let s:filename = system('find . | peco --prompt ''FILE>''')
   if !v:shell_error
@@ -154,6 +156,10 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 100
 
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_mode_map = {
+        \ "mode": "passive",
+        \ "active_filetypes": ["ruby", "php"],
+        \ "passive_filetypes": ["puppet"] }
 
 " changesPlugin
 
