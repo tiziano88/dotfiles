@@ -37,6 +37,7 @@ SOFTWARE=(
   tig
   tree
   tmux
+  urlview
   xdotool
   xfonts-terminus
   xfonts-terminus-oblique
