@@ -268,7 +268,7 @@ if exists fzf; then
     f="find . -not -path '*/\\.git/*'"
     # f='ag -l .'
     # f='find .'
-    RBUFFER=$(ag -l . | fzf --prompt='FILE>')
+    RBUFFER=$(eval "$f" | fzf --prompt='FILE>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
