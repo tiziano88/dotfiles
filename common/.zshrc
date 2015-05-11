@@ -18,6 +18,7 @@ source ~/.env
 source_ ~/.google.sh
 # source_ ~/fzf/shell/completion.bash
 source_ ~/fzf/shell/key-bindings.zsh
+source_ ~/fzf/shell/completion.zsh
 
 # ^ in glob negates pattern following it
 
@@ -25,8 +26,10 @@ autoload -U colors && colors
 
 setopt NO_PROMPT_SUBST
 setopt NO_CDABLE_VARS
-setopt EXTENDED_GLOB
 setopt NO_CASE_GLOB
+
+# Good stuff but conflicts with fzf.
+setopt NO_EXTENDED_GLOB
 
 # man zshoptions
 setopt SHARE_HISTORY
@@ -85,8 +88,10 @@ expand-or-complete-with-dots() {
   zle redisplay
 }
 zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
-bindkey "^_" undo
+bindkey '^I' expand-or-complete-with-dots
+bindkey '^_' undo
+
+bindkey '^P' fzf-completion
 
 autoload -U compinit && compinit
 # autoload -U predict-on && predict-on
@@ -273,7 +278,7 @@ if exists fzf; then
     zle -R -c               # refresh
   }
   zle -N find_file
-  bindkey '^P' find_file
+  # bindkey '^P' find_file
 
   function change_dir() {
     # local dir=$(z -l | cut -c12- | fzf --layout=bottom-up --prompt 'DIR>')
