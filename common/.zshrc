@@ -19,6 +19,7 @@ source_ ~/.google.sh
 # source_ ~/fzf/shell/completion.bash
 source_ ~/fzf/shell/key-bindings.zsh
 source_ ~/fzf/shell/completion.zsh
+source_ ~/git-hub/init
 
 # ^ in glob negates pattern following it
 

@@ -67,6 +67,8 @@ git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-high
 
 git clone git@github.com:tarruda/zsh-autosuggestions.git ~/.zsh-autosuggestions
 
+git clone git@github.com:ingydotnet/git-hub.git ~/git-hub
+
 # wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
 # cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "cat >> ~/.ssh/authorized_keys"
