@@ -92,8 +92,6 @@ zle -N expand-or-complete-with-dots
 bindkey '^I' expand-or-complete-with-dots
 bindkey '^_' undo
 
-bindkey '^P' fzf-completion
-
 autoload -U compinit && compinit
 # autoload -U predict-on && predict-on
 
@@ -254,7 +252,8 @@ source ~/z/z.sh
 
 if exists fzf; then
   function fuzzy_select_history() {
-    BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | fzf --prompt='HISTORY>' | sed 's/\\n/\n/g')
+    # BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | fzf --prompt='HISTORY>' | sed 's/\\n/\n/g')
+    BUFFER=$(history 1 | cut --characters=8- | fzf --no-sort --tac --prompt='HISTORY>' | sed 's/\\n/\n/g')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -267,19 +266,19 @@ if exists fzf; then
     sed -i "/;$SELECTION$/d" "$HISTFILE"
   }
   zle -N fuzzy_clean_history
-  bindkey '^T' fuzzy_clean_history
+  # bindkey '^T' fuzzy_clean_history
 
   function find_file() {
     # TODO: Use current prefix.
-    f="find . -not -path '*/\\.git/*'"
-    # f='ag -l .'
+    # f="find . -not -path '*/\\.git/*'"
+    f='ag -l .'
     # f='find .'
     RBUFFER=$(eval "$f" | fzf --prompt='FILE>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
   zle -N find_file
-  # bindkey '^P' find_file
+  bindkey '^P' find_file
 
   function change_dir() {
     # local dir=$(z -l | cut -c12- | fzf --layout=bottom-up --prompt 'DIR>')
@@ -314,11 +313,11 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 
 # use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
 # zsh-autosuggestions is designed to be unobtrusive)
-bindkey '^T' autosuggest-toggle
-bindkey '^f' vi-forward-word
+# bindkey '^T' autosuggest-toggle
+# bindkey '^f' vi-forward-word
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/home/tzn/google-cloud-sdk/path.bash.inc'
+source_ '/home/tzn/google-cloud-sdk/path.bash.inc'
 
 # The next line enables bash completion for gcloud.
-source '/home/tzn/google-cloud-sdk/completion.bash.inc'
+source_ '/home/tzn/google-cloud-sdk/completion.bash.inc'

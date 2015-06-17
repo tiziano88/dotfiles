@@ -28,6 +28,7 @@ SOFTWARE=(
   python
   python-dev
   rlwrap
+  ruby-sass
   rxvt-unicode
   silversearcher-ag
   sgt-puzzles

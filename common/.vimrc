@@ -123,12 +123,14 @@ endfunction
 if filereadable(expand('~/.at_google'))
   let g:auto_buildifier = 1
   source /usr/share/vim/google/google.vim
+  "Glug syntastic-google
   Glug blaze plugin[mappings]='<leader>b'
-  Glug codefmt-google auto_filetypes+=BUILD auto_all=0
+  Glug blazedeps auto_filetypes=go,
+  Glug codefmt gofmt_executable=goimports
+  Glug codefmt-google auto_filetypes+=BUILD,go auto_all=0
   Glug grok
   Glug gtimporter
   Glug relatedfiles plugin[mappings]=',f'
-  "Glug syntastic-google
   Glug ultisnips-google
   Glug youcompleteme-google
   source /usr/share/vim/google/gtags.vim
