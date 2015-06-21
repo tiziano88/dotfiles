@@ -60,6 +60,8 @@ git clone git@github.com:clvv/fasd ~/fasd
 
 git clone git@github.com:rupa/z.git ~/z
 
+git clone git@github.com:Anthony25/gnome-terminal-colors-solarized.git ~/gnome-terminal-colors-solarized
+
 git clone git@github.com:mooz/percol.git ~/percol
 
 git clone git@github.com:junegunn/fzf.git ~/fzf

@@ -92,6 +92,8 @@ Plugin 'krisajenkins/vim-pipe'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
 Plugin 'oblitum/rainbow'
+Plugin 'phildawes/racer'
+Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-dispatch'
@@ -136,7 +138,7 @@ if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/gtags.vim
   command! Jade !/google/data/ro/teams/jade/jade %
 else
-  "Plugin 'Valloric/YouCompleteMe'
+  Plugin 'Valloric/YouCompleteMe'
 endif
 
 let g:go_disable_autoinstall = 1
@@ -147,6 +149,8 @@ let g:go_golint_bin="golint"
 
 let g:rainbow_active = 1
 let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
+
+" let g:racer_cmd = '$HOME/.vim/bundle/racer/target/release/racer'
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$\|magicjar',
@@ -190,6 +194,9 @@ let g:syntastic_mode_map = {
 
   autocmd BufNewFile,BufRead *.md setf markdown
   autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+  autocmd BufNewFile,BufRead *.rs setf rust
+  autocmd BufNewFile,BufRead *.rs set filetype=rust
 
   autocmd BufNewFile,BufRead *.rules set filetype=udevrules
 
@@ -787,6 +794,7 @@ let g:ycm_semantic_triggers =  {
   \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
   \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
   \   'ruby' : ['.', '::'],
+  \   'rust' : ['.', '::'],
   \   'lua' : ['.', ':'],
   \   'erlang' : [':'],
   \ }

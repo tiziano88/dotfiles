@@ -74,6 +74,11 @@ alias org='vim ~/tzn.org'
 
 alias mosh='mosh --ssh="ssh -o ProxyUseFdpass=no -o UseProxyIf=true -o GSSAPITrustDns=no"'
 
+function ssh-key-install {
+  readonly TARGET=$1
+  cat ~/.ssh/id_rsa.pub | ssh $TARGET "cat >> ~/.ssh/authorized_keys"
+}
+
 # jump/mark
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 export MARKPATH=$HOME/.marks
