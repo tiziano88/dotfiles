@@ -458,13 +458,15 @@ let g:tagbar_type_go = {
 \ }
 
 " General
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org set filetype=org
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.borg set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.xml set colorcolumn=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.css set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.gcl set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.py set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.md set colorcolumn=80 textwidth=80 spell
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org set filetype=org
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.py set colorcolumn=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.scss set colorcolumn=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.xml set colorcolumn=80
 "au BufEnter *.org set filetype=org
 
 
@@ -752,6 +754,7 @@ autocmd FileType mail call MailSetup()
 autocmd FileType gitcommit call MailSetup()
 
 autocmd FileType help setlocal colorcolumn=80
+autocmd FileType sh setlocal colorcolumn=80
 
 autocmd FileType git5message setlocal colorcolumn=0
 autocmd FileType git5message setlocal textwidth=0
