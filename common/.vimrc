@@ -755,6 +755,7 @@ autocmd FileType gitcommit call MailSetup()
 
 autocmd FileType help setlocal colorcolumn=80
 autocmd FileType sh setlocal colorcolumn=80
+autocmd FileType dart setlocal colorcolumn=80
 
 autocmd FileType git5message setlocal colorcolumn=0
 autocmd FileType git5message setlocal textwidth=0

@@ -25,6 +25,8 @@ SOFTWARE=(
   pandoc
   parcellite
   parted
+  pass
+  pwgen
   python
   python-dev
   rlwrap
