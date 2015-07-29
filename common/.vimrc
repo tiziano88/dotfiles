@@ -123,11 +123,19 @@ function! FindFile()
 endfunction
 
 if filereadable(expand('~/.at_google'))
-  let g:auto_buildifier = 1
   source /usr/share/vim/google/google.vim
+
+  autocmd FileType bzl,blazebuild AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,javascript AutoFormatBuffer clang-format "proto
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType jslayout AutoFormatBuffer jslfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType python AutoFormatBuffer pyformat
+  autocmd FileType dart AutoFormatBuffer dartfmt
+
   "Glug syntastic-google
   Glug blaze plugin[mappings]='<leader>b'
-  Glug blazedeps auto_filetypes=go,
+  " Glug blazedeps auto_filetypes=go,
   Glug codefmt gofmt_executable=goimports
   Glug codefmt-google auto_filetypes+=BUILD,go auto_all=0
   Glug grok
@@ -136,7 +144,6 @@ if filereadable(expand('~/.at_google'))
   Glug ultisnips-google
   Glug youcompleteme-google
   source /usr/share/vim/google/gtags.vim
-  command! Jade !/google/data/ro/teams/jade/jade %
 else
   Plugin 'Valloric/YouCompleteMe'
 endif
@@ -166,6 +173,7 @@ let g:syntastic_mode_map = {
         \ "mode": "passive",
         \ "active_filetypes": ["ruby", "php"],
         \ "passive_filetypes": ["puppet"] }
+let g:syntastic_scss_checkers = ['scss_lint']
 
 " changesPlugin
 

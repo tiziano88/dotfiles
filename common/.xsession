@@ -6,7 +6,8 @@
 
 #xinput set-button-map "Kingsis Peripherals  Evoluent VerticalMouse 3 0" 1 2 3 0 0
 
-#setxkbmap gb
+setxkbmap -v gb
+xautolock -secure -time 10 -locker "i3lock -duc 003355" -notify 15 -notifier "notify-send -t 5000 -i dialog-password -u low 'Security advisory' '\nLocking session in 15 seconds'" &
 
 #envfile="${HOME}/.gnupg/gpg-agent.env"
 #if test -f "$envfile" && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then

@@ -21,6 +21,7 @@ Config {
     Run DiskIO [ ("sda", "Disk I/O: <totalbar>") ] ["--bwidth", "2"] 10,
     Run MultiCpu ["-t", "Cpu: <bar>", "--high", "red", "--High", "80"] 10,
     Run TopProc ["--width", "10"] 10,
-    Run Date "%a %b %_d %Y %H:%M:%S" "date" 10 ],
+    Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+  ],
   template = "%StdinReader% }{ %EGLC% | %dynnetwork% | %memory% [%topmem%] | %swap% | %diskio% | %multicpu% [%top%] | <fc=red>%date%</fc>",
 }
