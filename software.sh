@@ -14,9 +14,9 @@ SOFTWARE=(
   fonts-ubuntu-font-family-console
   git
   golang
-  vim
   htop
   keychain
+  ksnapshot
   mercurial
   moreutils
   mosh
@@ -32,15 +32,16 @@ SOFTWARE=(
   rlwrap
   ruby-sass
   rxvt-unicode
-  silversearcher-ag
   sgt-puzzles
+  silversearcher-ag
   stow
   sudo
   task
   tig
-  tree
   tmux
+  tree
   urlview
+  vim
   xdotool
   xfonts-terminus
   xfonts-terminus-oblique

@@ -100,6 +100,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
+Plugin 'unblevable/quick-scope'
 Plugin 'vim-scripts/dbext.vim'
 Plugin 'vim-scripts/argtextobj.vim'
 
