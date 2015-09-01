@@ -16,3 +16,6 @@ xautolock -secure -time 10 -locker "gnome-screensaver-command -l" -notify 15 -no
 #    eval "$(gpg-agent --daemon --write-env-file "$envfile")"
 #fi
 #export GPG_AGENT_INFO  # the env file does not contain the export statement
+
+xset fp+ /usr/local/share/fonts/X11/misc
+xset fp rehash
