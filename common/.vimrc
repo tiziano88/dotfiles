@@ -71,6 +71,8 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'wincent/Command-T'
 "Plugin 'akesling/ondemandhighlight'
 
+Plugin 'artur-shaik/vim-javacomplete2'
+"Plugin 'airblade/vim-rooter'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Shougo/unite.vim'
@@ -92,6 +94,7 @@ Plugin 'krisajenkins/vim-pipe'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
 Plugin 'oblitum/rainbow'
+Plugin 'othree/html5.vim'
 Plugin 'phildawes/racer'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/syntastic'
@@ -103,6 +106,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'unblevable/quick-scope'
 Plugin 'vim-scripts/dbext.vim'
 Plugin 'vim-scripts/argtextobj.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 " Must be in this order.
 Plugin 'godlygeek/tabular'
@@ -143,10 +147,10 @@ if filereadable(expand('~/.at_google'))
   Glug gtimporter
   Glug relatedfiles plugin[mappings]=',f'
   Glug ultisnips-google
-  Glug youcompleteme-google
+  "Glug youcompleteme-google
   source /usr/share/vim/google/gtags.vim
 else
-  Plugin 'Valloric/YouCompleteMe'
+  "Plugin 'Valloric/YouCompleteMe'
 endif
 
 let g:go_disable_autoinstall = 1
@@ -185,11 +189,13 @@ let g:syntastic_scss_checkers = ['scss_lint']
   " Enable omni completion.
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+  "autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
+  autocmd FileType java set omnifunc=javacomplete#Complete
 
   "autocmd BufWrite *.go :silent Fmt
 
@@ -775,6 +781,7 @@ let g:ycm_filetype_blacklist = {
       \ 'markdown' : 1,
       \ 'notes' : 1,
       \ 'qf' : 1,
+      \ 'proto' : 1,
       \ 'tagbar' : 1,
       \ 'text' : 1,
       \ 'unite' : 1,
@@ -796,9 +803,24 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_auto_trigger = 1
 let g:ycm_min_num_of_chars_for_completion = 10
+let g:ycm_dart_bin_folder_path = '/usr/lib/google-dartlang/bin'
+
+" Turn off Syntastic gutter markers
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_echo_current_diagnostic = 1
+
+" Highlight errors and warnings with red/magenta undercurl
+hi SpellBad term=none ctermbg=none cterm=undercurl ctermfg=Red gui=undercurl guisp=Red
+hi SpellCap term=none ctermbg=none cterm=undercurl ctermfg=Magenta gui=undercurl guisp=Magenta
+
+" Use C-] to jump to definition
+nmap  :YcmCompleter GoToDefinition
 
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.'],
+  \   'dart' : ['.'],
   \   'objc' : ['->', '.'],
   \   'ocaml' : ['.', '#'],
   \   'cpp,objcpp' : ['->', '.', '::'],

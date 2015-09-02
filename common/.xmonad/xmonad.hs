@@ -123,7 +123,7 @@ myConfig hs = let c = gnomeConfig {
 myKeys c = [
   ("M-p", shellPromptHere greenXPConfig),
   ("M-S-q", io (exitWith ExitSuccess)),
-  ("M-t", swapTerminal),
+  -- ("M-t", swapTerminal),
   ("C-S-l", spawn "gnome-screensaver-command -l")
   ]
 
