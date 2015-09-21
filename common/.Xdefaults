@@ -12,11 +12,14 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
 
-Xft.dpi:                    96
-Xft.antialias:              true
+! to verify: xdpyinfo | grep dots
+!Xft.dpi:                    96
+Xft.antialias:              false
+Xft.autohint:               false
 Xft.rgba:                   rgb
 Xft.hinting:                true
-Xft.hintstyle:              hintslight
+Xft.hintstyle:              hintfull
+Xft.lcdfilter:              lcddefault
 ! hintfull
 
 !-------------------------------------------------------------------------------

@@ -47,6 +47,7 @@ SOFTWARE=(
   xfonts-terminus-oblique
   xmobar
   xmonad
+  xzoom
   zsh
 )
 
