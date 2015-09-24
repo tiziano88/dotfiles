@@ -20,7 +20,7 @@ Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintfull
 Xft.lcdfilter:              lcddefault
-! hintfull
+Xft.hintstyle:              hintfull
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
