@@ -62,7 +62,6 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'tpope/vim-surround'
 "Plugin 'tsaleh/vim-matchit'
 "Plugin 'tyok/nerdtree-ack'
-"Plugin 'vim-pandoc/vim-pandoc'
 "Plugin 'vim-scripts/IndentConsistencyCop'
 "Plugin 'vim-scripts/Mark--Karkat'
 "Plugin 'vim-scripts/YankRing.vim'
@@ -70,12 +69,15 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'vimoutliner/vimoutliner'
 "Plugin 'wincent/Command-T'
 "Plugin 'akesling/ondemandhighlight'
+"Plugin 'vim-scripts/dbext.vim'
+"Plugin 'tpope/vim-speeddating'
+"Plugin 'airblade/vim-rooter'
+"Plugin 'Shougo/unite.vim'
+"Plugin 'honza/vim-snippets'
+"Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'artur-shaik/vim-javacomplete2'
-"Plugin 'airblade/vim-rooter'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
@@ -87,7 +89,6 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'fatih/vim-go'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
-Plugin 'honza/vim-snippets'
 Plugin 'jceb/vim-orgmode'
 Plugin 'junegunn/fzf'
 Plugin 'krisajenkins/vim-pipe'
@@ -100,11 +101,11 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'unblevable/quick-scope'
-Plugin 'vim-scripts/dbext.vim'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-scripts/argtextobj.vim'
 Plugin 'Valloric/YouCompleteMe'
 
@@ -179,6 +180,13 @@ let g:syntastic_mode_map = {
         \ "active_filetypes": ["ruby", "php"],
         \ "passive_filetypes": ["puppet"] }
 let g:syntastic_scss_checkers = ['scss_lint']
+
+" NerdCommenter
+
+" <C-_> is the same as <C-/>
+nnoremap <C-_> :call NERDComment('n', 'toggle')<CR>
+" gv to highlight previous selection
+vnoremap <C-_> :call NERDComment('n', 'toggle')<CR>gv
 
 " changesPlugin
 
@@ -378,19 +386,51 @@ let g:syntastic_scss_checkers = ['scss_lint']
 
 set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
 
+" FZF
+" https://github.com/junegunn/fzf/wiki/Examples-(vim)
+
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+command! FZFBuf call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })
+
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+
+nnoremap <C-p> :FZF<CR>
+nnoremap <C-b> :FZFBuf<CR>
+
+" Unite
+
 let g:unite_source_rec_min_cache_files=0
 let g:unite_source_rec_max_cache_files=0
 let g:unite_source_history_yank_enable = 1
 
-call unite#custom#source('file_rec', 'ignore_globs', split(&wildignore, ','))
+"call unite#custom#source('file_rec', 'ignore_globs', split(&wildignore, ','))
 
 " file_rec/async
-nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
-nnoremap <leader>/ :<C-u>Unite grep:<C-R>=expand('%:p:h')<CR><CR>
-nnoremap <leader>* :<C-u>Unite grep:.<CR><C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>y :<C-u>plit(&wildignore, ','))uuuunite history/yank<cr>
+"nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
+"nnoremap <leader>/ :<C-u>Unite grep:<C-R>=expand('%:p:h')<CR><CR>
+"nnoremap <leader>* :<C-u>Unite grep:.<CR><C-R>=expand("<cword>")<CR><CR>
+"nnoremap <leader>y :<C-u>plit(&wildignore, ','))uuuunite history/yank<cr>
 "nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
-nnoremap <leader>g :<C-u>Unite grep:.<CR>
+"nnoremap <leader>g :<C-u>Unite grep:.<CR>
 "nnoremap <C-r> <plug>(unite_redraw)
 
 " taglist
@@ -1089,7 +1129,7 @@ let s:unite_source = {
       \ 'gather_candidates': function('RelatedfilesGather'),
       \ }
 
-call unite#define_source(s:unite_source)
+"call unite#define_source(s:unite_source)
 
 function! Openf(candidate)
   let l:path = a:candidate.word
@@ -1111,7 +1151,7 @@ let s:kind = {
       \ 'parents': [],
       \ }
 
-call unite#define_kind(s:kind)
+"call unite#define_kind(s:kind)
 
 " Prevent replacing paste buffer on paste.
 function! RestoreRegister()
