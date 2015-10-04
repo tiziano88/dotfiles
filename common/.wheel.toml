@@ -1,0 +1,16 @@
+[general]
+device = '/dev/input/by-id/usb-Contour_Design_ShuttleXpress-event-if00'
+
+[[map]]
+jog_up = 'xdotool click 4'
+jog_down = 'xdotool click 5'
+shuttle_up = 'xdotool click 4'
+shuttle_down = 'xdotool click 5'
+button_left = 'xdotool key Home'
+button_right = 'xdotool key End'
+
+[[map]]
+jog_up = 'xdotool click 4'
+jog_down = 'xdotool click 5'
+button_left = 'xdotool key Home'
+button_right = 'xdotool key End'
