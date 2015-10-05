@@ -76,7 +76,7 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'honza/vim-snippets'
 "Plugin 'Lokaltog/vim-easymotion'
 
-Plugin 'artur-shaik/vim-javacomplete2'
+"Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'SirVer/ultisnips'
@@ -459,6 +459,8 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " Too noisy for google3
 let g:airline#extensions#whitespace#enabled = 0
+
+let g:airline_section_b = airline#section#create(['hunks'])
 
 " Show Go identifier under cursor instead of tagbar section.
 let s:go_last_lookup_time = 0
