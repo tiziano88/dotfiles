@@ -91,6 +91,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
 Plugin 'jceb/vim-orgmode'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'krisajenkins/vim-pipe'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
@@ -413,8 +414,8 @@ command! FZFMru call fzf#run({
 \  'options': '-m -x +s',
 \  'down':    '40%'})
 
-nnoremap <C-p> :FZF<CR>
-nnoremap <C-b> :FZFBuf<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <C-b> :Buffer<CR>
 
 " Unite
 

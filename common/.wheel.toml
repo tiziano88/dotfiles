@@ -1,5 +1,5 @@
 [general]
-device = '/dev/input/by-id/usb-Contour_Design_ShuttleXpress-event-if00'
+device = '/dev/input/by-id/usb-Contour_Design_ShuttlePRO_v2-event-if00'
 
 [[map]]
 jog_up = 'xdotool click 4'
