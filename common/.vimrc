@@ -167,14 +167,8 @@ let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
 
 " let g:racer_cmd = '$HOME/.vim/bundle/racer/target/release/racer'
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$\|review$\|magicjar',
-  \ 'file': '\.class$|\.exe$\|\.so$\|\.dll$',
-  \ 'link': 'blaze-bin\|blaze-genfiles\|blaze-google3\|blaze-out\|blaze-testlogs\|READONLY$',
-  \ }
-" match by filename rather than full path (<c-d> in the prompt)
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_height = 100
+" Otherwise code block delims are completely hidden.
+let g:pandoc#syntax#conceal#blacklist = ['codeblock_delim']
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = {
@@ -190,73 +184,57 @@ nnoremap <C-_> :call NERDComment('n', 'toggle')<CR>
 " gv to highlight previous selection
 vnoremap <C-_> :call NERDComment('n', 'toggle')<CR>gv
 
-" changesPlugin
 
-"let g:changes_autocmd=1
-"let g:changes_vcs_check=1
-"let g:changes_vcs_system='git'
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-  " Enable omni completion.
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
+autocmd FileType java set omnifunc=javacomplete#Complete
 
-  "autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
-  autocmd FileType java set omnifunc=javacomplete#Complete
+"autocmd BufWrite *.go :silent Fmt
 
-  "autocmd BufWrite *.go :silent Fmt
+autocmd BufNewFile,BufRead *.go set filetype=go
+autocmd BufNewFile,BufRead *.less set filetype=less
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.org set filetype=org
+autocmd BufNewFile,BufRead *.rs set filetype=rust
+autocmd BufNewFile,BufRead *.rules set filetype=udevrules
+autocmd BufNewFile,BufRead *.sql set filetype=mysql
 
-  autocmd BufNewFile,BufRead *.go setf go
+autocmd BufNewFile,BufRead *.sql let b:vimpipe_command='dremel'
 
-  autocmd BufNewFile,BufRead *.sql setf mysql
-  autocmd BufNewFile,BufRead *.sql set filetype=mysql
-  autocmd BufNewFile,BufRead *.sql let b:vimpipe_command='dremel'
+autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
+autocmd FileType html setl expandtab | setl softtabstop=0 | setl shiftwidth=2 | setl tabstop=2
+autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
+autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 
-  autocmd BufNewFile,BufRead *.less setf less
-
-  autocmd BufNewFile,BufRead *.md setf markdown
-  autocmd BufNewFile,BufRead *.md set filetype=markdown
-
-  autocmd BufNewFile,BufRead *.rs setf rust
-  autocmd BufNewFile,BufRead *.rs set filetype=rust
-
-  autocmd BufNewFile,BufRead *.rules set filetype=udevrules
-
-  " For snippet_complete marker.
-  " if has('conceal')
-  "     set conceallevel=2 concealcursor=i
-  " endif
-
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
-
-  autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
-  autocmd FileType html setl expandtab | setl softtabstop=0 | setl shiftwidth=2 | setl tabstop=2
-  autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
-  autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 
 " org-mode {
-  let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
-  let g:org_todo_keyword_faces = [
-        \  ['TODO', 'red', ':background white'],
-        \  ['STARTED', 'cyan'],
-        \  ['DONE', 'green']
-        \]
+let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
+let g:org_todo_keyword_faces = [
+      \  ['TODO', 'red', ':background white'],
+      \  ['STARTED', 'cyan'],
+      \  ['DONE', 'green']
+      \]
 
-  let g:org_todo_setup = 'TODO STARTED | DONE'
-  hi! DONETODO guifg=green
-  hi! NOTDONETODO guifg=red
+let g:org_todo_setup = 'TODO STARTED | DONE'
+hi! DONETODO guifg=green
+hi! NOTDONETODO guifg=red
 
-  augroup org
-    autocmd!
-    autocmd FileType org nmap <CR> @<Plug>OrgNewHeadingBelowNormal
-  augroup END
+augroup org
+  autocmd!
+  autocmd FileType org nmap <CR> @<Plug>OrgNewHeadingBelowNormal
+augroup END
 
 " Key (re)mappings {
     " Consider Space
@@ -391,49 +369,8 @@ set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
 " FZF
 " https://github.com/junegunn/fzf/wiki/Examples-(vim)
 
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-command! FZFBuf call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })
-
-command! FZFMru call fzf#run({
-\  'source':  v:oldfiles,
-\  'sink':    'e',
-\  'options': '-m -x +s',
-\  'down':    '40%'})
-
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffer<CR>
-
-" Unite
-
-let g:unite_source_rec_min_cache_files=0
-let g:unite_source_rec_max_cache_files=0
-let g:unite_source_history_yank_enable = 1
-
-"call unite#custom#source('file_rec', 'ignore_globs', split(&wildignore, ','))
-
-" file_rec/async
-"nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
-"nnoremap <leader>/ :<C-u>Unite grep:<C-R>=expand('%:p:h')<CR><CR>
-"nnoremap <leader>* :<C-u>Unite grep:.<CR><C-R>=expand("<cword>")<CR><CR>
-"nnoremap <leader>y :<C-u>plit(&wildignore, ','))uuuunite history/yank<cr>
-"nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
-"nnoremap <leader>g :<C-u>Unite grep:.<CR>
-"nnoremap <C-r> <plug>(unite_redraw)
 
 " taglist
 let Tlist_Display_Prototype = 1
@@ -521,7 +458,6 @@ au! BufRead,BufWrite,BufWritePost,BufNewFile *.borg set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.css set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.gcl set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.md set colorcolumn=80 textwidth=80 spell
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org set filetype=org
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.py set colorcolumn=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.scss set colorcolumn=80
@@ -559,21 +495,11 @@ function! Netrw()
 "  nmap <buffer> u -
   nmap <buffer> C :Ntree
 endfunction
-augroup netrw
-  autocmd!
-"  autocmd filetype netrw call Netrw()
-augroup END
 
 " not every vim is compiled with this, use the following line instead
 "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 scriptencoding utf-8
 
-"if has('win32') || has('win64')
-"  set guifont=Terminus:h12
-"else
-"  set guifont=Terminus\ Medium\ 9
-"endif
-"set guifont=Terminus\ 16
 set guifont=Ubuntu\ Mono\ 14
 
 "set autowrite
@@ -606,7 +532,6 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 let g:UltiSnipsSnippetsDir='~/.vim/mysnippets'
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'mysnippets']
 
-set expandtab
 set textwidth=100 "0
 set history=1000
 set undofile
@@ -623,16 +548,58 @@ set foldcolumn=4
 
 set updatetime=1000
 
+set tabpagemax=15     " only show 15 tabs
+set showmode                    " display the current mode
+set laststatus=2            " Always show statusline
+set splitright
+set splitbelow
+
+set backspace=indent,eol,start  " backspace for dummys
+set cino-=(0 "do not align to open parenthesis
+set linespace=0     " No extra spaces between rows
+set number        " Line numbers on
+set winminheight=0     " windows can be 0 line high
+
+set ignorecase      " case insensitive search
+set smartcase      " case sensitive when uc present
+set gdefault     " the /g flag on :s substitutions by default
+set showmatch                   " show matching brackets/parenthesis
+set incsearch      " find as you type search
+set hlsearch      " highlight search terms
+
+set wildmenu      " show list instead of just completing
+set wildmode=list:longest,full  " comand <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,] " backspace and cursor keys wrap to
+"set scrolljump=5     " lines to scroll when cursor leaves screen
+set scrolloff=5     " minimum lines to keep above and below cursor
+
+" Formatting
+set wrap                      " wrap long lines
+set linebreak     " wrap without breaking words
+set smartindent
+set autoindent                  " indent at the same level of the previous line
+set shiftwidth=2                " use indents of 4 spaces
+set tabstop=4      " an indentation every four columns
+set softtabstop=2
+set expandtab
+"set matchpairs+=<:>             " match, to be used with %
+set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+
+set formatoptions-=t " don't reflow 'normal' text.
+set formatoptions-=o " do not insert comment leader after o or O
+
+"set formatoptions+=a " Automatically reflow text (only comments if c is set)
+set formatoptions+=l " don't break long lines in insert mode
+set formatoptions+=c " wrap comments
+set formatoptions+=r " insert comment leader after <enter>
+set formatoptions+=j " remove comment leader when joining lines
+
+set shm+=A " no warnings about swap files
+
 set viewoptions=cursor,folds
 au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
 au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 
-" Creating directories if they don't exist
-"silent execute '!mkdir -p $HOME/.vimbackup'
-"silent execute '!mkdir -p $HOME/.vimswap'
-"silent execute '!mkdir -p $HOME/.vimviews'
-"au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
-"au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
 set t_Co=16
 "color ir_black               " load a colorscheme
 set background=dark     " Assume a dark background
@@ -665,7 +632,9 @@ endfun
 func! MultiDiffSetup()
   " multi diff setup:
   set lazyredraw
-  set splitright  " put new version right of the old version
+
+  " TODO: Remove.
+  "set splitright  " put new version right of the old version
 
   " $P4DIFF is called with ': $OLD1 $NEW1 : $OLD2 $NEW2 ...' as args
   " First we strip out all the : arguments
@@ -693,21 +662,9 @@ func! MultiDiffSetup()
   redraw
 endfun
 
-
 if &diff
   autocmd VimEnter * call DiffSetup()
 endif
-
-augroup g4file
-  " Do filetypedetect for files ending in version markers as if they didn't
-  au!
-  au BufRead ?\+#[0-9]\+  exe 'doau filetypedetect BufRead ' . fnameescape(substitute(expand('<afile>'), '#[0-9]\+$', '', ''))
-augroup END
-
-set tabpagemax=15     " only show 15 tabs
-set showmode                    " display the current mode
-set splitright
-set splitbelow
 
 "set fdm=syntax
 "set fdc=5
@@ -746,59 +703,6 @@ if has('cmdline_info')
   set showcmd                 " show partial commands in status line and
   " selected characters/lines in visual mode
 endif
-
-set laststatus=2            " Always show statusline
-"if has('statusline')
-  " Use the commented line if fugitive isn't installed
-  "set statusline=%f%m%r%h%w\ %y\ [ASCII=\%03.3b=0x\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-  "set statusline=%f%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-  " set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
-  "set statusline=%<%f\ %h%m%r%fugitive#statusline()%=%-14.(%l,%c%V%)\ %P
-"endif
-
-set backspace=indent,eol,start  " backspace for dummys
-set cino-=(0 "do not align to open parenthesis
-set linespace=0     " No extra spaces between rows
-set number        " Line numbers on
-set winminheight=0     " windows can be 0 line high
-
-"nnoremap / /\v
-"vnoremap / /\v
-set ignorecase      " case insensitive search
-set smartcase      " case sensitive when uc present
-set gdefault     " the /g flag on :s substitutions by default
-set showmatch                   " show matching brackets/parenthesis
-set incsearch      " find as you type search
-set hlsearch      " highlight search terms
-
-set wildmenu      " show list instead of just completing
-set wildmode=list:longest,full  " comand <Tab> completion, list matches, then longest common part, then all.
-set whichwrap=b,s,h,l,<,>,[,] " backspace and cursor keys wrap to
-"set scrolljump=5     " lines to scroll when cursor leaves screen
-set scrolloff=5     " minimum lines to keep above and below cursor
-
-" Formatting
-set wrap                      " wrap long lines
-set linebreak     " wrap without breaking words
-set smartindent
-set autoindent                  " indent at the same level of the previous line
-set shiftwidth=2                " use indents of 4 spaces
-set tabstop=4      " an indentation every four columns
-set softtabstop=2
-set expandtab
-"set matchpairs+=<:>             " match, to be used with %
-set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-
-set formatoptions-=t " don't reflow 'normal' text.
-set formatoptions-=o " do not insert comment leader after o or O
-
-"set formatoptions+=a " Automatically reflow text (only comments if c is set)
-set formatoptions+=l " don't break long lines in insert mode
-set formatoptions+=c " wrap comments
-set formatoptions+=r " insert comment leader after <enter>
-set formatoptions+=j " remove comment leader when joining lines
-
-set shm+=A " no warnings about swap files
 
 func! MailSetup()
   setlocal formatoptions=aw
@@ -860,7 +764,7 @@ hi SpellBad term=none ctermbg=none cterm=undercurl ctermfg=Red gui=undercurl gui
 hi SpellCap term=none ctermbg=none cterm=undercurl ctermfg=Magenta gui=undercurl guisp=Magenta
 
 " Use C-] to jump to definition
-nmap  :YcmCompleter GoToDefinition
+nmap :YcmCompleter GoToDefinition
 
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.'],
@@ -878,20 +782,6 @@ let g:ycm_semantic_triggers =  {
   \   'erlang' : [':'],
   \ }
 
-" Plugins
-
-" VCSCommand
-let b:VCSCommandMapPrefix=',v'
-let b:VCSCommandVCSType='git'
-
-let g:checksyntax_auto = 0
-
-"comment out line(s) in visual mode
-"vmap  o  :call NERDComment(1, 'toggle')<CR>
-"let g:NERDShutUp=1
-
-let b:match_ignorecase = 1
-
 " ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'"
 " For marks a-z
@@ -903,14 +793,6 @@ highlight ShowMarksHLo ctermbg=black ctermfg=cyan
 " For multiple marks on the same line.
 highlight ShowMarksHLm ctermbg=black ctermfg=white
 
-augroup Marks
-  autocmd!
-  "autocmd CursorHold * :ShowMarksOn
-  "autocmd CursorHoldI * :ShowMarksOn
-  "autocmd CursorMoved * :ShowMarksOn
-  "autocmd CursorMovedI * :ShowMarksOn
-augroup END
-
 " Popup menu hightLight Group
 "highlight Pmenu  ctermbg=13  guibg=DarkBlue
 highlight PmenuSel  ctermbg=7  guibg=DarkBlue   guifg=LightBlue
@@ -920,23 +802,6 @@ highlight PmenuSel  ctermbg=7  guibg=DarkBlue   guifg=LightBlue
 hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
 hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
-set tags=./tags;/,tags,~/.vimtags,c:/cpp,~/.vim/tags/cpp
-noremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-inoremap <F12> <Esc> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-
-" EasyTags
-"let g:easytags_cmd = '/usr/local/bin/ctags'
-
-" Delimitmate
-"au FileType * let b:delimitMate_autoclose = 1
-
-" If using html auto complete (complete closing tag)
-"au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],:"
-
-" AutoCloseTag
-" Make it so AutoCloseTag works for xml and xhtml files as well
-"au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
 
 " AutoClose
 let g:AutoClosePairs_del = '{}'
@@ -959,14 +824,9 @@ endif
 
 "au BufNewFile,BufRead *.cl set filetype=cpp
 
-set sessionoptions-=options "do not store variables in session file
-set sessionoptions-=curdir "do not store current dir in session file
-set viewoptions-=folds
-
 set viminfo='1000,f1
 
-"    set diffopt+=iwhite "ignore whitespaces in vimdiff
-set diffopt+=vertical
+set diffopt=filler,vertical
 
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function! ToggleWrap()
@@ -1027,18 +887,6 @@ endfunction
 
 command! BB :call G3RelPath()
 
-" Relative numbers
-" set rnu
-" au BufEnter * :set rnu
-" au BufLeave * :set nu
-" au WinEnter * :set rnu
-" au WinLeave * :set nu
-" au InsertEnter * :set nu
-" au InsertLeave * :set rnu
-" au FocusLost * :set nu
-" au FocusGained * :set rnu
-
-"autocmd ColorScheme * 
 highlight def MarkWord ctermbg=Magenta ctermfg=White guibg=Grey
 
 function! MarkWord()
@@ -1143,19 +991,6 @@ function! Openf(candidate)
     execute 'edit' l:path
   endif
 endfunction
-
-let s:kind = {
-      \ 'name': 'relatedfiles',
-      \ 'default_action': 'execute',
-      \ 'action_table': {
-      \ 'execute': {
-      \   'func': function('Openf'),
-      \   },
-      \ },
-      \ 'parents': [],
-      \ }
-
-"call unite#define_kind(s:kind)
 
 " Prevent replacing paste buffer on paste.
 function! RestoreRegister()
