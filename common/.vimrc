@@ -25,22 +25,26 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 "Plugin 'ConradIrwin/vim-bracketed-paste'
+"Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'Lokaltog/vim-powerline'
 "Plugin 'Rip-Rip/clang_complete'
 "Plugin 'Shougo/neocomplcache'
+"Plugin 'Shougo/unite.vim'
 "Plugin 'ShowMarks'
 "Plugin 'Townk/vim-autoclose'
 "Plugin 'Twinside/vim-haskellConceal'
-"
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'a.vim'
 "Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-rooter'
+"Plugin 'akesling/ondemandhighlight'
 "Plugin 'amiorin/vim-project'
 "Plugin 'chrisbra/NrrwRgn'
 "Plugin 'chrisbra/changesPlugin'
 "Plugin 'corntrace/bufexplorer'
 "Plugin 'csv.vim'
 "Plugin 'ervandew/supertab'
+"Plugin 'honza/vim-snippets'
 "Plugin 'hsitz/VimOrganizer'
 "Plugin 'jceb/vim-orgmode'
 "Plugin 'jnwhiteh/vim-golang'
@@ -60,22 +64,17 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'sudar/vim-arduino-syntax'
 "Plugin 't9md/vim-quickhl'
 "Plugin 'tpope/vim-markdown'
+"Plugin 'tpope/vim-speeddating'
 "Plugin 'tpope/vim-surround'
 "Plugin 'tsaleh/vim-matchit'
 "Plugin 'tyok/nerdtree-ack'
 "Plugin 'vim-scripts/IndentConsistencyCop'
 "Plugin 'vim-scripts/Mark--Karkat'
 "Plugin 'vim-scripts/YankRing.vim'
+"Plugin 'vim-scripts/dbext.vim'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vimoutliner/vimoutliner'
 "Plugin 'wincent/Command-T'
-"Plugin 'akesling/ondemandhighlight'
-"Plugin 'vim-scripts/dbext.vim'
-"Plugin 'tpope/vim-speeddating'
-"Plugin 'airblade/vim-rooter'
-"Plugin 'Shougo/unite.vim'
-"Plugin 'honza/vim-snippets'
-"Plugin 'Lokaltog/vim-easymotion'
 
 "Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'Shougo/vimproc.vim'
@@ -162,6 +161,8 @@ let g:go_goimports_bin="goimports"
 let g:go_oracle_bin="oracle"
 let g:go_golint_bin="golint"
 
+" ## Rainbow
+
 let g:rainbow_active = 1
 let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
 
@@ -184,34 +185,7 @@ nnoremap <C-_> :call NERDComment('n', 'toggle')<CR>
 " gv to highlight previous selection
 vnoremap <C-_> :call NERDComment('n', 'toggle')<CR>gv
 
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-"autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
-autocmd FileType java set omnifunc=javacomplete#Complete
-
-"autocmd BufWrite *.go :silent Fmt
-
-autocmd BufNewFile,BufRead *.go set filetype=go
-autocmd BufNewFile,BufRead *.less set filetype=less
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-autocmd BufNewFile,BufRead *.org set filetype=org
-autocmd BufNewFile,BufRead *.rs set filetype=rust
-autocmd BufNewFile,BufRead *.rules set filetype=udevrules
-autocmd BufNewFile,BufRead *.sql set filetype=mysql
-
 autocmd BufNewFile,BufRead *.sql let b:vimpipe_command='dremel'
-
-autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
-autocmd FileType html setl expandtab | setl softtabstop=0 | setl shiftwidth=2 | setl tabstop=2
-autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
-autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
@@ -236,275 +210,45 @@ augroup org
   autocmd FileType org nmap <CR> @<Plug>OrgNewHeadingBelowNormal
 augroup END
 
-" Key (re)mappings {
-    " Consider Space
+" # Autocommands
 
-    " <C-h>, <BS>: close popup and delete backword char.
-    "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-    "inoremap <expr><C-y>  neocomplcache#close_popup()
+autocmd BufNewFile,BufRead *.go set filetype=go
+autocmd BufNewFile,BufRead *.less set filetype=less
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.org set filetype=org
+autocmd BufNewFile,BufRead *.rs set filetype=rust
+autocmd BufNewFile,BufRead *.rules set filetype=udevrules
+autocmd BufNewFile,BufRead *.sql set filetype=mysql
 
-    " Strip leading '//' from paths (e.g. '//depot...' in borgcfg).
-    set includeexpr=substitute(v:fname,'//','')
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType java set omnifunc=javacomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-    " Disable Ex mode
-    nnoremap Q <nop>
-    nnoremap j gj
-    nnoremap k gk
+autocmd FileType borg setlocal colorcolumn=80
+autocmd FileType css setlocal colorcolumn=80
+autocmd FileType gcl setlocal colorcolumn=80
+autocmd FileType markdown setlocal colorcolumn=80
+autocmd FileType pandoc setlocal colorcolumn=80
+autocmd FileType help setlocal colorcolumn=80
+autocmd FileType sh setlocal colorcolumn=80
+autocmd FileType dart setlocal colorcolumn=80
+autocmd FileType proto setlocal colorcolumn=80
+autocmd FileType python setlocal colorcolumn=80
+autocmd FileType scss setlocal colorcolumn=80
+autocmd FileType xml setlocal colorcolumn=80
 
-    map [27;2;13~ <S-CR>
+autocmd FileType git5message setlocal colorcolumn=0 | setlocal textwidth=0
 
-    " Enter to end of file
-    " nnoremap <cr> G
+autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
+autocmd FileType html setl expandtab | setl softtabstop=0 | setl shiftwidth=2 | setl tabstop=2
+autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
+autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 
-    " Backspace to beginning of file
-    " nnoremap <bs> gg
-
-    " Clipboard fixes
-    vnoremap <leader>y "+y
-    vnoremap <leader>Y "+y
-    vnoremap <leader>d "+d
-    vnoremap <leader>D "+D
-    vnoremap <leader>p "+p
-    vnoremap <leader>P "+P
-
-    " Explorer
-    nnoremap <leader>e :Explore<CR>
-
-    " Arrow keys resize
-    noremap <Up> <C-w>-
-    noremap <Down> <C-w>+
-    noremap <Left> <C-w><
-    noremap <Right> <C-w>>
-
-    " folding
-    nnoremap <Space> za
-    vnoremap <Space> za
-
-    " Clearing highlighted search
-    nnoremap <silent> <leader>/ :nohlsearch<CR>
-
-    "jj to normal mode
-    inoremap jj <Esc>
-
-    " Use relative numbers when out of insert mode
-    " augroup Numbers
-    "   autocmd!
-    "   autocmd InsertEnter * :set number
-    "   autocmd InsertLeave * :set relativenumber
-    "   autocmd FocusLost * :set number
-    "   autocmd FocusGained * :set relativenumber
-    "   autocmd BufNewFile * :set number
-    "   autocmd BufReadPost * :set number
-    " augroup END
-    " If Esc a second time, then use absolute numbers
-    " nnoremap <Esc> <Esc>:set number<CR>
-
-
-    noremap [[ ?{<CR>w99[{
-    noremap ][ /}<CR>b99]}
-    noremap ]] j0[[%/{<CR>
-    noremap [] k$][%?}<CR>
-
-    " For vim-tmuxify
-    " vnoremap <CR> "my :TxSend(@m)<CR>
-
-
-    " Easier moving in tabs and windows
-    noremap <C-J> <C-W>j
-    noremap <C-K> <C-W>k
-    noremap <C-L> <C-W>l
-    noremap <C-H> <C-W>h
-    noremap <C-K> <C-W>k
-    noremap <S-H> gT
-    noremap <S-L> gt
-"    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-    " Stupid shift key fixes
-    cnoremap W w
-    cnoremap WQ wq
-    cnoremap wQ wq
-    cnoremap Q q
-    cnoremap Tabe tabe
-
-    " Yank from the cursor to the end of the line, to be consistent with C and D.
-    nnoremap Y y$
-
-    " Reselect visual block after indent.
-    " vnoremap < <gv
-    " vnoremap > >gv
-
-    " Shortcuts
-    " Change Working Directory to that of the current file
-    "cmap cwd lcd %:p:h
-
-    " Force saving files that require root permission
-    cnoremap w!! %!sudo tee > /dev/null %
-
-    nnoremap <leader>i :call GtImporter() <CR>
-    nnoremap <leader>s :call GtImporter_SortImports() <CR>
-
-    " Eclim settings
-    " ,i imports whatever is needed for current line
-    nnoremap <silent> <LocalLeader>ji :JavaImport<cr>
-    " ,d opens javadoc for statement in browser
-    nnoremap <silent> <LocalLeader>d :JavaDocSearch -x declarations<cr>
-    " ,<enter> searches context for statement
-"    nnoremap <silent> <cr> :JavaSearchContext<cr>
-    " ,jv validates current java file
-    nnoremap <silent> <LocalLeader>jv :Validate<cr>
-    " ,jc shows corrections for the current line of java
-    nnoremap <silent> <LocalLeader>jc :JavaCorrect<cr>
-    " 'open' on OSX will open the url in the default browser without issue
-    let g:EclimLoggingDisabled = 1
-
-    "  Save the current file, run buildifier to fix formatting, and reload it
-    command! Buildify :w | execute '!/google/data/ro/projects/devtools/buildifier/buildifier --mode=fix %' | edit
-    "command! Gofmt :w | execute '!go fmt %'
-
-"    nmap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
-" }
-
-set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
-
-" FZF
-" https://github.com/junegunn/fzf/wiki/Examples-(vim)
-
-nnoremap <C-p> :Files<CR>
-nnoremap <C-b> :Buffer<CR>
-
-" taglist
-let Tlist_Display_Prototype = 1
-
-" powerline
-let g:Powerline_symbols = 'compatible'
-
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" unicode symbols
-" let g:airline_left_sep = '»'
-" let g:airline_right_sep = '«'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" Too noisy for google3
-let g:airline#extensions#whitespace#enabled = 0
-
-let g:airline_section_b = airline#section#create(['hunks'])
-
-" Show Go identifier under cursor instead of tagbar section.
-let s:go_last_lookup_time = 0
-let s:go_last_lookup_value = ''
-function! GoI()
-  if s:go_last_lookup_time != localtime()
-    let s:go_last_lookup_value = go#complete#GetInfo()
-    let s:go_last_lookup_time = localtime()
-  endif
-  return s:go_last_lookup_value
-endfunction
-
-function! AirlineGoInit()
-  call airline#parts#define_function('go', 'GoI')
-  let g:airline_section_x = airline#section#create_right(['go', 'filetype'])
-endfunction
-"autocmd FileType go call AirlineGoInit()
-
-let g:airline#extensions#default#layout = [
-      \ [ 'a', 'b', 'c' ],
-      \ [ 'x', 'z', 'warning' ]
-      \ ]
-
-" Tagbar
-nmap <leader>t :TagbarToggle<CR>
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
-
-" General
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.borg set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.css set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.gcl set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.md set colorcolumn=80 textwidth=80 spell
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.proto set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.py set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.scss set colorcolumn=80
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.xml set colorcolumn=80
-"au BufEnter *.org set filetype=org
-
-
-" Open NERDTree if no files were specified
-" autocmd vimenter * if !argc() | NERDTree | endif
-" Close vim if the only window left is NERDTree
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" Let Vim follow NERDTree root as current dir
-let g:NERDTreeChDirMode=2
-let g:NERDTreeDirArrows=0
-let g:NERDTreeWinSize=60
-let g:NERDTreeCasadeOpenSingleChildDir=1
-" Locate current file in NERDTree
-"nmap ,n :NERDTreeFind<CR>
-" Toggle NERDTree visibility
-let NERDTreeShowBookmarks = 1
-
-nmap ,n :Explore!<CR>
-nmap ,m :Explore! .<CR>
-"let g:netrw_altv=1
-" What's wrong here?
-let g:netrw_liststyle=3
-"let g:netrw_preview=1
-"let g:netrw_browse_split=4
-let g:netrw_winsize=30
-let g:netrw_special_syntax=1
-let g:netrw_maxfilenamelen=40
-
-function! Netrw()
-"  nmap <buffer> o <CR>
-"  nmap <buffer> u -
-  nmap <buffer> C :Ntree
-endfunction
-
-" not every vim is compiled with this, use the following line instead
-"autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-scriptencoding utf-8
-
-set guifont=Ubuntu\ Mono\ 14
-
-"set autowrite
-set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
-"set spell           " spell checking on
+" # Settings
 
 function! EnsureDir(dir)
   if isdirectory(a:dir) == 0
@@ -512,12 +256,17 @@ function! EnsureDir(dir)
   endif
 endfunction
 
-" Setting up the directories
+scriptencoding utf-8
+
+set guifont=Ubuntu\ Mono\ 14
+set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+set mouse=a     " automatically enable mouse usage
+
 set backup       " backups are nice ...
-:call EnsureDir('~/.vim/backup')
-:call EnsureDir('~/.vim/swap')
-:call EnsureDir('~/.vim/views')
-:call EnsureDir('~/.vim/undo')
+call EnsureDir('~/.vim/backup')
+call EnsureDir('~/.vim/swap')
+call EnsureDir('~/.vim/views')
+call EnsureDir('~/.vim/undo')
 set backupdir=~/.vim/backup " but not when they clog .
 " For crontab -e editing
 set backupskip=/tmp/*,/private/tmp/*
@@ -526,19 +275,11 @@ set viewdir=~/.vim/views  " same but for view files
 set undodir=~/.vim/undo
 set noautochdir
 
-let g:UltiSnipsExpandTrigger='<c-j>'
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
-let g:UltiSnipsSnippetsDir='~/.vim/mysnippets'
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'mysnippets']
-
 set textwidth=100 "0
 set history=1000
 set undofile
 set undolevels=1000
 set undoreload=10000
-
-set mouse=a     " automatically enable mouse usage
 
 set foldenable
 set foldmethod=syntax
@@ -548,17 +289,23 @@ set foldcolumn=4
 
 set updatetime=1000
 
-set tabpagemax=15     " only show 15 tabs
-set showmode                    " display the current mode
-set laststatus=2            " Always show statusline
+set tabpagemax=15 " only show 15 tabs
+set showmode " display the current mode
+set laststatus=2 " Always show statusline
+
 set splitright
 set splitbelow
 
-set backspace=indent,eol,start  " backspace for dummys
+set backspace=indent,eol,start " backspace for dummys
 set cino-=(0 "do not align to open parenthesis
-set linespace=0     " No extra spaces between rows
-set number        " Line numbers on
-set winminheight=0     " windows can be 0 line high
+set linespace=0 " No extra spaces between rows
+set number " Line numbers on
+set winminheight=0 " windows can be 0 line high
+
+set listchars=tab:»\ ,trail:·
+set list
+
+set cursorline      " highlight current line
 
 set ignorecase      " case insensitive search
 set smartcase      " case sensitive when uc present
@@ -572,6 +319,18 @@ set wildmode=list:longest,full  " comand <Tab> completion, list matches, then lo
 set whichwrap=b,s,h,l,<,>,[,] " backspace and cursor keys wrap to
 "set scrolljump=5     " lines to scroll when cursor leaves screen
 set scrolloff=5     " minimum lines to keep above and below cursor
+
+set viminfo='1000,f1
+
+set noesckeys    " disable keys sending escape sequences in insert mode (fixes delay after pressing ESC in terminal)
+
+set diffopt=filler,vertical
+
+" Complete only the current buffer and includes
+set complete=.,i
+
+" Complete options (disable preview scratch window)
+set completeopt=menu,menuone,longest
 
 " Formatting
 set wrap                      " wrap long lines
@@ -601,15 +360,196 @@ au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, e
 au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 
 set t_Co=16
-"color ir_black               " load a colorscheme
 set background=dark     " Assume a dark background
-"    let g:solarized_termtrans=1
 let g:solarized_termcolors=16
-"    let g:solarized_termcolors=256
 let g:solarized_contrast='high'
 let g:solarized_diffmode='high'    "default value is normal
-"    let g:solarized_visibility="high"
 colorscheme solarized
+
+" # Key mappings
+
+" Strip leading '//' from paths (e.g. '//depot...' in borgcfg).
+set includeexpr=substitute(v:fname,'//','')
+
+" Disable Ex mode
+nnoremap Q <nop>
+
+nnoremap j gj
+nnoremap k gk
+
+map [27;2;13~ <S-CR>
+
+" Clipboard fixes
+vnoremap <leader>y "+y
+vnoremap <leader>Y "+y
+vnoremap <leader>d "+d
+vnoremap <leader>D "+D
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+" Explorer
+nnoremap <leader>e :Explore<CR>
+
+" Arrow keys resize
+noremap <Up> <C-w>-
+noremap <Down> <C-w>+
+noremap <Left> <C-w><
+noremap <Right> <C-w>>
+
+" folding
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Clearing highlighted search
+nnoremap <silent> <leader>/ :nohlsearch<CR>
+
+" jj to normal mode
+inoremap jj <Esc>
+
+noremap [[ ?{<CR>w99[{
+noremap ][ /}<CR>b99]}
+noremap ]] j0[[%/{<CR>
+noremap [] k$][%?}<CR>
+
+" Easier moving in tabs and windows
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-L> <C-W>l
+noremap <C-H> <C-W>h
+noremap <C-K> <C-W>k
+noremap <S-H> gT
+noremap <S-L> gt
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+" Reselect visual block after indent.
+" vnoremap < <gv
+" vnoremap > >gv
+
+" Force saving files that require root permission
+cnoremap w!! %!sudo tee > /dev/null %
+
+" Eclim settings
+" ,i imports whatever is needed for current line
+nnoremap <silent> <LocalLeader>ji :JavaImport<cr>
+" ,d opens javadoc for statement in browser
+nnoremap <silent> <LocalLeader>d :JavaDocSearch -x declarations<cr>
+" ,<enter> searches context for statement
+"    nnoremap <silent> <cr> :JavaSearchContext<cr>
+" ,jv validates current java file
+nnoremap <silent> <LocalLeader>jv :Validate<cr>
+" ,jc shows corrections for the current line of java
+nnoremap <silent> <LocalLeader>jc :JavaCorrect<cr>
+" 'open' on OSX will open the url in the default browser without issue
+let g:EclimLoggingDisabled = 1
+
+set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
+
+" ## FZF
+" https://github.com/junegunn/fzf/wiki/Examples-(vim)
+
+nnoremap <C-p> :Files<CR>
+nnoremap <C-b> :Buffer<CR>
+
+" ## Airline
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+" let g:airline_left_sep = '»'
+" let g:airline_right_sep = '«'
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '|'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" Too noisy for google3
+let g:airline#extensions#whitespace#enabled = 0
+
+let g:airline_section_b = airline#section#create(['hunks'])
+
+" ## Go
+
+" Show Go identifier under cursor instead of tagbar section.
+let s:go_last_lookup_time = 0
+let s:go_last_lookup_value = ''
+function! GoI()
+  if s:go_last_lookup_time != localtime()
+    let s:go_last_lookup_value = go#complete#GetInfo()
+    let s:go_last_lookup_time = localtime()
+  endif
+  return s:go_last_lookup_value
+endfunction
+
+function! AirlineGoInit()
+  call airline#parts#define_function('go', 'GoI')
+  let g:airline_section_x = airline#section#create_right(['go', 'filetype'])
+endfunction
+"autocmd FileType go call AirlineGoInit()
+
+let g:airline#extensions#default#layout = [
+  \ [ 'a', 'b', 'c' ],
+  \ [ 'x', 'z', 'warning' ]
+\ ]
+
+" ## Tagbar
+
+nmap <leader>t :TagbarToggle<CR>
+let g:tagbar_type_go = {
+  \ 'ctagstype' : 'go',
+  \ 'kinds'     : [
+    \ 'p:package',
+    \ 'i:imports:1',
+    \ 'c:constants',
+    \ 'v:variables',
+    \ 't:types',
+    \ 'n:interfaces',
+    \ 'w:fields',
+    \ 'e:embedded',
+    \ 'm:methods',
+    \ 'r:constructor',
+    \ 'f:functions'
+  \ ],
+  \ 'sro' : '.',
+  \ 'kind2scope' : {
+    \ 't' : 'ctype',
+    \ 'n' : 'ntype'
+  \ },
+  \ 'scope2kind' : {
+    \ 'ctype' : 't',
+    \ 'ntype' : 'n'
+  \ },
+  \ 'ctagsbin'  : 'gotags',
+  \ 'ctagsargs' : '-sort -silent'
+\ }
+
+" ## Netrw
+
+"let g:netrw_altv=1
+" What's wrong here?
+let g:netrw_liststyle=3
+"let g:netrw_preview=1
+"let g:netrw_browse_split=4
+let g:netrw_winsize=30
+let g:netrw_special_syntax=1
+let g:netrw_maxfilenamelen=40
+
+" ## Ultisnips
+
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+let g:UltiSnipsSnippetsDir='~/.vim/mysnippets'
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'mysnippets']
 
 func! DiffSetup()
   " Do not hide any of the unchanged lines.
@@ -632,9 +572,6 @@ endfun
 func! MultiDiffSetup()
   " multi diff setup:
   set lazyredraw
-
-  " TODO: Remove.
-  "set splitright  " put new version right of the old version
 
   " $P4DIFF is called with ': $OLD1 $NEW1 : $OLD2 $NEW2 ...' as args
   " First we strip out all the : arguments
@@ -678,13 +615,7 @@ else
   match OverLength /\%101v.\+/
 endif
 
-"set listchars=eol:?,trail:?
-set listchars=tab:»\ ,trail:·
-"set listchars=
-set list
-
-set cursorline      " highlight current line
-
+" Only show cursorline in active buffer.
 augroup CursorLine
   au!
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -716,36 +647,26 @@ endfun
 autocmd FileType mail call MailSetup()
 autocmd FileType gitcommit call MailSetup()
 
-autocmd FileType help setlocal colorcolumn=80
-autocmd FileType sh setlocal colorcolumn=80
-autocmd FileType dart setlocal colorcolumn=80
-
-autocmd FileType git5message setlocal colorcolumn=0
-autocmd FileType git5message setlocal textwidth=0
+" ## YouCompleteMe
 
 let g:ycm_filetype_blacklist = {
-      \ 'git5message' : 1,
-      \ 'mail' : 1,
-      \ 'markdown' : 1,
-      \ 'notes' : 1,
-      \ 'qf' : 1,
-      \ 'proto' : 1,
-      \ 'tagbar' : 1,
-      \ 'text' : 1,
-      \ 'unite' : 1,
-      \ 'vimwiki' : 1,
-      \}
+  \ 'git5message' : 1,
+  \ 'mail' : 1,
+  \ 'markdown' : 1,
+  \ 'notes' : 1,
+  \ 'qf' : 1,
+  \ 'proto' : 1,
+  \ 'tagbar' : 1,
+  \ 'text' : 1,
+  \ 'unite' : 1,
+  \ 'vimwiki' : 1,
+\}
 
 "autocmd FileType html set formatoptions+=a
 "autocmd FileType html set textwidth=80
 "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 "set lcs=tab:??,trail:?,extends:>,precedes:<,nbsp:&
 
-" Complete only the current buffer and includes
-set complete=.,i
-
-" Complete options (disable preview scratch window)
-set completeopt=menu,menuone,longest
 "set completeopt+=preview
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -767,22 +688,22 @@ hi SpellCap term=none ctermbg=none cterm=undercurl ctermfg=Magenta gui=undercurl
 nmap :YcmCompleter GoToDefinition
 
 let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
-  \   'dart' : ['.'],
-  \   'objc' : ['->', '.'],
-  \   'ocaml' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::'],
-  \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-  \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
-  \   'ruby' : ['.', '::'],
-  \   'rust' : ['.', '::'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \ }
+  \ 'c' : ['->', '.'],
+  \ 'dart' : ['.'],
+  \ 'objc' : ['->', '.'],
+  \ 'ocaml' : ['.', '#'],
+  \ 'cpp,objcpp' : ['->', '.', '::'],
+  \ 'perl' : ['->'],
+  \ 'php' : ['->', '::'],
+  \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+  \ 'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
+  \ 'ruby' : ['.', '::'],
+  \ 'rust' : ['.', '::'],
+  \ 'lua' : ['.', ':'],
+  \ 'erlang' : [':'],
+\ }
 
-" ShowMarks
+" ## ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'"
 " For marks a-z
 highlight ShowMarksHLl ctermbg=black ctermfg=red
@@ -801,10 +722,6 @@ highlight ShowMarksHLm ctermbg=black ctermfg=white
 
 " AutoClose
 let g:AutoClosePairs_del = '{}'
-
-set viminfo='1000,f1
-
-set diffopt=filler,vertical
 
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function! ToggleWrap()
@@ -837,9 +754,8 @@ endfunction
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-set noesckeys    " disable keys sending escape sequences in insert mode (fixes delay after pressing ESC in terminal)
+" ## Eclim
 
-" Eclim settings
 let g:EclimJavaImportPackageSeparationLevel = 1
 let g:EclimJavaCompleteCaseSensitive = 1
 let g:EclimBrowser='open'
@@ -847,7 +763,7 @@ let g:EclimCompletionMethod='omnifunc'
 "noremap <C-]> :JavaSearch<CR>
 
 " Offer to reload the file if it changed.
-:au BufEnter * checktime
+autocmd BufEnter * checktime
 set autoread " should do it without prompting
 
 function! DoGit5Diff()
@@ -868,15 +784,15 @@ command! BB :call G3RelPath()
 highlight def MarkWord ctermbg=Magenta ctermfg=White guibg=Grey
 
 function! MarkWord()
-    let l:cword = expand('<cword>')
-    call clearmatches()
-    call matchadd('MarkWord', l:cword)
+  let l:cword = expand('<cword>')
+  call clearmatches()
+  call matchadd('MarkWord', l:cword)
 endfunction
 "autocmd CursorMoved * :call MarkWord()
 
 augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC
 augroup END
 
 " Color test: Save this file, then enter ':so %'
@@ -900,76 +816,6 @@ endfunction
 " Increase numbers in next line to see more colors.
 command! VimColorTest call VimColorTest('vim-color-test.tmp', 12, 16)
 
-function! GvimColorTest(outfile)
-  let result = []
-  for red in range(0, 255, 16)
-    for green in range(0, 255, 16)
-      for blue in range(0, 255, 16)
-        let kw = printf('%-13s', printf('c_%d_%d_%d', red, green, blue))
-        let fg = printf('#%02x%02x%02x', red, green, blue)
-        let bg = '#fafafa'
-        let h = printf('hi %s guifg=%s guibg=%s', kw, fg, bg)
-        let s = printf('syn keyword %s %s', kw, kw)
-        call add(result, printf('%s | %s', h, s))
-      endfor
-    endfor
-  endfor
-  call writefile(result, a:outfile)
-  execute 'edit '.a:outfile
-  source %
-endfunction
-command! GvimColorTest call GvimColorTest('gvim-color-test.tmp')
-
-map gf :call DoGf()<ENTER>
-
-function! DoGf()
-  let file = expand('<cfile>')
-  if match(file, '^//production') == 0
-    let google3 = substitute(expand('%:p'), '/google3/.*', '/google3/', '')
-  else
-    let google3 = ''
-  endif
-  exe 'edit ' . google3 . file
-endfun
-
-"----
-
-function! RelatedfilesGather(args, context)
-
-  let l:related_files_list = []
-  let l:found_files = relatedfiles#GetFiles(expand('%'))
-  for l:key in keys(l:found_files)
-    let l:group_files = l:found_files[l:key]
-    for l:full_filename in l:group_files
-      call add(l:related_files_list, l:full_filename)
-    endfor
-  endfor
-
-  return map(l:related_files_list, '{
-        \ "word": v:val,
-        \ "source": "relatedfiles",
-        \ "kind": "relatedfiles",
-        \ "action__path": printf("%s/%s.vim", v:val[1], v:val[0]),
-        \ "action__directory": v:val[1],
-        \ }')
-endfunction
-
-let s:unite_source = {
-      \ 'name': 'relatedfiles',
-      \ 'gather_candidates': function('RelatedfilesGather'),
-      \ }
-
-"call unite#define_source(s:unite_source)
-
-function! Openf(candidate)
-  let l:path = a:candidate.word
-  if isdirectory(l:path)
-    execute 'Explore' l:path
-  else
-    execute 'edit' l:path
-  endif
-endfunction
-
 " Prevent replacing paste buffer on paste.
 function! RestoreRegister()
   let @" = s:restore_reg
@@ -980,11 +826,6 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
-
-function! IdemComplete()
-  let filename = expand('%:p')
-  call system('echo xxx')
-endfunction
 
 function! RunTerminal()
   let line = getline('.')
@@ -997,9 +838,9 @@ function! ExtraJavaSyntax()
   set conceallevel=1
   set concealcursor=nci
   " TODO: git merge markers.
-  syn match _JavaAngleOpenClose '<[a-zA-Z., ?<>]*>' contains=_JavaAngleOpen,_JavaAngleClose
-  syn match _JavaAngleOpen '<' conceal contained cchar=⟨
-  syn match _JavaAngleClose '>' conceal contained cchar=⟩
+  syntax match _JavaAngleOpenClose '<[a-zA-Z., ?<>]*>' contains=_JavaAngleOpen,_JavaAngleClose
+  syntax match _JavaAngleOpen '<' conceal contained cchar=⟨
+  syntax match _JavaAngleClose '>' conceal contained cchar=⟩
   highlight link _JavaAngleOpen Special
   highlight link _JavaAngleClose Special
 
