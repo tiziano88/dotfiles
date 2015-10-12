@@ -794,35 +794,13 @@ highlight ShowMarksHLo ctermbg=black ctermfg=cyan
 highlight ShowMarksHLm ctermbg=black ctermfg=white
 
 " Popup menu hightLight Group
-"highlight Pmenu  ctermbg=13  guibg=DarkBlue
-highlight PmenuSel  ctermbg=7  guibg=DarkBlue   guifg=LightBlue
-"highlight PmenuSbar ctermbg=7  guibg=DarkGray
-"highlight PmenuThumb    guibg=Black
-
-hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+"hi Pmenu ctermfg=black ctermbg=Lightgray
+"hi PmenuSel ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+"hi PmenuSbar ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+"hi PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
 " AutoClose
 let g:AutoClosePairs_del = '{}'
-
-" GUI Settings
-" GVIM- (here instead of .gvimrc)
-if has('gui_running')
-  "set guioptions-=T           " remove the toolbar
-  set guioptions+=b  "horizontal scrollbar
-  set lines=80                " 40 lines of text instead of 24,
-  set columns=250
-endif
-
-" Windows Compatible
-" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-" across (heterogeneous) systems easier.
-if has('win32') || has('win64')
-  "set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-endif
-
-"au BufNewFile,BufRead *.cl set filetype=cpp
 
 set viminfo='1000,f1
 
