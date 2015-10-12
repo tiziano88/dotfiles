@@ -31,7 +31,6 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'Shougo/neocomplcache'
 "Plugin 'Shougo/unite.vim'
 "Plugin 'ShowMarks'
-"Plugin 'Townk/vim-autoclose'
 "Plugin 'Twinside/vim-haskellConceal'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'a.vim'
@@ -85,6 +84,7 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'tpope/vim-unimpaired'
 "Plugin 'Shougo/vimproc.vim'
 "Plugin 'groenewege/vim-less'
+Plugin 'Townk/vim-autoclose'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
@@ -104,6 +104,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-expand-region'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'unblevable/quick-scope'
 Plugin 'vim-pandoc/vim-pandoc'
@@ -114,20 +115,9 @@ Plugin 'vim-scripts/argtextobj.vim'
 "Plugin 'godlygeek/tabular'
 "Plugin 'plasticboy/vim-markdown'
 
-"may be slow
-Plugin 'tpope/vim-fugitive'
-
 call vundle#end()
 
 set rtp+='~/.fzf'
-
-function! FindFile()
-  let s:filename = system('find . | peco --prompt ''FILE>''')
-  if !v:shell_error
-    execute 'edit ' . s:filename
-  endif
-  redraw!
-endfunction
 
 if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
@@ -155,6 +145,10 @@ else
   "Plugin 'Valloric/YouCompleteMe'
 endif
 
+" # Plugins
+
+" ## vim-go
+
 let g:go_disable_autoinstall = 1
 let g:go_gocode_bin="gocode"
 let g:go_goimports_bin="goimports"
@@ -178,7 +172,7 @@ let g:syntastic_mode_map = {
         \ "passive_filetypes": ["puppet"] }
 let g:syntastic_scss_checkers = ['scss_lint']
 
-" NerdCommenter
+" ## NerdCommenter
 
 " <C-_> is the same as <C-/>
 nnoremap <C-_> :call NERDComment('n', 'toggle')<CR>
@@ -193,13 +187,13 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 
-" org-mode {
+" ## org-mode
 let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
 let g:org_todo_keyword_faces = [
-      \  ['TODO', 'red', ':background white'],
-      \  ['STARTED', 'cyan'],
-      \  ['DONE', 'green']
-      \]
+\  ['TODO', 'red', ':background white'],
+\  ['STARTED', 'cyan'],
+\  ['DONE', 'green']
+\]
 
 let g:org_todo_setup = 'TODO STARTED | DONE'
 hi! DONETODO guifg=green
@@ -430,16 +424,16 @@ nnoremap Y y$
 " Force saving files that require root permission
 cnoremap w!! %!sudo tee > /dev/null %
 
-" Eclim settings
-" ,i imports whatever is needed for current line
+" ## Eclim
+" Import whatever is needed for current line.
 nnoremap <silent> <LocalLeader>ji :JavaImport<cr>
-" ,d opens javadoc for statement in browser
+" Open javadoc for statement in browser.
 nnoremap <silent> <LocalLeader>d :JavaDocSearch -x declarations<cr>
-" ,<enter> searches context for statement
+" Search context for statement.
 "    nnoremap <silent> <cr> :JavaSearchContext<cr>
-" ,jv validates current java file
+" Validate current java file.
 nnoremap <silent> <LocalLeader>jv :Validate<cr>
-" ,jc shows corrections for the current line of java
+" Show corrections for the current line of java.
 nnoremap <silent> <LocalLeader>jc :JavaCorrect<cr>
 " 'open' on OSX will open the url in the default browser without issue
 let g:EclimLoggingDisabled = 1
@@ -603,11 +597,6 @@ if &diff
   autocmd VimEnter * call DiffSetup()
 endif
 
-"set fdm=syntax
-"set fdc=5
-highlight Folded guibg=blue guifg=white
-highlight FoldColumn guibg=blue guifg=white
-
 if exists('+colorcolumn')
   set colorcolumn=100
 else
@@ -704,6 +693,7 @@ let g:ycm_semantic_triggers =  {
 \ }
 
 " ## ShowMarks
+
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'"
 " For marks a-z
 highlight ShowMarksHLl ctermbg=black ctermfg=red
@@ -720,7 +710,8 @@ highlight ShowMarksHLm ctermbg=black ctermfg=white
 "hi PmenuSbar ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 "hi PmenuThumb ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-" AutoClose
+" ## AutoClose
+
 let g:AutoClosePairs_del = '{}'
 
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
@@ -771,24 +762,6 @@ function! DoGit5Diff()
   exe "Gdiff " . s:revision
 endfunction
 command! G5diff call DoGit5Diff()
-
-function! G3RelPath()
-  let path = expand('%:.:h')
-  let rule = path . ':all'
-  execute ':!blaze build '.rule
-  echo rule
-endfunction
-
-command! BB :call G3RelPath()
-
-highlight def MarkWord ctermbg=Magenta ctermfg=White guibg=Grey
-
-function! MarkWord()
-  let l:cword = expand('<cword>')
-  call clearmatches()
-  call matchadd('MarkWord', l:cword)
-endfunction
-"autocmd CursorMoved * :call MarkWord()
 
 augroup myvimrc
   au!
