@@ -117,10 +117,8 @@ Plugin 'vim-scripts/argtextobj.vim'
 
 call vundle#end()
 
-set rtp+='~/.fzf'
-
 if filereadable(expand('~/.at_google'))
-  source /usr/share/vim/google/google.vim
+  source /usr/share/vim/google/glug/bootstrap.vim
 
   autocmd FileType bzl,blazebuild AutoFormatBuffer buildifier
   autocmd FileType c,cpp,javascript AutoFormatBuffer clang-format "proto
@@ -131,16 +129,16 @@ if filereadable(expand('~/.at_google'))
   autocmd FileType dart AutoFormatBuffer dartfmt
 
   "Glug syntastic-google
+  "Glug blazedeps auto_filetypes=go,
+  "Glug youcompleteme-google
   Glug blaze plugin[mappings]='<leader>b'
-  " Glug blazedeps auto_filetypes=go,
   Glug codefmt gofmt_executable=goimports
   Glug codefmt-google auto_filetypes+=BUILD,go auto_all=0
   Glug grok
   Glug gtimporter
   Glug relatedfiles plugin[mappings]=',f'
   Glug ultisnips-google
-  "Glug youcompleteme-google
-  source /usr/share/vim/google/gtags.vim
+  "source /usr/share/vim/google/gtags.vim
 else
   "Plugin 'Valloric/YouCompleteMe'
 endif
