@@ -71,6 +71,7 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
+Plugin 'cespare/vim-toml'
 Plugin 'chrisdone/hindent', {'rtp': 'vim'}
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'dart-lang/dart-vim-plugin'
