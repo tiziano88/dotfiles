@@ -15,11 +15,13 @@ color header white red '^X-Label:'
 # Basic config, you can leave this as is
 set copy = no
 set move = no
-#unset record
+unset record
 
-# set folder           = "~/Maildir/$MAIL_USER"
-set folder           = "imaps://imap.gmail.com/"
-set folder           = "imap://127.0.0.1:10143/"
+set folder           = "imaps://imap.gmail.com"
+set hostname         = "google.com"
+#set folder           = "~/Maildir/corp"
+#set folder           = "imaps://imap.gmail.com/"
+#set folder           = "imap://127.0.0.1:10143/"
 set imap_user        = "$MAIL_USER"
 set imap_pass        = "`~/dotfiles/get_pass.sh $MAIL_USER`"
 set from             = "$MAIL_USER"
@@ -64,7 +66,7 @@ set sort = 'threads'
 set sort_aux = 'last-date-received'
 set auto_tag = yes
 
-set imap_peek = no
+set imap_peek = yes
 
 # Better quotations in emails:
 # Note: this needs adding formatoptions=w in vim.
@@ -72,7 +74,8 @@ set text_flowed = yes
 #set stuff_quoted
 
 set pager_index_lines = 20
-set index_format = "%Z %D %-30.30F (%4c) [%B] {%-30.30Y} %3C %?M?+& ?%2M %s"
+#set index_format = "%Z %D %-30.30F (%4c) [%B] {%-30.30Y} %3C %?M?+& ?%2M %s"
+set index_format = "%Z %D %-30.30F (%4c) [%B] %3C %?M?+& ?%2M %s"
 #set max_line_length = 120
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
@@ -98,7 +101,7 @@ macro index \CU kkkkkkkk
 macro index \CD jjjjjjjj
 
 #bind index "^" imap-fetch-mail
-macro index ^ "<shell-escape>offlineimap&<enter>"
+#macro index ^ "<shell-escape>offlineimap&<enter>"
 
 color message white black
 color status white blue

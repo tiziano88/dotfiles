@@ -1,25 +1,6 @@
 set nocompatible   " must be first line
-filetype plugin on
-filetype indent on
-syntax on
-
-let mapleader=','
-let maplocalleader='#'
-
-let g:disable_google_optional_settings=1
-
-if &term =~ '^screen'
-  " tmux will send xterm-style keys when its xterm-keys option is on
-  execute "set <xUp>=\e[1;*A"
-  execute "set <xDown>=\e[1;*B"
-  execute "set <xRight>=\e[1;*C"
-  execute "set <xLeft>=\e[1;*D"
-endif
-
-"set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
-
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
@@ -34,7 +15,6 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'Twinside/vim-haskellConceal'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'a.vim'
-"Plugin 'airblade/vim-gitgutter'
 "Plugin 'airblade/vim-rooter'
 "Plugin 'akesling/ondemandhighlight'
 "Plugin 'amiorin/vim-project'
@@ -84,6 +64,9 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'tpope/vim-unimpaired'
 "Plugin 'Shougo/vimproc.vim'
 "Plugin 'groenewege/vim-less'
+
+"Plugin 'terryma/vim-expand-region'
+Plugin 'Chiel92/vim-autoformat'
 Plugin 'Townk/vim-autoclose'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
@@ -96,14 +79,15 @@ Plugin 'gregsexton/gitv'
 Plugin 'jceb/vim-orgmode'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'mhinz/vim-signify'
+
+"Plugin 'mhinz/vim-signify'
+Plugin 'airblade/vim-gitgutter'
+
 Plugin 'oblitum/rainbow'
 Plugin 'othree/html5.vim'
 Plugin 'phildawes/racer'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'unblevable/quick-scope'
@@ -117,20 +101,40 @@ Plugin 'vim-scripts/argtextobj.vim'
 
 call vundle#end()
 
+syntax on
+filetype plugin indent on
+
+let mapleader=','
+let maplocalleader='#'
+
+if &term =~ '^screen'
+  " tmux will send xterm-style keys when its xterm-keys option is on
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
+
+"set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
+
 if filereadable(expand('~/.at_google'))
+  let g:disable_google_optional_settings=1
+
   source /usr/share/vim/google/glug/bootstrap.vim
+  source /usr/share/vim/google/google.vim
 
   autocmd FileType bzl,blazebuild AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,javascript AutoFormatBuffer clang-format "proto
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType jslayout AutoFormatBuffer jslfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType python AutoFormatBuffer pyformat
-  autocmd FileType dart AutoFormatBuffer dartfmt
+  "autocmd FileType c,cpp,javascript AutoFormatBuffer clang-format "proto
+  "autocmd FileType java AutoFormatBuffer google-java-format
+  "autocmd FileType jslayout AutoFormatBuffer jslfmt
+  "autocmd FileType go AutoFormatBuffer gofmt
+  "autocmd FileType python AutoFormatBuffer pyformat
+  "autocmd FileType dart AutoFormatBuffer dartfmt
 
   "Glug syntastic-google
   "Glug blazedeps auto_filetypes=go,
   "Glug youcompleteme-google
+
   Glug blaze plugin[mappings]='<leader>b'
   Glug codefmt gofmt_executable=goimports
   Glug codefmt-google auto_filetypes+=BUILD,go auto_all=0
@@ -141,6 +145,7 @@ if filereadable(expand('~/.at_google'))
   "source /usr/share/vim/google/gtags.vim
 else
   "Plugin 'Valloric/YouCompleteMe'
+  Plugin 'scrooloose/syntastic'
 endif
 
 " # Plugins
@@ -161,14 +166,19 @@ let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
 " let g:racer_cmd = '$HOME/.vim/bundle/racer/target/release/racer'
 
 " Otherwise code block delims are completely hidden.
-let g:pandoc#syntax#conceal#blacklist = ['codeblock_delim']
+let g:pandoc#syntax#conceal#blacklist = ['codeblock_delim', 'strikeout', 'block', 'quotes', 'definition', 'inlinecode']
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = {
-        \ "mode": "passive",
-        \ "active_filetypes": ["ruby", "php"],
-        \ "passive_filetypes": ["puppet"] }
+      \ "mode": "passive",
+      \ "active_filetypes": ["ruby", "php"],
+      \ "passive_filetypes": ["puppet"] }
 let g:syntastic_scss_checkers = ['scss_lint']
+
+" ## GitGutter
+
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " ## NerdCommenter
 
@@ -188,10 +198,10 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 " ## org-mode
 let g:org_todo_keywords = ['TODO', 'STARTED', 'DONE']
 let g:org_todo_keyword_faces = [
-\  ['TODO', 'red', ':background white'],
-\  ['STARTED', 'cyan'],
-\  ['DONE', 'green']
-\]
+      \  ['TODO', 'red', ':background white'],
+      \  ['STARTED', 'cyan'],
+      \  ['DONE', 'green']
+      \]
 
 let g:org_todo_setup = 'TODO STARTED | DONE'
 hi! DONETODO guifg=green
@@ -239,6 +249,10 @@ autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | 
 autocmd FileType html setl expandtab | setl softtabstop=0 | setl shiftwidth=2 | setl tabstop=2
 autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
+
+autocmd BufWrite *.dart :Autoformat
+autocmd BufWrite *.go :Autoformat
+autocmd BufWrite *.rust :Autoformat
 
 " # Settings
 
@@ -322,7 +336,10 @@ set diffopt=filler,vertical
 set complete=.,i
 
 " Complete options (disable preview scratch window)
+" Note that these are normally overridden by YCM.
 set completeopt=menu,menuone,longest
+"inoremap <expr> <Esc> pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Formatting
 set wrap                      " wrap long lines
@@ -359,6 +376,14 @@ let g:solarized_diffmode='high'    "default value is normal
 colorscheme solarized
 
 " # Key mappings
+
+" Stupid shift key fixes
+cnoremap W w
+cnoremap wQ wq
+cnoremap WQ wq
+cnoremap wQ wq
+cnoremap Q q
+cnoremap Tabe tabe
 
 " Strip leading '//' from paths (e.g. '//depot...' in borgcfg).
 set includeexpr=substitute(v:fname,'//','')
@@ -489,40 +514,40 @@ endfunction
 "autocmd FileType go call AirlineGoInit()
 
 let g:airline#extensions#default#layout = [
-  \ [ 'a', 'b', 'c' ],
-  \ [ 'x', 'z', 'warning' ]
-\ ]
+      \ [ 'a', 'b', 'c' ],
+      \ [ 'x', 'z', 'warning' ]
+      \ ]
 
 " ## Tagbar
 
 nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_type_go = {
-  \ 'ctagstype' : 'go',
-  \ 'kinds'     : [
-    \ 'p:package',
-    \ 'i:imports:1',
-    \ 'c:constants',
-    \ 'v:variables',
-    \ 't:types',
-    \ 'n:interfaces',
-    \ 'w:fields',
-    \ 'e:embedded',
-    \ 'm:methods',
-    \ 'r:constructor',
-    \ 'f:functions'
-  \ ],
-  \ 'sro' : '.',
-  \ 'kind2scope' : {
-    \ 't' : 'ctype',
-    \ 'n' : 'ntype'
-  \ },
-  \ 'scope2kind' : {
-    \ 'ctype' : 't',
-    \ 'ntype' : 'n'
-  \ },
-  \ 'ctagsbin'  : 'gotags',
-  \ 'ctagsargs' : '-sort -silent'
-\ }
+      \ 'ctagstype' : 'go',
+      \ 'kinds'     : [
+      \ 'p:package',
+      \ 'i:imports:1',
+      \ 'c:constants',
+      \ 'v:variables',
+      \ 't:types',
+      \ 'n:interfaces',
+      \ 'w:fields',
+      \ 'e:embedded',
+      \ 'm:methods',
+      \ 'r:constructor',
+      \ 'f:functions'
+      \ ],
+      \ 'sro' : '.',
+      \ 'kind2scope' : {
+      \ 't' : 'ctype',
+      \ 'n' : 'ntype'
+      \ },
+      \ 'scope2kind' : {
+      \ 'ctype' : 't',
+      \ 'ntype' : 'n'
+      \ },
+      \ 'ctagsbin'  : 'gotags',
+      \ 'ctagsargs' : '-sort -silent'
+      \ }
 
 " ## Netrw
 
@@ -612,7 +637,7 @@ augroup END
 augroup AutoDiffUpdate
   au!
   autocmd InsertLeave * if &diff | diffupdate | endif
-augroup end
+augroup END
 
 if has('cmdline_info')
   set noruler                   " show the ruler
@@ -627,8 +652,8 @@ func! MailSetup()
   setlocal colorcolumn=72
   setlocal textwidth=72
   setlocal spell
-"  setlocal completeopt=
-"  setlocal completefunc=
+  "  setlocal completeopt=
+  "  setlocal completefunc=
 endfun
 
 autocmd FileType mail call MailSetup()
@@ -637,17 +662,17 @@ autocmd FileType gitcommit call MailSetup()
 " ## YouCompleteMe
 
 let g:ycm_filetype_blacklist = {
-  \ 'git5message' : 1,
-  \ 'mail' : 1,
-  \ 'markdown' : 1,
-  \ 'notes' : 1,
-  \ 'qf' : 1,
-  \ 'proto' : 1,
-  \ 'tagbar' : 1,
-  \ 'text' : 1,
-  \ 'unite' : 1,
-  \ 'vimwiki' : 1,
-\}
+      \ 'git5message' : 1,
+      \ 'mail' : 1,
+      \ 'markdown' : 1,
+      \ 'notes' : 1,
+      \ 'qf' : 1,
+      \ 'proto' : 1,
+      \ 'tagbar' : 1,
+      \ 'text' : 1,
+      \ 'unite' : 1,
+      \ 'vimwiki' : 1,
+      \}
 
 "autocmd FileType html set formatoptions+=a
 "autocmd FileType html set textwidth=80
@@ -675,20 +700,20 @@ hi SpellCap term=none ctermbg=none cterm=undercurl ctermfg=Magenta gui=undercurl
 nmap :YcmCompleter GoToDefinition
 
 let g:ycm_semantic_triggers =  {
-  \ 'c' : ['->', '.'],
-  \ 'dart' : ['.'],
-  \ 'objc' : ['->', '.'],
-  \ 'ocaml' : ['.', '#'],
-  \ 'cpp,objcpp' : ['->', '.', '::'],
-  \ 'perl' : ['->'],
-  \ 'php' : ['->', '::'],
-  \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-  \ 'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
-  \ 'ruby' : ['.', '::'],
-  \ 'rust' : ['.', '::'],
-  \ 'lua' : ['.', ':'],
-  \ 'erlang' : [':'],
-\ }
+      \ 'c' : ['->', '.'],
+      \ 'dart' : ['.'],
+      \ 'objc' : ['->', '.'],
+      \ 'ocaml' : ['.', '#'],
+      \ 'cpp,objcpp' : ['->', '.', '::'],
+      \ 'perl' : ['->'],
+      \ 'php' : ['->', '::'],
+      \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+      \ 'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
+      \ 'ruby' : ['.', '::'],
+      \ 'rust' : ['.', '::'],
+      \ 'lua' : ['.', ':'],
+      \ 'erlang' : [':'],
+      \ }
 
 " ## ShowMarks
 
