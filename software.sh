@@ -29,6 +29,8 @@ SOFTWARE=(
   pwgen
   python
   python-dev
+  redshift
+  redshift-gtk
   rlwrap
   ruby-sass
   rxvt-unicode
