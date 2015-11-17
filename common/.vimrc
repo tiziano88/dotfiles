@@ -215,6 +215,7 @@ augroup END
 
 " # Autocommands
 
+autocmd BufNewFile,BufRead *.asm set filetype=nasm
 autocmd BufNewFile,BufRead *.go set filetype=go
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead *.md set filetype=markdown
@@ -246,6 +247,7 @@ autocmd FileType xml setlocal colorcolumn=80
 
 autocmd FileType git5message setlocal colorcolumn=0 | setlocal textwidth=0
 
+autocmd FileType nasm setl expandtab | setl softtabstop=0 | setl shiftwidth=4 | setl tabstop=4
 autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
 autocmd FileType html setl expandtab | setl softtabstop=0 | setl shiftwidth=2 | setl tabstop=2
 autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
@@ -708,7 +710,8 @@ let g:ycm_semantic_triggers =  {
       \ 'cpp,objcpp' : ['->', '.', '::'],
       \ 'perl' : ['->'],
       \ 'php' : ['->', '::'],
-      \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+      \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir' : ['.'],
+      \ 'go' : ['.'],
       \ 'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
       \ 'ruby' : ['.', '::'],
       \ 'rust' : ['.', '::'],
