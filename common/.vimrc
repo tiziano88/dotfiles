@@ -731,6 +731,9 @@ highlight ShowMarksHLo ctermbg=black ctermfg=cyan
 " For multiple marks on the same line.
 highlight ShowMarksHLm ctermbg=black ctermfg=white
 
+" Use terminal background.
+highlight Normal ctermbg=None
+
 " Popup menu hightLight Group
 "hi Pmenu ctermfg=black ctermbg=Lightgray
 "hi PmenuSel ctermfg=darkcyan ctermbg=lightgray cterm=NONE
