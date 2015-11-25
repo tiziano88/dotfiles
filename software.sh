@@ -6,6 +6,7 @@ set -x
 SOFTWARE=(
   ack-grep
   atool
+  automake
   build-essential
   cabal-install
   cmake
