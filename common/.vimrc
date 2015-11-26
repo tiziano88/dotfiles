@@ -344,6 +344,9 @@ set completeopt=menu,menuone,longest
 "inoremap <expr> <Esc> pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
+set timeoutlen=1000
+set ttimeoutlen=0
+
 " Formatting
 set wrap                      " wrap long lines
 set linebreak     " wrap without breaking words
@@ -396,8 +399,6 @@ nnoremap Q <nop>
 
 nnoremap j gj
 nnoremap k gk
-
-map [27;2;13~ <S-CR>
 
 " Clipboard fixes
 vnoremap <leader>y "+y
@@ -733,6 +734,10 @@ highlight ShowMarksHLm ctermbg=black ctermfg=white
 
 " Use terminal background.
 highlight Normal ctermbg=None
+
+" FIXME
+autocmd BufEnter * highlight Normal ctermbg=None
+autocmd BufLeave * highlight Normal ctermbg=0
 
 " Popup menu hightLight Group
 "hi Pmenu ctermfg=black ctermbg=Lightgray
