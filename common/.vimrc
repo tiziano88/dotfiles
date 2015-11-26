@@ -151,6 +151,11 @@ endif
 
 " # Plugins
 
+" ## vim-autoclose
+
+" Otherwise it will install some mapping starting with <esc> which delay going back to normal mode.
+let g:AutoClosePreserveDotReg = 0
+
 " ## vim-go
 
 let g:go_disable_autoinstall = 1
@@ -736,8 +741,8 @@ highlight ShowMarksHLm ctermbg=black ctermfg=white
 highlight Normal ctermbg=None
 
 " FIXME
-autocmd BufEnter * highlight Normal ctermbg=None
-autocmd BufLeave * highlight Normal ctermbg=0
+" autocmd WinEnter * highlight Normal ctermbg=None
+" autocmd WinLeave * highlight Normal ctermbg=2
 
 " Popup menu hightLight Group
 "hi Pmenu ctermfg=black ctermbg=Lightgray
