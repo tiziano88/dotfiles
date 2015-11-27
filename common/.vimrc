@@ -237,20 +237,19 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-autocmd FileType borg setlocal colorcolumn=80
-autocmd FileType css setlocal colorcolumn=80
-autocmd FileType gcl setlocal colorcolumn=80
-autocmd FileType markdown setlocal colorcolumn=80
-autocmd FileType pandoc setlocal colorcolumn=80
-autocmd FileType help setlocal colorcolumn=80
-autocmd FileType sh setlocal colorcolumn=80
-autocmd FileType dart setlocal colorcolumn=80
-autocmd FileType proto setlocal colorcolumn=80
-autocmd FileType python setlocal colorcolumn=80
-autocmd FileType scss setlocal colorcolumn=80
-autocmd FileType xml setlocal colorcolumn=80
-
-autocmd FileType git5message setlocal colorcolumn=0 | setlocal textwidth=0
+autocmd FileType borg setlocal textwidth=80
+autocmd FileType css setlocal textwidth=80
+autocmd FileType gcl setlocal textwidth=80
+autocmd FileType markdown setlocal textwidth=80
+autocmd FileType pandoc setlocal textwidth=80
+autocmd FileType help setlocal textwidth=80
+autocmd FileType sh setlocal textwidth=80
+autocmd FileType dart setlocal textwidth=80
+autocmd FileType proto setlocal textwidth=80
+autocmd FileType python setlocal textwidth=80
+autocmd FileType scss setlocal textwidth=80
+autocmd FileType xml setlocal textwidth=80
+autocmd FileType git5message setlocal textwidth=0
 
 autocmd FileType nasm setl expandtab | setl softtabstop=0 | setl shiftwidth=4 | setl tabstop=4
 autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
@@ -631,6 +630,7 @@ endif
 
 if exists('+colorcolumn')
   set colorcolumn=100
+  set colorcolumn=+0
 else
   highlight OverLength ctermbg=red ctermfg=white guibg=red
   match OverLength /\%101v.\+/
