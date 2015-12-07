@@ -159,10 +159,10 @@ let g:AutoClosePreserveDotReg = 0
 " ## vim-go
 
 let g:go_disable_autoinstall = 1
-let g:go_gocode_bin="gocode"
-let g:go_goimports_bin="goimports"
-let g:go_oracle_bin="oracle"
-let g:go_golint_bin="golint"
+let g:go_gocode_bin='gocode'
+let g:go_goimports_bin='goimports'
+let g:go_oracle_bin='oracle'
+let g:go_golint_bin='golint'
 
 " ## Rainbow
 
@@ -176,9 +176,9 @@ let g:pandoc#syntax#conceal#blacklist = ['codeblock_delim', 'strikeout', 'block'
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = {
-      \ "mode": "passive",
-      \ "active_filetypes": ["ruby", "php"],
-      \ "passive_filetypes": ["puppet"] }
+      \ 'mode': 'passive',
+      \ 'active_filetypes': ['ruby', 'php'],
+      \ 'passive_filetypes': ['puppet'] }
 let g:syntastic_scss_checkers = ['scss_lint']
 
 " ## GitGutter
@@ -362,6 +362,10 @@ set softtabstop=2
 set expandtab
 "set matchpairs+=<:>             " match, to be used with %
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+
+let &showbreak = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
+set breakindent
+set breakindentopt=sbr
 
 set formatoptions-=t " don't reflow 'normal' text.
 set formatoptions-=o " do not insert comment leader after o or O
@@ -799,7 +803,7 @@ set autoread " should do it without prompting
 
 function! DoGit5Diff()
   let s:revision = system('git5 status --base')
-  exe "Gdiff " . s:revision
+  exe 'Gdiff ' . s:revision
 endfunction
 command! G5diff call DoGit5Diff()
 
