@@ -125,6 +125,7 @@ if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
 
   autocmd FileType bzl,blazebuild AutoFormatBuffer buildifier
+  autocmd FileType markdown AutoFormatBuffer mdformat
   "autocmd FileType c,cpp,javascript AutoFormatBuffer clang-format "proto
   "autocmd FileType java AutoFormatBuffer google-java-format
   "autocmd FileType jslayout AutoFormatBuffer jslfmt
@@ -250,6 +251,7 @@ autocmd FileType python setlocal textwidth=80
 autocmd FileType scss setlocal textwidth=80
 autocmd FileType xml setlocal textwidth=80
 autocmd FileType git5message setlocal textwidth=0
+autocmd FileType go setlocal textwidth=100
 
 autocmd FileType nasm setl expandtab | setl softtabstop=0 | setl shiftwidth=4 | setl tabstop=4
 autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
