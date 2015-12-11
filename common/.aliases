@@ -26,10 +26,6 @@ alias v='f -t -e vim -b viminfo' # vim
 alias j='cd $(pwd | sed s!/javatests/!/java/!)'
 alias jt='cd $(pwd | sed s!/java/!/javatests/!)'
 
-# Mutt profiles
-alias mutt_corp="MAIL_USER=tzn@google.com mutt"
-alias mutt_personal="MAIL_USER=tiziano88@gmail.com mutt"
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -59,19 +55,14 @@ alias ....='cd ../../..'
 # copy to/from system clipboard (ctrl+v)
 alias xclip="xclip -selection c"
 
-alias gitbox='~/src/gitbox/gitbox'
-
 alias tmux='TERM=screen-256color-bce tmux'
 
 alias emacs='emacs -nw'
 
-alias menu='/home/shine/share/menu/menu.par puddinglane,pavilion,londondeli'
 alias ack=ack-grep
 alias ports='netstat -tulanp'
 
 #alias lock='gnome-screensaver-command -l'
-alias org='vim ~/tzn.org'
-
 alias mosh='mosh --ssh="ssh -o ProxyUseFdpass=no -o UseProxyIf=true -o GSSAPITrustDns=no"'
 
 function ssh-key-install {
