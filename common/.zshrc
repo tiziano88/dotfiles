@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # vim: ft=zsh
 
 # https://github.com/changs/slimzsh
@@ -60,9 +62,6 @@ source ~/liquidprompt/liquidprompt
 
 # git
 fpath=(~/.zsh $fpath)
-
-# Customize to your needs...
-# export PATH=/home/tzn/bin:/home/tzn/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' cache-path ~/.zsh/cache
@@ -175,14 +174,14 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 function tmux_has_main() {
-  tmux -2 has-session -t "main"
+  tmux -2 has-session -t 'main'
 }
 
 function tmux_init_main() {
-  tmux -2 new-session -d -s "main" -n "misc"
+  tmux -2 new-session -d -s 'main' -n 'misc'
 }
 
-if [[ "$TERM" != "screen" ]] && [[ "$TMUX" == "" ]]
+if [[ "$TERM" != 'screen' ]] && [[ "$TMUX" == '' ]]
 then
    # try to attach to existing session, or start a new one
    # tmux attach-session -t "$USER" || tmux -2 new-session -s "$USER"
@@ -206,7 +205,7 @@ function tmux-usurp() {
   # damage once I get back to my desk.
 
   if [[ -z "$TMUX" ]]; then
-    echo "Not running under tmux." >&2
+    echo 'Not running under tmux.' >&2
     exit 1
   fi
 
@@ -315,10 +314,3 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 # zsh-autosuggestions is designed to be unobtrusive)
 # bindkey '^T' autosuggest-toggle
 # bindkey '^f' vi-forward-word
-
-# The next line updates PATH for the Google Cloud SDK.
-source_ '/home/tzn/google-cloud-sdk/path.bash.inc'
-
-# The next line enables bash completion for gcloud.
-source_ '/home/tzn/google-cloud-sdk/completion.bash.inc'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
