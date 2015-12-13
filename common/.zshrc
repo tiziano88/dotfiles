@@ -25,8 +25,6 @@ source_ ~/git-hub/init
 
 # ^ in glob negates pattern following it
 
-autoload -U colors && colors
-
 setopt NO_PROMPT_SUBST
 setopt NO_CDABLE_VARS
 setopt NO_CASE_GLOB
@@ -54,6 +52,10 @@ else
   HISTFILE=~/.history
 fi
 SAVEHIST=$HISTSIZE
+
+autoload -U colors && colors
+#export PROMPT="%{%f%b%k%}$(build_prompt) "
+export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#❯ "
 
 # liquidprompt
 # git clone https://github.com/nojhan/liquidprompt.git
@@ -235,10 +237,6 @@ function tmux-usurp() {
   done
 }
 
-
-#export PROMPT="%{%f%b%k%}$(build_prompt) "
-export PROMPT='%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#❯ '
-
 #gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 #eval $(keychain --eval)
 eval $(dircolors ~/.dir_colors)
@@ -247,7 +245,7 @@ eval $(dircolors ~/.dir_colors)
 # eval "$(fasd --init auto)"
 
 # https://github.com/rupa/z
-source ~/z/z.sh
+#source ~/z/z.sh
 
 if exists fzf; then
   function fuzzy_select_history() {

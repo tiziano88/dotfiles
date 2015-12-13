@@ -10,32 +10,18 @@ SOFTWARE=(
   build-essential
   cabal-install
   cmake
-  colortest
-  fonts-mplus
-  fonts-ubuntu-font-family-console
   git
   golang
   htop
   keychain
-  ksnapshot
-  mercurial
   moreutils
   mosh
   mutt
-  ntfs-3g
   pandoc
-  parcellite
-  parted
   pass
-  pwgen
   python
   python-dev
-  redshift
-  redshift-gtk
   rlwrap
-  ruby-sass
-  rxvt-unicode
-  sgt-puzzles
   silversearcher-ag
   stow
   sudo
@@ -45,16 +31,12 @@ SOFTWARE=(
   tree
   urlview
   vim
-  xdotool
-  xfonts-terminus
-  xfonts-terminus-oblique
-  xmobar
-  xmonad
-  xzoom
   zsh
 )
 
 sudo apt-get install "${SOFTWARE[@]}"
+
+mkdir ~/src
 
 # git clone git@bitbucket.org:tiziano88/dotfiles.git
 # git clone git@github.com:zsh-users/zsh-syntax-highlighting.git
@@ -62,8 +44,6 @@ sudo apt-get install "${SOFTWARE[@]}"
 git clone git@github.com:gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 git clone git@github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-git clone git@github.com:rupa/z.git ~/z
 
 git clone git@github.com:Anthony25/gnome-terminal-colors-solarized.git ~/gnome-terminal-colors-solarized
 
