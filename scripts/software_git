@@ -33,3 +33,5 @@ git clone git@github.com:github/hub.git ~/src/hub
 # setxkbmap -v gb
 
 git clone git@github.com:tmux/tmux.git ~/src/tmux
+
+git clone git@github.com:Anthony25/gnome-terminal-colors-solarized.git ~/src/gnome-terminal-colors-solarized
