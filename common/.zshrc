@@ -25,6 +25,10 @@ source_ ~/git-hub/init
 
 # ^ in glob negates pattern following it
 
+# Disable C-s for flow control (C-q to resume).
+# See http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator.
+stty -ixon
+
 setopt NO_PROMPT_SUBST
 setopt NO_CDABLE_VARS
 setopt NO_CASE_GLOB

@@ -40,7 +40,7 @@
 [rerere]
 	enabled = 0
 [user]
-	email = tzn@google.com
+	email = tiziano88@gmail.com
 	name = Tiziano Santoro
 [push]
 	default = current
