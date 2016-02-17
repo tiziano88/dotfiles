@@ -80,6 +80,8 @@ Plugin 'gregsexton/gitv'
 Plugin 'jceb/vim-orgmode'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'haya14busa/incsearch.vim'
 
 "Plugin 'mhinz/vim-signify'
 Plugin 'airblade/vim-gitgutter'
@@ -433,6 +435,20 @@ vnoremap <Space> za
 
 " Clearing highlighted search
 nnoremap <silent> <leader>/ :nohlsearch<CR>
+
+" incsearch
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+highlight link IncSearchCursor IncSearch
 
 " jj to normal mode
 inoremap jj <Esc>
