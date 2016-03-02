@@ -124,7 +124,7 @@ endif
 if filereadable(expand('~/.at_google'))
   let g:disable_google_optional_settings=1
 
-  source /usr/share/vim/google/glug/bootstrap.vim
+  "source /usr/share/vim/google/glug/bootstrap.vim
   source /usr/share/vim/google/google.vim
 
   autocmd FileType bzl,blazebuild AutoFormatBuffer buildifier
@@ -143,6 +143,7 @@ if filereadable(expand('~/.at_google'))
   Glug blaze plugin[mappings]='<leader>b'
   Glug codefmt gofmt_executable=goimports
   Glug codefmt-google auto_filetypes+=BUILD,go auto_all=0
+  Glug g4
   Glug grok
   Glug gtimporter
   Glug relatedfiles plugin[mappings]=',f'

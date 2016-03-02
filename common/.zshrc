@@ -316,3 +316,5 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 # zsh-autosuggestions is designed to be unobtrusive)
 # bindkey '^T' autosuggest-toggle
 # bindkey '^f' vi-forward-word
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
