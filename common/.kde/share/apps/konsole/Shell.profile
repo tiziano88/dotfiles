@@ -2,7 +2,7 @@
 AntiAliasFonts=false
 BoldIntense=true
 ColorScheme=Solarized
-Font=PragmataPro,9,-1,5,50,0,0,0,0,0
+Font=PragmataPro,10,-1,5,50,0,0,0,0,0
 LineSpacing=0
 
 [General]
