@@ -10,15 +10,20 @@
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
+  # include .bashrc if it exists
+  if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
+  fi
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+  PATH="$HOME/bin:$PATH"
+fi
+
+# added by Nix installer
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
 source ~/.env

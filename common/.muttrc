@@ -23,7 +23,7 @@ set hostname         = "google.com"
 #set folder           = "imaps://imap.gmail.com/"
 #set folder           = "imap://127.0.0.1:10143/"
 set imap_user        = "$MAIL_USER"
-set imap_pass        = "`~/dotfiles/get_pass.sh $MAIL_USER`"
+set imap_pass        = "`~/dotfiles/scripts/get_pass $MAIL_USER`"
 set from             = "$MAIL_USER"
 
 # Note: Maybe there is no need for there, since Mutt creates folders inside.

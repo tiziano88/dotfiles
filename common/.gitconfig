@@ -32,8 +32,8 @@
   abbrev-commit = true
 [merge]
 #	ff = false
-	tool = vimdiff2
-  conflictstyle = diff3
+	tool = vimdiff
+    conflictstyle = diff3
 [mergetool]
 	prompt = false
 	keepBackup = false

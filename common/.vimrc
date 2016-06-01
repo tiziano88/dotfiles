@@ -97,7 +97,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'unblevable/quick-scope'
 Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
+"Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-scripts/argtextobj.vim'
 
 " Must be in this order.
@@ -777,7 +777,7 @@ highlight Normal ctermbg=None
 
 " ## AutoClose
 
-let g:AutoClosePairs_del = '{}'
+let g:AutoClosePairs_del = '{}`'
 
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function! ToggleWrap()
