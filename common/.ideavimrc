@@ -18,6 +18,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+map <C-v> :action ExtendSelection<CR>
+
 nmap <C-e> :action RecentFiles<CR>
 nmap <C-A-n> :action FileStructurePopup<CR>
 
