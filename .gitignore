@@ -2,3 +2,4 @@ common/.zsh/cache
 common/.xmonad
 common/.weechat/logs
 common/.weechat/*.log
+common/.gnupg/gpg-agent-info-*

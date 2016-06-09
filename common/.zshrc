@@ -64,6 +64,7 @@ export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yello
 # liquidprompt
 # git clone https://github.com/nojhan/liquidprompt.git
 source ~/liquidprompt/liquidprompt
+source ~/src/liquidprompt/liquidprompt
 # source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # git
