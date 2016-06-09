@@ -59,7 +59,7 @@ SAVEHIST=$HISTSIZE
 
 autoload -U colors && colors
 #export PROMPT="%{%f%b%k%}$(build_prompt) "
-export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#❯ "
+export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#> "
 
 # liquidprompt
 # git clone https://github.com/nojhan/liquidprompt.git

@@ -20,7 +20,7 @@
     scroll_on_output = False
     cursor_color = "#839496"
     scroll_on_keystroke = False
-    font = Hasklig 9
+    font = Terminus 10
     background_color = "#002b36"
     scrollback_infinite = True
   [[solarized-light]]
