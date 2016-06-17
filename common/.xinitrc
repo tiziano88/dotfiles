@@ -23,10 +23,6 @@ ibus exit
 xset fp+ /usr/local/share/fonts/X11/misc
 xset fp rehash
 
-# from
-# http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint#Configuring_other_options_.28e.g._Press_to_select.2C_Sensitivity_and_Speed.29
-echo -n 255 /sys/devices/platform/i8042/serio1/serio2/sensitivity
-
 # from https://wiki.archlinux.org/index.php/TrackPoint
 tpset() { xinput set-prop "TPPS/2 IBM TrackPoint" "$@"; }
 
@@ -35,3 +31,7 @@ tpset() { xinput set-prop "TPPS/2 IBM TrackPoint" "$@"; }
 #tpset "Evdev Wheel Emulation Timeout" 200
 #tpset "Evdev Wheel Emulation Axes" 6 7 4 5
 tpset "Device Accel Constant Deceleration" 0.5
+
+# from
+# http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint#Configuring_other_options_.28e.g._Press_to_select.2C_Sensitivity_and_Speed.29
+echo -n 255 /sys/devices/platform/i8042/serio1/serio2/sensitivity
