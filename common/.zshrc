@@ -22,6 +22,7 @@ source_ ~/.google.sh
 source_ ~/src/fzf/shell/key-bindings.zsh
 source_ ~/src/fzf/shell/completion.zsh
 source_ ~/git-hub/init
+source_ ~/.nix-profile/etc/profile.d/nix.sh
 
 # ^ in glob negates pattern following it
 

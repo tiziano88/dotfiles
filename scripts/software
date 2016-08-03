@@ -23,6 +23,7 @@ SOFTWARE=(
   python-dev
   rlwrap
   silversearcher-ag
+  sqlite3
   stow
   sudo
   task
