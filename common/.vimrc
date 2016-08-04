@@ -165,10 +165,12 @@ let g:AutoClosePreserveDotReg = 0
 " ## vim-go
 
 let g:go_disable_autoinstall = 1
-let g:go_gocode_bin='gocode'
-let g:go_goimports_bin='goimports'
-let g:go_oracle_bin='oracle'
-let g:go_golint_bin='golint'
+let g:go_gocode_bin = 'gocode'
+let g:go_goimports_bin = 'goimports'
+let g:go_oracle_bin = 'oracle'
+let g:go_golint_bin = 'golint'
+let g:go_fmt_command = 'goimports'
+let g:go_fmt_autosave = 0
 
 " ## Rainbow
 
