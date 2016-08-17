@@ -7,6 +7,9 @@
       paths = [
         tmux
         zsh
+
+        haskell.compiler.ghc7102
+        cabal-install
       ];
     };
   };
