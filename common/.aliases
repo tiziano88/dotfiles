@@ -128,3 +128,8 @@ function hr {
 function p {
   ls -ahlsF **/*$1*
 }
+
+function set-font {
+  # set-font "9x15bold,xft:Kochi Gothic"
+  printf '\e]710;%s\007' $1
+}

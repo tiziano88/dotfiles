@@ -28,3 +28,6 @@ nmap gB :action EditBreakpoint<CR>
 
 nmap gc :action CommentByLineComment<CR>
 vmap gc :action CommentByLineComment<CR>
+
+" Stupid shift key fixes
+cnoremap W w

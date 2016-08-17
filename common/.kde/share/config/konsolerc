@@ -5,7 +5,7 @@ update_info=konsole.upd:2.9.0-global-options
 DefaultProfile=Shell.profile
 
 [Favorite Profiles]
-Favorites=TTY.profile,Shell.profile,terminus.profile
+Favorites=TTY.profile,terminus.profile,Shell.profile
 
 [KonsoleWindow]
 ShowAppNameOnTitleBar=false

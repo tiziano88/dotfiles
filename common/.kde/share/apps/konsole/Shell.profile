@@ -1,5 +1,5 @@
 [Appearance]
-AntiAliasFonts=false
+AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=Solarized
 Font=PragmataPro,10,-1,5,50,0,0,0,0,0

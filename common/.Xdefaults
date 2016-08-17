@@ -48,9 +48,11 @@ URxvt.iso14755: false
 
 ! Fonts
 URxvt.allow_bold:           true
+URxvt.keysym.M-C-1: command:\033]710;suxuseuro\007\033]711;suxuseuro\007
+URxvt.keysym.M-C-2: command:\033]710;9x15bold\007\033]711;9x15bold\007
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,clipboard,matcher
+URxvt.perl-ext-common:      default,clipboard,matcher,confirm-paste
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          google-chrome
 URxvt.url-select.button:    1
