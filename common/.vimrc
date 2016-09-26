@@ -530,6 +530,11 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
 
+let g:airline#extensions#default#layout = [
+      \ [ 'a', 'b', 'c' ],
+      \ [ 'x', 'z', 'warning' ]
+      \ ]
+
 " Too noisy for google3
 let g:airline#extensions#whitespace#enabled = 0
 
@@ -539,26 +544,15 @@ let g:airline_section_b = airline#section#create(['hunks'])
 
 " Show Go identifier under cursor instead of tagbar section.
 let g:go_list_type = "quickfix"
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_get_update = 0
 let s:go_last_lookup_time = 0
 let s:go_last_lookup_value = ''
-function! GoI()
-  if s:go_last_lookup_time != localtime()
-    let s:go_last_lookup_value = go#complete#GetInfo()
-    let s:go_last_lookup_time = localtime()
-  endif
-  return s:go_last_lookup_value
-endfunction
-
-function! AirlineGoInit()
-  call airline#parts#define_function('go', 'GoI')
-  let g:airline_section_x = airline#section#create_right(['go', 'filetype'])
-endfunction
-"autocmd FileType go call AirlineGoInit()
-
-let g:airline#extensions#default#layout = [
-      \ [ 'a', 'b', 'c' ],
-      \ [ 'x', 'z', 'warning' ]
-      \ ]
 
 " ## Tagbar
 
