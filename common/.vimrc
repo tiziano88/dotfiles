@@ -100,6 +100,8 @@ Plugin 'vim-pandoc/vim-pandoc'
 "Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-scripts/argtextobj.vim'
 
+Plugin 'scrooloose/syntastic'
+
 " Must be in this order.
 "Plugin 'godlygeek/tabular'
 "Plugin 'plasticboy/vim-markdown'
@@ -152,7 +154,6 @@ if filereadable(expand('~/.at_google'))
   "source /usr/share/vim/google/gtags.vim
 else
   "Plugin 'Valloric/YouCompleteMe'
-  Plugin 'scrooloose/syntastic'
 endif
 
 " # Plugins
@@ -171,6 +172,7 @@ let g:go_oracle_bin = 'oracle'
 let g:go_golint_bin = 'golint'
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_autosave = 0
+let g:go_auto_type_info = 1
 
 " ## Rainbow
 
@@ -183,16 +185,21 @@ let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
 let g:pandoc#syntax#conceal#blacklist = ['codeblock_delim', 'strikeout', 'block', 'quotes', 'definition', 'inlinecode']
 
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = {
       \ 'mode': 'passive',
       \ 'active_filetypes': ['ruby', 'php'],
-      \ 'passive_filetypes': ['puppet'] }
+      \ 'passive_filetypes': ['puppet', 'go'] }
 let g:syntastic_scss_checkers = ['scss_lint']
 
 " ## GitGutter
 
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
+" ## ElmVim
+
+let g:elm_format_autosave = 1
 
 " ## NerdCommenter
 
@@ -267,7 +274,6 @@ autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 
 autocmd BufWrite *.dart :Autoformat
-autocmd BufWrite *.go :Autoformat
 autocmd BufWrite *.rust :Autoformat
 
 " # Settings
@@ -532,6 +538,7 @@ let g:airline_section_b = airline#section#create(['hunks'])
 " ## Go
 
 " Show Go identifier under cursor instead of tagbar section.
+let g:go_list_type = "quickfix"
 let s:go_last_lookup_time = 0
 let s:go_last_lookup_value = ''
 function! GoI()

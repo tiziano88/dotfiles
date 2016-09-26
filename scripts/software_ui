@@ -5,6 +5,7 @@ set -x
 # to install:
 SOFTWARE=(
   colortest
+  compton # run `compton -b` in case of issues with xmonad
 #  fonts-mplus
   fonts-ubuntu-font-family-console
   keychain
