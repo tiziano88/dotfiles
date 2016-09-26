@@ -554,6 +554,9 @@ let g:go_get_update = 0
 let s:go_last_lookup_time = 0
 let s:go_last_lookup_value = ''
 
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+
 " ## Tagbar
 
 nmap <leader>t :TagbarToggle<CR>
