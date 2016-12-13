@@ -84,6 +84,7 @@ Plugin 'junegunn/fzf.vim'
 "Plugin 'lambdatoast/elm.vim'
 Plugin 'ElmCast/elm-vim'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'vimwiki/vimwiki'
 
 "Plugin 'mhinz/vim-signify'
 Plugin 'airblade/vim-gitgutter'
@@ -342,6 +343,7 @@ set showmatch                   " show matching brackets/parenthesis
 set incsearch      " find as you type search
 set hlsearch      " highlight search terms
 
+set path+=**
 set wildmenu      " show list instead of just completing
 set wildmode=list:longest,full  " comand <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,] " backspace and cursor keys wrap to
@@ -503,6 +505,10 @@ nnoremap <silent> <LocalLeader>jc :JavaCorrect<cr>
 let g:EclimLoggingDisabled = 1
 
 set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
+
+" ## elm-vim
+
+let g:elm_format_autosave = 1
 
 " ## FZF
 " https://github.com/junegunn/fzf/wiki/Examples-(vim)

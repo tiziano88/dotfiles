@@ -10,4 +10,4 @@ GO_PACKAGES=(
   golang.org/x/tools/cmd/oracle
 )
 
-go get "${GO_PACKAGES[@]}"
+go get -u "${GO_PACKAGES[@]}"
