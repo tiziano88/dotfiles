@@ -1,69 +1,65 @@
 [apply]
-    #whitespace = fix
+  # whitespace = fix
 [color]
-	ui = auto
-	interactive = auto
-	branch = auto
-	diff = auto
-	status = auto
+  ui = auto
+  interactive = auto
+  branch = auto
+  diff = auto
+  status = auto
 [color "diff"]
-	old = red
-	new = green
-	whitespace = yellow
+  old = red
+  new = green
+  whitespace = yellow
 [color "status"]
-	untracked = bold yellow
-	added = bold blue
-	changed = red
+  untracked = bold yellow
+  added = bold blue
+  changed = red
 [color "branch"]
-	current = green
-	remote = yellow
+  current = green
+  remote = yellow
 [core]
-	editor = vim
-	whitespace = fix
-	excludesfile = /usr/local/google/home/tzn/.gitignore_global
+  editor = vim
+  whitespace = fix
+  excludesfile = /usr/local/google/home/tzn/.gitignore_global
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [gui]
-	fontui = -family Ubuntu -size -12 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"Ubuntu Mono\" -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+  fontui = -family Ubuntu -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+  fontdiff = -family \"Ubuntu Mono\" -size -12 -weight normal -slant roman -underline 0 -overstrike 0
 [log]
   graph = true
   pretty = format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
   abbrev-commit = true
 [merge]
-#	ff = false
-	tool = vimdiff
-    conflictstyle = diff3
+  # ff = false
+  tool = vimdiff
+  conflictstyle = diff3
 [mergetool]
-	prompt = false
-	keepBackup = false
+  prompt = false
+  keepBackup = false
 [rerere]
-	enabled = 0
+  enabled = 0
 [user]
-	email = tiziano88@gmail.com
-	name = Tiziano Santoro
+  email = tiziano88@gmail.com
+  name = Tiziano Santoro
 [push]
-	default = current
+  default = current
 [status]
   # short = true
   # branch = true
 [help]
-	autocorrect = 1
+  autocorrect = 1
 [alias]
-	lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d %Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
-	lga = log --all --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d %Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
-    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-    lg = !"git lg1"
+  lg =  log --graph --abbrev-commit --date=relative --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d %Creset%s %Cgreen(%an %cr)%Creset'
   amend = commit --amend --no-edit
-	g = grep --break --heading --line-number
-	up = "!git remote update -p; git merge --ff-only @{u}"
-	up1 = pull --ff-only --all -p
-	tree = log --graph --oneline --decorate
+  g = grep --break --heading --line-number
+  up = "!git remote update -p; git merge --ff-only @{u}"
+  up1 = pull --ff-only --all -p
+  tree = log --graph --oneline --decorate
 [tig "bind"]
-	generic = R !git reset --hard %(commit)
+  generic = R !git reset --hard %(commit)
 [grep]
-	extendRegexp = true
-	lineNumber = true
+  extendRegexp = true
+  lineNumber = true
 [credential]
-	helper = corpsso
+  helper = corpsso
