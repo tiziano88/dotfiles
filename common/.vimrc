@@ -513,6 +513,8 @@ let g:elm_format_autosave = 1
 " ## FZF
 " https://github.com/junegunn/fzf/wiki/Examples-(vim)
 
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffer<CR>
 
