@@ -23,6 +23,10 @@ source_ ~/src/fzf/shell/key-bindings.zsh
 source_ ~/src/fzf/shell/completion.zsh
 source_ ~/git-hub/init
 source_ ~/.nix-profile/etc/profile.d/nix.sh
+source_ ~/.cargo/env
+
+# http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
+source <(kubectl completion zsh)
 
 # ^ in glob negates pattern following it
 

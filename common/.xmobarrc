@@ -18,6 +18,7 @@ Config {
     Run Memory ["-t", "Mem: <usedbar>", "--high", "red", "--High", "80"] 10,
     Run TopMem ["--width", "10"] 10,
     Run Swap [] 10,
+    -- Run DiskU [ ("sda", "Disk Usage: <totalbar>") ] ["--bwidth", "2"] 10,
     Run DiskIO [ ("sda", "Disk I/O: <totalbar>") ] ["--bwidth", "2"] 10,
     Run MultiCpu ["-t", "Cpu: <bar>", "--high", "red", "--High", "80"] 10,
     Run TopProc ["--width", "10"] 10,
