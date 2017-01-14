@@ -172,7 +172,7 @@ let g:go_goimports_bin = 'goimports'
 let g:go_oracle_bin = 'oracle'
 let g:go_golint_bin = 'golint'
 let g:go_fmt_command = 'goimports'
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
 let g:go_auto_type_info = 1
 
 " ## Rainbow
@@ -180,7 +180,7 @@ let g:go_auto_type_info = 1
 let g:rainbow_active = 1
 let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
 
-" let g:racer_cmd = '$HOME/.vim/bundle/racer/target/release/racer'
+let g:racer_cmd = 'racer'
 
 " Otherwise code block delims are completely hidden.
 let g:pandoc#syntax#conceal#blacklist = ['codeblock_delim', 'strikeout', 'block', 'quotes', 'definition', 'inlinecode']
