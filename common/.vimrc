@@ -275,7 +275,6 @@ autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 
 autocmd BufWrite *.dart :Autoformat
-autocmd BufWrite *.rust :Autoformat
 
 " # Settings
 
@@ -547,6 +546,10 @@ let g:airline#extensions#default#layout = [
 let g:airline#extensions#whitespace#enabled = 0
 
 let g:airline_section_b = airline#section#create(['hunks'])
+
+" ## Rust
+
+let g:rustfmt_autosave = 1
 
 " ## Go
 

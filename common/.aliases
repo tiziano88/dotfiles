@@ -5,7 +5,7 @@ alias dc='dc -e "10k" -'
 
 # Git shortcuts
 alias ga='git add'
-alias gb='git branch'
+alias gb='git branch --verbose'
 alias gc='git commit'
 alias gco='git checkout'
 alias gp='git push'
