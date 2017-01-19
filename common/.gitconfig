@@ -65,3 +65,5 @@
   lineNumber = true
 [credential]
   helper = corpsso
+[http "https://gopkg.in"]
+	followRedirects = true
