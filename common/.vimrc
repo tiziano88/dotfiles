@@ -887,7 +887,7 @@ function! RunTerminal()
   execute "silent !tmux send-keys -t '.+' '" . line . "' ENTER"
   redraw!
 endfunction
-autocmd FileType sh nnoremap <CR> :call RunTerminal()<CR>
+"autocmd FileType sh nnoremap <CR> :call RunTerminal()<CR>
 
 function! ExtraJavaSyntax()
   set conceallevel=1

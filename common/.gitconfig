@@ -51,7 +51,7 @@
 [help]
   autocorrect = 1
 [alias]
-  lg =  log --graph --abbrev-commit --date=relative --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d %Creset%s %Cgreen(%an %cr)%Creset'
+  lg =  log --all --graph --abbrev-commit --date=relative --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d %Creset%s %Cgreen(%an %cr)%Creset'
   amend = commit --amend --no-edit
   g = grep --break --heading --line-number
   up = "!git remote update -p; git merge --ff-only @{u}"
