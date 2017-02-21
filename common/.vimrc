@@ -91,7 +91,7 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'oblitum/rainbow'
 Plugin 'othree/html5.vim'
-Plugin 'phildawes/racer'
+Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
