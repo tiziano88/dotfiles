@@ -13,16 +13,16 @@ Config {
   borderColor = "blue",
   commands = [
     Run StdinReader,
-    Run Weather "EGLC" ["-t","<station>: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000,
-    Run DynNetwork ["-t", "rx: <rxbar> | tx: <txbar>", "--bwidth", "4", "--high", "red", "--High", "80"] 10,
-    Run Memory ["-t", "Mem: <usedbar>", "--high", "red", "--High", "80"] 10,
-    Run TopMem ["--width", "10"] 10,
+    Run DynNetwork ["--template", "rx: <rxbar> | tx: <txbar>", "--bwidth=2", "--high=red", "--High=80"] 10,
+    Run Memory ["--template", "Mem: <usedbar>", "--high=red", "--High=80"] 10,
+    Run TopMem ["--template", "<name1> <mem1>", "--width=5"] 10,
     Run Swap [] 10,
-    -- Run DiskU [ ("sda", "Disk Usage: <totalbar>") ] ["--bwidth", "2"] 10,
-    Run DiskIO [ ("sda", "Disk I/O: <totalbar>") ] ["--bwidth", "2"] 10,
-    Run MultiCpu ["-t", "Cpu: <bar>", "--high", "red", "--High", "80"] 10,
-    Run TopProc ["--width", "10"] 10,
-    Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+    -- Run DiskU [ ("sda", "Disk Usage: <totalbar>") ] ["--bwidth=2"] 10,
+    Run DiskIO [ ("sda", "Disk I/O: <totalbar>") ] ["--bwidth=2"] 10,
+    Run MultiCpu ["--template", "CPU: <bar>", "--high=red", "--High=80"] 10,
+    Run TopProc ["--template", "<name1> <cpu1>%", "--width=5", "--suffix=true"] 10,
+    Run Battery ["--template", "<acstatus> <watts> <leftbar>", "--suffix=true", "--", "-OAC", "-oBAT", "-i=IDLE"] 10,
+    Run Date "%a %Y-%m-%d T %H:%M:%S" "date" 10
   ],
-  template = "%StdinReader% }{ %EGLC% | %dynnetwork% | %memory% [%topmem%] | %swap% | %diskio% | %multicpu% [%top%] | <fc=red>%date%</fc>",
+  template = "%StdinReader% }{ %dynnetwork% | %memory% [%topmem%] | %swap% | %diskio% | %multicpu% [%top%] | %battery% | <fc=white>%date%</fc>",
 }
