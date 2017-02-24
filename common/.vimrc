@@ -132,7 +132,7 @@ if filereadable(expand('~/.at_google'))
   source /usr/share/vim/google/google.vim
 
   autocmd FileType bzl,blazebuild AutoFormatBuffer buildifier
-  autocmd FileType markdown AutoFormatBuffer mdformat
+  "autocmd FileType markdown AutoFormatBuffer mdformat
   "autocmd FileType c,cpp,javascript AutoFormatBuffer clang-format "proto
   "autocmd FileType java AutoFormatBuffer google-java-format
   "autocmd FileType jslayout AutoFormatBuffer jslfmt
