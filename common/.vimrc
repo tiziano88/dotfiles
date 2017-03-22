@@ -64,8 +64,13 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'tpope/vim-unimpaired'
 "Plugin 'Shougo/vimproc.vim'
 "Plugin 'groenewege/vim-less'
+"Plugin 'dart-lang/dart-vim-plugin'
+"Plugin 'vim-pandoc/vim-pandoc-syntax'
+"Plugin 'unblevable/quick-scope'
+"Plugin 'mhinz/vim-signify'
 
 "Plugin 'terryma/vim-expand-region'
+
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'Townk/vim-autoclose'
 Plugin 'Valloric/YouCompleteMe'
@@ -75,33 +80,28 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'cespare/vim-toml'
 Plugin 'chrisdone/hindent', {'rtp': 'vim'}
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'fatih/vim-go'
 Plugin 'gregsexton/gitv'
 Plugin 'jceb/vim-orgmode'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-"Plugin 'lambdatoast/elm.vim'
 Plugin 'ElmCast/elm-vim'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'vimwiki/vimwiki'
 
-"Plugin 'mhinz/vim-signify'
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'oblitum/rainbow'
+Plugin 'luochen1990/rainbow'
 Plugin 'othree/html5.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
-"Plugin 'unblevable/quick-scope'
 Plugin 'vim-pandoc/vim-pandoc'
-"Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-scripts/argtextobj.vim'
 
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 
 " Must be in this order.
 "Plugin 'godlygeek/tabular'
@@ -178,7 +178,29 @@ let g:go_auto_type_info = 1
 " ## Rainbow
 
 let g:rainbow_active = 1
-let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
+"let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
+let g:rainbow_conf = {
+\  'guifgs': ['blue', 'yellow', 'white', 'red', 'magenta'],
+\  'ctermfgs': ['blue', 'yellow', 'white', 'red', 'magenta'],
+\  'operators': '_,_',
+\  'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\  'separately': {
+\    '*': {},
+\    'tex': {
+\      'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\    },
+\    'lisp': {
+\      'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\    },
+\    'vim': {
+\      'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\    },
+\    'html': {
+\      'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\    },
+\    'css': 0,
+\  }
+\}
 
 let g:racer_cmd = 'racer'
 
