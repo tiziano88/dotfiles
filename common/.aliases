@@ -67,6 +67,7 @@ alias mosh='mosh --ssh="ssh -o ProxyUseFdpass=no -o UseProxyIf=true -o GSSAPITru
 
 function ssh-key-install {
   readonly TARGET=$1
+  ssh $TARGET "mkdir -p ~/.ssh"
   cat ~/.ssh/id_rsa.pub | ssh $TARGET "cat >> ~/.ssh/authorized_keys"
 }
 

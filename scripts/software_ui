@@ -7,6 +7,7 @@ SOFTWARE=(
   colortest
   compton # run `compton -b` in case of issues with xmonad
 #  fonts-mplus
+  font-manager
   fonts-ubuntu-font-family-console
   keychain
 #  ksnapshot

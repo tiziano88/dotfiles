@@ -758,6 +758,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_auto_trigger = 1
 let g:ycm_min_num_of_chars_for_completion = 10
 let g:ycm_dart_bin_folder_path = '/usr/lib/google-dartlang/bin'
+let g:ycm_extra_conf_globlist = ['~/src/*']
 
 " Turn off Syntastic gutter markers
 let g:ycm_show_diagnostics_ui = 1
