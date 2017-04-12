@@ -323,4 +323,4 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 # bindkey '^T' autosuggest-toggle
 # bindkey '^f' vi-forward-word
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
