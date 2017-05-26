@@ -295,6 +295,14 @@ if exists fzf; then
   }
   zle -N change_dir
   bindkey '^O' change_dir
+
+  function find_git_branch() {
+    RBUFFER=$(git branch --verbose --sort=committerdate | cut -b'3-' | fzf --tac | cut -d' ' -f1)
+    CURSOR=$#BUFFER         # move cursor
+    zle -R -c               # refresh
+  }
+  zle -N find_git_branch
+  bindkey '^B' find_git_branch
 fi
 
 # Update prompt every 60 second. Doing it more often makes the up/down keys behave in the wrong way.
@@ -324,3 +332,7 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 # bindkey '^f' vi-forward-word
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
