@@ -177,8 +177,7 @@ let g:go_auto_type_info = 1
 
 " ## Rainbow
 
-let g:rainbow_active = 1
-"let g:rainbow_ctermfgs = ['blue', 'yellow', 'white', 'red', 'magenta']
+let g:rainbow_active = 0
 let g:rainbow_conf = {
 \  'guifgs': ['blue', 'yellow', 'white', 'red', 'magenta'],
 \  'ctermfgs': ['blue', 'yellow', 'white', 'red', 'magenta'],
