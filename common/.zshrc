@@ -18,9 +18,6 @@ source ~/.aliases
 source ~/.env
 
 source_ ~/.google.sh
-# source_ ~/fzf/shell/completion.bash
-source_ ~/src/fzf/shell/key-bindings.zsh
-source_ ~/src/fzf/shell/completion.zsh
 source_ ~/git-hub/init
 source_ ~/.nix-profile/etc/profile.d/nix.sh
 source_ ~/.cargo/env
@@ -257,10 +254,10 @@ eval $(dircolors ~/.dir_colors)
 # https://github.com/rupa/z
 #source ~/z/z.sh
 
-if exists fzf; then
+if exists sk; then
   function fuzzy_select_history() {
-    # BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | fzf --prompt='HISTORY>' | sed 's/\\n/\n/g')
-    BUFFER=$(history 1 | cut --characters=8- | tac | awk '!seen[$0]++' | fgrep -v -f ~/.history_blacklist | fzf --no-sort --prompt='HISTORY>' --bind='del:execute(echo {} >> ~/.history_blacklist)' | sed 's/\\n/\n/g')
+    # BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | sk --prompt='HISTORY>' | sed 's/\\n/\n/g')
+    BUFFER=$(history 1 | cut --characters=8- | tac | awk '!seen[$0]++' | fgrep -v -f ~/.history_blacklist | sk --no-sort --prompt='HISTORY>' --bind='del:execute(echo {} >> ~/.history_blacklist)' | sed 's/\\n/\n/g')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -269,7 +266,7 @@ if exists fzf; then
 
   function fuzzy_clean_history() {
     set -x
-    SELECTION=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | fzf --prompt='DELETE HISTORY>')
+    SELECTION=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | sk --prompt='DELETE HISTORY>')
     sed -i "/;$SELECTION$/d" "$HISTFILE"
   }
   zle -N fuzzy_clean_history
@@ -280,7 +277,7 @@ if exists fzf; then
     # f="find . -not -path '*/\\.git/*'"
     f='ag -l .'
     # f='find .'
-    RBUFFER=$(eval "$f" | fzf --prompt='FILE>')
+    RBUFFER=$(eval "$f" | sk --prompt='FILE>')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -288,8 +285,8 @@ if exists fzf; then
   bindkey '^P' find_file
 
   function change_dir() {
-    # local dir=$(z -l | cut -c12- | fzf --layout=bottom-up --prompt 'DIR>')
-    local dir=$(dirs -p | uniq | fzf --prompt='DIR>')
+    # local dir=$(z -l | cut -c12- | sk --layout=bottom-up --prompt 'DIR>')
+    local dir=$(dirs -p | uniq | sk --prompt='DIR>')
     cd "$dir"
     zle reset-prompt
   }
@@ -297,7 +294,7 @@ if exists fzf; then
   bindkey '^O' change_dir
 
   function find_git_branch() {
-    RBUFFER=$(git branch --verbose --sort=committerdate | cut -b'3-' | fzf --tac | cut -d' ' -f1)
+    RBUFFER=$(git branch --verbose --sort=-committerdate | cut -b'3-' | sk | cut -d' ' -f1)
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
@@ -330,8 +327,6 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 # zsh-autosuggestions is designed to be unobtrusive)
 # bindkey '^T' autosuggest-toggle
 # bindkey '^f' vi-forward-word
-
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
