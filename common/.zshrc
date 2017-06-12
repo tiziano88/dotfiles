@@ -64,13 +64,11 @@ autoload -U colors && colors
 export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#> "
 
 # liquidprompt
-# git clone https://github.com/nojhan/liquidprompt.git
-source ~/liquidprompt/liquidprompt
 source ~/src/liquidprompt/liquidprompt
-# source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # git
-fpath=(~/.zsh $fpath)
+#fpath=(~/.zsh $fpath)
 
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' cache-path ~/.zsh/cache
@@ -257,7 +255,7 @@ eval $(dircolors ~/.dir_colors)
 if exists sk; then
   function fuzzy_select_history() {
     # BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | sk --prompt='HISTORY>' | sed 's/\\n/\n/g')
-    BUFFER=$(history 1 | cut --characters=8- | tac | awk '!seen[$0]++' | fgrep -v -f ~/.history_blacklist | sk --no-sort --prompt='HISTORY>' --bind='del:execute(echo {} >> ~/.history_blacklist)' | sed 's/\\n/\n/g')
+    BUFFER=$(history 1 | cut --characters=8- | tac | awk '!seen[$0]++' | fgrep -v -f ~/.history_blacklist | sk --prompt='HISTORY>' --bind='del:execute(echo {} >> ~/.history_blacklist)' | sed 's/\\n/\n/g')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }

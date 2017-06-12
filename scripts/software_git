@@ -19,7 +19,7 @@ git clone git@github.com:junegunn/fzf.git ~/src/fzf
 
 git clone git@github.com:github/hub.git ~/src/hub
 
-#git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/src/zsh-syntax-highlighting
 
 #git clone git@github.com:tarruda/zsh-autosuggestions.git ~/.zsh-autosuggestions
 
