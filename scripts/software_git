@@ -15,7 +15,7 @@ git clone git@github.com:gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 #git clone git@github.com:Anthony25/gnome-terminal-colors-solarized.git ~/gnome-terminal-colors-solarized
 
-git clone git@github.com:junegunn/fzf.git ~/src/fzf
+#git clone git@github.com:junegunn/fzf.git ~/src/fzf
 
 git clone git@github.com:github/hub.git ~/src/hub
 
