@@ -255,7 +255,7 @@ eval $(dircolors ~/.dir_colors)
 if exists sk; then
   function fuzzy_select_history() {
     # BUFFER=$(history 1 | sort --reverse --key=2 --unique | sort --reverse --numeric-sort | cut --characters=8- | sk --prompt='HISTORY>' | sed 's/\\n/\n/g')
-    BUFFER=$(history 1 | cut --characters=8- | tac | awk '!seen[$0]++' | fgrep -v -f ~/.history_blacklist | sk --prompt='HISTORY>' --bind='del:execute(echo {} >> ~/.history_blacklist)' | sed 's/\\n/\n/g')
+    BUFFER=$(history 1 | cut --characters=8- | tac | awk '!seen[$0]++' | fgrep -v -f ~/.history_blacklist | sk --prompt='HISTORY>' --bind='del:execute(echo {} >> ~/.history_blacklist)' --query="$BUFFER" | sed 's/\\n/\n/g')
     CURSOR=$#BUFFER         # move cursor
     zle -R -c               # refresh
   }
