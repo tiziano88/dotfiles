@@ -419,6 +419,12 @@ au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, e
 au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 
 set t_Co=16
+
+" Fix italics in terminal.
+" See https://groups.google.com/forum/#!topic/comp.editors/OoW2_whP_Zo
+set t_ZH=[3m
+set t_ZR=[23m
+
 set background=dark     " Assume a dark background
 let g:solarized_termcolors=16
 let g:solarized_contrast='high'
@@ -481,6 +487,7 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 highlight link IncSearchCursor IncSearch
+highlight Comment ctermfg=red cterm=italic guifg=red gui=italic
 
 " jj to normal mode
 inoremap jj <Esc>

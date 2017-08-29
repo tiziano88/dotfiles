@@ -65,6 +65,14 @@ export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yello
 
 # liquidprompt
 source ~/src/liquidprompt/liquidprompt
+
+# syntax highlighting
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]='standout'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=yellow'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=yellow'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=blue'
 source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # git
