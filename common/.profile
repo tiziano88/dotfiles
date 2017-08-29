@@ -16,11 +16,6 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-  PATH="$HOME/bin:$PATH"
-fi
-
 # added by Nix installer
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
@@ -28,5 +23,3 @@ fi
 
 source ~/.env
 if [ -e /home/tzn/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tzn/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-export PATH="$HOME/.cargo/bin:$PATH"
