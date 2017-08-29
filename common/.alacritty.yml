@@ -16,21 +16,18 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: "Iosevka Term Slab Medium"
-    # Style can be specified to pick a specific face.
-    # style: Regular
+    family: "Iosevka Term Slab"
+    style: Medium
 
   # The bold font face
   bold:
-    family: "Iosevka Term Slab Bold"
-    # Style can be specified to pick a specific face.
-    # style: Bold
+    family: "Iosevka Term Slab"
+    style: Heavy
 
   # The italic font face
   italic:
-    family: "Iosevka Term Slab Oblique"
-    # Style can be specified to pick a specific face.
-    # style: Italic
+    family: "Iosevka Term Slab"
+    style: Oblique
 
   # Point size of the font
   size: 10.0
@@ -168,4 +165,5 @@ mouse_bindings:
 # Shell
 #
 # You can set this to a path to your favorite shell, e.g. /bin/fish
-shell: "/usr/bin/zsh"
+shell:
+  program: "/usr/bin/zsh"
