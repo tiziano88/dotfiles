@@ -87,6 +87,7 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'ElmCast/elm-vim'
 Plugin 'haya14busa/incsearch.vim'
+"Plugin 'vimwiki/vimwiki'
 
 Plugin 'airblade/vim-gitgutter'
 
