@@ -30,7 +30,7 @@ font:
   # The italic font face
   italic:
     family: "Iosevka Term Slab"
-    style: Oblique
+    style: Italic
 
   # Point size of the font
   size: 10.0

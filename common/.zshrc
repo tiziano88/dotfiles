@@ -21,6 +21,8 @@ source_ ~/.google.sh
 source_ ~/git-hub/init
 source_ ~/.nix-profile/etc/profile.d/nix.sh
 source_ ~/.cargo/env
+source_ ~/google-cloud-sdk/path.zsh.inc
+source_ ~/google-cloud-sdk/completion.zsh.inc
 
 # http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
 source <(kubectl completion zsh)
@@ -68,7 +70,7 @@ source ~/src/liquidprompt/liquidprompt
 
 # syntax highlighting
 typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]='standout'
+ZSH_HIGHLIGHT_STYLES[path]='underline'
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=yellow'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=yellow'
 ZSH_HIGHLIGHT_STYLES[redirection]='fg=blue'
@@ -337,9 +339,3 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/tzn/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home/tzn/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/tzn/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/tzn/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
