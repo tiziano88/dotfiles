@@ -35,3 +35,5 @@ tpset "Device Accel Constant Deceleration" 0.5
 # from
 # http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint#Configuring_other_options_.28e.g._Press_to_select.2C_Sensitivity_and_Speed.29
 echo -n 255 /sys/devices/platform/i8042/serio1/serio2/sensitivity
+
+exec /usr/local/bin/wtftw
