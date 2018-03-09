@@ -102,6 +102,8 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-scripts/argtextobj.vim'
 Plugin 'purescript-contrib/purescript-vim'
 
+Plugin 'idris-hackers/idris-vim'
+
 "Plugin 'scrooloose/syntastic'
 
 " Must be in this order.
@@ -580,6 +582,7 @@ let g:airline_section_b = airline#section#create(['hunks'])
 " ## Rust
 
 let g:rustfmt_autosave = 1
+let g:rustfmt_command = "cargo fmt --"
 
 " ## Go
 
