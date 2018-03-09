@@ -4,14 +4,12 @@ set -x
 
 # to install:
 SOFTWARE=(
-  ack-grep
   atool
   automake
   build-essential
   cabal-install
   cmake
   git
-  golang
   htop
   inotify-tools
   keychain
@@ -23,7 +21,6 @@ SOFTWARE=(
   python
   python-dev
   rlwrap
-  silversearcher-ag
   sqlite3
   stow
   sudo

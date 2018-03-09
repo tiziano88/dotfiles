@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'Shougo/unite.vim'
 "Plugin 'ShowMarks'
 "Plugin 'Twinside/vim-haskellConceal'
-"Plugin 'Yggdroot/indentLine'
+Plugin 'Yggdroot/indentLine'
 "Plugin 'a.vim'
 "Plugin 'airblade/vim-rooter'
 "Plugin 'akesling/ondemandhighlight'
@@ -73,7 +73,7 @@ Plugin 'gmarik/Vundle.vim'
 
 "Plugin 'Chiel92/vim-autoformat'
 "Plugin 'Townk/vim-autoclose'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -100,6 +100,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-scripts/argtextobj.vim'
+Plugin 'purescript-contrib/purescript-vim'
 
 "Plugin 'scrooloose/syntastic'
 
@@ -171,7 +172,7 @@ let g:go_gocode_bin = 'gocode'
 let g:go_goimports_bin = 'goimports'
 let g:go_oracle_bin = 'oracle'
 let g:go_golint_bin = 'golint'
-let g:go_fmt_command = 'goimports'
+let g:go_fmt_command = 'gofmt'
 let g:go_fmt_autosave = 1
 let g:go_auto_type_info = 1
 
@@ -202,6 +203,7 @@ let g:rainbow_conf = {
 \}
 
 let g:racer_cmd = 'racer'
+let g:racer_experimental_completer = 1
 
 " Otherwise code block delims are completely hidden.
 let g:pandoc#syntax#conceal#blacklist = ['codeblock_delim', 'strikeout', 'block', 'quotes', 'definition', 'inlinecode']

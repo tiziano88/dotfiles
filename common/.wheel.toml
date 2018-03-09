@@ -1,16 +1,34 @@
 [general]
 device = '/dev/input/by-id/usb-Contour_Design_ShuttlePRO_v2-event-if00'
 
+# Arrow up down
 [[map]]
-jog_up = 'xdotool click 4'
-jog_down = 'xdotool click 5'
-shuttle_up = 'xdotool click 4'
-shuttle_down = 'xdotool click 5'
+jog_up = 'xdotool key Up'
+jog_down = 'xdotool key Down'
+shuttle_up = 'xdotool key Up'
+shuttle_down = 'xdotool key Down'
 button_left = 'xdotool key Home'
 button_right = 'xdotool key End'
 
+# Page up down
 [[map]]
-jog_up = 'xdotool click 4'
-jog_down = 'xdotool click 5'
+jog_up = 'xdotool key Page_Up'
+jog_down = 'xdotool key Page_Down'
+shuttle_up = 'xdotool key Page_Up'
+shuttle_down = 'xdotool key Page_Down'
+button_left = 'xdotool key Home'
+button_right = 'xdotool key End'
+
+# Chrome tab
+[[map]]
+jog_up = 'xdotool key ctrl+shift+Tab'
+jog_down = 'xdotool key ctrl+Tab'
+button_left = 'xdotool key Home'
+button_right = 'xdotool key End'
+
+# Window manager
+[[map]]
+jog_up = 'xdotool key alt+shift+Tab'
+jog_down = 'xdotool key alt+Tab'
 button_left = 'xdotool key Home'
 button_right = 'xdotool key End'

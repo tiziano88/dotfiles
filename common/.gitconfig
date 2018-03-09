@@ -66,4 +66,6 @@
 [credential]
   helper = corpsso
 [http "https://gopkg.in"]
-	followRedirects = true
+  followRedirects = true
+[url "git@dev.projectwaking.com"]
+  insteadOf = https://dev.projectwaking.com

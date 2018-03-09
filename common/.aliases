@@ -95,24 +95,28 @@ compctl -K _marks unmark
 
 # tmux
 function mux {
+  # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
   case "$1" in
     "")
       # If no args, list all the available "visible" sessions.
-      tmux ls | grep --color=never -C0 "^[^#]"
+      #tmux ls | grep --color=never -C0 "^[^#]"
+      session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | sk) && tmux "$change" -t "$session" || echo "No sessions found."
       ;;
     *)
       # "Hidden" sessions have a name starting with a '.'.
-      session_id="#$1#$(date +%Y%m%d%H%M%S)"
+      #session_id="#$1#$(date +%Y%m%d%H%M%S)"
       # Try to create a hidden session and attach it to the specified one, killing it once finished.
       # Failing this, create a new "visible" session with the specified name, and keep it alive.
-      (tmux new-session -s "$session_id" -t "$1"; tmux kill-session -t "$session_id") || tmux new-session -s "$1"
+      #(tmux new-session -s "$session_id" -t "$1"; tmux kill-session -t "$session_id") || tmux new-session -s "$1"
+      tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s "$1" && tmux "$change" -t "$1")
       ;;
   esac
 }
 
 # Dynamic autocompletion for "visible" session names.
 function _mux {
-  reply=($(mux | cut -d: -f1))
+  reply=($(tmux ls | grep --color=never -C0 "^[^#]" | cut -d: -f1))
 }
 compctl -K _mux mux
 

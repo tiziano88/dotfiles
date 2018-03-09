@@ -23,3 +23,5 @@ fi
 
 source ~/.env
 if [ -e /home/tzn/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tzn/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export PATH="$HOME/.cargo/bin:$PATH"

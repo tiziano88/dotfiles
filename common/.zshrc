@@ -283,7 +283,7 @@ if exists sk; then
   function find_file() {
     # TODO: Use current prefix.
     # f="find . -not -path '*/\\.git/*'"
-    f='ag -l .'
+    f='rg -l .'
     # f='find .'
     RBUFFER=$(eval "$f" | sk --prompt='FILE>')
     CURSOR=$#BUFFER         # move cursor
