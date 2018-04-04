@@ -177,7 +177,7 @@ xmobarScreen = spawnPipe . ("xmobar -x " ++) . show
 nonFocusedPP :: PP
 nonFocusedPP = xmobarPP { ppLayout = xmobarColor "orange" ""
                         , ppUrgent = xmobarColor "red" "" . ('^':)
-                        , ppSort = getSortByXineramaPhysicalRule
+                        {-, ppSort = getSortByXineramaPhysicalRule-}
                         }
 
 focusedPP :: PP
