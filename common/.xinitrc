@@ -16,7 +16,8 @@ setxkbmap -v gb
 setxkbmap -option 'caps:escape'
 #xautolock -secure -time 10 -locker 'gnome-screensaver-command -l' -notify 15 -notifier "notify-send -t 5000 -i dialog-password -u low 'Security advisory' '\nLocking session in 15 seconds'" &
 
-#ibus exit
+ibus exit
+# ibus-daemon &
 
 #envfile="${HOME}/.gnupg/gpg-agent.env"
 #if test -f "$envfile" && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
@@ -42,4 +43,4 @@ setxkbmap -option 'caps:escape'
 # http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint#Configuring_other_options_.28e.g._Press_to_select.2C_Sensitivity_and_Speed.29
 #echo -n 255 /sys/devices/platform/i8042/serio1/serio2/sensitivity
 
-exec xmonad
+dbus-launch --exit-with-session xmonad
