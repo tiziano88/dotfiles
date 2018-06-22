@@ -15,7 +15,9 @@ source_() {
 }
 
 source ~/.aliases
-source ~/.env
+
+# Loaded in ~/.profile
+# source ~/.env
 
 source_ ~/.google.sh
 source_ ~/git-hub/init
@@ -33,24 +35,77 @@ source <(kubectl completion zsh)
 # See http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator.
 stty -ixon
 
-setopt NO_PROMPT_SUBST
-setopt NO_CDABLE_VARS
-setopt NO_CASE_GLOB
+# Options
+# see `man zshoptions`
+
+# Changing Directories
+setopt AUTO_CD
+setopt AUTO_PUSHD
+unsetopt CDABLE_VARS
+unsetopt CHASE_DOTS
+unsetopt CHASE_LINKS
+unsetopt POSIX_CD
+setopt PUSHD_IGNORE_DUPS
+unsetopt PUSHD_MINUS
+unsetopt PUSHD_SILENT
+unsetopt PUSHD_TO_HOME
+
+# Completion
+setopt ALWAYS_LAST_PROMPT
+unsetopt ALWAYS_TO_END
+setopt AUTO_LIST
+setopt AUTO_MENU
+unsetopt AUTO_NAME_DIRS
+setopt AUTO_PARAM_KEYS
+setopt AUTO_PARAM_SLASH
+setopt AUTO_REMOVE_SLASH
+unsetopt BASH_AUTO_LIST
+setopt COMPLETE_ALIASES
+setopt COMPLETE_IN_WORD
+setopt GLOB_COMPLETE
+setopt HASH_LIST_ALL
+setopt LIST_AMBIGUOUS
+setopt LIST_BEEP
+setopt LIST_BEEP
+unsetopt LIST_PACKED
+unsetopt LIST_ROWS_FIRST
+setopt LIST_TYPES
+setopt MENU_COMPLETE
+unsetopt REC_EXACT
+
+# Expansion and Globbing
+
+# History
+
+setopt APPEND_HISTORY
+unsetopt BANG_HIST
+unsetopt EXTENDED_HISTORY # Timestamp in history.
+setopt HIST_FIND_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FCNTL_LOCK
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS # Only previous entry.
+setopt HIST_IGNORE_ALL_DUPS # Even if not previous entry.
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_FUNCTIONS
+setopt HIST_NO_STORE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_BY_COPY
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY # Edit history line on enter.
+unsetopt INC_APPEND_HISTORY # Unset if SHARE_HISTORY is set.
+setopt INC_APPEND_HISTORY_TIME
+setopt SHARE_HISTORY
+
+###
+
+unsetopt PROMPT_SUBST
+unsetopt CDABLE_VARS
+unsetopt CASE_GLOB
 
 # Good stuff but conflicts with fzf.
-setopt NO_EXTENDED_GLOB
+unsetopt EXTENDED_GLOB
 
-# man zshoptions
-setopt SHARE_HISTORY
-setopt NO_EXTENDED_HISTORY # Timestamp in history.
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
-setopt AUTO_PUSHD
-setopt HIST_FIND_NO_DUPS
-# setopt HIST_IGNORE_DUPS # Only previous entry.
-# setopt HIST_IGNORE_ALL_DUPS # Even if not previous entry.
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY # Edit history line on enter.
 setopt INTERACTIVE_COMMENTS
 
 HISTSIZE=1000000000
@@ -252,15 +307,7 @@ function tmux-usurp() {
   done
 }
 
-#gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
-#eval $(keychain --eval)
 eval $(dircolors ~/.dir_colors)
-
-# https://github.com/clvv/fasd
-# eval "$(fasd --init auto)"
-
-# https://github.com/rupa/z
-#source ~/z/z.sh
 
 if exists sk; then
   function fuzzy_select_history() {

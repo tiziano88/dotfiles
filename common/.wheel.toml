@@ -26,6 +26,15 @@ jog_down = 'xdotool key ctrl+Tab'
 button_left = 'xdotool key Home'
 button_right = 'xdotool key End'
 
+# Mouse wheel
+[[map]]
+jog_up = 'xdotool click 4'
+jog_down = 'xdotool click 5'
+shuttle_up = 'xdotool click 4'
+shuttle_down = 'xdotool click 5'
+button_left = 'xdotool key Home'
+button_right = 'xdotool key End'
+
 # Window manager
 [[map]]
 jog_up = 'xdotool key alt+shift+Tab'
