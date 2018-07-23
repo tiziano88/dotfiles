@@ -14,10 +14,8 @@ source_() {
   [[ -f $1 ]] && source $1
 }
 
-source ~/.aliases
-
-# Loaded in ~/.profile
-# source ~/.env
+source_ ~/.aliases
+source_ ~/.env
 
 source_ ~/.google.sh
 source_ ~/git-hub/init
@@ -70,7 +68,7 @@ setopt LIST_BEEP
 unsetopt LIST_PACKED
 unsetopt LIST_ROWS_FIRST
 setopt LIST_TYPES
-setopt MENU_COMPLETE
+unsetopt MENU_COMPLETE
 unsetopt REC_EXACT
 
 # Expansion and Globbing

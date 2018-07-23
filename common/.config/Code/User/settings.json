@@ -1,0 +1,13 @@
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "editor.fontFamily": "'Iosevka Term Slab Medium', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 12,
+    "editor.rulers": [
+        80,
+        100
+    ],
+    "editor.minimap.maxColumn": 100,
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.renderCharacters": false,
+    "go.autocompleteUnimportedPackages": true
+}

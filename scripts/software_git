@@ -35,3 +35,7 @@ git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/src/zsh-syntax-
 #git clone git@github.com:tmux/tmux.git ~/src/tmux
 
 #git clone git@github.com:Anthony25/gnome-terminal-colors-solarized.git ~/src/gnome-terminal-colors-solarized
+
+git clone git@github.com:lotabout/skim.git ~/src/skim
+
+git clone git@github.com:BurntSushi/ripgrep.git ~/src/ripgrep
