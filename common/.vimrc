@@ -303,6 +303,8 @@ autocmd BufWrite *.dart :Autoformat
 autocmd BufWrite *.cc :Autoformat
 autocmd BufWrite *.h :Autoformat
 autocmd BufWrite *.rs :Autoformat
+autocmd BufWrite *.rs :Autoformat
+autocmd BufWrite *.rs :Autoformat
 
 " # Settings
 
