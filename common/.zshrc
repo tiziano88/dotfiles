@@ -353,6 +353,32 @@ if exists sk; then
   }
   zle -N find_git_branch
   bindkey '^B' find_git_branch
+
+  function nav() {
+    type highlight &> /dev/null || sudo apt-get install highlight
+    while true; do
+      local lsd=($(echo ".." && ls -p))
+      local sel="$(printf '%s\n' ${lsd[@]} |
+        sk --reverse --preview '
+          __nav_nxt="$(echo {})";
+          __nav_path="$(echo $(pwd)/${__nav_nxt} | sed "s;//;/;")";
+          if [ -d "$__nav_nxt" ]; then
+            echo $__nav_path;
+            echo;
+            ls -p --color=always "${__nav_path}";
+          else
+            echo $__nav_path;
+            highlight "$__nav_nxt" --out-format=xterm256 --line-numbers --force --style=solarized-dark
+          fi
+      ')"
+      [[ ${#sel} != 0 ]] || return 0
+      if [ -d "$sel" ]; then
+        builtin cd "$sel" &> /dev/null
+      else
+        ${EDITOR:-vim} "$sel"
+      fi
+    done
+  }
 fi
 
 # Update prompt every 60 second. Doing it more often makes the up/down keys behave in the wrong way.

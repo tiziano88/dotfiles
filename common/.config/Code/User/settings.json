@@ -9,5 +9,10 @@
     "editor.minimap.maxColumn": 100,
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
-    "go.autocompleteUnimportedPackages": true
+    "go.autocompleteUnimportedPackages": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.insertFinalNewline": true,
+    "editor.tabSize": 8
 }

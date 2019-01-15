@@ -1,3 +1,5 @@
+$include /et/inputrc
+
 set editing-mode vi
 set keymap vi
 set echo-control-characters off
@@ -5,4 +7,5 @@ set completion-ignore-case on
 set expand-tilde off
 set show-all-if-ambiguous on
 set visible-stats on
-set -o vi
+set colored-stats on
+set visible-stats on

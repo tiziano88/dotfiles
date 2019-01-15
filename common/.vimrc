@@ -71,9 +71,9 @@ Plugin 'gmarik/Vundle.vim'
 
 "Plugin 'terryma/vim-expand-region'
 
-"Plugin 'Chiel92/vim-autoformat'
 "Plugin 'Townk/vim-autoclose'
 "Plugin 'Valloric/YouCompleteMe'
+Plugin 'Chiel92/vim-autoformat'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -101,7 +101,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-scripts/argtextobj.vim'
 Plugin 'purescript-contrib/purescript-vim'
-
+Plugin 'gabrielelana/vim-markdown'
 Plugin 'idris-hackers/idris-vim'
 
 "Plugin 'scrooloose/syntastic'
@@ -300,6 +300,9 @@ autocmd FileType xml setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 autocmd FileType arduino setl expandtab | setl softtabstop=0 | setl shiftwidth=2
 
 autocmd BufWrite *.dart :Autoformat
+autocmd BufWrite *.cc :Autoformat
+autocmd BufWrite *.h :Autoformat
+autocmd BufWrite *.rs :Autoformat
 
 " # Settings
 
@@ -581,8 +584,8 @@ let g:airline_section_b = airline#section#create(['hunks'])
 
 " ## Rust
 
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = "cargo fmt --"
+let g:rustfmt_autosave = 0
+let g:rustfmt_command = "rustfmt"
 
 " ## Go
 
