@@ -24,7 +24,6 @@ SOFTWARE=(
   sqlite3
   stow
   sudo
-  #task
   tig
   tmux
   tree

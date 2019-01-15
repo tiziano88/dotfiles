@@ -48,6 +48,12 @@ alias ll='ls --all --human-readable --classify -l'
 # alias la='ls'
 alias l='ls --classify -C'
 
+if command -v exa >/dev/null; then
+  alias ls='exa'
+  alias ll='ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first'
+  alias l='ll'
+fi
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'

@@ -71,9 +71,9 @@ Plugin 'gmarik/Vundle.vim'
 
 "Plugin 'terryma/vim-expand-region'
 
+Plugin 'Chiel92/vim-autoformat'
 "Plugin 'Townk/vim-autoclose'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'Chiel92/vim-autoformat'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'

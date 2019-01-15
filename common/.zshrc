@@ -120,6 +120,7 @@ export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yello
 
 # liquidprompt
 source ~/src/liquidprompt/liquidprompt
+export LP_ENABLE_TEMP=0
 
 # syntax highlighting
 typeset -A ZSH_HIGHLIGHT_STYLES
