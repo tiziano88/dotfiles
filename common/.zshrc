@@ -7,7 +7,7 @@
 # http://www.zzapper.co.uk/zshtips.html
 
 function exists {
-  which $1 &> /dev/null
+  command -v $1 &> /dev/null
 }
 
 source_() {
@@ -25,7 +25,9 @@ source_ ~/google-cloud-sdk/path.zsh.inc
 source_ ~/google-cloud-sdk/completion.zsh.inc
 
 # http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
-source <(kubectl completion zsh)
+if exists kubectl; then
+  source <(kubectl completion zsh)
+fi
 
 # ^ in glob negates pattern following it
 
@@ -358,7 +360,7 @@ if exists sk; then
   function nav() {
     type highlight &> /dev/null || sudo apt-get install highlight
     while true; do
-      local lsd=($(echo ".." && ls -p))
+      local lsd=($(echo ".." && command ls -p))
       local sel="$(printf '%s\n' ${lsd[@]} |
         sk --reverse --preview '
           __nav_nxt="$(echo {})";
@@ -366,7 +368,7 @@ if exists sk; then
           if [ -d "$__nav_nxt" ]; then
             echo $__nav_path;
             echo;
-            ls -p --color=always "${__nav_path}";
+            exa --color=always "${__nav_path}";
           else
             echo $__nav_path;
             highlight "$__nav_nxt" --out-format=xterm256 --line-numbers --force --style=solarized-dark

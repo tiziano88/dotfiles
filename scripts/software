@@ -10,6 +10,7 @@ SOFTWARE=(
   cabal-install
   cmake
   git
+  highlight
   htop
   inotify-tools
   keychain

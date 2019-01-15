@@ -48,7 +48,7 @@ alias ll='ls --all --human-readable --classify -l'
 # alias la='ls'
 alias l='ls --classify -C'
 
-if command -v exa >/dev/null; then
+if exists exa; then
   alias ls='exa'
   alias ll='ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first'
   alias l='ll'
@@ -133,14 +133,4 @@ function hr {
   do
     echo -n "$ch"
   done
-}
-
-# Similar to ctrl-P
-function p {
-  ls -ahlsF **/*$1*
-}
-
-function set-font {
-  # set-font "9x15bold,xft:Kochi Gothic"
-  printf '\e]710;%s\007' $1
 }
