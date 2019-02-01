@@ -413,3 +413,7 @@ export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=4'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Draw prompt at bottom of the screen.
+# See https://unix.stackexchange.com/questions/153102/how-to-start-xterm-with-prompt-at-the-bottom
+tput cup $LINES

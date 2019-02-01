@@ -134,3 +134,7 @@ function hr {
     echo -n "$ch"
   done
 }
+
+function myip {
+  curl https://ipinfo.io/ip
+}
