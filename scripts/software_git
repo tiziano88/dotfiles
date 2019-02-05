@@ -4,7 +4,7 @@ set -x
 
 mkdir ~/src
 
-git clone git@bitbucket.org:tiziano88/dotfiles.git ~/dotfiles
+git clone git@github.com:tiziano88/dotfiles.git ~/dotfiles
 
 # git clone git@github.com:zsh-users/zsh-syntax-highlighting.git
 git clone git@github.com:nojhan/liquidprompt.git ~/src/liquidprompt
@@ -26,6 +26,7 @@ git clone git@github.com:lotabout/skim.git ~/src/skim
 git clone git@github.com:BurntSushi/ripgrep.git ~/src/ripgrep
 git clone git@github.com:ogham/exa.git ~/src/exa
 git clone git@github.com:way-cooler/way-cooler.git ~/src/way-cooler
+git clone git@github.com:jwilm/alacritty.git ~/src/alacritty
 
 #git clone git@github.com:tarruda/zsh-autosuggestions.git ~/.zsh-autosuggestions
 
@@ -41,7 +42,3 @@ git clone git@github.com:way-cooler/way-cooler.git ~/src/way-cooler
 #git clone git@github.com:tmux/tmux.git ~/src/tmux
 
 #git clone git@github.com:Anthony25/gnome-terminal-colors-solarized.git ~/src/gnome-terminal-colors-solarized
-
-git clone git@github.com:lotabout/skim.git ~/src/skim
-
-git clone git@github.com:BurntSushi/ripgrep.git ~/src/ripgrep
