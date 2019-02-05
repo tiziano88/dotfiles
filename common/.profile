@@ -21,8 +21,8 @@ if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
-if [ -e /home/tzn/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tzn/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-source ~/.env
+source $HOME/.env
 
 export PATH="$HOME/.cargo/bin:$PATH"

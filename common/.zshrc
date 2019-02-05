@@ -394,7 +394,7 @@ TRAPALRM() {
 # compdef _gnu_generic -P "*"
 
 # Setup zsh-autosuggestions
-# source /usr/local/google/home/tzn/.zsh-autosuggestions/autosuggestions.zsh
+# source ~/.zsh-autosuggestions/autosuggestions.zsh
 
 # Enable autosuggestions automatically
 zle-line-init() {
