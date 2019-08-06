@@ -14,5 +14,11 @@
     "files.trimTrailingWhitespace": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "files.insertFinalNewline": true,
-    "editor.tabSize": 8
+    "editor.tabSize": 8,
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "terminal.integrated.rendererType": "dom",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.fontLigatures": true
 }

@@ -80,7 +80,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'cespare/vim-toml'
 Plugin 'chrisdone/hindent', {'rtp': 'vim'}
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'gregsexton/gitv'
 Plugin 'jceb/vim-orgmode'
 "Plugin 'junegunn/fzf'
