@@ -17,6 +17,7 @@ SOFTWARE=(
   moreutils
   mosh
   mutt
+  ncdu
   pandoc
   pass
   python

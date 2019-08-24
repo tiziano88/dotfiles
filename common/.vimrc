@@ -102,7 +102,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-scripts/argtextobj.vim'
 Plugin 'purescript-contrib/purescript-vim'
-Plugin 'gabrielelana/vim-markdown'
+"Plugin 'gabrielelana/vim-markdown'
 Plugin 'idris-hackers/idris-vim'
 Plugin 'blueyed/vim-diminactive'
 
