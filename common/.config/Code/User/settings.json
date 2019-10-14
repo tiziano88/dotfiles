@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
     "editor.fontFamily": "'Iosevka Term Slab Medium', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 12,
     "editor.rulers": [
@@ -7,8 +7,6 @@
         100
     ],
     "editor.minimap.maxColumn": 100,
-    "editor.minimap.showSlider": "always",
-    "editor.minimap.renderCharacters": false,
     "go.autocompleteUnimportedPackages": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
@@ -16,9 +14,15 @@
     "files.insertFinalNewline": true,
     "editor.tabSize": 8,
     "editor.renderControlCharacters": true,
-    "editor.renderWhitespace": "all",
+    "editor.renderWhitespace": "boundary",
     "terminal.integrated.rendererType": "dom",
     "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "window.zoomLevel": 0,
+    "editor.scrollBeyondLastLine": false,
+    "editor.smoothScrolling": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+    "keyboard.dispatch": "keyCode",
+    "editor.formatOnSave": true
 }
