@@ -1,28 +1,45 @@
 {
     "workbench.colorTheme": "Gruvbox Dark (Medium)",
+    "diffEditor.ignoreTrimWhitespace": false,
     "editor.fontFamily": "'Iosevka Term Slab Medium', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 12,
     "editor.rulers": [
-        80,
         100
     ],
-    "editor.minimap.maxColumn": 100,
-    "go.autocompleteUnimportedPackages": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "files.insertFinalNewline": true,
-    "editor.tabSize": 8,
-    "editor.renderControlCharacters": true,
-    "editor.renderWhitespace": "boundary",
-    "terminal.integrated.rendererType": "dom",
-    "editor.formatOnPaste": true,
+    "editor.accessibilitySupport": "off",
     "editor.fontLigatures": true,
-    "window.zoomLevel": 0,
-    "editor.scrollBeyondLastLine": false,
-    "editor.smoothScrolling": true,
+    "editor.fontLigatures": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.minimap.maxColumn": 100,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.scrollBeyondLastLine": false,
+    "editor.smoothScrolling": true,
+    "editor.wordWrapColumn": 100,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "git.enableSmartCommit": true,
+    "go.autocompleteUnimportedPackages": true,
     "keyboard.dispatch": "keyCode",
-    "editor.formatOnSave": true
+    "rewrap.autoWrap.enabled": true,
+    "terminal.integrated.rendererType": "dom",
+    "vim.textwidth": 100,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "linkme.rules": [
+        {
+            "pattern": "([a-z]{1,4})/([^)]+)",
+            "url": "https://\\1/\\2"
+        }
+    ],
+    "[cpp]": {
+        "editor.tabSize": 2,
+    },
+    "[rust]": {
+        "editor.tabSize": 4,
+    }
 }
