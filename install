@@ -2,9 +2,9 @@
 
 set -x
 stow --verbose --dir="${HOME}/dotfiles" --target="${HOME}" common
-touch ~/.Xdefaults_local
+touch ~/.Xresources_local
 
 # git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # http://askubuntu.com/questions/243639/ctrlspace-has-been-bound-to-invoke-some-input-method-and-does-not-work-in-ema
-gsettings set org.freedesktop.ibus.general.hotkey triggers '[]'
+# gsettings set org.freedesktop.ibus.general.hotkey triggers '[]'

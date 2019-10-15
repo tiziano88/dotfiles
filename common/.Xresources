@@ -1,4 +1,4 @@
-#include ".Xdefaults_local"
+#include ".Xresources_local"
 
 #ifndef LOCAL
 *font: xft:Terminus:pixelsize=12
