@@ -189,14 +189,15 @@ bar {
           statusline $yellow
           # workspaces section
           #                 border  backgr. text
-          focused_workspace $aqua $aqua $darkgray
-          active_workspace $darkgray $darkgray $yellow
+          focused_workspace $red $red $darkgray
+          active_workspace $yellow $yellow $darkgray
           inactive_workspace $darkgray $darkgray $yellow
           urgent_workspace $purple $purple $bg
         }
 }
 
 default_border normal 5
+hide_edge_borders none
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
@@ -208,12 +209,12 @@ default_border normal 5
 # blue gruvbox
 # class                 border|backgr|text|indicator|child_border
 client.focused          $red $red $darkgray $purple $red
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.focused_inactive $yellow $yellow $darkgray $purple $yellow
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $purple $purple $white $purple $purple
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
+set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown"
+mode $mode_system {
     bindsym l exec --no-startup-id ~/i3exit lock, mode "default"
     bindsym e exec --no-startup-id ~/i3exit logout, mode "default"
     bindsym s exec --no-startup-id ~/i3exit suspend, mode "default"
@@ -225,4 +226,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Insert mode "$mode_system"
+bindsym $mod+Insert mode $mode_system
+bindsym $mod+y mode $mode_system
+
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets

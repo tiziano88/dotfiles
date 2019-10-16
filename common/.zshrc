@@ -118,7 +118,18 @@ SAVEHIST=$HISTSIZE
 
 autoload -U colors && colors
 #export PROMPT="%{%f%b%k%}$(build_prompt) "
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 export PROMPT="%n@%{$fg[blue]%}%m%{$reset_color%} %D{%Y-%m-%dT%H:%M} %{$fg[yellow]%}%~%{$reset_color%} %(1j.[%j] .)%#> "
+
+# Set window title.
+# https://askubuntu.com/questions/22413/how-to-change-gnome-terminal-title
+termtitle() { printf "\033]0;$*\007"; }
+
+# Run for each command. Expand as prompt.
+# http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
+# https://superuser.com/questions/735660/whats-the-zsh-equivalent-of-bashs-prompt-command
+preexec() { termtitle $(print -Pn "%~ [$1]") }
+precmd() { termtitle $(print -Pn "%~") }
 
 # liquidprompt
 source ~/src/liquidprompt/liquidprompt
@@ -264,7 +275,7 @@ then
    # ( tmux new-session -d -s $session_id -t "$USER" && tmux attach-session -t $session_id && tmux kill-session -t $session_id ) || tmux -2 new-session -s "$USER"
 #   exit
 
-  mux default
+  #mux default
 fi
 
 function tmux-usurp() {
@@ -431,5 +442,3 @@ export NVM_DIR="$HOME/.nvm"
 # Draw prompt at bottom of the screen.
 # See https://unix.stackexchange.com/questions/153102/how-to-start-xterm-with-prompt-at-the-bottom
 tput cup $LINES
-source "/usr/local/google/home/tzn/src/fuchsia/zircon/tools/fidl/scripts/fx-env.sh"
-fx-update-path

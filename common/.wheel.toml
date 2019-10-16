@@ -3,12 +3,16 @@ device = '/dev/input/by-id/usb-Contour_Design_ShuttlePRO_v2-event-if00'
 
 # Arrow up down
 [[map]]
-jog_up = 'xdotool key Up'
-jog_down = 'xdotool key Down'
+jog_up = 'xdotool key --repeat 3 Up'
+jog_down = 'xdotool key --repeat 3 Down'
 shuttle_up = 'xdotool key Up'
 shuttle_down = 'xdotool key Down'
 button_left = 'xdotool key Home'
 button_right = 'xdotool key End'
+button_1 = 'xdotool key alt+h'
+button_2 = 'xdotool key alt+h'
+button_3 = 'xdotool key alt+l'
+button_4 = 'xdotool key alt+l'
 
 # Page up down
 [[map]]

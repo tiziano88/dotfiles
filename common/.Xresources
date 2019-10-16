@@ -1,12 +1,8 @@
-#include ".Xresources_local"
-
-#ifndef LOCAL
 *font: xft:Terminus:pixelsize=12
 !*font: xft:Ubuntu\ Mono:pixelsize=16
 !URxvt*font: xft:Terminus:pixelsize=12
 !URxvt*font: xft:Ubuntu Mono:pixelsize=20
 !URxvt*boldFont: xft:Monospace:pixelsize=14
-#endif
 
 !-------------------------------------------------------------------------------
 ! Xft settings
@@ -14,11 +10,11 @@
 
 ! to verify: xdpyinfo | grep dots
 Xft.dpi:                    192
-Xft.antialias:              false
+Xft.antialias:              true
 Xft.autohint:               false
 Xft.rgba:                   rgb
 Xft.hinting:                true
-Xft.hintstyle:              hintfull
+Xft.hintstyle:              hintslight
 Xft.lcdfilter:              lcddefault
 
 !-------------------------------------------------------------------------------
@@ -232,3 +228,5 @@ xterm*fastScroll: true
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
+
+#include ".Xresources_local"
