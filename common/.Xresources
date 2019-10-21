@@ -1,6 +1,7 @@
 *font: xft:Terminus:pixelsize=12
 !*font: xft:Ubuntu\ Mono:pixelsize=16
 !URxvt*font: xft:Terminus:pixelsize=12
+URxvt*font: xft:Iosevka Term Slab:pixelsize=20
 !URxvt*font: xft:Ubuntu Mono:pixelsize=20
 !URxvt*boldFont: xft:Monospace:pixelsize=14
 

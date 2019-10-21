@@ -74,7 +74,9 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Chiel92/vim-autoformat'
 "Plugin 'Townk/vim-autoclose'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'cespare/vim-toml'
@@ -439,7 +441,7 @@ set background=dark     " Assume a dark background
 let g:solarized_termcolors=16
 let g:solarized_contrast='high'
 let g:solarized_diffmode='high'    "default value is normal
-colorscheme solarized
+colorscheme gruvbox
 
 " # Key mappings
 

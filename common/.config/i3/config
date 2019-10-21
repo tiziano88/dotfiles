@@ -9,7 +9,9 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+# Mod1 = Alt
+# Mod4 = Windows
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -29,7 +31,9 @@ font pango:Iosevka Term Slab 11
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-workspace_layout tabbed
+workspace_layout stacked
+
+for_window [class="URxvt"] floating enable; resize set 800 800; set sticky
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -38,7 +42,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run
+ bindsym $mod+p exec dmenu_run
+#bindsym $mod+p exec urxvt -e sh -c 'compgen -c | sort -u | ~/.cargo/bin/sk | sh'
+
 bindsym $mod+Shift+p exec xsecurelock
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -188,11 +194,11 @@ bar {
           background $bg
           statusline $yellow
           # workspaces section
-          #                 border  backgr. text
-          focused_workspace $red $red $darkgray
-          active_workspace $yellow $yellow $darkgray
+          #                  border    backgr    text
+          focused_workspace  $red      $red      $darkgray
+          active_workspace   $yellow   $yellow   $darkgray
           inactive_workspace $darkgray $darkgray $yellow
-          urgent_workspace $purple $purple $bg
+          urgent_workspace   $purple   $purple   $bg
         }
 }
 
@@ -207,11 +213,11 @@ hide_edge_borders none
 # client.urgent           $red $red $white $red $red
 
 # blue gruvbox
-# class                 border|backgr|text|indicator|child_border
-client.focused          $red $red $darkgray $purple $red
-client.focused_inactive $yellow $yellow $darkgray $purple $yellow
-client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-client.urgent           $purple $purple $white $purple $purple
+# class                 border    backgr    text      indicator child_border
+client.focused          $red      $red      $darkgray $purple   $red
+client.focused_inactive $yellow   $yellow   $darkgray $purple   $yellow
+client.unfocused        $darkgray $darkgray $yellow   $purple   $darkgray
+client.urgent           $purple   $purple   $white    $purple   $purple
 
 set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown"
 mode $mode_system {
