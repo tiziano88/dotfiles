@@ -430,17 +430,26 @@ set viewoptions=cursor,folds
 au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
 au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 
-set t_Co=16
+"set t_Co=16
 
 " Fix italics in terminal.
 " See https://groups.google.com/forum/#!topic/comp.editors/OoW2_whP_Zo
-set t_ZH=[3m
-set t_ZR=[23m
+"set t_ZH=[3m
+"set t_ZR=[23m
 
 set background=dark     " Assume a dark background
 let g:solarized_termcolors=16
 let g:solarized_contrast='high'
 let g:solarized_diffmode='high'    "default value is normal
+
+let g:gruvbox_bold=1
+let g:gruvbox_italic=1
+let g:gruvbox_underline=1
+let g:gruvbox_undercurl=1
+let g:gruvbox_termcolors=16
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_improved_strings=1
+let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 
 " # Key mappings
