@@ -509,6 +509,7 @@ map g# <Plug>(incsearch-nohl-g#)
 
 highlight link IncSearchCursor IncSearch
 highlight Comment ctermfg=red cterm=italic guifg=red gui=italic
+highlight Statement ctermfg=green
 
 " jj to normal mode
 inoremap jj <Esc>
