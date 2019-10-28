@@ -45,6 +45,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+p exec dmenu_run
 #bindsym $mod+p exec urxvt -e sh -c 'compgen -c | sort -u | ~/.cargo/bin/sk | sh'
 
+# Volume keys.
+# See https://github.com/vivien/i3blocks-contrib/tree/master/volume.
+bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+ && pkill -RTMIN+10 i3blocks 
+bindsym XF86AudioLowerVolume exec amixer sset Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer sset Master toggle && pkill -RTMIN+10 i3blocks
+
 bindsym $mod+Shift+p exec xsecurelock
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
