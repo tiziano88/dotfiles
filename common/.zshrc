@@ -14,8 +14,8 @@ source_() {
   [[ -f $1 ]] && source $1
 }
 
-source_ ~/.aliases
 source_ ~/.env
+source_ ~/.aliases
 
 source_ ~/.google.sh
 source_ ~/git-hub/init
@@ -143,6 +143,15 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=yellow'
 ZSH_HIGHLIGHT_STYLES[redirection]='fg=blue'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=blue'
 source ~/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh autosuggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan,underline'
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# Ctrl + space
+bindkey '^ ' autosuggest-accept
+# Ctrl + enter
+bindkey '^[[28;5;9~' autosuggest-execute
+source_ ~/src/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # git
 #fpath=(~/.zsh $fpath)
@@ -351,6 +360,13 @@ if exists sk; then
   zle -N find_file
   bindkey '^P' find_file
 
+  function find_file_content() {
+    # https://github.com/lotabout/skim#as-interactive-interface
+    sk --ansi --interactive --cmd-prompt='STRING>' --cmd='rg --color=always --line-number "{}"'
+  }
+  zle -N find_file_content
+  bindkey '^G' find_file_content
+
   function change_dir() {
     # local dir=$(z -l | cut -c12- | sk --layout=bottom-up --prompt 'DIR>')
     local dir=$(dirs -p | uniq | sk --prompt='DIR>')
@@ -413,6 +429,10 @@ fi
 # TMOUT=60
 TRAPALRM() {
   zle reset-prompt
+}
+
+function font-refresh() {
+  fc-cache --force --verbose
 }
 
 # EXPERIMENTAL

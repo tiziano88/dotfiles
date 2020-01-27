@@ -1,18 +1,14 @@
 {
     "diffEditor.ignoreTrimWhitespace": false,
-    "editor.fontFamily": "'Iosevka Term Slab Medium', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Iosevka Slab Medium', 'JetBrains Mono', 'Iosevka SS08', 'Iosevka Term Slab Medium', 'monospace', 'Droid Sans Fallback'",
     "editor.fontSize": 12,
     "editor.rulers": [
         100
     ],
     "editor.accessibilitySupport": "off",
     "editor.fontLigatures": true,
-    "editor.fontLigatures": true,
     "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
     "editor.minimap.maxColumn": 100,
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.showSlider": "always",
     "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "boundary",
     "editor.scrollBeyondLastLine": false,
@@ -24,7 +20,6 @@
     "git.enableSmartCommit": true,
     "go.autocompleteUnimportedPackages": true,
     "keyboard.dispatch": "keyCode",
-    "rewrap.autoWrap.enabled": true,
     "terminal.integrated.rendererType": "dom",
     "vim.textwidth": 100,
     "window.zoomLevel": 0,
@@ -40,5 +35,18 @@
     },
     "[rust]": {
         "editor.tabSize": 4,
-    }
+        "editor.defaultFormatter": "rust-lang.rust",
+    },
+    "[yaml]": {
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": false,
+    },
+    "C_Cpp.default.intelliSenseMode": "clang-x64",
+    "rewrap.reformat": true,
+    "rewrap.autoWrap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+    "files.autoSave": "off",
+    "editor.formatOnSave": true,
+    "rust-client.enableMultiProjectSetup": true
 }

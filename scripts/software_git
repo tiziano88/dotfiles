@@ -20,9 +20,11 @@ git clone git@github.com:gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone git@github.com:github/hub.git ~/src/hub
 
 git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/src/zsh-syntax-highlighting
+git clone git@github.com:zsh-users/zsh-autosuggestions.git ~/src/zsh-autosuggestions
 
 git clone git@github.com:sharkdp/hexyl.git ~/src/hexyl
 git clone git@github.com:lotabout/skim.git ~/src/skim
+git clone git@github.com:Canop/broot.git ~/src/broot
 git clone git@github.com:BurntSushi/ripgrep.git ~/src/ripgrep
 git clone git@github.com:ogham/exa.git ~/src/exa
 git clone git@github.com:way-cooler/way-cooler.git ~/src/way-cooler
