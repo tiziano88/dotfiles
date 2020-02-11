@@ -89,7 +89,7 @@ bindsym $mod+Mod1+l move workspace to output right
 #bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -106,11 +106,13 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# "out"
+bindsym $mod+o focus parent
 #bindsym $mod+Shift+a move to parent
 
 # focus the child container
-bindsym $mod+d focus child
+# "in"
+bindsym $mod+i focus child
 
 # Left display.
 set $ws1 "term"

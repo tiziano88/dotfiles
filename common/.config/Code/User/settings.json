@@ -23,7 +23,7 @@
     "terminal.integrated.rendererType": "dom",
     "vim.textwidth": 100,
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Gruvbox Dark (Hard)",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "linkme.rules": [
         {
             "pattern": "([a-z]{1,4})/([^)]+)",
