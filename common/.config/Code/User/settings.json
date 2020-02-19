@@ -48,5 +48,13 @@
     "editor.minimap.showSlider": "always",
     "files.autoSave": "off",
     "editor.formatOnSave": true,
-    "rust-client.enableMultiProjectSetup": true
+    "rust-client.enableMultiProjectSetup": true,
+    "bazel.buildifierFixOnFormat": true,
+    "markdownlint.run": "onSave",
+    "rust-analyzer.serverPath": "rust-analyzer",
+    "rust-analyzer.raLspServerPath": "rust-analyzer",
+    "rust-analyzer.rainbowHighlightingOn": true,
+    "rust-analyzer.trace.server": "messages",
+    "rust-analyzer.displayInlayHints": false,
+    "rust-analyzer.cargo-watch.allTargets": false
 }
