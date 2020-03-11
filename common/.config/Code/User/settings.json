@@ -41,6 +41,19 @@
         "editor.formatOnPaste": false,
         "editor.formatOnSave": false,
     },
+    "[proto3]": {
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": false,
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.wordWrapColumn": 80,
+        "editor.quickSuggestions": false,
+        "editor.rulers": [
+            80
+        ],
+        "editor.minimap.maxColumn": 80,
+    },
     "C_Cpp.default.intelliSenseMode": "clang-x64",
     "rewrap.reformat": true,
     "rewrap.autoWrap.enabled": true,
@@ -55,6 +68,13 @@
     "rust-analyzer.raLspServerPath": "rust-analyzer",
     "rust-analyzer.rainbowHighlightingOn": true,
     "rust-analyzer.trace.server": "messages",
+    "clang-format.language.proto.enable": false,
     "rust-analyzer.displayInlayHints": false,
-    "rust-analyzer.cargo-watch.allTargets": false
+    "rust-analyzer.cargo-watch.allTargets": false,
+    "editor.tokenColorCustomizations": {
+        "comments": {
+            // "foreground": "#FF0000",
+            // "fontStyle": "bold"
+        }
+    }
 }
