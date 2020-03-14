@@ -36,6 +36,7 @@ workspace_layout stacked
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec ~/.cargo/bin/alacritty
+bindsym $mod+c exec google-chrome --password-store=gnome
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -151,6 +152,13 @@ bindsym $mod+Shift+7 move container to workspace number 7 $ws7
 bindsym $mod+Shift+8 move container to workspace number 8 $ws8
 bindsym $mod+Shift+9 move container to workspace number 9 $ws9
 bindsym $mod+Shift+0 move container to workspace number 10 $ws10
+
+workspace_auto_back_and_forth yes
+
+# To detect the class of a window:
+# xprop | grep WM_CLASS
+assign [class="Google-chrome" instance="google-chrome"] workspace number 6 $ws6
+assign [class="Code" instance="code"] workspace number 2 $ws2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
