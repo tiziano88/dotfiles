@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 xrdb -merge ~/.Xresources
+source ~/.xsession_local || true
 
 #xinput set-int-prop "Logitech USB Trackball" "Evdev Wheel Emulation Button" 8 8
 #xinput set-int-prop "Logitech USB Trackball" "Evdev Wheel Emulation" 8 1

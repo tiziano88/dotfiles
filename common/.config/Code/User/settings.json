@@ -23,7 +23,7 @@
     "terminal.integrated.rendererType": "dom",
     "vim.textwidth": 100,
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
     "linkme.rules": [
         {
             "pattern": "([a-z]{1,4})/([^)]+)",
@@ -76,5 +76,14 @@
             // "foreground": "#FF0000",
             // "fontStyle": "bold"
         }
-    }
+    },
+    "files.watcherExclude": {
+        "**/bazel-*/**": true,
+        "**/cargo-cache/**": true,
+        "**/target/**": true
+    },
+    "rust-analyzer.highlighting.semanticTokens": true,
+    "rust-analyzer.highlightingOn": true,
+    "rust-analyzer.inlayHints.typeHints": false,
+    "rust-analyzer.inlayHints.parameterHints": false
 }
