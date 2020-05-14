@@ -25,8 +25,6 @@ git clone git@github.com:zsh-users/zsh-autosuggestions.git ~/src/zsh-autosuggest
 git clone git@github.com:sharkdp/hexyl.git ~/src/hexyl
 git clone git@github.com:lotabout/skim.git ~/src/skim
 git clone git@github.com:Canop/broot.git ~/src/broot
-git clone git@github.com:BurntSushi/ripgrep.git ~/src/ripgrep
-git clone git@github.com:ogham/exa.git ~/src/exa
 git clone git@github.com:way-cooler/way-cooler.git ~/src/way-cooler
 git clone git@github.com:jwilm/alacritty.git ~/src/alacritty
 
@@ -44,3 +42,13 @@ git clone git@github.com:jwilm/alacritty.git ~/src/alacritty
 #git clone git@github.com:tmux/tmux.git ~/src/tmux
 
 #git clone git@github.com:Anthony25/gnome-terminal-colors-solarized.git ~/src/gnome-terminal-colors-solarized
+
+# Rust utils
+# https://towardsdatascience.com/awesome-rust-powered-command-line-utilities-b5359c38692
+
+git clone git@github.com:sharkdp/fd.git ~/src/fd
+git clone git@github.com:starship/starship.git ~/src/starship
+git clone git@github.com:sharkdp/bat.git ~/src/bat
+git clone git@github.com:BurntSushi/ripgrep.git ~/src/ripgrep
+git clone git@github.com:ogham/exa.git ~/src/exa
+git clone git@github.com:dalance/procs.git ~/src/procs

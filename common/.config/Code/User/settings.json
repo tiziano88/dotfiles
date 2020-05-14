@@ -1,6 +1,7 @@
 {
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.fontFamily": "'Iosevka Slab Medium', 'JetBrains Mono', 'Iosevka SS08', 'Iosevka Term Slab Medium', 'monospace', 'Droid Sans Fallback'",
+    // "editor.fontFamily": "PragmataPro Liga",
     "editor.fontSize": 12,
     "editor.rulers": [
         100
@@ -18,7 +19,6 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "git.enableSmartCommit": true,
-    "go.autocompleteUnimportedPackages": true,
     "keyboard.dispatch": "keyCode",
     "terminal.integrated.rendererType": "dom",
     "vim.textwidth": 100,
@@ -35,11 +35,10 @@
     },
     "[rust]": {
         "editor.tabSize": 4,
-        "editor.defaultFormatter": "rust-lang.rust",
     },
     "[yaml]": {
         "editor.formatOnPaste": false,
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": true,
     },
     "[proto3]": {
         "editor.formatOnPaste": false,
@@ -55,22 +54,15 @@
         "editor.minimap.maxColumn": 80,
     },
     "C_Cpp.default.intelliSenseMode": "clang-x64",
-    "rewrap.reformat": true,
-    "rewrap.autoWrap.enabled": true,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
     "files.autoSave": "off",
     "editor.formatOnSave": true,
-    "rust-client.enableMultiProjectSetup": true,
     "bazel.buildifierFixOnFormat": true,
     "markdownlint.run": "onSave",
     "rust-analyzer.serverPath": "rust-analyzer",
-    "rust-analyzer.raLspServerPath": "rust-analyzer",
-    "rust-analyzer.rainbowHighlightingOn": true,
     "rust-analyzer.trace.server": "messages",
     "clang-format.language.proto.enable": false,
-    "rust-analyzer.displayInlayHints": false,
-    "rust-analyzer.cargo-watch.allTargets": false,
     "editor.tokenColorCustomizations": {
         "comments": {
             // "foreground": "#FF0000",
@@ -78,12 +70,18 @@
         }
     },
     "files.watcherExclude": {
+        "**/.cargo/**": true,
+        "**/.git/**": true,
+        "**/bazel-*": true,
         "**/bazel-*/**": true,
         "**/cargo-cache/**": true,
-        "**/target/**": true
+        "**/target/**": true,
     },
-    "rust-analyzer.highlighting.semanticTokens": true,
-    "rust-analyzer.highlightingOn": true,
     "rust-analyzer.inlayHints.typeHints": false,
-    "rust-analyzer.inlayHints.parameterHints": false
+    "rust-analyzer.inlayHints.parameterHints": false,
+    "rust-analyzer.completion.addCallArgumentSnippets": false,
+    "rust-analyzer.completion.addCallParenthesis": false,
+    "rust-analyzer.completion.postfix.enable": false,
+    "rust-analyzer.updates.channel": "nightly",
+    "rust-analyzer.procMacro.enable": true
 }
