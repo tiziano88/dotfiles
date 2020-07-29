@@ -1,87 +1,100 @@
 {
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.fontFamily": "'Iosevka Slab Medium', 'JetBrains Mono', 'Iosevka SS08', 'Iosevka Term Slab Medium', 'monospace', 'Droid Sans Fallback'",
-    // "editor.fontFamily": "PragmataPro Liga",
-    "editor.fontSize": 12,
-    "editor.rulers": [
-        100
-    ],
-    "editor.accessibilitySupport": "off",
-    "editor.fontLigatures": true,
-    "editor.formatOnPaste": true,
-    "editor.minimap.maxColumn": 100,
-    "editor.renderControlCharacters": true,
-    "editor.renderWhitespace": "boundary",
-    "editor.scrollBeyondLastLine": false,
-    "editor.smoothScrolling": true,
-    "editor.wordWrapColumn": 100,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "git.enableSmartCommit": true,
-    "keyboard.dispatch": "keyCode",
-    "terminal.integrated.rendererType": "dom",
-    "vim.textwidth": 100,
-    "window.zoomLevel": 0,
-    "workbench.colorTheme": "Gruvbox Dark (Medium)",
-    "linkme.rules": [
-        {
-            "pattern": "([a-z]{1,4})/([^)]+)",
-            "url": "https://\\1/\\2"
-        }
-    ],
-    "[cpp]": {
-        "editor.tabSize": 2,
-    },
-    "[rust]": {
-        "editor.tabSize": 4,
-    },
-    "[yaml]": {
-        "editor.formatOnPaste": false,
-        "editor.formatOnSave": true,
-    },
-    "[proto3]": {
-        "editor.formatOnPaste": false,
-        "editor.formatOnSave": false,
-    },
-    "[markdown]": {
-        "editor.wordWrap": "on",
-        "editor.wordWrapColumn": 80,
-        "editor.quickSuggestions": false,
-        "editor.rulers": [
-            80
-        ],
-        "editor.minimap.maxColumn": 80,
-    },
-    "C_Cpp.default.intelliSenseMode": "clang-x64",
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.showSlider": "always",
-    "files.autoSave": "off",
-    "editor.formatOnSave": true,
-    "bazel.buildifierFixOnFormat": true,
-    "markdownlint.run": "onSave",
-    "rust-analyzer.serverPath": "rust-analyzer",
-    "rust-analyzer.trace.server": "messages",
-    "clang-format.language.proto.enable": false,
-    "editor.tokenColorCustomizations": {
-        "comments": {
-            // "foreground": "#FF0000",
-            // "fontStyle": "bold"
-        }
-    },
-    "files.watcherExclude": {
-        "**/.cargo/**": true,
-        "**/.git/**": true,
-        "**/bazel-*": true,
-        "**/bazel-*/**": true,
-        "**/cargo-cache/**": true,
-        "**/target/**": true,
-    },
-    "rust-analyzer.inlayHints.typeHints": false,
-    "rust-analyzer.inlayHints.parameterHints": false,
-    "rust-analyzer.completion.addCallArgumentSnippets": false,
-    "rust-analyzer.completion.addCallParenthesis": false,
-    "rust-analyzer.completion.postfix.enable": false,
-    "rust-analyzer.updates.channel": "nightly",
-    "rust-analyzer.procMacro.enable": true
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.fontFamily": "'Iosevka Slab Medium', 'JetBrains Mono', 'Iosevka SS08', 'Iosevka Term Slab Medium', 'monospace', 'Droid Sans Fallback'",
+  // "editor.fontFamily": "PragmataPro Liga",
+  "editor.fontSize": 12,
+  "editor.rulers": [100],
+  "editor.accessibilitySupport": "off",
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.minimap.maxColumn": 100,
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.scrollBeyondLastLine": false,
+  "editor.smoothScrolling": true,
+  "editor.wordWrapColumn": 100,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.enableSmartCommit": true,
+  "keyboard.dispatch": "keyCode",
+  "terminal.integrated.rendererType": "dom",
+  "vim.textwidth": 100,
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Gruvbox Dark (Hard)",
+  // See https://github.com/jdinhify/vscode-theme-gruvbox/blob/master/colors.txt
+  "workbench.colorCustomizations": {
+    "editorGutter.background": "#3c3836"
+  },
+  "linkme.rules": [
+    {
+      "pattern": "([a-z]{1,4})/([^)]+)",
+      "url": "https://\\1/\\2"
+    }
+  ],
+  "[cpp]": {
+    "editor.tabSize": 2
+  },
+  "[rust]": {
+    "editor.tabSize": 4
+  },
+  "[yaml]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
+  "[toml]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
+  "[proto3]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 80,
+    "editor.quickSuggestions": false,
+    "editor.rulers": [80],
+    "editor.minimap.maxColumn": 80
+  },
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+  "files.autoSave": "off",
+  "editor.formatOnSave": true,
+  "bazel.buildifierFixOnFormat": true,
+  "markdownlint.run": "onSave",
+  "rust-analyzer.serverPath": "rust-analyzer",
+  "rust-analyzer.trace.server": "messages",
+  "editor.tokenColorCustomizations": {
+    "comments": {
+      // "foreground": "#FF0000",
+      // "fontStyle": "bold"
+    }
+  },
+  "files.watcherExclude": {
+    "**/.cargo/**": true,
+    "**/.git/**": true,
+    "**/bazel-*": true,
+    "**/bazel-*/**": true,
+    "**/cargo-cache/**": true,
+    "**/target/**": true
+  },
+  "rust-analyzer.completion.addCallArgumentSnippets": false,
+  "rust-analyzer.completion.addCallParenthesis": false,
+  "rust-analyzer.completion.postfix.enable": false,
+  "rust-analyzer.procMacro.enable": true,
+  "terminal.integrated.fontSize": 12,
+  "files.exclude": {
+    "**/bazel-*": true,
+    "**/cargo-cache/**": true
+  },
+  "rust-analyzer.inlayHints.typeHints": false,
+  "rust-analyzer.inlayHints.parameterHints": false,
+  "scm.diffDecorationsGutterWidth": 5,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "rust-analyzer.updates.channel": "nightly"
 }

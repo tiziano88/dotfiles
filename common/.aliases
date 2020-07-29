@@ -138,3 +138,5 @@ function hr {
 function myip {
   curl https://ipinfo.io/ip
 }
+
+alias docker_cleanup='docker image prune --all'

@@ -1,5 +1,14 @@
 # See https://i3wm.org/docs/userguide.html
 
+# From https://github.com/i3/i3/blob/f233245a6c3505662274b85c0071be250e87fe20/etc/config#L23
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
 # Mod1 = Alt
 # Mod4 = Windows
 # Use `xev` to capture key codes.
@@ -95,6 +104,11 @@ bindsym --whole-window --border button103 exec --no-startup-id xdotool key Ctrl+
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
+bindsym $mod+Page_Down workspace next_on_output
+bindsym $mod+Page_Up workspace prev_on_output
+
+focus_wrapping yes
+
 # Change focus.
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -123,6 +137,19 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Ctrl+h move workspace to output left
 bindsym $mod+Ctrl+l move workspace to output right
 
+# focus the parent container
+# "out"
+bindsym $mod+o focus parent
+#bindsym $mod+Shift+a move to parent
+
+# focus the child container
+# "in"
+bindsym $mod+i focus child
+
+# use prev / next when available
+bindsym $mod+Shift+Page_Up focus up
+bindsym $mod+Shift+Page_Down focus down
+
 # split in horizontal orientation
 #bindsym $mod+h split h
 
@@ -142,15 +169,6 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-# "out"
-bindsym $mod+o focus parent
-#bindsym $mod+Shift+a move to parent
-
-# focus the child container
-# "in"
-bindsym $mod+i focus child
 
 # Left display.
 set $ws1 "term"
@@ -228,8 +246,25 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
+
+mode "chrome" {
+  bindsym --release k exec xdotool key Ctrl+Page_Up
+  bindsym --release j exec xdotool key Ctrl+Page_Down
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+t mode "chrome"
+
+mode "scroll" {
+  bindsym k exec xdotool click 4 # Scroll up
+  bindsym j exec xdotool click 5 # Scroll down
+  #bindsym Up exec xdotool mousemove_relative -- 0 -15
+  bindsym Up exec xdotool key v
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+g mode "scroll"
 
 # set primary gruvbox colorscheme colors
 # https://github.com/a-schaefers/i3-wm-gruvbox-theme/blob/master/i3/config

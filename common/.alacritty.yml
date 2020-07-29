@@ -32,6 +32,10 @@ font:
     x: 0
     y: 0
 
+scrolling:
+  history: 10000
+  multiplier: 3
+
 # Should display the render timer
 debug:
   render_timer: false

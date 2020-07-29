@@ -412,6 +412,7 @@ set expandtab
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 let &showbreak = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
+
 set breakindent
 set breakindentopt=sbr
 
@@ -438,9 +439,10 @@ au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, 
 "set t_ZR=[23m
 
 set background=dark     " Assume a dark background
-let g:solarized_termcolors=16
-let g:solarized_contrast='high'
-let g:solarized_diffmode='high'    "default value is normal
+
+let g:diminactive_use_colorcolumn=1
+let g:diminactive_use_syntax=1
+let g:diminactive_enable_focus=1
 
 let g:gruvbox_bold=1
 let g:gruvbox_italic=1
@@ -448,9 +450,16 @@ let g:gruvbox_underline=1
 let g:gruvbox_undercurl=1
 let g:gruvbox_termcolors=16
 let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_improved_strings=1
+let g:gruvbox_improved_strings=0
 let g:gruvbox_improved_warnings=1
+
+let g:gruvbox_number_column='bg1'
+
 colorscheme gruvbox
+
+" Make line continuation symbol the same colour as line numbers
+" https://stackoverflow.com/questions/5746914/vim-how-to-change-the-showbreak-highlight-color-without-using-the-nontext-color
+highlight! link NonText LineNr
 
 " # Key mappings
 
@@ -538,20 +547,6 @@ nnoremap Y y$
 " Force saving files that require root permission
 cnoremap w!! %!sudo tee > /dev/null %
 
-" ## Eclim
-" Import whatever is needed for current line.
-nnoremap <silent> <LocalLeader>ji :JavaImport<cr>
-" Open javadoc for statement in browser.
-nnoremap <silent> <LocalLeader>d :JavaDocSearch -x declarations<cr>
-" Search context for statement.
-"    nnoremap <silent> <cr> :JavaSearchContext<cr>
-" Validate current java file.
-nnoremap <silent> <LocalLeader>jv :Validate<cr>
-" Show corrections for the current line of java.
-nnoremap <silent> <LocalLeader>jc :JavaCorrect<cr>
-" 'open' on OSX will open the url in the default browser without issue
-let g:EclimLoggingDisabled = 1
-
 set wildignore+=*/READONLY/*,*/blaze-*,*/magicjar/*
 
 " ## elm-vim
@@ -601,54 +596,6 @@ let g:airline_section_b = airline#section#create(['hunks'])
 let g:rustfmt_autosave = 0
 let g:rustfmt_command = "rustfmt"
 
-" ## Go
-
-" Show Go identifier under cursor instead of tagbar section.
-let g:go_list_type = "quickfix"
-let g:go_highlight_types = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_get_update = 0
-let s:go_last_lookup_time = 0
-let s:go_last_lookup_value = ''
-
-autocmd FileType go nmap <leader>t <Plug>(go-test)
-autocmd FileType go nmap <leader>b <Plug>(go-build)
-
-" ## Tagbar
-
-nmap <leader>t :TagbarToggle<CR>
-let g:tagbar_type_go = {
-      \ 'ctagstype' : 'go',
-      \ 'kinds'     : [
-      \ 'p:package',
-      \ 'i:imports:1',
-      \ 'c:constants',
-      \ 'v:variables',
-      \ 't:types',
-      \ 'n:interfaces',
-      \ 'w:fields',
-      \ 'e:embedded',
-      \ 'm:methods',
-      \ 'r:constructor',
-      \ 'f:functions'
-      \ ],
-      \ 'sro' : '.',
-      \ 'kind2scope' : {
-      \ 't' : 'ctype',
-      \ 'n' : 'ntype'
-      \ },
-      \ 'scope2kind' : {
-      \ 'ctype' : 't',
-      \ 'ntype' : 'n'
-      \ },
-      \ 'ctagsbin'  : 'gotags',
-      \ 'ctagsargs' : '-sort -silent'
-      \ }
-
 " ## Netrw
 
 "let g:netrw_altv=1
@@ -659,14 +606,6 @@ let g:netrw_liststyle=3
 let g:netrw_winsize=30
 let g:netrw_special_syntax=1
 let g:netrw_maxfilenamelen=40
-
-" ## Ultisnips
-
-let g:UltiSnipsExpandTrigger='<c-j>'
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
-let g:UltiSnipsSnippetsDir='~/.vim/mysnippets'
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'mysnippets']
 
 func! DiffSetup()
   " Do not hide any of the unchanged lines.
@@ -748,76 +687,6 @@ if has('cmdline_info')
   " selected characters/lines in visual mode
 endif
 
-func! MailSetup()
-  setlocal formatoptions=aw
-  setlocal colorcolumn=72
-  setlocal textwidth=72
-  setlocal spell
-  "  setlocal completeopt=
-  "  setlocal completefunc=
-endfun
-
-autocmd FileType mail call MailSetup()
-autocmd FileType gitcommit call MailSetup()
-
-" ## YouCompleteMe
-
-let g:ycm_filetype_blacklist = {
-      \ 'git5message' : 1,
-      \ 'mail' : 1,
-      \ 'markdown' : 1,
-      \ 'notes' : 1,
-      \ 'qf' : 1,
-      \ 'proto' : 1,
-      \ 'tagbar' : 1,
-      \ 'text' : 1,
-      \ 'unite' : 1,
-      \ 'vimwiki' : 1,
-      \}
-
-"autocmd FileType html set formatoptions+=a
-"autocmd FileType html set textwidth=80
-"set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-"set lcs=tab:??,trail:?,extends:>,precedes:<,nbsp:&
-
-"set completeopt+=preview
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_auto_trigger = 1
-let g:ycm_min_num_of_chars_for_completion = 10
-let g:ycm_dart_bin_folder_path = '/usr/lib/google-dartlang/bin'
-let g:ycm_extra_conf_globlist = ['~/src/*']
-
-" Turn off Syntastic gutter markers
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 1
-let g:ycm_echo_current_diagnostic = 1
-
-" Highlight errors and warnings with red/magenta undercurl
-hi SpellBad term=none ctermbg=none cterm=undercurl ctermfg=Red gui=undercurl guisp=Red
-hi SpellCap term=none ctermbg=none cterm=undercurl ctermfg=Magenta gui=undercurl guisp=Magenta
-
-" Use C-] to jump to definition
-nmap :YcmCompleter GoToDefinition
-
-let g:ycm_semantic_triggers =  {
-      \ 'c' : ['->', '.'],
-      \ 'dart' : ['.'],
-      \ 'objc' : ['->', '.'],
-      \ 'ocaml' : ['.', '#'],
-      \ 'cpp,objcpp' : ['->', '.', '::'],
-      \ 'perl' : ['->'],
-      \ 'php' : ['->', '::'],
-      \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir' : ['.'],
-      \ 'go' : ['.'],
-      \ 'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
-      \ 'ruby' : ['.', '::'],
-      \ 'rust' : ['.', '::'],
-      \ 'lua' : ['.', ':'],
-      \ 'erlang' : [':'],
-      \ }
-
 " ## ShowMarks
 
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'"
@@ -831,7 +700,7 @@ highlight ShowMarksHLo ctermbg=black ctermfg=cyan
 highlight ShowMarksHLm ctermbg=black ctermfg=white
 
 " Use terminal background.
-highlight Normal ctermbg=None
+"highlight Normal ctermbg=None
 
 " FIXME
 " autocmd WinEnter * highlight Normal ctermbg=None
@@ -878,23 +747,9 @@ endfunction
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" ## Eclim
-
-let g:EclimJavaImportPackageSeparationLevel = 1
-let g:EclimJavaCompleteCaseSensitive = 1
-let g:EclimBrowser='open'
-let g:EclimCompletionMethod='omnifunc'
-"noremap <C-]> :JavaSearch<CR>
-
 " Offer to reload the file if it changed.
 autocmd BufEnter * checktime
 set autoread " should do it without prompting
-
-function! DoGit5Diff()
-  let s:revision = system('git5 status --base')
-  exe 'Gdiff ' . s:revision
-endfunction
-command! G5diff call DoGit5Diff()
 
 augroup myvimrc
   au!
@@ -921,39 +776,3 @@ function! VimColorTest(outfile, fgend, bgend)
 endfunction
 " Increase numbers in next line to see more colors.
 command! VimColorTest call VimColorTest('vim-color-test.tmp', 12, 16)
-
-" Prevent replacing paste buffer on paste.
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-vmap <silent> <expr> p <sid>Repl()
-
-function! RunTerminal()
-  let line = getline('.')
-  execute "silent !tmux send-keys -t '.+' '" . line . "' ENTER"
-  redraw!
-endfunction
-"autocmd FileType sh nnoremap <CR> :call RunTerminal()<CR>
-
-function! ExtraJavaSyntax()
-  set conceallevel=1
-  set concealcursor=nci
-  " TODO: git merge markers.
-  syntax match _JavaAngleOpenClose '<[a-zA-Z., ?<>]*>' contains=_JavaAngleOpen,_JavaAngleClose
-  syntax match _JavaAngleOpen '<' conceal contained cchar=⟨
-  syntax match _JavaAngleClose '>' conceal contained cchar=⟩
-  highlight link _JavaAngleOpen Special
-  highlight link _JavaAngleClose Special
-
-  syntax match _JavaClassName '\<[A-Z][A-Za-z0-9_]*\>'
-  highlight link _JavaClassName Identifier
-
-  syntax match _JavaConstant '\<[A-Z_]*\>'
-  highlight link _JavaConstant Constant
-endfunction
-autocmd! FileType java call ExtraJavaSyntax()
