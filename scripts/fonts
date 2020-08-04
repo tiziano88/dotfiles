@@ -1,0 +1,9 @@
+set -o xtrace
+
+readonly IOSEVKA_VERSION=3.3.1
+
+wget --output-document=/tmp/iosevka.zip https://github.com/be5invis/Iosevka/releases/download/v${IOSEVKA_VERSION}/pkg-iosevka-${IOSEVKA_VERSION}.zip
+unzip /tmp/iosevka.zip -d ~/.fonts
+
+wget --output-document=/tmp/iosevka-slab.zip https://github.com/be5invis/Iosevka/releases/download/v${IOSEVKA_VERSION}/pkg-iosevka-slab-${IOSEVKA_VERSION}.zip
+unzip /tmp/iosevka-slab.zip -d ~/.fonts
