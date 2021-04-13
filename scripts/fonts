@@ -7,3 +7,6 @@ unzip /tmp/iosevka.zip -d ~/.fonts
 
 wget --output-document=/tmp/iosevka-slab.zip https://github.com/be5invis/Iosevka/releases/download/v${IOSEVKA_VERSION}/pkg-iosevka-slab-${IOSEVKA_VERSION}.zip
 unzip /tmp/iosevka-slab.zip -d ~/.fonts
+
+wget --output-document=/tmp/fontawesome.zip https://use.fontawesome.com/releases/v5.14.0/fontawesome-free-5.14.0-desktop.zip
+unzip /tmp/fontawesome.zip -d ~/.fonts

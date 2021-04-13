@@ -11,6 +11,7 @@ URxvt*font: xft:Iosevka Term Slab:pixelsize=20
 
 ! to verify: xdpyinfo | grep dots
 Xft.dpi:                    192
+!Xft.dpi:                    96
 Xft.antialias:              true
 Xft.autohint:               false
 Xft.rgba:                   rgb

@@ -3,6 +3,12 @@
 xrdb -merge ~/.Xresources
 source ~/.xsession_local || true
 
+# For Chrome proxy settings.
+export DESKTOP_SESSION=cinnamon
+
+# See https://userbase.kde.org/Tutorials/ComposeKey .
+export GTK_IM_MODULE=xim
+
 #xinput set-int-prop "Logitech USB Trackball" "Evdev Wheel Emulation Button" 8 8
 #xinput set-int-prop "Logitech USB Trackball" "Evdev Wheel Emulation" 8 1
 #xinput set-prop "Logitech USB Trackball" "Evdev Wheel Emulation Axes" 6 7 4 5
@@ -15,7 +21,8 @@ export LC_ALL='en_GB.UTF-8'
 export LANGUAGE='en_GB.UTF-8'
 export LC_CTYPE='en_GB.UTF-8'
 
-setxkbmap -v gb
+#setxkbmap -v gb
+setxkbmap -v us
 setxkbmap -option 'caps:escape'
 
 xmodmap -e 'clear Lock'

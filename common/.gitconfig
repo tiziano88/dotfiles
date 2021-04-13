@@ -21,11 +21,22 @@
   editor = vim
   whitespace = fix
   excludesfile = /usr/local/google/home/tzn/.gitignore_global
+  pager = delta
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+  syntax-theme = gruvbox
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
 [diff]
   tool = vimdiff
 [gui]
   fontui = -family Ubuntu -size -12 -weight normal -slant roman -underline 0 -overstrike 0
   fontdiff = -family \"Ubuntu Mono\" -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+[interactive]
+  diffFilter = delta --color-only
 [log]
   graph = true
   pretty = format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"

@@ -104,6 +104,9 @@ bindsym --whole-window --border button103 exec --no-startup-id xdotool key Ctrl+
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
+bindsym $mod+i workspace next_on_output
+bindsym $mod+u workspace prev_on_output
+
 bindsym $mod+Page_Down workspace next_on_output
 bindsym $mod+Page_Up workspace prev_on_output
 
@@ -139,16 +142,18 @@ bindsym $mod+Ctrl+l move workspace to output right
 
 # focus the parent container
 # "out"
-bindsym $mod+o focus parent
+# TODO
+#bindsym $mod+o focus parent
 #bindsym $mod+Shift+a move to parent
 
 # focus the child container
 # "in"
-bindsym $mod+i focus child
+# TODO
+#bindsym $mod+i focus child
 
-# use prev / next when available
-bindsym $mod+Shift+Page_Up focus up
-bindsym $mod+Shift+Page_Down focus down
+# TODO: use prev / next when available
+#bindsym $mod+Shift+Page_Up focus up
+#bindsym $mod+Shift+Page_Down focus down
 
 # split in horizontal orientation
 #bindsym $mod+h split h
@@ -160,7 +165,7 @@ bindsym $mod+v split h
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout toggle stacking splith
+bindsym $mod+s layout toggle stacking splith splitv
 #bindsym $mod+w layout tabbed
 #bindsym $mod+e layout toggle split
 
@@ -213,7 +218,7 @@ workspace_auto_back_and_forth yes
 # To detect the class of a window:
 # xprop | grep WM_CLASS
 # assign [class="Google-chrome" instance="google-chrome"] workspace number 6 $ws6
-assign [class="Code" instance="code"] workspace number 2 $ws2
+#assign [class="Code" instance="code"] workspace number 2 $ws2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -281,7 +286,8 @@ set $darkgray #1d2021
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks
+        font pango:Iosevka Term Slab, FontAwesome5Free, Material 12
+        status_command i3status-rs
         position top
         colors {
           separator $blue

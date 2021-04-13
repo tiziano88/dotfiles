@@ -1,9 +1,10 @@
 {
-  "diffEditor.ignoreTrimWhitespace": false,
   "editor.fontFamily": "'Iosevka Slab Medium', 'JetBrains Mono', 'Iosevka SS08', 'Iosevka Term Slab Medium', 'monospace', 'Droid Sans Fallback'",
   // "editor.fontFamily": "PragmataPro Liga",
   "editor.fontSize": 12,
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "editor.accessibilitySupport": "off",
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,
@@ -20,11 +21,14 @@
   "keyboard.dispatch": "keyCode",
   "terminal.integrated.rendererType": "dom",
   "vim.textwidth": 100,
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Gruvbox Dark (Hard)",
+  "window.zoomLevel": -1,
+  "workbench.colorTheme": "Gruvbox Dark Medium",
   // See https://github.com/jdinhify/vscode-theme-gruvbox/blob/master/colors.txt
   "workbench.colorCustomizations": {
-    "editorGutter.background": "#3c3836"
+    "editorGutter.background": "#3c3836",
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   },
   "linkme.rules": [
     {
@@ -36,7 +40,9 @@
     "editor.tabSize": 2
   },
   "[rust]": {
-    "editor.tabSize": 4
+    "editor.defaultFormatter": "matklad.rust-analyzer",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
   },
   "[yaml]": {
     "editor.formatOnPaste": false,
@@ -46,7 +52,17 @@
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true
   },
+  "[html]": {
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    // "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
   "[proto3]": {
+    "editor.defaultFormatter": "xaver.clang-format",
     "editor.formatOnPaste": false,
     "editor.formatOnSave": false
   },
@@ -54,9 +70,12 @@
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 80,
     "editor.quickSuggestions": false,
-    "editor.rulers": [80],
+    "editor.rulers": [
+      80
+    ],
     "editor.minimap.maxColumn": 80
   },
+  "prettier.eslintIntegration": true,
   "C_Cpp.default.intelliSenseMode": "clang-x64",
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
@@ -64,7 +83,7 @@
   "editor.formatOnSave": true,
   "bazel.buildifierFixOnFormat": true,
   "markdownlint.run": "onSave",
-  "rust-analyzer.serverPath": "rust-analyzer",
+  // "rust-analyzer.serverPath": "rust-analyzer",
   "rust-analyzer.trace.server": "messages",
   "editor.tokenColorCustomizations": {
     "comments": {
@@ -83,7 +102,6 @@
   "rust-analyzer.completion.addCallArgumentSnippets": false,
   "rust-analyzer.completion.addCallParenthesis": false,
   "rust-analyzer.completion.postfix.enable": false,
-  "rust-analyzer.procMacro.enable": true,
   "terminal.integrated.fontSize": 12,
   "files.exclude": {
     "**/bazel-*": true,
@@ -96,5 +114,12 @@
   "gitlens.codeLens.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
   "gitlens.currentLine.enabled": false,
-  "rust-analyzer.updates.channel": "nightly"
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.trace.extension": true,
+  "prettier.requireConfig": true,
+  "terminal.integrated.allowMnemonics": true,
+  "terminal.integrated.scrollback": 10000,
+  "remote.autoForwardPorts": false,
+  "remote.restoreForwardedPorts": false,
+  // "rust-analyzer.cargo.target": "wasm32-unknown-unknown"
 }
