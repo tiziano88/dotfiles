@@ -1,7 +1,8 @@
 #!/bin/sh
 
 lock() {
-    xsecurelock &
+    #xsecurelock &
+    /usr/share/goobuntu-desktop-files/xsecurelock.sh &
 }
 
 case "$1" in

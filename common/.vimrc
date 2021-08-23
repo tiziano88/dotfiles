@@ -383,7 +383,7 @@ set scrolloff=5     " minimum lines to keep above and below cursor
 
 set viminfo='1000,f1
 
-set noesckeys    " disable keys sending escape sequences in insert mode (fixes delay after pressing ESC in terminal)
+"set noesckeys    " disable keys sending escape sequences in insert mode (fixes delay after pressing ESC in terminal)
 
 set diffopt=filler,vertical
 

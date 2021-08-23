@@ -21,14 +21,13 @@
   "keyboard.dispatch": "keyCode",
   "terminal.integrated.rendererType": "dom",
   "vim.textwidth": 100,
-  "window.zoomLevel": -1,
   "workbench.colorTheme": "Gruvbox Dark Medium",
   // See https://github.com/jdinhify/vscode-theme-gruvbox/blob/master/colors.txt
   "workbench.colorCustomizations": {
-    "editorGutter.background": "#3c3836",
+    // "editorGutter.background": "#3c3836",
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    // "source.fixAll.eslint": true
   },
   "linkme.rules": [
     {
@@ -36,6 +35,7 @@
       "url": "https://\\1/\\2"
     }
   ],
+  "files.associations": {"*.tmpl": "html"},
   "[cpp]": {
     "editor.tabSize": 2
   },
@@ -52,7 +52,12 @@
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true
   },
+  "[java]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+  },
   "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
     // "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
@@ -121,5 +126,16 @@
   "terminal.integrated.scrollback": 10000,
   "remote.autoForwardPorts": false,
   "remote.restoreForwardedPorts": false,
+  "window.zoomLevel": -1,
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.advanced": {
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": true,
+    "markdown": false
+  },
+  "go.toolsManagement.autoUpdate": true,
   // "rust-analyzer.cargo.target": "wasm32-unknown-unknown"
 }
