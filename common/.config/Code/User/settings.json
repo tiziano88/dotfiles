@@ -19,12 +19,16 @@
   "files.trimTrailingWhitespace": true,
   "git.enableSmartCommit": true,
   "keyboard.dispatch": "keyCode",
-  "terminal.integrated.rendererType": "dom",
   "vim.textwidth": 100,
   "workbench.colorTheme": "Gruvbox Dark Medium",
   // See https://github.com/jdinhify/vscode-theme-gruvbox/blob/master/colors.txt
   "workbench.colorCustomizations": {
     // "editorGutter.background": "#3c3836",
+    "tab.activeBorder": "#FF0000",
+    "panelTitle.activeBorder": "#ff0000",
+    "tab.activeBorderTop": "#FF0000",
+    // "tab.activeBackground": "#ffFF00",
+    // "tab.unfocusedActiveBackground": "#FF0000"
   },
   "editor.codeActionsOnSave": {
     // "source.fixAll.eslint": true
@@ -81,7 +85,6 @@
     "editor.minimap.maxColumn": 80
   },
   "prettier.eslintIntegration": true,
-  "C_Cpp.default.intelliSenseMode": "clang-x64",
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "files.autoSave": "off",
@@ -126,7 +129,6 @@
   "terminal.integrated.scrollback": 10000,
   "remote.autoForwardPorts": false,
   "remote.restoreForwardedPorts": false,
-  "window.zoomLevel": -1,
   "editor.inlineSuggest.enabled": true,
   "github.copilot.advanced": {
   },
@@ -134,8 +136,10 @@
     "*": true,
     "yaml": false,
     "plaintext": true,
-    "markdown": false
+    "markdown": false,
+    "toml": false
   },
   "go.toolsManagement.autoUpdate": true,
+  "editor.bracketPairColorization.enabled": true,
   // "rust-analyzer.cargo.target": "wasm32-unknown-unknown"
 }

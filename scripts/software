@@ -9,6 +9,7 @@ SOFTWARE=(
   build-essential
   cabal-install
   cmake
+  direnv
   git
   highlight
   htop
