@@ -79,7 +79,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'cespare/vim-toml'
+"Plugin 'cespare/vim-toml'
 Plugin 'chrisdone/hindent', {'rtp': 'vim'}
 Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'fatih/vim-go'
@@ -90,6 +90,7 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'lotabout/skim.vim'
 Plugin 'ElmCast/elm-vim'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'LnL7/vim-nix'
 "Plugin 'vimwiki/vimwiki'
 
 Plugin 'airblade/vim-gitgutter'
@@ -98,7 +99,11 @@ Plugin 'luochen1990/rainbow'
 Plugin 'othree/html5.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
-Plugin 'scrooloose/nerdcommenter'
+
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-commentary'
+
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-pandoc/vim-pandoc'
@@ -234,9 +239,9 @@ let g:elm_format_autosave = 1
 " ## NerdCommenter
 
 " <C-_> is the same as <C-/>
-nnoremap <C-_> :call NERDComment('n', 'toggle')<CR>
+nnoremap <C-_> :Commentary<CR>
 " gv to highlight previous selection
-vnoremap <C-_> :call NERDComment('n', 'toggle')<CR>gv
+vnoremap <C-_> :Commentary<CR>gv
 
 autocmd BufNewFile,BufRead *.sql let b:vimpipe_command='dremel'
 
@@ -374,7 +379,7 @@ set showmatch                   " show matching brackets/parenthesis
 set incsearch      " find as you type search
 set hlsearch      " highlight search terms
 
-set path+=**
+"set path+=**
 set wildmenu      " show list instead of just completing
 set wildmode=list:longest,full  " comand <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,] " backspace and cursor keys wrap to

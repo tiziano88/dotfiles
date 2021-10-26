@@ -141,5 +141,7 @@
   },
   "go.toolsManagement.autoUpdate": true,
   "editor.bracketPairColorization.enabled": true,
+  "git.confirmSync": false,
+  "security.workspace.trust.untrustedFiles": "open",
   // "rust-analyzer.cargo.target": "wasm32-unknown-unknown"
 }
