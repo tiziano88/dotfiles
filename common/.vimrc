@@ -85,9 +85,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'fatih/vim-go'
 Plugin 'gregsexton/gitv'
 Plugin 'jceb/vim-orgmode'
-"Plugin 'junegunn/fzf'
-"Plugin 'junegunn/fzf.vim'
-Plugin 'lotabout/skim.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+"Plugin 'lotabout/skim.vim'
 Plugin 'ElmCast/elm-vim'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'LnL7/vim-nix'
@@ -112,6 +112,14 @@ Plugin 'purescript-contrib/purescript-vim'
 "Plugin 'gabrielelana/vim-markdown'
 Plugin 'idris-hackers/idris-vim'
 Plugin 'blueyed/vim-diminactive'
+"Plugin 'neovim/nvim-lspconfig'
+
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+
+Plugin 'kyazdani42/nvim-web-devicons' " for file icons
+Plugin 'kyazdani42/nvim-tree.lua'
 
 "Plugin 'scrooloose/syntastic'
 
@@ -120,6 +128,23 @@ Plugin 'blueyed/vim-diminactive'
 "Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
+
+if has("nvim")
+  " https://stackoverflow.com/questions/44002912/how-to-scroll-the-terminal-emulator-in-neovim
+
+  " Make escape work in the Neovim terminal.
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <Esc><Esc> <C-\><C-n>
+
+  " Make navigation into and out of Neovim terminal splits nicer.
+  tnoremap <C-h> <C-\><C-N><C-w>h
+  tnoremap <C-j> <C-\><C-N><C-w>j
+  tnoremap <C-k> <C-\><C-N><C-w>k
+  tnoremap <C-l> <C-\><C-N><C-w>l
+
+  " Prefer Neovim terminal insert mode to normal mode.
+  autocmd BufEnter term://* startinsert
+endif
 
 syntax on
 filetype plugin indent on
@@ -138,10 +163,10 @@ endif
 "set term=builtin_ansi " Fixes navigation with arrow keys in insert mode
 
 if filereadable(expand('~/.at_google'))
-  let g:disable_google_optional_settings=1
+  "let g:disable_google_optional_settings=1
 
-  "source /usr/share/vim/google/glug/bootstrap.vim
   source /usr/share/vim/google/google.vim
+  source /usr/share/vim/google/glug/bootstrap.vim
 
   autocmd FileType bzl,blazebuild AutoFormatBuffer buildifier
   "autocmd FileType markdown AutoFormatBuffer mdformat
@@ -158,13 +183,33 @@ if filereadable(expand('~/.at_google'))
 
   Glug blaze plugin[mappings]='<leader>b'
   Glug codefmt gofmt_executable=goimports
-  Glug codefmt-google auto_filetypes+=BUILD,go auto_all=0
-  Glug g4
-  Glug grok
-  Glug gtimporter
+  Glug codefmt-google auto_filetypes+=BUILD,go,proto auto_all=0
+  "Glug g4
+  "Glug grok
+  "Glug gtimporter
   Glug relatedfiles plugin[mappings]=',f'
   Glug ultisnips-google
   "source /usr/share/vim/google/gtags.vim
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'CiderLSP',
+    \ 'cmd': {server_info->[
+    \   '/google/bin/releases/cider/ciderlsp/ciderlsp',
+    \   '--tooltag=vim-lsp',
+    \   '--noforward_sync_responses',
+    \ ]},
+    \ 'allowlist': ['c', 'cpp', 'java', 'proto', 'textproto', 'go', 'python'],
+    \})
+  " Send async completion requests.
+  " WARNING: Might interfere with other completion plugins.
+  let g:lsp_async_completion = 1
+
+  " Enable UI for diagnostics
+  let g:lsp_signs_enabled = 1           " enable diagnostics signs in the gutter
+  let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+
+  " Automatically show completion options
+  let g:asyncomplete_auto_popup = 1
+
 else
   "Plugin 'Valloric/YouCompleteMe'
 endif
@@ -289,18 +334,19 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 autocmd FileType borg setlocal textwidth=80
 autocmd FileType css setlocal textwidth=80
+autocmd FileType dart setlocal textwidth=80
 autocmd FileType gcl setlocal textwidth=80
+autocmd FileType git5message setlocal textwidth=0
+autocmd FileType go setlocal textwidth=100
+autocmd FileType help setlocal textwidth=80
+autocmd FileType hgcommit setlocal textwidth=80
 autocmd FileType markdown setlocal textwidth=80
 autocmd FileType pandoc setlocal textwidth=80
-autocmd FileType help setlocal textwidth=80
-autocmd FileType sh setlocal textwidth=80
-autocmd FileType dart setlocal textwidth=80
 autocmd FileType proto setlocal textwidth=80
 autocmd FileType python setlocal textwidth=80
 autocmd FileType scss setlocal textwidth=80
+autocmd FileType sh setlocal textwidth=80
 autocmd FileType xml setlocal textwidth=80
-autocmd FileType git5message setlocal textwidth=0
-autocmd FileType go setlocal textwidth=100
 
 autocmd FileType nasm setl expandtab | setl softtabstop=0 | setl shiftwidth=4 | setl tabstop=4
 autocmd FileType go setl noexpandtab | setl softtabstop=0 | setl shiftwidth=8 | setl tabstop=8
