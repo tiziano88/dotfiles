@@ -38,7 +38,9 @@ font pango:Iosevka Term Slab 12
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-workspace_layout stacked
+# workspace_layout stacked
+workspace_layout stacking
+
 mouse_warping output
 
 # start a terminal
@@ -80,7 +82,7 @@ bindsym $mod+Shift+p exec xsecurelock
 # button11: Fn2
 # button12: Fn3
 
-bindsym --whole-window --border button12 exec --no-startup-id xdotool key v
+# bindsym --whole-window --border button12 exec --no-startup-id xdotool key v
 
 bindsym --whole-window --border $mod+button9 workspace prev_on_output
 bindsym --whole-window --border $mod+button8 workspace next_on_output
@@ -93,12 +95,12 @@ bindsym --whole-window --border $mod+button5 workspace next_on_output
 #
 # xmodmap -e 'pointer = 1 2 3 4 5 101 102 103 104 105 106 107'
 
-bindsym --whole-window --border $mod+button104 workspace prev_on_output
-bindsym --whole-window --border $mod+button103 workspace next_on_output
-bindsym --whole-window --border $mod+button107 workspace back_and_forth
+# bindsym --whole-window --border $mod+button104 workspace prev_on_output
+# bindsym --whole-window --border $mod+button103 workspace next_on_output
+# bindsym --whole-window --border $mod+button107 workspace back_and_forth
 
-bindsym --whole-window --border button104 exec --no-startup-id xdotool key Ctrl+Page_Up
-bindsym --whole-window --border button103 exec --no-startup-id xdotool key Ctrl+Page_Down
+# bindsym --whole-window --border button104 exec --no-startup-id xdotool key Ctrl+Page_Up
+# bindsym --whole-window --border button103 exec --no-startup-id xdotool key Ctrl+Page_Down
 
 # Switch between workspaces on the same display, like browser tabs.
 bindsym $mod+Tab workspace next_on_output
@@ -282,6 +284,7 @@ set $purple #b16286
 set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
+set $white #ffffff
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

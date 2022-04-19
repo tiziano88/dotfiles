@@ -20,7 +20,7 @@
   "git.enableSmartCommit": true,
   "keyboard.dispatch": "keyCode",
   "vim.textwidth": 100,
-  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   // See https://github.com/jdinhify/vscode-theme-gruvbox/blob/master/colors.txt
   "workbench.colorCustomizations": {
     // "editorGutter.background": "#3c3836",
@@ -53,6 +53,8 @@
     "editor.formatOnSave": true
   },
   "[toml]": {
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true
   },
@@ -143,5 +145,9 @@
   "editor.bracketPairColorization.enabled": true,
   "git.confirmSync": false,
   "security.workspace.trust.untrustedFiles": "open",
+  "githubPullRequests.defaultMergeMethod": "squash",
+  "githubPullRequests.focusedMode": false,
+  "terminal.integrated.cursorBlinking": true,
+  "window.zoomLevel": 1,
   // "rust-analyzer.cargo.target": "wasm32-unknown-unknown"
 }

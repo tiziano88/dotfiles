@@ -13,13 +13,16 @@
     pkgs.gh
     pkgs.hexyl
     pkgs.htop
-    pkgs.mosh
+    # pkgs.mosh
     pkgs.neovim
     pkgs.ripgrep
     pkgs.skim
     pkgs.starship
     pkgs.tmux
     pkgs.xplr
+    pkgs.i3
+    pkgs.sway
+    pkgs.swaylock
   ];
 
   home.file = {
@@ -37,4 +40,39 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "21.11";
+
+  wayland = {
+    # enable = true;
+    windowManager.sway = {
+      # wrapperFeatures.gtk = true;
+      enable = true;
+      extraConfig = builtins.readFile ../../.config/i3/config;
+      config = null;
+      # config1 = {
+      #   # keybindings = {};
+      #   fonts = {
+      #     names = [ "Iosevka Term Slab" ];
+      #     size = 12.0;
+      #   };
+      #   colors = {
+      #     focused = {
+      #       border = "#cc241d";
+      #       background = "#cc241d";
+      #       text = "#cc241d";
+      #       indicator = "#cc241d";
+      #       childBorder = "#cc241d";
+      #     };
+      #   };
+      #   bars = [
+      #     {
+      #       statusCommand = "i3status-rs";
+      #       position = "top";
+      #       colors = {
+      #         separator = "#98971a";
+      #       };
+      #     }
+      #   ];
+      # };
+    };
+  };
 }
