@@ -46,13 +46,9 @@
     initExtra = ''
     source ~/.nix-profile/etc/profile.d/nix.sh
     eval $(starship init zsh)
-    # export EDITOR=vim
-    # export PATH=$HOME/bin:$PATH
-    # export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
     '';
     shellAliases = {
-      ls = "exa";
-      ll = "ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first";
+      #ll = "ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first";
       l = "ll";
       hms = "home-manager switch";
       ".." = "cd ..";
@@ -64,24 +60,38 @@
       gp = "git push";
     };
   };
+
+  programs.skim = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+  };
   
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
+      gruvbox-nvim
+      nvim-treesitter
+      telescope-nvim
+      vim-fugitive
       vim-nix
     ];
     extraConfig = ''
     set cc=80
     set number
+    colorscheme gruvbox
     '';
   };
 
   home.packages = with pkgs; [
     alacritty
     docker
-    exa
     gh
     hexyl
     htop
