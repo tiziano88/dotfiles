@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -x
+mkdir ~/.config/nixpkgs
+ln --symbolic ~/src/dotfiles/common/.config/nixpkgs/home.nix ~/.config/nixpkgs/home.nix
+
+# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# http://askubuntu.com/questions/243639/ctrlspace-has-been-bound-to-invoke-some-input-method-and-does-not-work-in-ema
+# gsettings set org.freedesktop.ibus.general.hotkey triggers '[]'

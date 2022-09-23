@@ -8,25 +8,14 @@
   # paths it should manage.
   home.username = "tzn";
   home.homeDirectory = "/home/tzn";
-
-  home.packages = [
-    pkgs.gh
-    pkgs.hexyl
-    pkgs.htop
-    # pkgs.mosh
-    pkgs.neovim
-    pkgs.ripgrep
-    pkgs.skim
-    pkgs.starship
-    pkgs.tmux
-    pkgs.xplr
-    pkgs.i3
-    pkgs.sway
-    pkgs.swaylock
-  ];
+  home.sessionVariables = {
+    EDITOR = "vim";
+    PATH = "$HOME/bin:$PATH";
+    DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
+  };
 
   home.file = {
-    ".vimrc" = {
+    ".xvimrc" = {
       source = ../../.vimrc;
     };
   };
@@ -39,7 +28,83 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.11";
+  home.stateVersion = "22.05";
+
+
+  programs.go = {
+    enable = false;
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
+    history = {
+      ignoreDups = true;
+    };
+    initExtra = ''
+    source ~/.nix-profile/etc/profile.d/nix.sh
+    eval $(starship init zsh)
+    # export EDITOR=vim
+    # export PATH=$HOME/bin:$PATH
+    # export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+    '';
+    shellAliases = {
+      ls = "exa";
+      ll = "ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first";
+      l = "ll";
+      hms = "home-manager switch";
+      ".." = "cd ..";
+      gst = "git status --short --branch";
+      gd = "git diff";
+      gc = "git commit";
+      gco = "git checkout";
+      ga = "git add";
+      gp = "git push";
+    };
+  };
+  
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      vim-nix
+    ];
+    extraConfig = ''
+    set cc=80
+    set number
+    '';
+  };
+
+  home.packages = with pkgs; [
+    alacritty
+    docker
+    exa
+    gh
+    hexyl
+    htop
+    i3
+    i3lock-fancy
+    i3status-rust
+    iosevka
+    mosh
+    ripgrep
+    skim
+    starship
+    stow
+    sway
+    swaylock
+    tmux
+    xplr
+  ];
+
+  xsession = {
+    windowManager = {
+      command = "i3";
+    };
+  };
 
   wayland = {
     # enable = true;

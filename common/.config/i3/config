@@ -45,7 +45,7 @@ mouse_warping output
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec ~/.cargo/bin/alacritty
+bindsym $mod+Return exec alacritty
 bindsym $mod+c exec google-chrome --password-store=gnome
 
 # kill focused window
