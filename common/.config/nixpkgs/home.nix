@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Let Home Manager install and manage itself.
@@ -91,11 +91,10 @@
 
   home.packages = with pkgs; [
     alacritty
-    docker
+    # docker
     gh
     hexyl
     htop
-    i3
     i3lock-fancy
     i3status-rust
     iosevka
@@ -111,8 +110,31 @@
   ];
 
   xsession = {
+    enable = true;
     windowManager = {
-      command = "i3";
+      i3 = {
+        enable = true;
+        config = let cfg = config.xsession.windowManager.i3; in {
+          fonts = lib.mkOptionDefault {
+            names = [ "Iosevka" ];
+            size = 16.0;
+          };
+          keybindings = lib.mkOptionDefault {
+            "${cfg.config.modifier}+p" = "exec ${cfg.config.menu}";
+            "${cfg.config.modifier}+c" = "exec google-chrome --password-store=gnome";
+
+            "${cfg.config.modifier}+h" = "focus left";
+            "${cfg.config.modifier}+j" = "focus down";
+            "${cfg.config.modifier}+k" = "focus up";
+            "${cfg.config.modifier}+l" = "focus right";
+
+            "${cfg.config.modifier}+Shift+h" = "move left";
+            "${cfg.config.modifier}+Shift+j" = "move down";
+            "${cfg.config.modifier}+Shift+k" = "move up";
+            "${cfg.config.modifier}+Shift+l" = "move right";
+          };
+        };
+      };
     };
   };
 
