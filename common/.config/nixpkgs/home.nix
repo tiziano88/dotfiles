@@ -1,5 +1,18 @@
 { config, pkgs, lib, ... }:
 
+let theme = {
+  bg = "#282828";
+  red = "#cc241d";
+  green = "#98971a";
+  yellow = "#d79921";
+  blue = "#458588";
+  purple = "#b16286";
+  aqua = "#689d68";
+  gray = "#a89984";
+  darkgray = "#1d2021";
+  white = "#ffffff";
+}; in
+
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -29,7 +42,6 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "22.05";
-
 
   programs.go = {
     enable = false;
@@ -89,6 +101,10 @@
     '';
   };
 
+  fonts.fontconfig = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     alacritty
     # docker
@@ -109,6 +125,19 @@
     xplr
   ];
 
+  xresources = {
+    properties = {
+      # https://unix.stackexchange.com/questions/267885/how-do-i-scale-i3-window-manager-for-my-hidpi-display
+      "Xft.antialias" = true;
+      "Xft.autohint" = false;
+      "Xft.hinting" = true;
+      "Xft.rgba" = "rgb";
+      "Xft.hintstyle" = "hintfull";
+      # "Xft.dpi" = "220";
+      "Xft.dpi" = "192";
+    };
+  };
+
   xsession = {
     enable = true;
     windowManager = {
@@ -117,7 +146,42 @@
         config = let cfg = config.xsession.windowManager.i3; in {
           fonts = lib.mkOptionDefault {
             names = [ "Iosevka" ];
-            size = 16.0;
+            size = 11.0;
+          };
+          colors = lib.mkOptionDefault {
+            background = "#282828";
+            focused = {
+              border = theme.red;
+              background = theme.red;
+              text = theme.darkgray;
+              indicator = theme.purple;
+              childBorder = theme.red;
+            };
+            focusedInactive = {
+              border = theme.yellow;
+              background = theme.yellow;
+              text = theme.darkgray;
+              indicator = theme.purple;
+              childBorder = theme.yellow;
+            };
+            unfocused = {
+              border = theme.darkgray;
+              background = theme.darkgray;
+              text = theme.yellow;
+              indicator = theme.purple;
+              childBorder = theme.darkgray;
+            };
+            urgent = {
+              border = theme.purple;
+              background = theme.purple;
+              text = theme.white;
+              indicator = theme.purple;
+              childBorder = theme.purple;
+            };
+            # focusedInactive = "";
+            # unfocused = "";
+            # urgent = "";
+            # placeholder = "";
           };
           keybindings = lib.mkOptionDefault {
             "${cfg.config.modifier}+p" = "exec ${cfg.config.menu}";
@@ -138,13 +202,13 @@
     };
   };
 
-  wayland = {
+  #wayland = {
     # enable = true;
-    windowManager.sway = {
+  #  windowManager.sway = {
       # wrapperFeatures.gtk = true;
-      enable = true;
-      extraConfig = builtins.readFile ../../.config/i3/config;
-      config = null;
+  #    enable = true;
+  #    extraConfig = builtins.readFile ../../.config/i3/config;
+  #    config = null;
       # config1 = {
       #   # keybindings = {};
       #   fonts = {
@@ -170,6 +234,6 @@
       #     }
       #   ];
       # };
-    };
-  };
+  #  };
+  #};
 }
