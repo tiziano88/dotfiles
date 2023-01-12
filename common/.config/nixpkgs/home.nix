@@ -87,7 +87,7 @@ in
       ls = "${pkgs.exa}/bin/exa";
       ll = "ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first";
       l = "ll";
-      hms = "home-manager switch";
+      hms = "home-manager --flake ~/src/dotfiles/home-manager --impure switch";
       ".." = "cd ..";
       gst = "git status --short --branch";
       gd = "git diff";
@@ -95,6 +95,9 @@ in
       gco = "git checkout";
       ga = "git add";
       gp = "git push";
+      # sudo apt install libnss-sss
+      # https://github.com/NixOS/nixpkgs/issues/64666
+      # alacritty = "";
     };
   };
 
@@ -203,6 +206,7 @@ in
     iosevka
     just
     mosh
+    nixgl.nixGLIntel
     ranger
     ripgrep
     skim
@@ -239,6 +243,9 @@ in
           fonts = lib.mkOptionDefault {
             names = [ "Iosevka" ];
             size = 11.0;
+          };
+          window = lib.mkOptionDefault {
+            border = 6;
           };
           colors = lib.mkOptionDefault {
             background = "#282828";
