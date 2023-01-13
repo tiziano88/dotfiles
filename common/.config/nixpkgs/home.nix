@@ -1,24 +1,37 @@
 { config, pkgs, lib, ... }:
 
 let
+  theme = {
+    bg = "#282828";
 
-theme = {
-  bg = "#282828";
-  red = "#cc241d";
-  green = "#98971a";
-  yellow = "#d79921";
-  blue = "#458588";
-  purple = "#b16286";
-  aqua = "#689d68";
-  gray = "#a89984";
-  darkgray = "#1d2021";
-  white = "#ffffff";
-}; 
-mode_system = "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown";
+    red = "#cc241d";
+    green = "#98971a";
+    yellow = "#d79921";
+    blue = "#458588";
+    purple = "#b16286";
+    aqua = "#689d68";
+    orange = "#fe8019";
 
+    bright_red = "#fb4934";
+    bright_green = "#b8bb26";
+    bright_yellow = "#fabd2f";
+    bright_blue = "#83a598";
+    bright_purple = "#d3869b";
+    bright_aqua = "#8ec07c";
+    bright_orange = "#fe8019";
+
+    gray = "#a89984";
+
+    darkgray = "#1d2021";
+
+    light1 = "#ebdbb2";
+    light2 = "#d5c4a1";
+    light3 = "#bdae93";
+    light4 = "#a89984";
+
+    white = "#ffffff";
+  }; 
 in
-
-
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -48,6 +61,10 @@ in
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "22.05";
+
+  programs.alacritty = {
+    enable = true;
+  };
 
   programs.go = {
     enable = false;
@@ -112,6 +129,7 @@ in
 
   programs.urxvt = {
     enable = true;
+    fonts = [ "xft:Iosevka:size=9" ];
   };
 
   programs.skim = {
@@ -180,6 +198,10 @@ in
               block = "battery";
               interval = 1;
             }
+            {
+              block = "wireless";
+              interval = 1;
+            }
           ];
         };
       };
@@ -196,7 +218,7 @@ in
   };
 
   home.packages = with pkgs; [
-    alacritty
+    #alacritty
     arandr
     # docker
     gh
@@ -228,116 +250,140 @@ in
       "Xft.hintstyle" = "hintfull";
       # "Xft.dpi" = "220";
       "Xft.dpi" = "192";
+
+      # https://github.com/morhetz/gruvbox-contrib/blob/master/color.table
+      "*background" = theme.bg;
+      "*foreground" = theme.white;
+      "*color0" = theme.bg;
+      "*color1" = theme.red;
+      "*color2" = theme.green;
+      "*color3" = theme.yellow;
+      "*color4" = theme.blue;
+      "*color5" = theme.purple;
+      "*color6" = theme.aqua;
+      "*color7" = theme.light4;
+      "*color8" = theme.gray;
+      "*color9" = theme.bright_red;
+      "*color10" = theme.bright_green;
+      "*color11" = theme.bright_yellow;
+      "*color12" = theme.bright_blue;
+      "*color13" = theme.bright_purple;
+      "*color14" = theme.bright_aqua;
+      "*color15" = theme.light1;
     };
   };
 
   xsession = {
     enable = true;
     windowManager = {
-      i3 = {
-        enable = true;
-        extraConfig = ''
-           # set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown"
-        '';
-        config = let cfg = config.xsession.windowManager.i3; in {
-          fonts = lib.mkOptionDefault {
-            names = [ "Iosevka" ];
-            size = 11.0;
-          };
-          window = lib.mkOptionDefault {
-            border = 6;
-          };
-          colors = lib.mkOptionDefault {
-            background = "#282828";
-            focused = {
-              border = theme.red;
-              background = theme.red;
-              text = theme.darkgray;
-              indicator = theme.purple;
-              childBorder = theme.red;
+      i3 =
+        let
+          mode_system = "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown";
+        in
+        {
+          enable = true;
+          extraConfig = ''
+             # set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown"
+          '';
+          config = let cfg = config.xsession.windowManager.i3; in {
+            fonts = lib.mkOptionDefault {
+              names = [ "Iosevka" ];
+              size = 11.0;
             };
-            focusedInactive = {
-              border = theme.yellow;
-              background = theme.yellow;
-              text = theme.darkgray;
-              indicator = theme.purple;
-              childBorder = theme.yellow;
+            window = lib.mkOptionDefault {
+              border = 6;
             };
-            unfocused = {
-              border = theme.darkgray;
-              background = theme.darkgray;
-              text = theme.yellow;
-              indicator = theme.purple;
-              childBorder = theme.darkgray;
-            };
-            urgent = {
-              border = theme.purple;
-              background = theme.purple;
-              text = theme.white;
-              indicator = theme.purple;
-              childBorder = theme.purple;
-            };
-          };
-          modes = {
-            resize = {
-              "h" = "resize shrink width 10 px or 10 ppt";
-              "j" = "resize grow height 10 px or 10 ppt";
-              "k" = "resize shrink height 10 px or 10 ppt";
-              "l" = "resize grow width 10 px or 10 ppt";
-              "Escape" = "mode default";
-              "Return" = "mode default";
-            };
-            ${mode_system} = {
-              "l" = "exec xsecurelock";
-              "e" = "exec i3-msg exit";
-              "s" = "exec xsecurelock; exec systemctl suspend; mode default";
-              "h" = "exec xsecurelock; exec systemctl hibernate; mode default";
-              "r" = "exec systemctl reboot";
-              "Shift+s" = "exec systemctl poweroff";
-              "Escape" = "mode default";
-              "Return" = "mode default";
-            };
-          };
-          bars = [
-            {
-              statusCommand = "i3status-rs /home/tzn/.config/i3status-rust/config-top.toml";
-              position = "top";
-              colors = {
-                separator = "#98971a";
+            terminal = "urxvt";
+            colors = lib.mkOptionDefault {
+              background = theme.bg;
+              focused = {
+                border = theme.red;
+                background = theme.red;
+                text = theme.white;
+                indicator = theme.purple;
+                childBorder = theme.red;
               };
-            }
-            {
-              statusCommand = "i3status-rs /home/tzn/.config/i3status-rust/config-bottom.toml";
-              position = "bottom";
-              colors = {
-                separator = "#98971a";
+              focusedInactive = {
+                border = theme.yellow;
+                background = theme.yellow;
+                text = theme.darkgray;
+                indicator = theme.purple;
+                childBorder = theme.yellow;
               };
-            }
-          ];
-          keybindings = lib.mkOptionDefault {
-            "${cfg.config.modifier}+p" = "exec ${cfg.config.menu}";
-            "${cfg.config.modifier}+c" = "exec google-chrome --password-store=gnome";
+              unfocused = {
+                border = theme.darkgray;
+                background = theme.darkgray;
+                text = theme.yellow;
+                indicator = theme.purple;
+                childBorder = theme.darkgray;
+              };
+              urgent = {
+                border = theme.purple;
+                background = theme.purple;
+                text = theme.white;
+                indicator = theme.purple;
+                childBorder = theme.purple;
+              };
+            };
+            modes = {
+              resize = {
+                "h" = "resize shrink width 10 px or 10 ppt";
+                "j" = "resize grow height 10 px or 10 ppt";
+                "k" = "resize shrink height 10 px or 10 ppt";
+                "l" = "resize grow width 10 px or 10 ppt";
+                "Escape" = "mode default";
+                "Return" = "mode default";
+              };
+              ${mode_system} = {
+                "l" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; mode default";
+                "e" = "exec i3-msg exit";
+                "s" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec systemctl suspend; mode default";
+                "h" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec systemctl hibernate; mode default";
+                "r" = "exec systemctl reboot";
+                "Shift+s" = "exec systemctl poweroff";
+                "Escape" = "mode default";
+                "Return" = "mode default";
+              };
+            };
+            bars = [
+              {
+                statusCommand = "i3status-rs /home/tzn/.config/i3status-rust/config-top.toml";
+                position = "top";
+                colors = {
+                  separator = "#98971a";
+                };
+              }
+              {
+                statusCommand = "i3status-rs /home/tzn/.config/i3status-rust/config-bottom.toml";
+                position = "bottom";
+                colors = {
+                  separator = "#98971a";
+                };
+              }
+            ];
+            keybindings = lib.mkOptionDefault {
+              "${cfg.config.modifier}+p" = "exec ${cfg.config.menu}";
+              "${cfg.config.modifier}+c" = "exec google-chrome --password-store=gnome";
 
-            "${cfg.config.modifier}+h" = "focus left";
-            "${cfg.config.modifier}+j" = "focus down";
-            "${cfg.config.modifier}+k" = "focus up";
-            "${cfg.config.modifier}+l" = "focus right";
+              "${cfg.config.modifier}+h" = "focus left";
+              "${cfg.config.modifier}+j" = "focus down";
+              "${cfg.config.modifier}+k" = "focus up";
+              "${cfg.config.modifier}+l" = "focus right";
 
-            "${cfg.config.modifier}+u" = "workspace prev_on_output";
-            "${cfg.config.modifier}+i" = "workspace next_on_output";
+              "${cfg.config.modifier}+u" = "workspace prev_on_output";
+              "${cfg.config.modifier}+i" = "workspace next_on_output";
 
-            "${cfg.config.modifier}+Shift+h" = "move left";
-            "${cfg.config.modifier}+Shift+j" = "move down";
-            "${cfg.config.modifier}+Shift+k" = "move up";
-            "${cfg.config.modifier}+Shift+l" = "move right";
+              "${cfg.config.modifier}+Shift+h" = "move left";
+              "${cfg.config.modifier}+Shift+j" = "move down";
+              "${cfg.config.modifier}+Shift+k" = "move up";
+              "${cfg.config.modifier}+Shift+l" = "move right";
 
-            "${cfg.config.modifier}+Shift+p" = "exec xsecurelock";
+              "${cfg.config.modifier}+Shift+p" = "exec xsecurelock";
 
-
-            "${cfg.config.modifier}+y" = "mode \"${mode_system}\"";
+              "${cfg.config.modifier}+y" = "mode \"${mode_system}\"";
+            };
           };
         };
-      };
     };
   };
 
