@@ -3,6 +3,7 @@
 let
   theme = {
     bg = "#282828";
+    fg = "#ebdbb2";
 
     red = "#cc241d";
     green = "#98971a";
@@ -30,11 +31,231 @@ let
     light4 = "#a89984";
 
     white = "#ffffff";
+    black = "#000000";
   }; 
 in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  services.polybar = {
+    enable = true;
+    package = pkgs.polybar.override {
+      i3Support = true;
+      alsaSupport = true;
+      iwSupport = true;
+      githubSupport = true;
+    };
+    config = {
+      "bar" = {
+        fill = "═";
+        indicator = "╣";
+        empty = "─";
+      };
+      "bar/top" = {
+        height = "50";
+        width = "100%";
+
+        background = theme.black;
+        foreground = theme.fg;
+
+        font-0 = "Iosevka Nerdfont:size=18;3";
+        #font-1 = "Inconsolata Nerdfont Mono:size=18";
+        modules-left = "i3";
+        modules-center = "date time";
+        modules-right = "volume backlight cpu battery";
+        enable-ipc = true;
+        line-size = 6;
+        line-color = theme.red;
+
+        module-margin-left = 1;
+        module-margin-right = 1;
+
+        border-top-size = 10;
+        border-top-color = theme.black;
+
+        border-bottom-size = 10;
+        border-bottom-color = theme.black;
+
+        padding = 2;
+
+        scroll-up = "#i3.prev";
+        scroll-down = "#i3.next";
+      };
+      "module/volume" = {
+        type = "internal/alsa";
+        interval = 5;
+
+        master-soundcard = "default";
+        speaker-soundcard = "default";
+        headphone-soundcard = "default";
+        master-mixer = "Master";
+
+        format-volume = "<label-volume><bar-volume>";
+        format-volume-background = theme.bg;
+        format-volume-padding = 2;
+        format-folume-prefix = "󰕾 ";
+
+        label-volume = "%percentage%%";
+        label-volume-padding = 1;
+
+        bar-volume-width = 10;
+        bar-volume-indicator = ''
+          ''${bar.indicator}
+        '';
+        bar-volume-empty = ''
+          ''${bar.empty}
+        '';
+        bar-volume-fill = ''
+          ''${bar.fill}
+        '';
+      };
+      "module/date" = {
+        type = "internal/date";
+        internal = 5;
+        date = "%Y-%m-%d";
+        label = "%date%";
+        label-padding = 1;
+        label-background = theme.bg;
+        format-prefix = "󰸗 ";
+        format-prefix-background = theme.yellow;
+        format-prefix-padding = 1;
+      };
+      "module/time" = {
+        type = "internal/date";
+        internal = 5;
+        time = "%H:%M";
+        label = "%time%";
+        label-padding = 1;
+        label-background = theme.bg;
+        format-prefix = " ";
+        format-prefix-background = theme.yellow;
+        format-prefix-padding = 1;
+      };
+      "module/player" = {
+        type = "custom/script";
+        exec = "/home/tzn/.nix-profile/bin/playerctl metadata artist";
+        interval = 3;
+        click-left = "/home/tzn/.nix-profile/bin/playerctl play-pause &";
+      };
+      "module/backlight" = {
+        type = "internal/backlight";
+        card = "intel_backlight";
+        format = "brightness: <label>";
+        label = "%percentage%%";
+        # https://wiki.archlinux.org/title/Backlight#ACPI
+        enable-scroll = true;
+      };
+      "module/battery" = {
+        type = "internal/battery";
+        full-at = 99;
+        battery = "BAT0";
+        adapter = "AC";
+        poll-interval = 2;
+
+        label-background = theme.bg;
+
+        bar-capacity-width = 10;
+        bar-capacity-indicator = ''
+          ''${bar.indicator}
+        '';
+        bar-capacity-empty = ''
+          ''${bar.empty}
+        '';
+        bar-capacity-fill = ''
+          ''${bar.fill}
+        '';
+
+        format-full = "<label-full><bar-capacity>";
+        format-full-background = theme.bg;
+        format-full-prefix = "󰁹";
+        format-full-prefix-padding = 1;
+        format-full-prefix-background = theme.green;
+        label-full = "%percentage%%";
+        label-full-padding = 1;
+
+        format-charging = "<label-charging><bar-capacity>";
+        format-charging-background = theme.bg;
+        format-charging-prefix = "󰂄";
+        format-charging-prefix-background = theme.green;
+        format-charging-prefix-padding = 1;
+        label-charging = "%percentage%%";
+        label-charging-padding = 1;
+        label-charging-prefix-background = theme.orange;
+
+        format-discharging = "<ramp-capacity><label-discharging>";
+        label-discharging = "%percentage%%";
+
+        animation-charging-0 = "";
+        animation-charging-1 = "";
+        animation-charging-2 = "";
+        animation-charging-3 = "";
+        animation-charging-4 = "";
+        animation-charging-framerate = 750;
+
+        ramp-capacity-0 = " ";
+        ramp-capacity-1 = " ";
+        ramp-capacity-2 = " ";
+        ramp-capacity-3 = " ";
+        ramp-capacity-4 = " ";
+        ramp-capacity-padding = 1;
+        ramp-capacity-background = theme.red;
+      };
+      "module/cpu" = {
+        type = "internal/cpu";
+        interval = 1;
+
+        format = "<label><bar-load>";
+        format-background = theme.bg;
+        format-prefix = "󰻠 ";
+        format-prefix-background = theme.green;
+        format-prefix-padding = 1;
+
+        label = "%percentage%%";
+        label-padding = 1;
+
+        bar-load-width = 10;
+        bar-load-indicator = ''
+          ''${bar.indicator}
+        '';
+        bar-load-empty = ''
+          ''${bar.empty}
+        '';
+        bar-load-fill = ''
+          ''${bar.fill}
+        '';
+      };
+      "module/i3" = {
+        type = "internal/i3";
+
+        format = "<label-state><label-mode>";
+        format-prefix = "";
+        format-prefix-background = theme.purple;
+        format-prefix-padding = 2;
+
+        label-mode = "%mode%";
+        label-mode-padding = 1;
+
+        label-focused = "%name%";
+        label-focused-foreground = theme.white;
+        label-focused-background = theme.orange;
+        # label-focused-underline = theme.white;
+        label-focused-padding = 1;
+
+        label-unfocused = "%name%";
+        label-unfocused-background = theme.bg;
+        label-unfocused-padding = 1;
+
+        label-urgent-background = theme.red;
+        label-urgent-padding = 1;
+      };
+    };
+    script = "polybar top &";
+  };
+
+  services.autorandr = {
+    enable = true;
+  };
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -64,6 +285,43 @@ in
 
   programs.alacritty = {
     enable = true;
+    settings = {
+      window.dimensions = {
+        lines = 3;
+        columns = 100;
+      };
+      font = {
+        normal.family = "Iosevka";
+        bold.family = "Iosevka";
+      };
+      # https://github.com/alacritty/alacritty-theme/blob/914f463390b660e99731f93a6ad9493918cd5d13/themes/gruvbox_dark.yaml
+      colors = {
+        primary = {
+          background = theme.bg;
+          foreground = theme.fg;
+        };
+        normal = {
+          black = theme.black;
+          red = theme.red;
+          green = theme.green;
+          yellow = theme.yellow;
+          blue = theme.blue;
+          magenta = theme.purple;
+          cyan = theme.aqua;
+          white = theme.white;
+        };
+        bright = {
+          black = theme.gray;
+          red = theme.bright_red;
+          green = theme.bright_green;
+          yellow = theme.bright_yellow;
+          blue = theme.bright_blue;
+          magenta = theme.bright_purple;
+          cyan = theme.bright_aqua;
+          white = theme.white;
+        };
+      };
+    };
   };
 
   programs.go = {
@@ -129,7 +387,26 @@ in
 
   programs.urxvt = {
     enable = true;
-    fonts = [ "xft:Iosevka:size=9" ];
+    fonts = [
+      "xft:Iosevka Nerd Font:size=9"
+    ];
+    iso14755 = false;
+    keybindings = {
+      "Shift-Control-C" = "eval:selection_to_clipboard";
+      "Shift-Control-V" = "eval:paste_clipboard";
+    };
+    scroll = {
+      bar = {
+        enable = true;
+        style = "rxvt";
+      };
+    };
+    extraConfig = {
+      "perl-ext" = "default,matcher";
+      "url-launcher" = " google-chrome";
+      "matcher.button" = "Ctrl-1";
+      "matcher.pattern.1" = "\\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]";
+    };
   };
 
   programs.skim = {
@@ -147,16 +424,27 @@ in
     viAlias = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
+      cmp-rg
+      gitsigns-nvim
       gruvbox-nvim
+      neo-tree-nvim
+      null-ls-nvim
       nvim-treesitter
       telescope-nvim
-      vim-fugitive
+      vim-commentary
+      #vim-fugitive
       vim-nix
     ];
     extraConfig = ''
-    set cc=80
-    set number
-    colorscheme gruvbox
+      set cc=80
+      set number
+      set ignorecase
+      set smartcase
+      nmap <C-/> <Plug>CommentaryLine
+      xmap <C-/> <Plug>Commentary
+      colorscheme gruvbox
+      autocmd BufWinLeave *.* mkview
+      autocmd BufWinEnter *.* silent! loadview
     '';
   };
 
@@ -183,24 +471,59 @@ in
     };
   };
 
+  programs.autorandr = {
+    enable = true;
+  };
+
   programs.i3status-rust = {
     enable = true;
     bars = {
       top = {
         settings = {
-          theme = "gruvbox-dark";
-          blocks = [
+          theme = {
+            name = "gruvbox-dark";
+            overrides = {
+              separator = "";
+            };
+          };
+          block = [
             {
               block = "cpu";
               interval = 1;
             }
             {
-              block = "battery";
+              block = "memory";
               interval = 1;
             }
             {
-              block = "wireless";
-              interval = 1;
+              block = "disk_space";
+              path = "/";
+              alias = "/";
+              info_type = "available";
+              unit = "GB";
+              interval = 20;
+              warning = 20.0;
+              alert = 10.0;
+            }
+            {
+              block = "net";
+              device = "wlp9s0";
+              format = "{ssid} {signal_strength} {ip} {speed_down} {graph_down}";
+            }
+            {
+              block = "net";
+            }
+            {
+              block = "battery";
+              format = "{percentage}% {time}";
+            }
+            {
+              block = "sound";
+            }
+            {
+              block = "time";
+              interval = 11;
+              format = "%a %Y-%m-%d %R";
             }
           ];
         };
@@ -220,17 +543,33 @@ in
   home.packages = with pkgs; [
     #alacritty
     arandr
+    asciinema
+    cachix
+    cloc
+    # conda
     # docker
     gh
     hexyl
     htop
     i3lock-fancy
+    inconsolata-nerdfont
     iosevka
+    (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; } )
     just
     mosh
     nixgl.nixGLIntel
+    nix-tree
+    #polybar
+    playerctl
+    pprof
+    #python3
+    # python39Packages.conda
     ranger
     ripgrep
+
+    rustc
+    cargo
+
     skim
     stow
     sway
@@ -251,9 +590,8 @@ in
       # "Xft.dpi" = "220";
       "Xft.dpi" = "192";
 
-      # https://github.com/morhetz/gruvbox-contrib/blob/master/color.table
       "*background" = theme.bg;
-      "*foreground" = theme.white;
+      "*foreground" = theme.fg;
       "*color0" = theme.bg;
       "*color1" = theme.red;
       "*color2" = theme.green;
@@ -293,7 +631,8 @@ in
             window = lib.mkOptionDefault {
               border = 6;
             };
-            terminal = "urxvt";
+            workspaceAutoBackAndForth = true;
+            terminal = "nixGLIntel alacritty";
             colors = lib.mkOptionDefault {
               background = theme.bg;
               focused = {
@@ -335,10 +674,10 @@ in
                 "Return" = "mode default";
               };
               ${mode_system} = {
-                "l" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; mode default";
+                "l" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec sleep 1; mode default";
                 "e" = "exec i3-msg exit";
-                "s" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec systemctl suspend; mode default";
-                "h" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec systemctl hibernate; mode default";
+                "s" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec sleep 1; exec systemctl suspend; mode default";
+                "h" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec sleep 1; exec systemctl hibernate; mode default";
                 "r" = "exec systemctl reboot";
                 "Shift+s" = "exec systemctl poweroff";
                 "Escape" = "mode default";
@@ -349,6 +688,7 @@ in
               {
                 statusCommand = "i3status-rs /home/tzn/.config/i3status-rust/config-top.toml";
                 position = "top";
+                workspaceNumbers = true;
                 colors = {
                   separator = "#98971a";
                 };
@@ -356,6 +696,7 @@ in
               {
                 statusCommand = "i3status-rs /home/tzn/.config/i3status-rust/config-bottom.toml";
                 position = "bottom";
+                workspaceNumbers = false;
                 colors = {
                   separator = "#98971a";
                 };
@@ -364,6 +705,9 @@ in
             keybindings = lib.mkOptionDefault {
               "${cfg.config.modifier}+p" = "exec ${cfg.config.menu}";
               "${cfg.config.modifier}+c" = "exec google-chrome --password-store=gnome";
+
+              "${cfg.config.modifier}+space" = "layout toggle splitv splith stacking";
+              "${cfg.config.modifier}+n" = "exec i3-input -F 'rename workspace to \"%s\"' -P 'New name for this workspace: '";
 
               "${cfg.config.modifier}+h" = "focus left";
               "${cfg.config.modifier}+j" = "focus down";
