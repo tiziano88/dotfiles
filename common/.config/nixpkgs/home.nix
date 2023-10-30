@@ -63,7 +63,7 @@ in
         #font-1 = "Inconsolata Nerdfont Mono:size=18";
         modules-left = "i3";
         modules-center = "date time";
-        modules-right = "volume backlight cpu battery";
+        modules-right = "bluetooth wifi backlight volume cpu memory battery";
         enable-ipc = true;
         line-size = 6;
         line-color = theme.red;
@@ -113,7 +113,7 @@ in
       "module/date" = {
         type = "internal/date";
         internal = 5;
-        date = "%Y-%m-%d";
+        date = "%Y-%m-%d %a";
         label = "%date%";
         label-padding = 1;
         label-background = theme.bg;
@@ -124,7 +124,7 @@ in
       "module/time" = {
         type = "internal/date";
         internal = 5;
-        time = "%H:%M";
+        time = "%H:%M:%S";
         label = "%time%";
         label-padding = 1;
         label-background = theme.bg;
@@ -138,13 +138,54 @@ in
         interval = 3;
         click-left = "/home/tzn/.nix-profile/bin/playerctl play-pause &";
       };
+      "module/bluetooth" = {
+        type = "custom/script";
+        exec = "/bin/sh ~/bluetooth.sh";
+        interval = 3;
+        click-left = "exec blueberry";
+      };
+      "module/wifi" = {
+        type = "internal/network";
+        interface = "wlp9s0";
+        interval = 1;
+
+        click-left = "gnome-control-center";
+
+        format-connected = "<label-connected>";
+        format-connected-prefix = "󰖩 ";
+        format-connected-prefix-background = theme.blue;
+        format-connected-prefix-padding = 1;
+        label-connected = "%signal:3%% %essid%";
+        label-connected-padding = 1;
+        label-connected-background = theme.bg;
+
+        format-disconnected = "<label-disconnected>";
+        format-disconnected-prefix = "󰖪 ";
+        format-disconnected-prefix-background = theme.gray;
+        format-disconnected-prefix-padding = 1;
+        label-disconnected = "---";
+        label-disconnected-padding = 1;
+        label-disconnected-background = theme.bg;
+      };
       "module/backlight" = {
         type = "internal/backlight";
         card = "intel_backlight";
-        format = "brightness: <label>";
-        label = "%percentage%%";
+        format = "<label><ramp>";
+        format-prefix = "󰃝 ";
+        format-prefix-background = theme.purple;
+        format-prefix-padding = 1;
+        label = "%percentage:3%%";
+        label-padding = 1;
+        label-background = theme.bg;
         # https://wiki.archlinux.org/title/Backlight#ACPI
         enable-scroll = true;
+        ramp-0 = "🌕";
+        ramp-1 = "🌔";
+        ramp-2 = "🌓";
+        ramp-3 = "🌒";
+        ramp-4 = "🌑";
+        ramp-padding = 1;
+        ramp-background = theme.bg;
       };
       "module/battery" = {
         type = "internal/battery";
@@ -166,12 +207,12 @@ in
           ''${bar.fill}
         '';
 
-        format-full = "<label-full><bar-capacity>";
+        format-full = "<label-full><bar-capacity> ";
         format-full-background = theme.bg;
         format-full-prefix = "󰁹";
         format-full-prefix-padding = 1;
         format-full-prefix-background = theme.green;
-        label-full = "%percentage%%";
+        label-full = "%percentage:3%%";
         label-full-padding = 1;
 
         format-charging = "<label-charging><bar-capacity>";
@@ -179,12 +220,13 @@ in
         format-charging-prefix = "󰂄";
         format-charging-prefix-background = theme.green;
         format-charging-prefix-padding = 1;
-        label-charging = "%percentage%%";
+        label-charging = "%percentage:3%%";
         label-charging-padding = 1;
         label-charging-prefix-background = theme.orange;
 
-        format-discharging = "<ramp-capacity><label-discharging>";
-        label-discharging = "%percentage%%";
+        format-discharging = "<ramp-capacity><label-discharging><bar-capacity>";
+        label-discharging = "%percentage:3%%";
+        format-discharging-prefix-background = theme.red;
 
         animation-charging-0 = "";
         animation-charging-1 = "";
@@ -201,17 +243,27 @@ in
         ramp-capacity-padding = 1;
         ramp-capacity-background = theme.red;
       };
+      "module/memory" = {
+        type = "internal/memory";
+        interval = 1;
+
+        label = "%percentage_used:3%% [%gb_used% / %gb_total%]";
+        format-background = theme.bg;
+        format-prefix = "󰍛 ";
+        format-prefix-background = theme.yellow;
+        format-prefix-padding = 1;
+      };
       "module/cpu" = {
         type = "internal/cpu";
         interval = 1;
 
-        format = "<label><bar-load>";
+        format = "<label><bar-load> ";
         format-background = theme.bg;
         format-prefix = "󰻠 ";
         format-prefix-background = theme.green;
         format-prefix-padding = 1;
 
-        label = "%percentage%%";
+        label = "%percentage:3%%";
         label-padding = 1;
 
         bar-load-width = 10;
@@ -229,9 +281,9 @@ in
         type = "internal/i3";
 
         format = "<label-state><label-mode>";
-        format-prefix = "";
+        format-prefix = " ";
         format-prefix-background = theme.purple;
-        format-prefix-padding = 2;
+        format-prefix-padding = 1;
 
         label-mode = "%mode%";
         label-mode-padding = 1;
@@ -246,6 +298,7 @@ in
         label-unfocused-background = theme.bg;
         label-unfocused-padding = 1;
 
+        label-urgent = "%name%";
         label-urgent-background = theme.red;
         label-urgent-padding = 1;
       };
@@ -270,6 +323,13 @@ in
   home.file = {
     ".xvimrc" = {
       source = ../../.vimrc;
+    };
+    "bluetooth.sh" = {
+      # https://github.com/msaitz/polybar-bluetooth/blob/44ae51f5d78e7e26810a59eaaf381f7bee887585/bluetooth.sh
+      text = ''
+      #!/bin/sh
+      /bin/bluetoothctl info | /bin/grep 'Name' | /bin/cut -d' ' -f2
+      '';
     };
   };
 
@@ -321,6 +381,12 @@ in
           white = theme.white;
         };
       };
+      draw_bold_text_with_bright_colors = false;
+      bell = {
+        animation = "EaseOutExpo";
+        color = "#ffffff";
+        duration = 0;
+      };
     };
   };
 
@@ -336,7 +402,9 @@ in
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting = {
+      enable = true;
+    };
     history = {
       ignoreDups = true;
     };
@@ -359,7 +427,7 @@ in
     work() { tmx2 new-session -A -s ''${1:-work}; }
     '';
     shellAliases = {
-      ls = "${pkgs.exa}/bin/exa";
+      ls = "${pkgs.eza}/bin/eza";
       ll = "ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first";
       l = "ll";
       hms = "home-manager --flake ~/src/dotfiles/home-manager --impure switch";
@@ -370,6 +438,8 @@ in
       gco = "git checkout";
       ga = "git add";
       gp = "git push";
+      archive = "rsync --progress --recursive --verbose --size-only --times";
+      archive_dry = "archive --dry-run";
       # sudo apt install libnss-sss
       # https://github.com/NixOS/nixpkgs/issues/64666
       # alacritty = "";
@@ -414,7 +484,11 @@ in
     enableZshIntegration = true;
   };
 
-  programs.exa = {
+  programs.eza = {
+    enable = true;
+    enableAliases = false;
+  };
+  programs.lsd = {
     enable = true;
     enableAliases = false;
   };
@@ -440,8 +514,19 @@ in
       set number
       set ignorecase
       set smartcase
+      set cursorline
+      set undofile
       nmap <C-/> <Plug>CommentaryLine
       xmap <C-/> <Plug>Commentary
+
+      " Scroll up / down
+      nmap J <C-d>
+      nmap K <C-u>
+
+      " Next / prev word
+      nmap H b
+      nmap L w
+
       colorscheme gruvbox
       autocmd BufWinLeave *.* mkview
       autocmd BufWinEnter *.* silent! loadview
@@ -481,7 +566,7 @@ in
       top = {
         settings = {
           theme = {
-            name = "gruvbox-dark";
+            #name = "gruvbox-dark";
             overrides = {
               separator = "";
             };
@@ -528,11 +613,6 @@ in
           ];
         };
       };
-      bottom = {
-        settings = {
-          theme = "gruvbox-dark";
-        };
-      };
     };
   };
 
@@ -542,8 +622,11 @@ in
 
   home.packages = with pkgs; [
     #alacritty
+    alsa-lib
     arandr
     asciinema
+    bluez
+    bluez-tools
     cachix
     cloc
     # conda
@@ -555,8 +638,10 @@ in
     inconsolata-nerdfont
     iosevka
     (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; } )
+    jujutsu
     just
     mosh
+    networkmanager_dmenu
     nixgl.nixGLIntel
     nix-tree
     #polybar
@@ -574,7 +659,7 @@ in
     stow
     sway
     swaylock
-    terraform
+    # terraform
     tmux
     xplr
   ];
@@ -616,12 +701,12 @@ in
     windowManager = {
       i3 =
         let
-          mode_system = "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown";
+          mode_system = "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (shift+r) reboot, (shift+s) shutdown";
         in
         {
           enable = true;
           extraConfig = ''
-             # set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown"
+             # set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (shift+r) reboot, (shift+s) shutdown"
           '';
           config = let cfg = config.xsession.windowManager.i3; in {
             fonts = lib.mkOptionDefault {
@@ -678,7 +763,7 @@ in
                 "e" = "exec i3-msg exit";
                 "s" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec sleep 1; exec systemctl suspend; mode default";
                 "h" = "exec /usr/share/goobuntu-desktop-files/xsecurelock.sh; exec sleep 1; exec systemctl hibernate; mode default";
-                "r" = "exec systemctl reboot";
+                "Shift+r" = "exec systemctl reboot";
                 "Shift+s" = "exec systemctl poweroff";
                 "Escape" = "mode default";
                 "Return" = "mode default";
@@ -689,14 +774,6 @@ in
                 statusCommand = "i3status-rs /home/tzn/.config/i3status-rust/config-top.toml";
                 position = "top";
                 workspaceNumbers = true;
-                colors = {
-                  separator = "#98971a";
-                };
-              }
-              {
-                statusCommand = "i3status-rs /home/tzn/.config/i3status-rust/config-bottom.toml";
-                position = "bottom";
-                workspaceNumbers = false;
                 colors = {
                   separator = "#98971a";
                 };
