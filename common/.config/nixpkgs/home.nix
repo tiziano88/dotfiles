@@ -651,6 +651,7 @@ in
     # python39Packages.conda
     ranger
     ripgrep
+    streamdeck-ui
 
     rustc
     cargo
@@ -782,6 +783,7 @@ in
             keybindings = lib.mkOptionDefault {
               "${cfg.config.modifier}+p" = "exec ${cfg.config.menu}";
               "${cfg.config.modifier}+c" = "exec google-chrome --password-store=gnome";
+              "${cfg.config.modifier}+g" = "exec gnome-control-center";
 
               "${cfg.config.modifier}+space" = "layout toggle splitv splith stacking";
               "${cfg.config.modifier}+n" = "exec i3-input -F 'rename workspace to \"%s\"' -P 'New name for this workspace: '";
