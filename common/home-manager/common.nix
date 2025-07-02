@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  # linux = import /Users/tzn/src/dotfiles/common/.config/nixpkgs/home.nix;
+  # theme = import ./theme.nix;
   theme = {
     bg = "#282828";
     fg = "#ebdbb2";
@@ -77,11 +77,13 @@ in
     # conda
     # docker
     gh
+    go
     hexyl
     htop
-    inconsolata-nerdfont
     iosevka
-    (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; } )
+    # (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; } )
+    pkgs.nerd-fonts.inconsolata
+    pkgs.nerd-fonts.iosevka
     jujutsu
     just
     mosh
@@ -219,7 +221,9 @@ in
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    # autosuggestions = {
+    #   enable = true;
+    # };
     enableCompletion = true;
     syntaxHighlighting = {
       enable = true;
@@ -227,8 +231,9 @@ in
     history = {
       ignoreDups = true;
     };
-    initExtra = ''
+    initContent = ''
     source ~/.nix-profile/etc/profile.d/nix.sh
+    [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
     function find_git_branch() {
       RBUFFER=$(git branch --verbose --sort=-committerdate | cut -b'3-' | sk --preview="git show --color=always {2}" | cut -d' ' -f1)
       CURSOR=$#BUFFER         # move cursor
@@ -246,10 +251,10 @@ in
     work() { tmx2 new-session -A -s ''${1:-work}; }
     '';
     shellAliases = {
-      ls = "${pkgs.eza}/bin/eza";
-      ll = "ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first";
+      # ls = "${pkgs.eza}/bin/eza";
+      # ll = "ls --all --long  --group --classify --time-style=long-iso --git --group-directories-first";
       l = "ll";
-      hms = "home-manager --impure switch";
+      hms = "home-manager switch --flake ~/src/dotfiles/home-manager";
       ".." = "cd ..";
       gst = "git status --short --branch";
       gd = "git diff";
@@ -281,11 +286,13 @@ in
 
   programs.eza = {
     enable = true;
-    enableAliases = false;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
   };
   programs.lsd = {
     enable = true;
-    enableAliases = false;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
   };
   
   programs.neovim = {

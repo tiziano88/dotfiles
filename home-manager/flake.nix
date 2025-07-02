@@ -8,16 +8,17 @@
   outputs =
     { nixgl, nixpkgs, home-manager, ... }:
     let
+      system = "aarch64-darwin"; # Change to x86_64-darwin for Intel Macs
       pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [ nixgl.overlay ];
+        inherit system;
+        # overlays = [ nixgl.overlay ];
       };
     in
     {
-      homeConfigurations."tzn@tzn0" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."tzn" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
         modules = [
-          /home/tzn/src/dotfiles/common/.config/nixpkgs/home.nix
+          ../common/home-manager/mac.nix
         ];
       };
     };

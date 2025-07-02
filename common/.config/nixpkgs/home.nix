@@ -316,7 +316,7 @@ in
   home.homeDirectory = "/home/tzn";
   home.sessionVariables = {
     EDITOR = "vim";
-    PATH = "$HOME/bin:$PATH";
+    PATH = "$HOME/bin:$HOME/.local/bin:$PATH";
     DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
   };
 
@@ -410,6 +410,8 @@ in
     };
     initExtra = ''
     source ~/.nix-profile/etc/profile.d/nix.sh
+    [[ -f ~/local.zshrc ]] && source ~/local.zshrc
+
     function find_git_branch() {
       RBUFFER=$(git branch --verbose --sort=-committerdate | cut -b'3-' | sk --preview="git show --color=always {2}" | cut -d' ' -f1)
       CURSOR=$#BUFFER         # move cursor
@@ -440,6 +442,7 @@ in
       gp = "git push";
       archive = "rsync --progress --recursive --verbose --size-only --times";
       archive_dry = "archive --dry-run";
+      rid = "printf \"%020lu\n\" \"0x$(openssl rand -hex 8)\"";
       # sudo apt install libnss-sss
       # https://github.com/NixOS/nixpkgs/issues/64666
       # alacritty = "";
