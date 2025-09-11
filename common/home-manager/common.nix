@@ -232,6 +232,8 @@ in
       ignoreDups = true;
     };
     initContent = ''
+    source /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
     source ~/.nix-profile/etc/profile.d/nix.sh
     [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
     function find_git_branch() {
@@ -267,6 +269,7 @@ in
       # sudo apt install libnss-sss
       # https://github.com/NixOS/nixpkgs/issues/64666
       # alacritty = "";
+      uid = "printf \"%020lu\n\" \"0x$(openssl rand -hex 8)\"";
     };
   };
 
@@ -338,6 +341,18 @@ in
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+    # cargo install starship-jj --locked
+    # https://gitlab.com/lanastara_foss/starship-jj
+    settings = {
+      custom.jj = {
+          command = "prompt";
+          format = "$output";
+          ignore_timeout = true;
+          shell = ["starship-jj" "--ignore-working-copy" "starship"];
+          use_stdin = false;
+          when = true;
+      };
+    };
   };
 
   fonts.fontconfig = {
