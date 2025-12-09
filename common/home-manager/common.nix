@@ -73,6 +73,7 @@ in
     asciinema
     cachix
     cloc
+    cosign
     difftastic
     # conda
     # docker
@@ -90,6 +91,7 @@ in
     nix-tree
     #polybar
     pprof
+    protobuf
     #python3
     # python39Packages.conda
     ranger
