@@ -539,6 +539,21 @@ in
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+    settings = {
+      custom.jj = {
+        command = "prompt";
+        format = "$output";
+        ignore_timeout = true;
+        foo = "x";
+        shell = [
+          "${pkgs.starship-jj}/bin/starship-jj"
+          "--ignore-working-copy"
+          "starship"
+        ];
+        use_stdin = false;
+        when = true;
+      };
+    }
   };
 
   programs.gnome-terminal = {

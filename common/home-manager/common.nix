@@ -105,6 +105,9 @@ in
     # terraform
     tmux
     xplr
+
+    jj-starship
+    starship-jj
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -143,6 +146,8 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.difftastic.enable = true;
 
   programs.alacritty = {
     enable = true;
@@ -197,19 +202,20 @@ in
 
   programs.git = {
     enable = true;
-    difftastic = {
-      enable = true;
-      background = "dark";
-      display = "side-by-side";
-    };
-    aliases = {
-      st = "status";
-      co = "checkout";
-      br = "branch";
-      ci = "commit";
-      di = "diff";
-      lg = "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
-      cl = "!f() { git push origin HEAD:refs/for/\${1:-main}; }; f";
+    settings = {
+      difftastic = {
+        background = "dark";
+        display = "side-by-side";
+      };
+      aliases = {
+        st = "status";
+        co = "checkout";
+        br = "branch";
+        ci = "commit";
+        di = "diff";
+        lg = "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
+        cl = "!f() { git push origin HEAD:refs/for/\${1:-main}; }; f";
+      };
     };
   };
 
@@ -347,12 +353,16 @@ in
     # https://gitlab.com/lanastara_foss/starship-jj
     settings = {
       custom.jj = {
-          command = "prompt";
-          format = "$output";
-          ignore_timeout = true;
-          shell = ["starship-jj" "--ignore-working-copy" "starship"];
-          use_stdin = false;
-          when = true;
+        format = "$output";
+        ignore_timeout = true;
+        shell = ["jj-starship" "--jj-symbol=jj "];
+        when = "jj-starship detect";
+      };
+      git_branch = {
+        disabled = true;
+      };
+      git_status = {
+        disabled = true;
       };
     };
   };
