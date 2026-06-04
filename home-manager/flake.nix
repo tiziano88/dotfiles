@@ -28,6 +28,15 @@
         overlays = [
           jj-starship.overlays.default
           starship-jj.overlays.default
+          # Workaround: highlight 4.20 has a patch already applied upstream.
+          # Remove it so the build doesn't fail with "Reversed patch detected".
+          (final: prev: {
+            highlight = prev.highlight.overrideAttrs (old: {
+              patches = builtins.filter
+                (p: builtins.match ".*shellscript-crash-fix.*" (toString p) == null)
+                (old.patches or []);
+            });
+          })
         ];
       };
     in

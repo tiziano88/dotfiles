@@ -41,6 +41,11 @@ in
   home.username = "tzn";
   home.homeDirectory = "/Users/tzn";
 
+  home.sessionPath = [
+    "/Users/tzn/.local/bin"
+    "/Users/tzn/.cargo/bin"
+  ];
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -81,7 +86,7 @@ in
     go
     hexyl
     htop
-    iosevka
+    # iosevka  # builds from source; use nerd-fonts.iosevka instead
     # (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; } )
     pkgs.nerd-fonts.inconsolata
     pkgs.nerd-fonts.iosevka
@@ -105,6 +110,8 @@ in
     # terraform
     tmux
     xplr
+
+    # wrangler
 
     jj-starship
     starship-jj
@@ -310,12 +317,14 @@ in
     enable = true;
     viAlias = true;
     vimAlias = true;
+    withRuby = false;
+    withPython3 = false;
     plugins = with pkgs.vimPlugins; [
       cmp-rg
       gitsigns-nvim
       gruvbox-nvim
       neo-tree-nvim
-      null-ls-nvim
+      none-ls-nvim
       nvim-treesitter
       telescope-nvim
       vim-commentary
