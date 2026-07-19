@@ -207,6 +207,30 @@ in
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+    # Only manage config, do not install the actual binary.
+    package = null;
+    settings = {
+      command = "zsh";
+      font-family = "Iosevka Nerd Font";
+      font-size = 13;
+      theme = "Gruvbox Material Dark";
+      window-theme = "dark";
+      window-padding-x = 10;
+      window-padding-y = 10;
+      window-padding-balance = true;
+      macos-titlebar-style = "transparent";
+      cursor-style = "block";
+      cursor-style-blink = true;
+      mouse-hide-while-typing = false;
+      confirm-close-surface = false;
+      keybind = [
+        "shift+enter=text:\\n"
+      ];
+    };
+  };
+
   programs.git = {
     enable = true;
     settings = {
